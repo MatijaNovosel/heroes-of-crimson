@@ -41,6 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Floor
+    uniqueID: 2212836669
+    locked: 0
+  - name: Design
+    uniqueID: 2284738349
+    locked: 0
+  - name: Shadows
+    uniqueID: 2770201685
+    locked: 0
   - name: Actor
     uniqueID: 2640968989
+    locked: 0
+  - name: Collision
+    uniqueID: 131492747
     locked: 0
