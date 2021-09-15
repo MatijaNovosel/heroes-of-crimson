@@ -25,6 +25,10 @@ public class Player : MonoBehaviour
     {
       transform.localScale = Vector3.one;
     }
+    else if (moveDelta.x < 0)
+    {
+      transform.localScale = new Vector3(-1, 1, 1);
+    }
 
     hit = Physics2D.BoxCast(
       transform.position,
