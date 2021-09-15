@@ -57,9 +57,5 @@ public class Player : MonoBehaviour
     {
       transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
     }
-    else
-    {
-      Debug.Log("You hit some X shit");
-    }
   }
 }
