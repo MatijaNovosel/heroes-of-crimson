@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Actor
   - Blocking
-  - 
+  - NPC
   - 
   - 
   - 
@@ -55,6 +55,9 @@ TagManager:
     locked: 0
   - name: Shadows
     uniqueID: 2770201685
+    locked: 0
+  - name: NPC
+    uniqueID: 3380676505
     locked: 0
   - name: Actor
     uniqueID: 2640968989
