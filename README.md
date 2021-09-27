@@ -1,2 +1,2 @@
-# heores-of-crimson
+# Heroes of crimson
 Bullet hell RPG roguelike.
