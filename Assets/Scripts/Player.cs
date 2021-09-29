@@ -5,25 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   private BoxCollider2D boxCollider;
-  private SpriteRenderer spriteRenderer;
-  private List<KeyCode> keys;
-
-  public Sprite upSprite;
-  public Sprite downSprite;
-  public Sprite stillSprite;
+  public float moveSpeed = 5f;
+  public Animator animator;
 
   private Vector3 moveDelta;
   private RaycastHit2D hit;
 
   private void Start()
   {
-    keys = new List<KeyCode>();
-    keys.Add(KeyCode.W);
-    keys.Add(KeyCode.S);
-    keys.Add(KeyCode.A);
-    keys.Add(KeyCode.D);
     boxCollider = GetComponent<BoxCollider2D>();
-    spriteRenderer = GetComponent<SpriteRenderer>();
   }
 
   private void FixedUpdate()
@@ -31,23 +21,12 @@ public class Player : MonoBehaviour
     float x = Input.GetAxisRaw("Horizontal");
     float y = Input.GetAxisRaw("Vertical");
 
-    if (Input.GetKey(KeyCode.W))
-    {
-      spriteRenderer.sprite = upSprite;
-    }
-
-    if (Input.GetKey(KeyCode.S))
-    {
-      spriteRenderer.sprite = downSprite;
-    }
-
-    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-    {
-      spriteRenderer.sprite = stillSprite;
-    }
-
     // Reset moveDelta
     moveDelta = new Vector3(x, y, 0);
+
+    animator.SetFloat("Horizontal", x);
+    animator.SetFloat("Vertical", y);
+    animator.SetFloat("Speed", moveDelta.sqrMagnitude);
 
     if (moveDelta.x > 0)
     {
