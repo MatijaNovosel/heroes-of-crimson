@@ -7,6 +7,11 @@ public class Player : MonoBehaviour
   private BoxCollider2D boxCollider;
   public float moveSpeed = 5f;
   public Animator animator;
+  private AnimatorOverrideController animatorOverrideController;
+
+  public AnimationClip playerIdleUp;
+  public AnimationClip playerIdleDown;
+  public AnimationClip playerIdleLeftOrRight;
 
   private Vector3 moveDelta;
   private RaycastHit2D hit;
@@ -14,6 +19,8 @@ public class Player : MonoBehaviour
   private void Start()
   {
     boxCollider = GetComponent<BoxCollider2D>();
+    animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
+    animator.runtimeAnimatorController = animatorOverrideController;
   }
 
   private void FixedUpdate()
@@ -35,6 +42,21 @@ public class Player : MonoBehaviour
     else if (moveDelta.x < 0)
     {
       transform.localScale = new Vector3(-1, 1, 1);
+    }
+
+    if (Input.GetKey(KeyCode.W))
+    {
+      animatorOverrideController["playerIdle"] = playerIdleUp;
+    }
+
+    if (Input.GetKey(KeyCode.S))
+    {
+      animatorOverrideController["playerIdle"] = playerIdleDown;
+    }
+
+    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+    {
+      animatorOverrideController["playerIdle"] = playerIdleLeftOrRight;
     }
 
     hit = Physics2D.BoxCast(
