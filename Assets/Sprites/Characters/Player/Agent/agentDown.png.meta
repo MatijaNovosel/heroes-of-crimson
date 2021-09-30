@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: a7a420c7a3112fa458da746699d2fb7a
+guid: 4c4208cb101931e449a9c45db1eb03f9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1008558775669478799
-    second: stillRight_0
+      213: -4579202381285413760
+    second: agentDown_1
   - first:
-      213: -3435344493435148267
-    second: stillRight_1
+      213: -8126835009424345918
+    second: agentDown_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -74,7 +74,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -86,7 +86,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stillRight_0
+      name: agentDown_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f85d1e6ecde1ffd00800000000000000
-      internalID: 1008558775669478799
+      spriteID: 270040c8ad3758890800000000000000
+      internalID: -7456426225552850830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stillRight_1
+      name: agentDown_1
       rect:
         serializedVersion: 2
         x: 40
@@ -132,8 +132,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51824bb62643350d0800000000000000
-      internalID: -3435344493435148267
+      spriteID: 08c2cd422b76370c0800000000000000
+      internalID: -4579202381285413760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agentDown_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c4bd03ed9ea73f80800000000000000
+      internalID: -8126835009424345918
       vertices: []
       indices: 
       edges: []

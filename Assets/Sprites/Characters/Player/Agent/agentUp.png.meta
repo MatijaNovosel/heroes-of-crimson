@@ -1,13 +1,16 @@
 fileFormatVersion: 2
-guid: a7a420c7a3112fa458da746699d2fb7a
+guid: c10db90856cbe0340a01a9cef17e1e6e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1008558775669478799
-    second: stillRight_0
+      213: 3431098950018674958
+    second: agentUp_0
   - first:
-      213: -3435344493435148267
-    second: stillRight_1
+      213: 810991904887223206
+    second: agentUp_1
+  - first:
+      213: 1127763310871549319
+    second: agentUp_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -74,7 +77,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -86,7 +89,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stillRight_0
+      name: agentUp_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +114,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f85d1e6ecde1ffd00800000000000000
-      internalID: 1008558775669478799
+      spriteID: e013419f056bd9f20800000000000000
+      internalID: 3431098950018674958
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stillRight_1
+      name: agentUp_1
       rect:
         serializedVersion: 2
         x: 40
@@ -132,8 +135,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51824bb62643350d0800000000000000
-      internalID: -3435344493435148267
+      spriteID: 6a3358637d8314b00800000000000000
+      internalID: 810991904887223206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agentUp_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 785973f81ce96af00800000000000000
+      internalID: 1127763310871549319
       vertices: []
       indices: 
       edges: []

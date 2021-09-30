@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: a7a420c7a3112fa458da746699d2fb7a
+guid: 0093e19b1228bbd4fb63afc22b499db4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1008558775669478799
-    second: stillRight_0
+      213: -640117624051372497
+    second: agentRight_1
   - first:
-      213: -3435344493435148267
-    second: stillRight_1
+      213: 2595890974346794577
+    second: agentRight_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -74,7 +74,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -86,7 +86,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: stillRight_0
+      name: agentRight_0
       rect:
         serializedVersion: 2
         x: 0
@@ -111,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f85d1e6ecde1ffd00800000000000000
-      internalID: 1008558775669478799
+      spriteID: 51987db351b300dd0800000000000000
+      internalID: -2521950828943144683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: stillRight_1
+      name: agentRight_1
       rect:
         serializedVersion: 2
         x: 40
@@ -132,8 +132,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51824bb62643350d0800000000000000
-      internalID: -3435344493435148267
+      spriteID: f2e63f39968dd17f0800000000000000
+      internalID: -640117624051372497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: agentRight_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15655996615760420800000000000000
+      internalID: 2595890974346794577
       vertices: []
       indices: 
       edges: []
