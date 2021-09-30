@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
   private BoxCollider2D boxCollider;
-  public float moveSpeed = 5f;
+  private float moveSpeed = 1f;
   public Animator animator;
   private AnimatorOverrideController animatorOverrideController;
 
@@ -15,6 +15,19 @@ public class Player : MonoBehaviour
 
   private Vector3 moveDelta;
   private RaycastHit2D hit;
+
+  private float CalculateMovementSpeed()
+  {
+    /* 
+
+      0.02 - Minimum
+      0.05 - Maximum
+      [1, 75] SPD
+      [0.02, 0.05] RANGE
+
+    */
+    return 0.02f + (moveSpeed * 4.054054054054054e-4f);
+  }
 
   private void Start()
   {
@@ -64,13 +77,13 @@ public class Player : MonoBehaviour
       boxCollider.size,
       0,
       new Vector2(0, moveDelta.y),
-      Mathf.Abs(moveDelta.y * Time.deltaTime),
+      Mathf.Abs(moveDelta.y * CalculateMovementSpeed()),
       LayerMask.GetMask("Actor", "Blocking")
     );
 
     if (hit.collider == null)
     {
-      transform.Translate(0, moveDelta.y * Time.deltaTime, 0);
+      transform.Translate(0, moveDelta.y * CalculateMovementSpeed(), 0);
     }
 
     hit = Physics2D.BoxCast(
@@ -78,13 +91,13 @@ public class Player : MonoBehaviour
       boxCollider.size,
       0,
       new Vector2(moveDelta.x, 0),
-      Mathf.Abs(moveDelta.x * Time.deltaTime),
+      Mathf.Abs(moveDelta.x * CalculateMovementSpeed()),
       LayerMask.GetMask("Actor", "Blocking")
     );
 
     if (hit.collider == null)
     {
-      transform.Translate(moveDelta.x * Time.deltaTime, 0, 0);
+      transform.Translate(moveDelta.x * CalculateMovementSpeed(), 0, 0);
     }
   }
 }
