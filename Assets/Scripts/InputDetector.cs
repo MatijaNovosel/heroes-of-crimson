@@ -1,30 +1,63 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HeroesOfCrimson.Utils;
+using System;
 
 public class InputDetector : MonoBehaviour
 {
-  private GameObject Player;
+  public GameObject Player;
   public GameObject Projectile;
+  private DateTime? LastFired = null;
+  private readonly int DelayMs = 350;
 
-  // Start is called before the first frame update
   void Start()
   {
-    Player = GameObject.Find("Player");
+    //
   }
 
-  // Update is called once per frame
+  bool CanFire()
+  {
+    bool shouldFire = false;
+
+    if (LastFired == null)
+    {
+      shouldFire = true;
+    }
+    else
+    {
+      TimeSpan diff = DateTime.Now - (DateTime)LastFired;
+      int ms = (int)diff.TotalMilliseconds;
+      if (ms > DelayMs)
+      {
+        shouldFire = true;
+      }
+    }
+
+    return shouldFire;
+  }
+
+  void Fire()
+  {
+    Vector3 shootDirection = (Utils.GetMousePosition() - Player.transform.position).normalized;
+    GameObject proj = Instantiate(Projectile, new Vector3(Player.transform.position.x, Player.transform.position.y, 0), Quaternion.identity);
+    proj.GetComponent<Projectile>().Setup(shootDirection);
+    LastFired = DateTime.Now;
+  }
+
+  private void HandleShooting()
+  {
+    if (Input.GetMouseButton(0))
+    {
+      if (CanFire())
+      {
+        Fire();
+      }
+    }
+  }
+
   void Update()
   {
-    if (Input.GetMouseButtonDown(0))
-    {
-      Vector2 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-      Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-
-      Vector3 shootDirection = (new Vector3(worldPosition.x, worldPosition.y, 0) - Player.transform.position).normalized;
-
-      GameObject bullet = Instantiate(Projectile, new Vector3(Player.transform.position.x, Player.transform.position.y, 0), Quaternion.identity);
-      bullet.GetComponent<Projectile>().Setup(shootDirection);
-    }
+    HandleShooting();
   }
 }
