@@ -24,5 +24,18 @@ namespace HeroesOfCrimson.Utils
       var seed = Convert.ToInt32(Regex.Match(Guid.NewGuid().ToString(), @"\d+").Value);
       return new System.Random(seed).Next(min, max);
     }
+
+    public static float CalculatePlayerMovementSpeed(float moveSpeed)
+    {
+      /* 
+
+      0.02 - Minimum
+      0.05 - Maximum
+      [1, 75] SPD
+      [0.02, 0.05] RANGE
+
+    */
+      return 0.02f + (moveSpeed * 4.054054054054054e-4f);
+    }
   }
 }
