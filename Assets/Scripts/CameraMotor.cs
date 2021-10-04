@@ -8,7 +8,6 @@ public class CameraMotor : MonoBehaviour
   public float boundX = 0.15f;
   public float boundY = 0.05f;
 
-  // Update is called once per frame
   private void LateUpdate()
   {
     Vector3 delta = Vector3.zero;

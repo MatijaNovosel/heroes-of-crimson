@@ -8,8 +8,8 @@ public class InputDetector : MonoBehaviour
 {
   public GameObject Player;
   public GameObject Projectile;
-  private DateTime? LastFired = null;
-  private readonly int DelayMs = 350;
+  private float lastShown;
+  private readonly float delay = 0.2f; // 200 ms
 
   void Start()
   {
@@ -18,23 +18,8 @@ public class InputDetector : MonoBehaviour
 
   bool CanFire()
   {
-    bool shouldFire = false;
-
-    if (LastFired == null)
-    {
-      shouldFire = true;
-    }
-    else
-    {
-      TimeSpan diff = DateTime.Now - (DateTime)LastFired;
-      int ms = (int)diff.TotalMilliseconds;
-      if (ms > DelayMs)
-      {
-        shouldFire = true;
-      }
-    }
-
-    return shouldFire;
+    // Current game time in seconds - last time fired in game seconds
+    return Time.time - lastShown > delay;
   }
 
   void Fire()
@@ -42,7 +27,7 @@ public class InputDetector : MonoBehaviour
     Vector3 shootDirection = (Utils.GetMousePosition() - Player.transform.position).normalized;
     GameObject proj = Instantiate(Projectile, new Vector3(Player.transform.position.x, Player.transform.position.y, 0), Quaternion.identity);
     proj.GetComponent<Projectile>().Setup(shootDirection);
-    LastFired = DateTime.Now;
+    lastShown = Time.time;
   }
 
   private void HandleShooting()
