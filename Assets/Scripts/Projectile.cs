@@ -33,4 +33,13 @@ public class Projectile : MonoBehaviour
     */
     transform.eulerAngles = new Vector3(0, 0, angle - 45);
   }
+
+  private void OnTriggerEnter2D(Collider2D collider)
+  {
+    Target target = collider.GetComponent<Target>();
+    if (target != null)
+    {
+      Destroy(gameObject);
+    }
+  }
 }
