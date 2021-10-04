@@ -32,6 +32,7 @@ public class FloatingTextManager : MonoBehaviour
     ft.text.text = msg;
     ft.text.fontSize = fontSize;
     ft.text.color = color;
+    ft.text.fontStyle = FontStyle.Bold;
     ft.obj.transform.position = Camera.main.WorldToScreenPoint(position);
     ft.motion = motion;
     ft.duration = duration;
@@ -40,9 +41,6 @@ public class FloatingTextManager : MonoBehaviour
 
   private void Update()
   {
-    foreach (FloatingText ft in floatingTexts)
-    {
-      ft.UpdateFloatingText();
-    }
+    floatingTexts.ForEach(ft => ft.UpdateFloatingText());
   }
 }

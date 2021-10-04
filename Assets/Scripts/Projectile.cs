@@ -37,9 +37,22 @@ public class Projectile : MonoBehaviour
   private void OnTriggerEnter2D(Collider2D collider)
   {
     Target target = collider.GetComponent<Target>();
+
+    if (collider.name == "BulletCollision")
+    {
+      Destroy(gameObject);
+    }
+
     if (target != null)
     {
-      GameManager.instance.ShowText("Jebem ti mater.", 12, Color.yellow, new Vector3(transform.position.x, transform.position.y + 0.3f, 0), Vector3.up * 50, 2.0f);
+      GameManager.instance.ShowText(
+        $"-{Utils.RandInt(50, 200)}",
+        12,
+        Color.yellow,
+        new Vector3(transform.position.x, transform.position.y + 0.3f, 0),
+        Vector3.up * 50,
+        2.0f
+      );
       Destroy(gameObject);
     }
   }
