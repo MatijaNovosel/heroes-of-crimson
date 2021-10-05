@@ -7,7 +7,7 @@ public class FloatingText
 {
   public bool active;
   public GameObject obj;
-  public Text text;
+  public TextMesh text;
   public Vector3 motion;
   public float duration;
   public float lastShown;

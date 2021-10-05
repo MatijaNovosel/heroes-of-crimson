@@ -49,7 +49,7 @@ public class Projectile : MonoBehaviour
         $"-{Utils.RandInt(50, 200)}",
         12,
         Color.yellow,
-        new Vector3(transform.position.x, transform.position.y + 0.3f, 0),
+        new Vector3(transform.position.x, transform.position.y + 0.4f, 0),
         Vector3.up,
         2.0f
       );
