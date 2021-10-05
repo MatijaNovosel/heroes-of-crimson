@@ -78,6 +78,7 @@ public class Player : MonoBehaviour
 
   private void HandleMoving()
   {
+    // animator.SetBool("Shooting", false);
     float x = Input.GetAxisRaw("Horizontal");
     float y = Input.GetAxisRaw("Vertical");
 
@@ -145,6 +146,7 @@ public class Player : MonoBehaviour
   {
     if (Input.GetMouseButton(0))
     {
+      // animator.SetBool("Shooting", true);
       if (CanFire())
       {
         Fire();

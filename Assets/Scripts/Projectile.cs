@@ -50,7 +50,7 @@ public class Projectile : MonoBehaviour
         12,
         Color.yellow,
         new Vector3(transform.position.x, transform.position.y + 0.3f, 0),
-        Vector3.up * 50,
+        Vector3.up,
         2.0f
       );
       Destroy(gameObject);
