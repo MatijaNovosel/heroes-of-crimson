@@ -9,6 +9,8 @@ public class Projectile : MonoBehaviour
   private float angle;
   private readonly float moveSpeed = 5f;
   private readonly float timeToLive = 1f; // 1 second?
+  private float frequency = 20.0f;
+  private float amplitude = 0.5f;
 
   // Start is called before the first frame update
   public void Setup(Vector3 direction)
@@ -29,6 +31,12 @@ public class Projectile : MonoBehaviour
         DIR - Normal angle
         DIA - Minus 45 degrees
         RAN - Random
+
+      For sine movement:
+
+        Vector3 pos = transform.position;
+        pos += direction * moveSpeed * Time.deltaTime;
+        transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * amplitude;
 
     */
     transform.eulerAngles = new Vector3(0, 0, angle - 45);
