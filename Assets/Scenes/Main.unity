@@ -293,7 +293,7 @@ MonoBehaviour:
   animator: {fileID: 225077528}
   playerIdleUp: {fileID: 7400000, guid: 9be63248081d9d0458f2494a502b3689, type: 2}
   playerIdleDown: {fileID: 7400000, guid: b5fe808e3f455ea46a6ca1cca8ae436b, type: 2}
-  playerIdleLeftOrRight: {fileID: 7400000, guid: 1995eb69f7958be4eb3ed46b767c8cb3, type: 2}
+  playerIdle: {fileID: 7400000, guid: 1995eb69f7958be4eb3ed46b767c8cb3, type: 2}
   Projectile: {fileID: 5144726427392865407, guid: 4e01153d9ce6d134ba19d3164d6be11d, type: 3}
 --- !u!95 &225077528
 Animator:

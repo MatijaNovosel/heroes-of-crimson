@@ -12,14 +12,15 @@ public class Player : MonoBehaviour
 
   public AnimationClip playerIdleUp;
   public AnimationClip playerIdleDown;
-  public AnimationClip playerIdleLeftOrRight;
+  public AnimationClip playerIdle;
 
   private Vector3 moveDelta;
   private RaycastHit2D hit;
 
   public GameObject Projectile;
   private float lastShown;
-  private readonly float delay = 0.2f; // 200 ms
+  private readonly float delay = 0.8f; // 200 ms
+  private bool isShooting = false;
 
   bool CanFire()
   {
@@ -30,7 +31,6 @@ public class Player : MonoBehaviour
   void Fire()
   {
     Vector3 shootDirection = (Utils.GetMousePosition() - gameObject.transform.position).normalized;
-
     float angle = Utils.GetAngleFromShootDirection(shootDirection);
 
     /*
@@ -47,23 +47,27 @@ public class Player : MonoBehaviour
     {
       // Up
       animatorOverrideController["playerIdle"] = playerIdleUp;
+      animator.SetFloat("MouseDir", 4);
     }
     else if (angle < 45 && angle > -45)
     {
       // Right
-      animatorOverrideController["playerIdle"] = playerIdleLeftOrRight;
+      animatorOverrideController["playerIdle"] = playerIdle;
       transform.localScale = Vector3.one;
+      animator.SetFloat("MouseDir", 2);
     }
     else if ((angle > 135 && angle < 180) || (angle > -180 && angle < -135))
     {
       // Left
-      animatorOverrideController["playerIdle"] = playerIdleLeftOrRight;
+      animatorOverrideController["playerIdle"] = playerIdle;
       transform.localScale = new Vector3(-1, 1, 1);
+      animator.SetFloat("MouseDir", 2);
     }
     else if (angle < -45 && angle > -135)
     {
       // Down
       animatorOverrideController["playerIdle"] = playerIdleDown;
+      animator.SetFloat("MouseDir", 0);
     }
 
     GameObject proj = Instantiate(
@@ -78,7 +82,6 @@ public class Player : MonoBehaviour
 
   private void HandleMoving()
   {
-    // animator.SetBool("Shooting", false);
     float x = Input.GetAxisRaw("Horizontal");
     float y = Input.GetAxisRaw("Vertical");
 
@@ -89,28 +92,29 @@ public class Player : MonoBehaviour
     animator.SetFloat("Vertical", y);
     animator.SetFloat("Speed", moveDelta.sqrMagnitude);
 
-    if (moveDelta.x > 0)
+    if (!isShooting)
     {
-      transform.localScale = Vector3.one;
-    }
-    else if (moveDelta.x < 0)
-    {
-      transform.localScale = new Vector3(-1, 1, 1);
-    }
+      if (Input.GetKey(KeyCode.W))
+      {
+        animatorOverrideController["playerIdle"] = playerIdleUp;
+      }
 
-    if (Input.GetKey(KeyCode.W))
-    {
-      animatorOverrideController["playerIdle"] = playerIdleUp;
-    }
+      if (Input.GetKey(KeyCode.S))
+      {
+        animatorOverrideController["playerIdle"] = playerIdleDown;
+      }
 
-    if (Input.GetKey(KeyCode.S))
-    {
-      animatorOverrideController["playerIdle"] = playerIdleDown;
-    }
+      if (Input.GetKey(KeyCode.A))
+      {
+        animatorOverrideController["playerIdle"] = playerIdle;
+        transform.localScale = new Vector3(-1, 1, 1);
+      }
 
-    if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
-    {
-      animatorOverrideController["playerIdle"] = playerIdleLeftOrRight;
+      if (Input.GetKey(KeyCode.D))
+      {
+        animatorOverrideController["playerIdle"] = playerIdle;
+        transform.localScale = Vector3.one;
+      }
     }
 
     hit = Physics2D.BoxCast(
@@ -146,11 +150,18 @@ public class Player : MonoBehaviour
   {
     if (Input.GetMouseButton(0))
     {
-      // animator.SetBool("Shooting", true);
       if (CanFire())
       {
+        isShooting = true;
+        animator.SetBool("Shooting", isShooting);
+        animator.SetTrigger("Shoot");
         Fire();
       }
+    }
+    if (Input.GetMouseButtonUp(0))
+    {
+      isShooting = false;
+      animator.SetBool("Shooting", isShooting);
     }
   }
 
@@ -163,7 +174,11 @@ public class Player : MonoBehaviour
 
   private void FixedUpdate()
   {
-    HandleShooting();
     HandleMoving();
+  }
+
+  private void Update()
+  {
+    HandleShooting();
   }
 }
