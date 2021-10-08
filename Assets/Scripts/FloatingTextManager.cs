@@ -37,7 +37,7 @@ public class FloatingTextManager : MonoBehaviour
   {
     FloatingText ft = GetFloatingText();
     ft.text.text = msg;
-    // ft.text.fontSize = fontSize;
+    ft.text.fontSize = fontSize;
     ft.text.color = color;
     ft.text.fontStyle = FontStyle.Bold;
     ft.obj.transform.position = position;

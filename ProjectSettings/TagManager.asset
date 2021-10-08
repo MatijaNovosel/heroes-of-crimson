@@ -59,6 +59,9 @@ TagManager:
   - name: NPC
     uniqueID: 3380676505
     locked: 0
+  - name: Projectiles
+    uniqueID: 725306301
+    locked: 0
   - name: Actor
     uniqueID: 2640968989
     locked: 0

@@ -55,8 +55,8 @@ public class Projectile : MonoBehaviour
     {
       GameManager.instance.ShowText(
         $"-{Utils.RandInt(50, 200)}",
-        12,
-        Color.yellow,
+        65,
+        Color.red,
         new Vector3(transform.position.x, transform.position.y + 0.4f, 0),
         Vector3.up,
         2.0f
