@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
       0,
       new Vector2(0, moveDelta.y),
       Mathf.Abs(moveDelta.y * Utils.CalculatePlayerMovementSpeed(moveSpeed)),
-      LayerMask.GetMask("Actor", "Blocking")
+      LayerMask.GetMask("Actor", "Blocking", "NPC")
     );
 
     if (hit.collider == null)
@@ -137,7 +137,7 @@ public class Player : MonoBehaviour
       0,
       new Vector2(moveDelta.x, 0),
       Mathf.Abs(moveDelta.x * Utils.CalculatePlayerMovementSpeed(moveSpeed)),
-      LayerMask.GetMask("Actor", "Blocking")
+      LayerMask.GetMask("Actor", "Blocking", "NPC")
     );
 
     if (hit.collider == null)

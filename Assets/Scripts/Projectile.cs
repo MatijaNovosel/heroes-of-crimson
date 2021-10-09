@@ -44,24 +44,25 @@ public class Projectile : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collider)
   {
-    Target target = collider.GetComponent<Target>();
-
-    if (collider.name == "BulletCollision")
+    if (collider != null)
     {
-      Destroy(gameObject);
-    }
-
-    if (target != null)
-    {
-      GameManager.instance.ShowText(
-        $"-{Utils.RandInt(50, 200)}",
-        65,
-        Color.red,
-        new Vector3(transform.position.x, transform.position.y + 0.4f, 0),
-        Vector3.up,
-        2.0f
-      );
-      Destroy(gameObject);
+      if (collider.name != "BulletCollision" && collider.name != "Player" && collider.name != "Collision")
+      {
+        float dmg = Utils.RandInt(50, 200);
+        GameManager.instance.ShowText(
+          $"-{dmg}",
+          65,
+          Color.red,
+          new Vector3(transform.position.x, transform.position.y + 0.4f, 0),
+          Vector3.up,
+          2.0f
+        );
+        collider.SendMessage("ReceiveDamage", dmg);
+      }
+      if (collider.name != "Player" && collider.name != "Collision")
+      {
+        Destroy(gameObject);
+      }
     }
   }
 }
