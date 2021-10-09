@@ -12,6 +12,9 @@ public class BaseNPCBehaviour : MonoBehaviour
   protected float immuneTime = 1.0f;
   protected float lastImmune;
 
+  // Other
+  public AudioClip deathSound;
+
   void Start()
   {
 
@@ -24,6 +27,7 @@ public class BaseNPCBehaviour : MonoBehaviour
 
   protected virtual void Die()
   {
+    AudioSource.PlayClipAtPoint(deathSound, transform.position, 1.5f);
     Destroy(gameObject);
   }
 

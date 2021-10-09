@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 225077526}
   - component: {fileID: 225077528}
   - component: {fileID: 225077529}
+  - component: {fileID: 225077530}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -291,17 +292,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cd0cfa374908b4e97de9762f7010af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxCollider: {fileID: 0}
-  moveSpeed: 1
   animator: {fileID: 225077528}
-  animatorOverrideController: {fileID: 0}
   playerIdleUp: {fileID: 7400000, guid: 9be63248081d9d0458f2494a502b3689, type: 2}
   playerIdleDown: {fileID: 7400000, guid: b5fe808e3f455ea46a6ca1cca8ae436b, type: 2}
   playerIdle: {fileID: 7400000, guid: 1995eb69f7958be4eb3ed46b767c8cb3, type: 2}
-  moveDelta: {x: 0, y: 0, z: 0}
   Projectile: {fileID: 5144726427392865407, guid: 4e01153d9ce6d134ba19d3164d6be11d, type: 3}
-  lastShown: 0
-  isShooting: 0
 --- !u!95 &225077528
 Animator:
   serializedVersion: 3
@@ -347,6 +342,21 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+--- !u!114 &225077530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 225077523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1924c3972802d00429f65f250e3661ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  maxHp: 100
+  deathSound: {fileID: 8300000, guid: 19f46137f9bc2ec47b7a101bd71854a8, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -11183,7 +11193,6 @@ GameObject:
   - component: {fileID: 1042968363}
   - component: {fileID: 1042968362}
   - component: {fileID: 1042968361}
-  - component: {fileID: 1042968364}
   - component: {fileID: 1042968365}
   m_Layer: 8
   m_Name: Skeleton
@@ -11283,32 +11292,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1042968364
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042968360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a878bea1f515d741a0518c3e7db52b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filter:
-    useTriggers: 0
-    useLayerMask: 0
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 0
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
 --- !u!114 &1042968365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11321,6 +11304,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74682b1b743a9774e821f7c499d48690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 100
+  maxHp: 100
+  deathSound: {fileID: 8300000, guid: e4b2ea726db896f4097f6b3d33f169c7, type: 3}
 --- !u!1 &1151822747
 GameObject:
   m_ObjectHideFlags: 0
