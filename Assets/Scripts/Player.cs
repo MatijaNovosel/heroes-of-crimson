@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
   private float moveSpeed = 1f;
   public Animator animator;
   private AnimatorOverrideController animatorOverrideController;
+  private BaseNPCBehaviour baseNPCBehaviour;
+  public HealthBar healthBar;
 
   public AnimationClip playerIdleUp;
   public AnimationClip playerIdleDown;
@@ -152,6 +154,9 @@ public class Player : MonoBehaviour
     {
       if (CanFire())
       {
+        // Call this on receive damage
+        // baseNPCBehaviour.hp -= 10f;
+        // healthBar.UpdateHealthbar();
         isShooting = true;
         animator.SetBool("Shooting", isShooting);
         animator.SetTrigger("Shoot");
@@ -167,6 +172,7 @@ public class Player : MonoBehaviour
 
   private void Start()
   {
+    baseNPCBehaviour = GetComponent<BaseNPCBehaviour>();
     boxCollider = GetComponent<BoxCollider2D>();
     animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
     animator.runtimeAnimatorController = animatorOverrideController;
