@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Database
 {
-  private List<Item> Items;
+  readonly private List<Item> Items;
 
   public Database()
   {

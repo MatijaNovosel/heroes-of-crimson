@@ -5,13 +5,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
   public FloatingTextManager floatingTextManager;
-  private Database database;
+  public DatabaseManager databaseManager;
   public static GameManager instance;
 
   private void Awake()
   {
-    database = new Database();
-    database.Seed();
     instance = this;
   }
 
