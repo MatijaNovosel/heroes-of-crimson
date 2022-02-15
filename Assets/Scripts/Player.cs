@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
   public GameObject Projectile;
   private float lastShown;
-  private readonly float delay = 0.8f; // 200 ms
+  private readonly float delay = 0.3f; // 0.8f -> 200 ms
   private bool isShooting = false;
 
   bool CanFire()
