@@ -93,7 +93,7 @@ TextureImporter:
       213: 3048538982666575687
     second: tileset_35
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -110,10 +110,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -152,6 +154,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -167,6 +171,18 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -343,7 +359,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 96c5afa3c0fb14270800000000000000
-      internalID: 8233071653059976297
+      internalID: 5248325027942208949
       vertices: []
       indices: 
       edges: []
@@ -364,7 +380,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d7e647f56f8281490800000000000000
-      internalID: -7775419718026629507
+      internalID: -4294970432893795771
       vertices: []
       indices: 
       edges: []
@@ -385,7 +401,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 87adde22a194825f0800000000000000
-      internalID: -781294158744790408
+      internalID: 8228506200580878525
       vertices: []
       indices: 
       edges: []
@@ -406,7 +422,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f21548a253471cd70800000000000000
-      internalID: 9061651696941551919
+      internalID: -7215467664802914370
       vertices: []
       indices: 
       edges: []
@@ -427,7 +443,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 40048ed44c0ef0f90800000000000000
-      internalID: -6985117363303071740
+      internalID: 4811595071727397276
       vertices: []
       indices: 
       edges: []
@@ -448,7 +464,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 3c1d959c13b41f770800000000000000
-      internalID: 8642771837104280003
+      internalID: -4984090413442796586
       vertices: []
       indices: 
       edges: []
@@ -946,9 +962,45 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      floorVar5: -396035294860175646
+      lanternOff: -4984090413442796586
+      tileset_29: 4021183171127385890
+      void: -3642208251427772964
+      sewerGrateLeft: -4294970432893795771
+      brickWallTop: 5663061954668274717
+      tileset_30: -7967309640338825673
+      floorVar4: 7477116942032994148
+      floorVar2: -3627264120405484348
+      sewerGrateRight: -7215467664802914370
+      collision: 5778961287088506303
+      floorVar3: -4815885190406460031
+      brickFloor2: 6116080786932476827
+      halfCollision: 3985221016008397036
+      tileset_32: 5018706250341604807
+      tileset_28: -4827537604736492380
+      floorVar1: -7486092956772349302
+      sewerDrainHorizontal: -1762573714345474896
+      tileset_31: 1237908169197521079
+      wallSlime: 5248325027942208949
+      lanternOn: 4811595071727397276
+      ruinedFloor2: -2426843357703420916
+      brickFloor4: -538331831730588137
+      waterDark: 5043307788359985916
+      ruinedFloor1: -317771678647371661
+      brickWallBottom: 6007627129536956325
+      sewerGrateVertical: 11442893378838041
+      tileset_35: 3048538982666575687
+      sewerGrateCenter: 8228506200580878525
+      brickFloor3: -1385786070971223102
+      brickFloor1: 8758155216525550727
+      tileset_27: -4272949958406870782
+      tileset_33: -6468910726198660926
+      tileset_26: -5587653796134901919
+      tileset_34: -6157781805458569218
+      waterLight: -6923900727490736670
   spritePackingTag: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

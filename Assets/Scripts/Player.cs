@@ -6,7 +6,7 @@ using HeroesOfCrimson.Utils;
 public class Player : MonoBehaviour
 {
   private BoxCollider2D boxCollider;
-  private float moveSpeed = 1f;
+  private readonly float moveSpeed = 1f;
   public Animator animator;
   private AnimatorOverrideController animatorOverrideController;
   private BaseNPCBehaviour baseNPCBehaviour;
@@ -35,41 +35,42 @@ public class Player : MonoBehaviour
     Vector3 shootDirection = (Utils.GetMousePosition() - gameObject.transform.position).normalized;
     float angle = Utils.GetAngleFromShootDirection(shootDirection);
 
-    /*
-      |----------- 90
-      |            |
-      |            |
-    180, -180 ----|---- 0
-          |       |
-          |       |
-         |----- -90
-    */
 
-    if (angle > 45 && angle < 135)
+    /*
+
+          ┌─────(90)────┐
+          │      │      │
+          │      │      │
+       (+-180)───╀─────(0)
+          │      │      │
+          │      │      │
+          └────(-90)────┘
+
+    */
+    switch (angle)
     {
-      // Up
-      animatorOverrideController["playerIdle"] = playerIdleUp;
-      animator.SetFloat("MouseDir", 4);
-    }
-    else if (angle < 45 && angle > -45)
-    {
-      // Right
-      animatorOverrideController["playerIdle"] = playerIdle;
-      transform.localScale = Vector3.one;
-      animator.SetFloat("MouseDir", 2);
-    }
-    else if ((angle > 135 && angle < 180) || (angle > -180 && angle < -135))
-    {
-      // Left
-      animatorOverrideController["playerIdle"] = playerIdle;
-      transform.localScale = new Vector3(-1, 1, 1);
-      animator.SetFloat("MouseDir", 2);
-    }
-    else if (angle < -45 && angle > -135)
-    {
-      // Down
-      animatorOverrideController["playerIdle"] = playerIdleDown;
-      animator.SetFloat("MouseDir", 0);
+      case float n when n > 45 && n < 135:
+        // Up
+        animatorOverrideController["playerIdle"] = playerIdleUp;
+        animator.SetFloat("MouseDir", (int)Constants.SHOOTING_MOUSE_DIRS.UP);
+        break;
+      case float n when n < 45 && n > -45:
+        // Right
+        animatorOverrideController["playerIdle"] = playerIdle;
+        transform.localScale = Vector3.one;
+        animator.SetFloat("MouseDir", (int)Constants.SHOOTING_MOUSE_DIRS.HORIZONTAL);
+        break;
+      case float n when (n > 135 && n < 180) || (n > -180 && n < -135):
+        // Left
+        animatorOverrideController["playerIdle"] = playerIdle;
+        transform.localScale = new Vector3(-1, 1, 1);
+        animator.SetFloat("MouseDir", (int)Constants.SHOOTING_MOUSE_DIRS.HORIZONTAL);
+        break;
+      default:
+        // Down
+        animatorOverrideController["playerIdle"] = playerIdleDown;
+        animator.SetFloat("MouseDir", (int)Constants.SHOOTING_MOUSE_DIRS.DOWN);
+        break;
     }
 
     GameObject proj = Instantiate(
