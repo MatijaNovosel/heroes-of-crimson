@@ -1,0 +1,4 @@
+repository "heroes-of-crimson@mnovosel5@cloud"
+  path "/"
+    br "/main"
+    co "/main"

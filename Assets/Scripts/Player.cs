@@ -6,7 +6,7 @@ using HeroesOfCrimson.Utils;
 public class Player : MonoBehaviour
 {
   private BoxCollider2D boxCollider;
-  private readonly float moveSpeed = 1f;
+  private readonly float moveSpeed = 50f;
   public Animator animator;
   private AnimatorOverrideController animatorOverrideController;
   private BaseNPCBehaviour baseNPCBehaviour;

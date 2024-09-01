@@ -5,23 +5,23 @@ using UnityEngine.UI;
 
 public class InventorySlot
 {
-  public Item item { get; set; }
+  public Item Item { get; set; }
 }
 
 public class InventoryManager : MonoBehaviour
 {
   public Canvas canvas;
-  List<List<InventorySlot>> inventory;
-  private int ROWS = 4;
-  private int COLS = 4;
-  private int invX = 598;
-  private int invY = 18;
-  private int h = 180;
-  private bool showInventory = true;
-  private int width = 4;
-  private int height = 4;
-  private int boxSize = 20;
-  private int boxSpacing = 4;
+  readonly List<List<InventorySlot>> inventory;
+  private readonly int ROWS = 4;
+  private readonly int COLS = 4;
+  private readonly int invX = Screen.width - 210;
+  private readonly int invY = Screen.height - 215;
+  private readonly int h = 180;
+  private readonly bool showInventory = true;
+  private readonly int width = 4;
+  private readonly int height = 4;
+  private readonly int boxSize = 20;
+  private readonly int boxSpacing = 4;
 
   void DrawRectangle(int x, int y, int width, int height)
   {
