@@ -155,9 +155,7 @@ public class Player : MonoBehaviour
     {
       if (CanFire())
       {
-        // Call this on receive damage
-        // baseNPCBehaviour.hp -= 10f;
-        // healthBar.UpdateHealthbar();
+        baseNPCBehaviour.hp -= 5;
         isShooting = true;
         animator.SetBool("Shooting", isShooting);
         animator.SetTrigger("Shoot");
@@ -177,11 +175,13 @@ public class Player : MonoBehaviour
     boxCollider = GetComponent<BoxCollider2D>();
     animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
     animator.runtimeAnimatorController = animatorOverrideController;
+    baseNPCBehaviour.hp = 50;
   }
 
   private void FixedUpdate()
   {
     HandleMoving();
+    healthBar.UpdateFillAmount();
   }
 
   private void Update()

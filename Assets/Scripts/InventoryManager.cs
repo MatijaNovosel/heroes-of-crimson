@@ -49,7 +49,7 @@ public class InventoryManager : MonoBehaviour
           // X: 362.5, Y: 97.8
           var tx = invX + (xx * (boxSpacing + boxSize));
           var ty = invY + (yy * (boxSpacing + boxSize));
-          DrawRectangle(tx, ty, 20, 20);
+          // DrawRectangle(tx, ty, 20, 20);
         }
       }
     }
