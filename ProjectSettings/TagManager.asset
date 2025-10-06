@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags:
   - Skeleton
   layers:
@@ -48,11 +48,11 @@ TagManager:
   - name: Floor
     uniqueID: 2212836669
     locked: 0
-  - name: Design
-    uniqueID: 2284738349
-    locked: 0
   - name: Other
     uniqueID: 54739499
+    locked: 0
+  - name: Design
+    uniqueID: 2284738349
     locked: 0
   - name: Shadows
     uniqueID: 2770201685
@@ -66,6 +66,11 @@ TagManager:
   - name: Actor
     uniqueID: 2640968989
     locked: 0
+  - name: Roof
+    uniqueID: 2243474537
+    locked: 0
   - name: Collision
     uniqueID: 131492747
     locked: 0
+  m_RenderingLayers:
+  - Default
