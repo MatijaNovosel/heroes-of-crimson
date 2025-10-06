@@ -7,8 +7,8 @@ public class Projectile : MonoBehaviour
 {
   private Vector3 direction;
   private float angle;
-  private readonly float moveSpeed = 5f;
-  private readonly float timeToLive = 1f; // 1 second?
+  private readonly float moveSpeed = 10f;
+  private readonly float timeToLive = 2f; // 1 second?
   private float frequency = 20.0f;
   private float amplitude = 0.5f;
 
@@ -51,7 +51,7 @@ public class Projectile : MonoBehaviour
         float dmg = Utils.RandInt(50, 200);
         GameManager.instance.ShowText(
           $"-{dmg}",
-          65,
+          170,
           Color.red,
           new Vector3(transform.position.x, transform.position.y + 0.4f, 0),
           Vector3.up,

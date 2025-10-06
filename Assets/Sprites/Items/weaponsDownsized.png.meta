@@ -1,0 +1,1144 @@
+fileFormatVersion: 2
+guid: 9ea06e6d48b3bd945abdafad9ec15e24
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8282731600321491200
+    second: weaponsDownsized_0
+  - first:
+      213: -6639100972348689959
+    second: weaponsDownsized_1
+  - first:
+      213: 5830848401812391330
+    second: weaponsDownsized_2
+  - first:
+      213: -8892445878885642326
+    second: weaponsDownsized_3
+  - first:
+      213: -8170858308106538296
+    second: weaponsDownsized_4
+  - first:
+      213: 3551711404407304277
+    second: weaponsDownsized_5
+  - first:
+      213: 5737837716649052349
+    second: weaponsDownsized_6
+  - first:
+      213: -3394132921264201208
+    second: weaponsDownsized_7
+  - first:
+      213: 7657290115244999510
+    second: weaponsDownsized_8
+  - first:
+      213: 439669502499875688
+    second: weaponsDownsized_9
+  - first:
+      213: -8081524645486302020
+    second: weaponsDownsized_10
+  - first:
+      213: -6192316822550977926
+    second: weaponsDownsized_11
+  - first:
+      213: -6352186115600159753
+    second: weaponsDownsized_12
+  - first:
+      213: -6428563581721367974
+    second: weaponsDownsized_13
+  - first:
+      213: -4172044271108362078
+    second: weaponsDownsized_14
+  - first:
+      213: -2216889298604570473
+    second: weaponsDownsized_15
+  - first:
+      213: -5895668103275721326
+    second: weaponsDownsized_16
+  - first:
+      213: 8087717947409633888
+    second: weaponsDownsized_17
+  - first:
+      213: 533340966161531281
+    second: weaponsDownsized_18
+  - first:
+      213: -9193975543582041567
+    second: weaponsDownsized_19
+  - first:
+      213: -288574690571862137
+    second: weaponsDownsized_20
+  - first:
+      213: -4539599019907833089
+    second: weaponsDownsized_21
+  - first:
+      213: 3892932137502598778
+    second: weaponsDownsized_22
+  - first:
+      213: -2995558959751899246
+    second: weaponsDownsized_23
+  - first:
+      213: -7167437711771134352
+    second: weaponsDownsized_24
+  - first:
+      213: -485867822948307835
+    second: weaponsDownsized_25
+  - first:
+      213: -5195385193308461160
+    second: weaponsDownsized_26
+  - first:
+      213: -8503301305623041262
+    second: weaponsDownsized_27
+  - first:
+      213: 6114937748772915665
+    second: weaponsDownsized_28
+  - first:
+      213: -8460228289390877248
+    second: weaponsDownsized_29
+  - first:
+      213: -3861577371213871337
+    second: weaponsDownsized_30
+  - first:
+      213: 4444080158260321984
+    second: weaponsDownsized_31
+  - first:
+      213: 7979696323488061129
+    second: weaponsDownsized_32
+  - first:
+      213: -2795926424913513425
+    second: weaponsDownsized_33
+  - first:
+      213: 2911325610898517242
+    second: weaponsDownsized_34
+  - first:
+      213: 7864207035059800744
+    second: weaponsDownsized_35
+  - first:
+      213: 8084277082589661756
+    second: weaponsDownsized_36
+  - first:
+      213: 2423961823960656639
+    second: weaponsDownsized_37
+  - first:
+      213: 98631103952105426
+    second: weaponsDownsized_38
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: weaponsDownsized_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 79
+        width: 121
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00f4fe84e73dd0d80800000000000000
+      internalID: -8282731600321491200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d1b43357dc2dd3a0800000000000000
+      internalID: -6639100972348689959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_2
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a58e217ab55be050800000000000000
+      internalID: 5830848401812391330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaf82ac569fa79480800000000000000
+      internalID: -8892445878885642326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_4
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c2b24be8a74b9e80800000000000000
+      internalID: -8170858308106538296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 550b66c54b63a4130800000000000000
+      internalID: 3551711404407304277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_6
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db884bfb005e0af40800000000000000
+      internalID: 5737837716649052349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 802a69b471e95e0d0800000000000000
+      internalID: -3394132921264201208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_8
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 653c94d2ac8244a60800000000000000
+      internalID: 7657290115244999510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_9
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 72
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86be31345150a1600800000000000000
+      internalID: 439669502499875688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_10
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cbc69361728a8df80800000000000000
+      internalID: -8081524645486302020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_11
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a726c2f78a8701aa0800000000000000
+      internalID: -6192316822550977926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_12
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fbeb78126088d7a0800000000000000
+      internalID: -6352186115600159753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5a2c7f7b7729c6a0800000000000000
+      internalID: -6428563581721367974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_14
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a0f16107dbe916c0800000000000000
+      internalID: -4172044271108362078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_15
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7984f42bde60c31e0800000000000000
+      internalID: -2216889298604570473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 63
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29d46aeb8116e2ea0800000000000000
+      internalID: -5895668103275721326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_17
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 23
+        width: 9
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 06217e26f985d3070800000000000000
+      internalID: 8087717947409633888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_18
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 191c83078cec66700800000000000000
+      internalID: 533340966161531281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_19
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 23
+        width: 9
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12ad92374ff686080800000000000000
+      internalID: -9193975543582041567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_20
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78fbb4d09d6cefbf0800000000000000
+      internalID: -288574690571862137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_21
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 23
+        width: 9
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff2aea34eba1001c0800000000000000
+      internalID: -4539599019907833089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_22
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a766b864729760630800000000000000
+      internalID: 3892932137502598778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_23
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 23
+        width: 9
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 297df3c4ff2ad66d0800000000000000
+      internalID: -2995558959751899246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_24
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07694283065288c90800000000000000
+      internalID: -7167437711771134352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_25
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 23
+        width: 9
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58caf5d0ac9d149f0800000000000000
+      internalID: -485867822948307835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_26
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 897668961b846e7b0800000000000000
+      internalID: -5195385193308461160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_27
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 23
+        width: 9
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21b2934d3843ef980800000000000000
+      internalID: -8503301305623041262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_28
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d98c33fb7f9cd450800000000000000
+      internalID: 6114937748772915665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_29
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 23
+        width: 9
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c5652ce13b379a80800000000000000
+      internalID: -8460228289390877248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_30
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7174c1427dbe86ac0800000000000000
+      internalID: -3861577371213871337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_31
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 23
+        width: 9
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ced772bb5b8cad30800000000000000
+      internalID: 4444080158260321984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_32
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c61ff827839dbe60800000000000000
+      internalID: 7979696323488061129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_33
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f24f6e0eabfd239d0800000000000000
+      internalID: -2795926424913513425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_34
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afc6a1fd73b176820800000000000000
+      internalID: 2911325610898517242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_35
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8aa0edcc1a6432d60800000000000000
+      internalID: 7864207035059800744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_36
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3a869d9c2f113070800000000000000
+      internalID: 8084277082589661756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_37
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffa684aaf64a3a120800000000000000
+      internalID: 2423961823960656639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weaponsDownsized_38
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 63
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dfaeda67786e5100800000000000000
+      internalID: 98631103952105426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      weaponsDownsized_0: -8282731600321491200
+      weaponsDownsized_1: -6639100972348689959
+      weaponsDownsized_10: -8081524645486302020
+      weaponsDownsized_11: -6192316822550977926
+      weaponsDownsized_12: -6352186115600159753
+      weaponsDownsized_13: -6428563581721367974
+      weaponsDownsized_14: -4172044271108362078
+      weaponsDownsized_15: -2216889298604570473
+      weaponsDownsized_16: -5895668103275721326
+      weaponsDownsized_17: 8087717947409633888
+      weaponsDownsized_18: 533340966161531281
+      weaponsDownsized_19: -9193975543582041567
+      weaponsDownsized_2: 5830848401812391330
+      weaponsDownsized_20: -288574690571862137
+      weaponsDownsized_21: -4539599019907833089
+      weaponsDownsized_22: 3892932137502598778
+      weaponsDownsized_23: -2995558959751899246
+      weaponsDownsized_24: -7167437711771134352
+      weaponsDownsized_25: -485867822948307835
+      weaponsDownsized_26: -5195385193308461160
+      weaponsDownsized_27: -8503301305623041262
+      weaponsDownsized_28: 6114937748772915665
+      weaponsDownsized_29: -8460228289390877248
+      weaponsDownsized_3: -8892445878885642326
+      weaponsDownsized_30: -3861577371213871337
+      weaponsDownsized_31: 4444080158260321984
+      weaponsDownsized_32: 7979696323488061129
+      weaponsDownsized_33: -2795926424913513425
+      weaponsDownsized_34: 2911325610898517242
+      weaponsDownsized_35: 7864207035059800744
+      weaponsDownsized_36: 8084277082589661756
+      weaponsDownsized_37: 2423961823960656639
+      weaponsDownsized_38: 98631103952105426
+      weaponsDownsized_4: -8170858308106538296
+      weaponsDownsized_5: 3551711404407304277
+      weaponsDownsized_6: 5737837716649052349
+      weaponsDownsized_7: -3394132921264201208
+      weaponsDownsized_8: 7657290115244999510
+      weaponsDownsized_9: 439669502499875688
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

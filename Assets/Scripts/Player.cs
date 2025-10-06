@@ -6,15 +6,11 @@ using HeroesOfCrimson.Utils;
 public class Player : MonoBehaviour
 {
   private BoxCollider2D boxCollider;
-  private readonly float moveSpeed = 50f;
+  private readonly float moveSpeed = 100f;
   public Animator animator;
   private AnimatorOverrideController animatorOverrideController;
   private BaseNPCBehaviour baseNPCBehaviour;
   public HealthBar healthBar;
-
-  public AnimationClip playerIdleUp;
-  public AnimationClip playerIdleDown;
-  public AnimationClip playerIdle;
 
   private Vector3 moveDelta;
   private RaycastHit2D hit;
@@ -51,24 +47,24 @@ public class Player : MonoBehaviour
     {
       case float n when n > 45 && n < 135:
         // Up
-        animatorOverrideController["playerIdle"] = playerIdleUp;
         animator.SetFloat("MouseDir", (int)Constants.SHOOTING_MOUSE_DIRS.UP);
+        animator.SetFloat("IdleState", 1);
         break;
       case float n when n < 45 && n > -45:
         // Right
-        animatorOverrideController["playerIdle"] = playerIdle;
+        animator.SetFloat("IdleState", 0);
         transform.localScale = Vector3.one;
         animator.SetFloat("MouseDir", (int)Constants.SHOOTING_MOUSE_DIRS.HORIZONTAL);
         break;
       case float n when (n > 135 && n < 180) || (n > -180 && n < -135):
         // Left
-        animatorOverrideController["playerIdle"] = playerIdle;
+        animator.SetFloat("IdleState", 0);
         transform.localScale = new Vector3(-1, 1, 1);
         animator.SetFloat("MouseDir", (int)Constants.SHOOTING_MOUSE_DIRS.HORIZONTAL);
         break;
       default:
         // Down
-        animatorOverrideController["playerIdle"] = playerIdleDown;
+        animator.SetFloat("IdleState", 2);
         animator.SetFloat("MouseDir", (int)Constants.SHOOTING_MOUSE_DIRS.DOWN);
         break;
     }
@@ -97,23 +93,23 @@ public class Player : MonoBehaviour
     {
       if (Input.GetKey(KeyCode.W))
       {
-        animatorOverrideController["playerIdle"] = playerIdleUp;
+        animator.SetFloat("IdleState", 1);
       }
 
       if (Input.GetKey(KeyCode.S))
       {
-        animatorOverrideController["playerIdle"] = playerIdleDown;
+        animator.SetFloat("IdleState", 2);
       }
 
       if (Input.GetKey(KeyCode.A))
       {
-        animatorOverrideController["playerIdle"] = playerIdle;
+        animator.SetFloat("IdleState", 0);
         transform.localScale = new Vector3(-1, 1, 1);
       }
 
       if (Input.GetKey(KeyCode.D))
       {
-        animatorOverrideController["playerIdle"] = playerIdle;
+        animator.SetFloat("IdleState", 0);
         transform.localScale = Vector3.one;
       }
     }
