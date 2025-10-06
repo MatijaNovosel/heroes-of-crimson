@@ -120,32 +120,19 @@ public class Player : MonoBehaviour
       }
     }
 
-    hit = Physics2D.BoxCast(
-      transform.position,
-      boxCollider.size,
-      0,
-      new Vector2(0, moveDelta.y),
-      Mathf.Abs(moveDelta.y * Utils.CalculatePlayerMovementSpeed(moveSpeed)),
-      LayerMask.GetMask("Actor", "Blocking", "NPC")
-    );
+    float speed = Utils.CalculatePlayerMovementSpeed(moveSpeed);
+    LayerMask mask = LayerMask.GetMask("Actor", "Blocking", "NPC");
 
-    if (hit.collider == null)
+    Vector2 moveY = new Vector2(0, moveDelta.y);
+    if (!Physics2D.BoxCast(transform.position, boxCollider.size, 0, moveY, Mathf.Abs(moveY.y * speed), mask))
     {
-      transform.Translate(0, moveDelta.y * Utils.CalculatePlayerMovementSpeed(moveSpeed), 0);
+      transform.Translate(0, moveY.y * speed, 0);
     }
 
-    hit = Physics2D.BoxCast(
-      transform.position,
-      boxCollider.size,
-      0,
-      new Vector2(moveDelta.x, 0),
-      Mathf.Abs(moveDelta.x * Utils.CalculatePlayerMovementSpeed(moveSpeed)),
-      LayerMask.GetMask("Actor", "Blocking", "NPC")
-    );
-
-    if (hit.collider == null)
+    Vector2 moveX = new Vector2(moveDelta.x, 0);
+    if (!Physics2D.BoxCast(transform.position, boxCollider.size, 0, moveX, Mathf.Abs(moveX.x * speed), mask))
     {
-      transform.Translate(moveDelta.x * Utils.CalculatePlayerMovementSpeed(moveSpeed), 0, 0);
+      transform.Translate(moveX.x * speed, 0, 0);
     }
   }
 
@@ -155,7 +142,6 @@ public class Player : MonoBehaviour
     {
       if (CanFire())
       {
-        baseNPCBehaviour.hp -= 5;
         isShooting = true;
         animator.SetBool("Shooting", isShooting);
         animator.SetTrigger("Shoot");
@@ -175,7 +161,7 @@ public class Player : MonoBehaviour
     boxCollider = GetComponent<BoxCollider2D>();
     animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
     animator.runtimeAnimatorController = animatorOverrideController;
-    baseNPCBehaviour.hp = 50;
+    baseNPCBehaviour.hp = 100;
   }
 
   private void FixedUpdate()
