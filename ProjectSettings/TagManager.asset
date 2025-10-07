@@ -48,11 +48,11 @@ TagManager:
   - name: Floor
     uniqueID: 2212836669
     locked: 0
-  - name: Other
-    uniqueID: 54739499
-    locked: 0
   - name: Design
     uniqueID: 2284738349
+    locked: 0
+  - name: Other
+    uniqueID: 54739499
     locked: 0
   - name: Shadows
     uniqueID: 2770201685

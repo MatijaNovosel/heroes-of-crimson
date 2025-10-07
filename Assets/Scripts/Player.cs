@@ -2,28 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using HeroesOfCrimson.Utils;
+using UnityEngine.UI;
 
+[RequireComponent(typeof(BaseNPCBehaviour))]
+[RequireComponent(typeof(BoxCollider2D))]
 public class Player : MonoBehaviour
 {
   private BoxCollider2D boxCollider;
-  private readonly float moveSpeed = 100f;
+  private readonly float moveSpeed = 130f;
   public Animator animator;
   private AnimatorOverrideController animatorOverrideController;
   private BaseNPCBehaviour baseNPCBehaviour;
   public HealthBar healthBar;
+  public Image abilityImage;
 
   private Vector3 moveDelta;
   private RaycastHit2D hit;
 
   public GameObject Projectile;
   private float lastShown;
+  private float abilityUsedLast;
   private readonly float delay = 0.3f; // 0.8f -> 200 ms
+  private readonly float abilityDelay = 1;
+  private float abilityCooldownTimer = 0;
   private bool isShooting = false;
 
   bool CanFire()
   {
     // Current game time in seconds - last time fired in game seconds
     return Time.time - lastShown > delay;
+  }
+
+  bool CanCastAbility()
+  {
+    // Current game time in seconds - last time fired in game seconds
+    return Time.time - abilityUsedLast > abilityDelay;
   }
 
   void Fire()
@@ -149,13 +162,53 @@ public class Player : MonoBehaviour
     }
   }
 
+  private void HandleAbilityCooldown()
+  {
+    abilityCooldownTimer -= Time.deltaTime;
+
+    if (abilityCooldownTimer < 0.0f)
+    {
+      abilityImage.fillAmount = 0.0f;
+    }
+    else
+    {
+      abilityImage.fillAmount = abilityCooldownTimer / abilityDelay;
+    }
+  }
+
+  private void HandleAbility()
+  {
+    HandleAbilityCooldown();
+    if (Input.GetKey(KeyCode.R))
+    {
+      if (CanCastAbility())
+      {
+        var cursorPosition = Utils.GetMousePosition();
+        var meteorPrefab = Resources.Load<GameObject>("Prefabs/Meteor");
+
+        if (meteorPrefab == null) return;
+
+        abilityCooldownTimer = abilityDelay;
+
+        GameObject meteor = Instantiate(
+            meteorPrefab,
+            new Vector3(cursorPosition.x, cursorPosition.y, 0),
+            Quaternion.identity
+        );
+
+        meteor.GetComponent<Meteor>().Setup(cursorPosition);
+
+        abilityUsedLast = Time.time;
+      }
+    }
+  }
+
   private void Start()
   {
     baseNPCBehaviour = GetComponent<BaseNPCBehaviour>();
     boxCollider = GetComponent<BoxCollider2D>();
     animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
     animator.runtimeAnimatorController = animatorOverrideController;
-    baseNPCBehaviour.hp = 100;
   }
 
   private void FixedUpdate()
@@ -166,6 +219,7 @@ public class Player : MonoBehaviour
 
   private void Update()
   {
+    HandleAbility();
     HandleShooting();
   }
 }

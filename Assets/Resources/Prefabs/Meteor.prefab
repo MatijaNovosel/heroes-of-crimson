@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5144726427392865377}
   - component: {fileID: 5144726427392865376}
-  - component: {fileID: 3839586903201664259}
+  - component: {fileID: 1383514769571963693}
+  - component: {fileID: 9190779053475919803}
   m_Layer: 7
   m_Name: Meteor
   m_TagString: Untagged
@@ -91,19 +92,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!111 &3839586903201664259
-Animation:
+--- !u!114 &1383514769571963693
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5144726427392865407}
   m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: b9967c1f07e65c94a87dcadc0bc8cebe, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bcf7992695b6a549ab3ab78b356fa4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  Projectile: {fileID: 5144726427392865407, guid: 4e01153d9ce6d134ba19d3164d6be11d, type: 3}
+  animationClip: {fileID: 7400000, guid: b9967c1f07e65c94a87dcadc0bc8cebe, type: 2}
+--- !u!95 &9190779053475919803
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5144726427392865407}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5a6fc3b5fd160a45bd9fa4e518ef908, type: 2}
+  m_CullingMode: 0
   m_UpdateMode: 0
-  m_CullingType: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 1
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
