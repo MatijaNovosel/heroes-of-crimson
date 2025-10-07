@@ -168,7 +168,7 @@ public class Player : MonoBehaviour
 
     if (abilityCooldownTimer < 0.0f)
     {
-      abilityImage.fillAmount = 0.0f;
+      abilityImage.fillAmount = 1.0f;
     }
     else
     {
