@@ -19,6 +19,7 @@ public class Meteor : MonoBehaviour
   public void Setup(Vector3 position)
   {
     var timeToLive = animationClip.length;
+    GameManager.instance.SpawnProjectiles(position, timeToLive);
     Destroy(gameObject, timeToLive);
   }
 }

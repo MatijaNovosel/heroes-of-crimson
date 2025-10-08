@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Skeleton
+  - Projectile
   layers:
   - Default
   - TransparentFX

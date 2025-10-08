@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
   private RaycastHit2D hit;
 
   public GameObject Projectile;
-  private float lastShown;
+  private float lastFired;
   private float abilityUsedLast;
   private readonly float delay = 0.3f; // 0.8f -> 200 ms
   private readonly float abilityDelay = 1;
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
   bool CanFire()
   {
     // Current game time in seconds - last time fired in game seconds
-    return Time.time - lastShown > delay;
+    return Time.time - lastFired > delay;
   }
 
   bool CanCastAbility()
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
     );
 
     proj.GetComponent<Projectile>().Setup(shootDirection);
-    lastShown = Time.time;
+    lastFired = Time.time;
   }
 
   private void HandleMoving()
