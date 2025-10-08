@@ -192,7 +192,7 @@ public class Player : MonoBehaviour
 
         GameObject meteor = Instantiate(
             meteorPrefab,
-            new Vector3(cursorPosition.x, cursorPosition.y, 0),
+            new Vector3(cursorPosition.x, cursorPosition.y + 0.8f, 0),
             Quaternion.identity
         );
 

@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/genericProjectiles");
 
     float speed = 12f;
-    int projectileCount = 100;
+    int projectileCount = 25;
     float angleStep = 360f / projectileCount;
     float initialAngle = 90f;
 
