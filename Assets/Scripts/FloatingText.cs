@@ -11,6 +11,7 @@ public class FloatingText
   public Vector3 motion;
   public float duration;
   private float lastShown;
+  private float moveSpeed = 6f;
 
   public void Show()
   {
@@ -34,6 +35,6 @@ public class FloatingText
       Hide();
     }
 
-    obj.transform.position += motion * Time.deltaTime;
+    obj.transform.position += motion * (moveSpeed * Time.deltaTime);
   }
 }

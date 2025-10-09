@@ -13,18 +13,8 @@ public class GameManager : MonoBehaviour
   {
     instance = this;
   }
-
-  void Start()
-  {
-    //
-  }
-
-  void Update()
-  {
-    //
-  }
-
-  public IEnumerator SpawnProjectilesCoroutine(Vector3 position, float time)
+  
+  private IEnumerator SpawnProjectilesCoroutine(Vector3 position, float time)
   {
     yield return new WaitForSeconds(time);
     var projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectile");
@@ -57,7 +47,7 @@ public class GameManager : MonoBehaviour
     StartCoroutine(SpawnProjectilesCoroutine(position, delay));
   }
 
-  public void ShowText(
+  public FloatingText ShowText(
     string msg,
     int fontSize,
     Color color,
@@ -66,7 +56,7 @@ public class GameManager : MonoBehaviour
     float duration
   )
   {
-    floatingTextManager.Show(
+    var ft = floatingTextManager.Show(
       msg,
       fontSize,
       color,
@@ -74,5 +64,7 @@ public class GameManager : MonoBehaviour
       motion,
       duration
     );
+
+    return ft;
   }
 }

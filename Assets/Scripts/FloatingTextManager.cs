@@ -28,7 +28,7 @@ public class FloatingTextManager : MonoBehaviour
     return ft;
   }
 
-  public void Show(
+  public FloatingText Show(
     string msg,
     int fontSize,
     Color color,
@@ -47,6 +47,8 @@ public class FloatingTextManager : MonoBehaviour
     ft.motion = motion;
     ft.duration = duration;
     ft.Show();
+
+    return ft;
   }
 
   private void Update()

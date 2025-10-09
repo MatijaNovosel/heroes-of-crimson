@@ -13,39 +13,34 @@ public class FloorTransparencyController : MonoBehaviour
 
   void Update()
   {
-    Vector3Int tilePosition = floorTilemap.WorldToCell(player.transform.position);
+    var tilePosition = floorTilemap.WorldToCell(player.transform.position);
 
-    if (tilePosition != lastTilePosition)
+    if (tilePosition == lastTilePosition) return;
+    
+    // Reset
+    for (var x = -radius; x <= radius; x++)
     {
-      // Reset
-      for (int x = -radius; x <= radius; x++)
+      for (var y = -radius; y <= radius; y++)
       {
-        for (int y = -radius; y <= radius; y++)
-        {
-          Vector3Int pos = lastTilePosition + new Vector3Int(x, y, 0);
-          if (floorTilemap.HasTile(pos))
-          {
-            floorTilemap.SetTileFlags(pos, TileFlags.None);
-            floorTilemap.SetColor(pos, normalColor);
-          }
-        }
+        var pos = lastTilePosition + new Vector3Int(x, y, 0);
+        if (!floorTilemap.HasTile(pos)) continue;
+        floorTilemap.SetTileFlags(pos, TileFlags.None);
+        floorTilemap.SetColor(pos, normalColor);
       }
-
-      // Transparent tiles
-      for (int x = -radius; x <= radius; x++)
-      {
-        for (int y = -radius; y <= radius; y++)
-        {
-          Vector3Int pos = tilePosition + new Vector3Int(x, y, 0);
-          if (floorTilemap.HasTile(pos))
-          {
-            floorTilemap.SetTileFlags(pos, TileFlags.None);
-            floorTilemap.SetColor(pos, transparentColor);
-          }
-        }
-      }
-
-      lastTilePosition = tilePosition;
     }
+
+    // Transparent tiles
+    for (var x = -radius; x <= radius; x++)
+    {
+      for (var y = -radius; y <= radius; y++)
+      {
+        var pos = tilePosition + new Vector3Int(x, y, 0);
+        if (!floorTilemap.HasTile(pos)) continue;
+        floorTilemap.SetTileFlags(pos, TileFlags.None);
+        floorTilemap.SetColor(pos, transparentColor);
+      }
+    }
+
+    lastTilePosition = tilePosition;
   }
 }

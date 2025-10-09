@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
   private float angle;
   private bool piercingWall;
   private bool piercing;
+  private float damage = 50;
   private float rotation = 45;
   private float moveSpeed = 10f;
   private readonly float timeToLive = 2f; // 1 second?
@@ -71,8 +72,7 @@ public class Projectile : MonoBehaviour
     
     if (collidersToDamage.Contains(collider.tag))
     {
-      float dmg = Utils.RandInt(50, 200);
-      collider.SendMessage("ReceiveDamage", dmg);
+      collider.SendMessage("ReceiveDamage", damage);
     }
     
     if (destructiveColliders.Contains(collider.tag))
