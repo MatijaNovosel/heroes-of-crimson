@@ -10,9 +10,9 @@ public class CameraMotor : MonoBehaviour
 
   private void LateUpdate()
   {
-    Vector3 delta = Vector3.zero;
-    float deltaX = lookAt.position.x - transform.position.x;
-    float deltaY = lookAt.position.y - transform.position.y;
+    var delta = Vector3.zero;
+    var deltaX = lookAt.position.x - transform.position.x;
+    var deltaY = lookAt.position.y - transform.position.y;
 
     // Check if inside bound of X axis
     if (deltaX > boundX || deltaX < -boundX)

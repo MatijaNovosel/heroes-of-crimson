@@ -16,21 +16,16 @@ public class Collidable : MonoBehaviour
   protected virtual void Update()
   {
     boxCollider.Overlap(filter, hits);
-    for (int i = 0; i < hits.Length; i++)
+    for (var i = 0; i < hits.Length; i++)
     {
-      if (hits[i] == null)
-      {
-        continue;
-      }
-
+      if (hits[i] is null) continue;
       OnCollide(hits[i]);
-
       hits[i] = null;
     }
   }
 
   protected virtual void OnCollide(Collider2D collider)
   {
-    Debug.Log(collider.name);
+    //
   }
 }

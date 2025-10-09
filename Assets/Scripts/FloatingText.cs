@@ -10,7 +10,7 @@ public class FloatingText
   public TextMesh text;
   public Vector3 motion;
   public float duration;
-  public float lastShown;
+  private float lastShown;
 
   public void Show()
   {
@@ -27,10 +27,7 @@ public class FloatingText
 
   public void UpdateFloatingText()
   {
-    if (!active)
-    {
-      return;
-    }
+    if (!active) return;
 
     if (Time.time - lastShown > duration)
     {

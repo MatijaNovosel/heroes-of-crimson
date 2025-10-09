@@ -9,8 +9,8 @@ namespace HeroesOfCrimson.Utils
   {
     public static Vector3 GetMousePosition()
     {
-      Vector2 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-      Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
+      var screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+      var worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
       return new Vector3(worldPosition.x, worldPosition.y, 0);
     }
 

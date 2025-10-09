@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 3
   tags:
   - Projectile
+  - Roof
+  - BulletCollision
+  - Collision
+  - Design
+  - NPC
   layers:
   - Default
   - TransparentFX

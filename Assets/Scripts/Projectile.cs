@@ -8,13 +8,17 @@ public class Projectile : MonoBehaviour
 {
   private Vector3 direction;
   private float angle;
+  private bool piercingWall;
+  private bool piercing;
   private float rotation = 45;
   private float moveSpeed = 10f;
   private readonly float timeToLive = 2f; // 1 second?
   private float frequency = 20.0f;
   private float amplitude = 0.5f;
+  
+  List<string> collidersToDamage = new() { "Enemy", "NPC" };
+  List<string> destructiveColliders = new() { "BulletCollision", "Enemy", "NPC" };
 
-  // Start is called before the first frame update
   public void Setup(Vector3 direction, Sprite sprite = null, float? rotation = null, float? speed = null)
   {
     this.direction = direction;
@@ -25,7 +29,7 @@ public class Projectile : MonoBehaviour
       this.moveSpeed = (float)speed;
     }
 
-    if (sprite != null)
+    if (sprite is not null)
     {
       spriteRenderer.sprite = sprite;
     }
@@ -40,10 +44,9 @@ public class Projectile : MonoBehaviour
     Destroy(gameObject, timeToLive);
   }
 
-  // Update is called once per frame
   void Update()
   {
-    transform.position += direction * moveSpeed * Time.deltaTime;
+    transform.position += direction * (moveSpeed * Time.deltaTime);
     /*
 
       Projectiles must be rotated according to the sprite
@@ -64,27 +67,17 @@ public class Projectile : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collider)
   {
-    var collidersToAvoid = new List<string>() { "BulletCollision", "Player", "Collision", "Projectile(Clone)" };
-
-    if (collider != null)
+    if (!collider) return;
+    
+    if (collidersToDamage.Contains(collider.tag))
     {
-      if (!collidersToAvoid.Contains(collider.name))
-      {
-        float dmg = Utils.RandInt(50, 200);
-        GameManager.instance.ShowText(
-          $"-{dmg}",
-          170,
-          Color.red,
-          new Vector3(transform.position.x, transform.position.y + 0.8f, 0),
-          Vector3.up,
-          2.0f
-        );
-        collider.SendMessage("ReceiveDamage", dmg);
-      }
-      if (collider.name != "Player" && collider.name != "Collision" && collider.name != "Projectile(Clone)")
-      {
-        Destroy(gameObject);
-      }
+      float dmg = Utils.RandInt(50, 200);
+      collider.SendMessage("ReceiveDamage", dmg);
+    }
+    
+    if (destructiveColliders.Contains(collider.tag))
+    {
+      Destroy(gameObject);
     }
   }
 }

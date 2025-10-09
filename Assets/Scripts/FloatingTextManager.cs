@@ -11,12 +11,14 @@ public class FloatingTextManager : MonoBehaviour
 
   private FloatingText GetFloatingText()
   {
-    FloatingText ft = floatingTexts.Find(txt => !txt.active);
+    var ft = floatingTexts.Find(txt => !txt.active);
 
     if (ft == null)
     {
-      ft = new FloatingText();
-      ft.obj = Instantiate(textPrefab);
+      ft = new FloatingText
+      {
+        obj = Instantiate(textPrefab)
+      };
       ft.obj.GetComponent<MeshRenderer>().sortingLayerName = "Collision";
       ft.obj.GetComponent<MeshRenderer>().sortingOrder = 50;
       ft.text = ft.obj.GetComponent<TextMesh>();
@@ -35,7 +37,8 @@ public class FloatingTextManager : MonoBehaviour
     float duration
   )
   {
-    FloatingText ft = GetFloatingText();
+    position.y += 0.05f;
+    var ft = GetFloatingText();
     ft.text.text = msg;
     ft.text.fontSize = fontSize;
     ft.text.color = color;

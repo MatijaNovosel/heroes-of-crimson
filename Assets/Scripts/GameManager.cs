@@ -30,18 +30,18 @@ public class GameManager : MonoBehaviour
     var projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectile");
     Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/genericProjectiles");
 
-    float speed = 12f;
-    int projectileCount = 25;
-    float angleStep = 360f / projectileCount;
-    float initialAngle = 90f;
+    var speed = 12f;
+    var projectileCount = 25;
+    var angleStep = 360f / projectileCount;
+    var initialAngle = 90f;
 
-    for (int i = 0; i < projectileCount; i++)
+    for (var i = 0; i < projectileCount; i++)
     {
-      float angle = initialAngle + i * angleStep;
-      float rad = angle * Mathf.Deg2Rad;
-      Vector3 direction = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad), 0);
+      var angle = initialAngle + i * angleStep;
+      var rad = angle * Mathf.Deg2Rad;
+      var direction = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad), 0);
 
-      GameObject projectile = Instantiate(
+      var projectile = Instantiate(
           projectilePrefab,
           new Vector3(position.x, position.y, 0),
           Quaternion.identity

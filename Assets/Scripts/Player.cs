@@ -41,8 +41,8 @@ public class Player : MonoBehaviour
 
   void Fire()
   {
-    Vector3 shootDirection = (Utils.GetMousePosition() - gameObject.transform.position).normalized;
-    float angle = Utils.GetAngleFromShootDirection(shootDirection);
+    var shootDirection = (Utils.GetMousePosition() - gameObject.transform.position).normalized;
+    var angle = Utils.GetAngleFromShootDirection(shootDirection);
 
 
     /*
@@ -58,18 +58,18 @@ public class Player : MonoBehaviour
     */
     switch (angle)
     {
-      case float n when n > 45 && n < 135:
+      case < 135 and > 45:
         // Up
         animator.SetFloat("MouseDir", (int)Constants.SHOOTING_MOUSE_DIRS.UP);
         animator.SetFloat("IdleState", 1);
         break;
-      case float n when n < 45 && n > -45:
+      case > -45 and < 45:
         // Right
         animator.SetFloat("IdleState", 0);
         transform.localScale = Vector3.one;
         animator.SetFloat("MouseDir", (int)Constants.SHOOTING_MOUSE_DIRS.HORIZONTAL);
         break;
-      case float n when (n > 135 && n < 180) || (n > -180 && n < -135):
+      case > 135 and < 180 or > -180 and < -135:
         // Left
         animator.SetFloat("IdleState", 0);
         transform.localScale = new Vector3(-1, 1, 1);
@@ -127,16 +127,16 @@ public class Player : MonoBehaviour
       }
     }
 
-    float speed = Utils.CalculatePlayerMovementSpeed(moveSpeed);
+    var speed = Utils.CalculatePlayerMovementSpeed(moveSpeed);
     LayerMask mask = LayerMask.GetMask("Actor", "Blocking", "NPC");
 
-    Vector2 moveY = new Vector2(0, moveDelta.y);
+    var moveY = new Vector2(0, moveDelta.y);
     if (!Physics2D.BoxCast(transform.position, boxCollider.size, 0, moveY, Mathf.Abs(moveY.y * speed), mask))
     {
       transform.Translate(0, moveY.y * speed, 0);
     }
 
-    Vector2 moveX = new Vector2(moveDelta.x, 0);
+    var moveX = new Vector2(moveDelta.x, 0);
     if (!Physics2D.BoxCast(transform.position, boxCollider.size, 0, moveX, Mathf.Abs(moveX.x * speed), mask))
     {
       transform.Translate(moveX.x * speed, 0, 0);
@@ -155,11 +155,11 @@ public class Player : MonoBehaviour
         Fire();
       }
     }
-    if (Input.GetMouseButtonUp(0))
-    {
-      isShooting = false;
-      animator.SetBool("Shooting", isShooting);
-    }
+
+    if (!Input.GetMouseButtonUp(0)) return;
+    
+    isShooting = false;
+    animator.SetBool("Shooting", isShooting);
   }
 
   private void HandleAbilityCooldown()
@@ -179,28 +179,25 @@ public class Player : MonoBehaviour
   private void HandleAbility()
   {
     HandleAbilityCooldown();
-    if (Input.GetKey(KeyCode.R))
-    {
-      if (CanCastAbility())
-      {
-        var cursorPosition = Utils.GetMousePosition();
-        var meteorPrefab = Resources.Load<GameObject>("Prefabs/Meteor");
+    
+    if (!Input.GetKey(KeyCode.R) || !CanCastAbility()) return;
+    
+    var cursorPosition = Utils.GetMousePosition();
+    var meteorPrefab = Resources.Load<GameObject>("Prefabs/Meteor");
 
-        if (meteorPrefab == null) return;
+    if (meteorPrefab is null) return;
 
-        abilityCooldownTimer = abilityDelay;
+    abilityCooldownTimer = abilityDelay;
 
-        GameObject meteor = Instantiate(
-            meteorPrefab,
-            new Vector3(cursorPosition.x, cursorPosition.y + 0.8f, 0),
-            Quaternion.identity
-        );
+    var meteor = Instantiate(
+      meteorPrefab,
+      new Vector3(cursorPosition.x, cursorPosition.y + 0.8f, 0),
+      Quaternion.identity
+    );
 
-        meteor.GetComponent<Meteor>().Setup(cursorPosition);
+    meteor.GetComponent<Meteor>().Setup(cursorPosition);
 
-        abilityUsedLast = Time.time;
-      }
-    }
+    abilityUsedLast = Time.time;
   }
 
   private void Start()

@@ -10,7 +10,7 @@ public class BaseNPCBehaviour : MonoBehaviour
   public bool invincible = false;
 
   // Immunity
-  protected float immuneTime = 1.0f;
+  private const float immuneTime = 1.0f;
   protected float lastImmune;
 
   // Other
@@ -37,16 +37,22 @@ public class BaseNPCBehaviour : MonoBehaviour
 
   protected virtual void ReceiveDamage(float dmg)
   {
+    GameManager.instance.ShowText(
+      $"-{dmg}",
+      170,
+      Color.red,
+      new Vector3(transform.position.x, transform.position.y + 0.8f, 0),
+      Vector3.up,
+      2.0f
+    );
+    
     if (invincible) return;
+    
+    if (!(Time.time - lastImmune > immuneTime)) return;
+    hp -= dmg;
 
-    if (Time.time - lastImmune > immuneTime)
-    {
-      hp -= dmg;
-      if (hp <= 0)
-      {
-        hp = 0;
-        Die();
-      }
-    }
+    if (!(hp <= 0)) return;
+    hp = 0;
+    Die();
   }
 }
