@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using HeroesOfCrimson.Utils;
+using JetBrains.Annotations;
+using Models;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class Projectile : MonoBehaviour
@@ -20,7 +22,15 @@ public class Projectile : MonoBehaviour
   List<string> collidersToDamage = new() { "Enemy", "NPC" };
   List<string> destructiveColliders = new() { "BulletCollision", "Enemy", "NPC" };
 
-  public void Setup(Vector3 direction, Sprite sprite = null, float? rotation = null, float? speed = null)
+  private GameObject source;
+
+  public void Setup(
+    Vector3 direction,
+    Sprite sprite = null,
+    float? rotation = null,
+    float? speed = null,
+    [CanBeNull] GameObject source = null
+  )
   {
     this.direction = direction;
     var spriteRenderer = GetComponent<SpriteRenderer>();
@@ -30,7 +40,7 @@ public class Projectile : MonoBehaviour
       this.moveSpeed = (float)speed;
     }
 
-    if (sprite is not null)
+    if (sprite)
     {
       spriteRenderer.sprite = sprite;
     }
@@ -38,6 +48,11 @@ public class Projectile : MonoBehaviour
     if (rotation != null)
     {
       this.rotation = (float)rotation;
+    }
+
+    if (source)
+    {
+      this.source = source;
     }
 
     angle = Utils.GetAngleFromShootDirection(direction);
@@ -72,12 +87,16 @@ public class Projectile : MonoBehaviour
     
     if (collidersToDamage.Contains(collider.tag))
     {
-      collider.SendMessage("ReceiveDamage", damage);
+      collider.SendMessage("ReceiveDamage", new DamageModel(source, damage, collider.name));
+    }
+
+    if (!destructiveColliders.Contains(collider.tag)) return;
+    
+    if (source)
+    {
+      if (source.name == collider.name || (source.name == "KrakenTentacle" && collider.name == "Kraken")) return;
     }
     
-    if (destructiveColliders.Contains(collider.tag))
-    {
-      Destroy(gameObject);
-    }
+    Destroy(gameObject);
   }
 }

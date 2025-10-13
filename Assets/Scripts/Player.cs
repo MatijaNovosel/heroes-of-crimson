@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
         break;
     }
 
-    GameObject proj = Instantiate(
+    var proj = Instantiate(
       Projectile,
       new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0),
       Quaternion.identity
@@ -94,8 +94,8 @@ public class Player : MonoBehaviour
 
   private void HandleMoving()
   {
-    float x = Input.GetAxisRaw("Horizontal");
-    float y = Input.GetAxisRaw("Vertical");
+    var x = Input.GetAxisRaw("Horizontal");
+    var y = Input.GetAxisRaw("Vertical");
     moveDelta = new Vector3(x, y, 0);
 
     animator.SetFloat("Horizontal", x);
@@ -131,13 +131,27 @@ public class Player : MonoBehaviour
     LayerMask mask = LayerMask.GetMask("Actor", "Blocking", "NPC");
 
     var moveY = new Vector2(0, moveDelta.y);
-    if (!Physics2D.BoxCast(transform.position, boxCollider.size, 0, moveY, Mathf.Abs(moveY.y * speed), mask))
+    
+    if (!Physics2D.BoxCast(
+      transform.position,
+      boxCollider.size, 
+      0, 
+      moveY, 
+      Mathf.Abs(moveY.y * speed), mask)
+    )
     {
       transform.Translate(0, moveY.y * speed, 0);
     }
 
     var moveX = new Vector2(moveDelta.x, 0);
-    if (!Physics2D.BoxCast(transform.position, boxCollider.size, 0, moveX, Mathf.Abs(moveX.x * speed), mask))
+    
+    if (!Physics2D.BoxCast(
+      transform.position,
+      boxCollider.size, 
+      0, 
+      moveX, 
+      Mathf.Abs(moveX.x * speed), mask)
+    )
     {
       transform.Translate(moveX.x * speed, 0, 0);
     }

@@ -13,6 +13,12 @@ namespace HeroesOfCrimson.Utils
       var worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
       return new Vector3(worldPosition.x, worldPosition.y, 0);
     }
+    
+    public static Vector3 GetPlayerPosition()
+    {
+      var player = GameObject.Find("Player");
+      return !player ? Vector3.zero : player.gameObject.transform.position;
+    }
 
     public static float GetAngleFromShootDirection(Vector3 direction)
     {

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Models;
 using UnityEngine;
 
 public class BaseNPCBehaviour : MonoBehaviour
@@ -15,6 +16,7 @@ public class BaseNPCBehaviour : MonoBehaviour
 
   // Other
   public AudioClip deathSound;
+  public AudioClip hitSound;
 
   void Start()
   {
@@ -36,8 +38,13 @@ public class BaseNPCBehaviour : MonoBehaviour
     Destroy(gameObject);
   }
 
-  protected virtual void ReceiveDamage(float dmg)
+  protected virtual void ReceiveDamage(DamageModel payload)
   {
+    if (hitSound)
+    {
+      AudioSource.PlayClipAtPoint(hitSound, transform.position, 1.5f);
+    }
+    
     var angle = Random.Range(-40f, 40f);
     var radians = angle * Mathf.Deg2Rad;
     var randomDirection = new Vector3(Mathf.Sin(radians), Mathf.Cos(radians), 0f);
@@ -46,7 +53,7 @@ public class BaseNPCBehaviour : MonoBehaviour
     var randomScale = Random.Range(0.9f, 1.2f);
 
     var textObj = GameManager.instance.ShowText(
-      $"-{dmg}",
+      $"-{payload.Value}",
       170,
       Color.red,
       new Vector3(transform.position.x, transform.position.y + 0.8f, 0),
@@ -60,10 +67,15 @@ public class BaseNPCBehaviour : MonoBehaviour
       textObj.obj.transform.localScale *= randomScale;
     }
 
+    if (payload.Source)
+    {
+      if ((payload.Source.name == "KrakenTentacle" && payload.Destination == "Kraken") || (payload.Source.name == payload.Destination)) return;
+    }
+    
     if (invincible) return;
     if (!(Time.time - lastImmune > immuneTime)) return;
 
-    hp -= dmg;
+    hp -= payload.Value;
 
     if (hp <= 0)
     {

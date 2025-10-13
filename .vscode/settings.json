@@ -53,5 +53,5 @@
         "Temp/": true
     },
     "git.ignoreLimitWarning": true,
-    "dotnet.defaultSolution": "heroes-of-crimson.sln"
+    "dotnet.defaultSolution": "heroes-of-crimson.slnx"
 }
