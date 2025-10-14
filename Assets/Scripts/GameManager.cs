@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Models;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -38,7 +39,14 @@ public class GameManager : MonoBehaviour
       );
 
       var projComponent = projectile.GetComponent<Projectile>();
-      projComponent.Setup(direction, sprites[0], 0, speed);
+      
+      projComponent.Setup(new ProjectileSetupModel(
+        direction,
+        0,
+        speed,
+        null,
+        sprites[0]
+      ));
     }
   }
 

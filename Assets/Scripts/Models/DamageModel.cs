@@ -5,7 +5,7 @@ namespace Models
 {
     public readonly struct DamageModel
     {
-        public GameObject Source { get; }
+        public readonly GameObject Source;
         public readonly float Value;
         public readonly string Destination;
         

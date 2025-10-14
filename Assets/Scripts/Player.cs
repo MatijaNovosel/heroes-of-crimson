@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using HeroesOfCrimson.Utils;
+using Models;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(BaseNPCBehaviour))]
@@ -88,7 +89,13 @@ public class Player : MonoBehaviour
       Quaternion.identity
     );
 
-    proj.GetComponent<Projectile>().Setup(shootDirection);
+    proj.GetComponent<Projectile>().Setup(new ProjectileSetupModel(
+      shootDirection,
+      null,
+      null,
+      null,
+      null
+    ));
     lastFired = Time.time;
   }
 

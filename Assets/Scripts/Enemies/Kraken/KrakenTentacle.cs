@@ -1,4 +1,5 @@
 using HeroesOfCrimson.Utils;
+using Models;
 using UnityEngine;
 
 public class KrakenTentacleOrbit2D : MonoBehaviour
@@ -22,12 +23,13 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
     private float lastFired;
 
     private Sprite sprite;
+    private GameObject projectile;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        var projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectile");
+        projectile = Resources.Load<GameObject>("Prefabs/Projectile");
         Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/genericProjectiles");
         sprite = sprites[1];
     }
@@ -71,21 +73,20 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
         
         var shootDirection = (Utils.GetPlayerPosition() - gameObject.transform.position).normalized;
         
-        var projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectile");
         
-        var projectile = Instantiate(
-            projectilePrefab,
+        var proj = Instantiate(
+            projectile,
             new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0),
             Quaternion.identity
         );
 
-        projectile.GetComponent<Projectile>().Setup(
-            shootDirection, 
-            sprite, 
-            45, 
+        proj.GetComponent<Projectile>().Setup(new ProjectileSetupModel(
+            shootDirection,
+            45f, 
             null, 
-            this.gameObject
-        );
+            gameObject,
+            sprite
+        ));
         
         lastFired = Time.time;
     }

@@ -24,38 +24,33 @@ public class Projectile : MonoBehaviour
 
   private GameObject source;
 
-  public void Setup(
-    Vector3 direction,
-    Sprite sprite = null,
-    float? rotation = null,
-    float? speed = null,
-    [CanBeNull] GameObject source = null
-  )
+  public void Setup(ProjectileSetupModel payload)
   {
-    this.direction = direction;
     var spriteRenderer = GetComponent<SpriteRenderer>();
+    
+    this.direction = payload.Direction;
 
-    if (speed != null)
+    if (payload.Speed != null)
     {
-      this.moveSpeed = (float)speed;
+      this.moveSpeed = (float)payload.Speed;
     }
 
-    if (sprite)
+    if (payload.Sprite)
     {
-      spriteRenderer.sprite = sprite;
+      spriteRenderer.sprite = payload.Sprite;
     }
 
-    if (rotation != null)
+    if (payload.Rotation != null)
     {
-      this.rotation = (float)rotation;
+      this.rotation = (float)payload.Rotation;
     }
 
-    if (source)
+    if (payload.Source)
     {
-      this.source = source;
+      this.source = payload.Source;
     }
 
-    angle = Utils.GetAngleFromShootDirection(direction);
+    angle = Utils.GetAngleFromShootDirection(payload.Direction);
 
     Destroy(gameObject, timeToLive);
   }
