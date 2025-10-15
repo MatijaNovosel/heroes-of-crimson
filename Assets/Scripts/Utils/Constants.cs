@@ -1,7 +1,3 @@
-using UnityEngine;
-using System;
-using System.Text.RegularExpressions;
-
 namespace HeroesOfCrimson.Utils
 {
   public static class Constants

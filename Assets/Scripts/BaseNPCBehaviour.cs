@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using HeroesOfCrimson.Utils;
 using Models;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -21,13 +16,6 @@ public class BaseNPCBehaviour : MonoBehaviour
   // Other
   public AudioClip deathSound;
   public AudioClip hitSound;
-  
-  private Collidable collidable;
-
-  private void Awake()
-  {
-    collidable = GetComponent<Collidable>();
-  }
 
   private void Die()
   {

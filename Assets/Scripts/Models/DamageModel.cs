@@ -3,7 +3,6 @@ using HeroesOfCrimson.Utils;
 using UnityEngine;
 
 namespace Models
-
 {
     public readonly struct DamageModel
     {

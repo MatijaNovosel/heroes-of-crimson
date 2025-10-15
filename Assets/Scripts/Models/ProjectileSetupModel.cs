@@ -4,7 +4,6 @@ using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Models
-
 {
     public readonly struct ProjectileSetupModel
     {

@@ -14,6 +14,8 @@ public class Kraken : MonoBehaviour
 
     void LateUpdate()
     {
+        if (!player) return;
+        
         var dx = player.gameObject.transform.position.x - transform.position.x;
         if (Mathf.Abs(dx) < deadZoneX) return;
 
