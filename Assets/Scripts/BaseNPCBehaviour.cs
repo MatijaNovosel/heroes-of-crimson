@@ -1,7 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using HeroesOfCrimson.Utils;
 using Models;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BaseNPCBehaviour : MonoBehaviour
 {
@@ -17,18 +21,15 @@ public class BaseNPCBehaviour : MonoBehaviour
   // Other
   public AudioClip deathSound;
   public AudioClip hitSound;
+  
+  private Collidable collidable;
 
-  void Start()
+  private void Awake()
   {
-
+    collidable = GetComponent<Collidable>();
   }
 
-  void Update()
-  {
-
-  }
-
-  protected virtual void Die()
+  private void Die()
   {
     if (deathSound)
     {
@@ -38,7 +39,7 @@ public class BaseNPCBehaviour : MonoBehaviour
     Destroy(gameObject);
   }
 
-  protected virtual void ReceiveDamage(DamageModel payload)
+  private void ReceiveDamage(DamageModel payload)
   {
     if (hitSound)
     {
@@ -66,14 +67,8 @@ public class BaseNPCBehaviour : MonoBehaviour
       textObj.obj.transform.rotation = Quaternion.Euler(0, 0, randomRotation);
       textObj.obj.transform.localScale *= randomScale;
     }
-
-    if (payload.Source)
-    {
-      if ((payload.Source.name == "KrakenTentacle" && payload.Destination == "Kraken") || (payload.Source.name == payload.Destination)) return;
-    }
     
-    if (invincible) return;
-    if (!(Time.time - lastImmune > immuneTime)) return;
+    if (!(Time.time - lastImmune > immuneTime) || invincible) return;
 
     hp -= payload.Value;
 

@@ -8,22 +8,19 @@ public class HealthBar : MonoBehaviour
 {
   public Player player;
   public Image healthbarImage;
+  public Image healthbarImageLight;
   public TMP_Text healthBarText;
-  private BaseNPCBehaviour baseNPCBehaviour;
+  private BaseNPCBehaviour BaseNPCBehaviour;
 
-  void Start()
+  void Awake()
   {
-    baseNPCBehaviour = player.gameObject.GetComponent<BaseNPCBehaviour>();
-  }
-
-  void Update()
-  {
-    //
+    BaseNPCBehaviour = player.gameObject.GetComponent<BaseNPCBehaviour>();
   }
 
   public void UpdateFillAmount()
   {
-    healthbarImage.fillAmount = Mathf.Clamp(baseNPCBehaviour.hp / baseNPCBehaviour.maxHp, 0, 1f);
-    healthBarText.text = $"{baseNPCBehaviour.hp}/{baseNPCBehaviour.maxHp}";
+    healthbarImage.fillAmount = Mathf.Clamp(BaseNPCBehaviour.hp / BaseNPCBehaviour.maxHp, 0, 1f);
+    healthbarImageLight.fillAmount = Mathf.Clamp(BaseNPCBehaviour.hp / BaseNPCBehaviour.maxHp, 0, 1f);
+    healthBarText.text = $"{BaseNPCBehaviour.hp}/{BaseNPCBehaviour.maxHp}";
   }
 }

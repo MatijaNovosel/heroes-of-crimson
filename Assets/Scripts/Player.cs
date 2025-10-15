@@ -61,25 +61,25 @@ public class Player : MonoBehaviour
     {
       case < 135 and > 45:
         // Up
-        animator.SetFloat("MouseDir", (int)Constants.SHOOTING_MOUSE_DIRS.UP);
+        animator.SetFloat("MouseDir", (int)Constants.ShootingMouseDirs.UP);
         animator.SetFloat("IdleState", 1);
         break;
       case > -45 and < 45:
         // Right
         animator.SetFloat("IdleState", 0);
         transform.localScale = Vector3.one;
-        animator.SetFloat("MouseDir", (int)Constants.SHOOTING_MOUSE_DIRS.HORIZONTAL);
+        animator.SetFloat("MouseDir", (int)Constants.ShootingMouseDirs.HORIZONTAL);
         break;
       case > 135 and < 180 or > -180 and < -135:
         // Left
         animator.SetFloat("IdleState", 0);
         transform.localScale = new Vector3(-1, 1, 1);
-        animator.SetFloat("MouseDir", (int)Constants.SHOOTING_MOUSE_DIRS.HORIZONTAL);
+        animator.SetFloat("MouseDir", (int)Constants.ShootingMouseDirs.HORIZONTAL);
         break;
       default:
         // Down
         animator.SetFloat("IdleState", 2);
-        animator.SetFloat("MouseDir", (int)Constants.SHOOTING_MOUSE_DIRS.DOWN);
+        animator.SetFloat("MouseDir", (int)Constants.ShootingMouseDirs.DOWN);
         break;
     }
 
@@ -94,8 +94,10 @@ public class Player : MonoBehaviour
       null,
       null,
       null,
-      null
+      new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
+      new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player }
     ));
+    
     lastFired = Time.time;
   }
 

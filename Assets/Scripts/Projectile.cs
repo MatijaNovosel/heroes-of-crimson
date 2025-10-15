@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using HeroesOfCrimson.Utils;
 using JetBrains.Annotations;
@@ -19,10 +21,8 @@ public class Projectile : MonoBehaviour
   private float frequency = 20.0f;
   private float amplitude = 0.5f;
   
-  List<string> collidersToDamage = new() { "Enemy", "NPC" };
-  List<string> destructiveColliders = new() { "BulletCollision", "Enemy", "NPC" };
-
-  private GameObject source;
+  List<Constants.CollisionGroups> willDamage = new();
+  List<Constants.CollisionGroups> willPenetrate = new();
 
   public void Setup(ProjectileSetupModel payload)
   {
@@ -45,9 +45,14 @@ public class Projectile : MonoBehaviour
       this.rotation = (float)payload.Rotation;
     }
 
-    if (payload.Source)
+    if (payload.WillDamage.Count != 0)
     {
-      this.source = payload.Source;
+      this.willDamage = payload.WillDamage;
+    }
+    
+    if (payload.WillPenetrate.Count != 0)
+    {
+      this.willPenetrate = payload.WillPenetrate;
     }
 
     angle = Utils.GetAngleFromShootDirection(payload.Direction);
@@ -80,16 +85,18 @@ public class Projectile : MonoBehaviour
   {
     if (!collider) return;
     
-    if (collidersToDamage.Contains(collider.tag))
-    {
-      collider.SendMessage("ReceiveDamage", new DamageModel(source, damage, collider.name));
-    }
+    var collidableComponent = collider.gameObject.GetComponent<Collidable>();
 
-    if (!destructiveColliders.Contains(collider.tag)) return;
+    if (!collidableComponent) return;
     
-    if (source)
+    if (collidableComponent.collisionGroups.Any(x => willDamage.Contains(x)))
     {
-      if (source.name == collider.name || (source.name == "KrakenTentacle" && collider.name == "Kraken")) return;
+      collider.SendMessage("ReceiveDamage", new DamageModel(damage));
+    }
+    
+    if (collidableComponent.collisionGroups.Any(x => willPenetrate.Contains(x)))
+    {
+      return;
     }
     
     Destroy(gameObject);

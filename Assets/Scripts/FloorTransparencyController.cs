@@ -13,6 +13,8 @@ public class FloorTransparencyController : MonoBehaviour
 
   void Update()
   {
+    if (!player) return;
+    
     var tilePosition = floorTilemap.WorldToCell(player.transform.position);
 
     if (tilePosition == lastTilePosition) return;

@@ -1,19 +1,19 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using HeroesOfCrimson.Utils;
+using UnityEngine;
 
 namespace Models
 
 {
     public readonly struct DamageModel
     {
-        public readonly GameObject Source;
         public readonly float Value;
-        public readonly string Destination;
         
-        public DamageModel(GameObject source, float value, string destination)
+        public DamageModel(
+            float value
+        )
         {
             this.Value = value;
-            this.Source = source;
-            this.Destination = destination;
         }
     }
 }

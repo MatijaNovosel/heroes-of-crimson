@@ -238,6 +238,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  collisionGroups: 
 --- !u!61 &36885881
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -353,6 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 225077527}
   healthbarImage: {fileID: 42378816}
+  healthbarImageLight: {fileID: 0}
   healthBarText: {fileID: 758548724}
 --- !u!114 &42378816
 MonoBehaviour:
@@ -671,6 +673,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  collisionGroups: 
 --- !u!212 &196539761
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1052,6 +1055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 225077527}
   healthbarImage: {fileID: 398518114}
+  healthbarImageLight: {fileID: 0}
   healthBarText: {fileID: 0}
 --- !u!114 &398518114
 MonoBehaviour:
@@ -1875,6 +1879,7 @@ GameObject:
   - component: {fileID: 681165206}
   - component: {fileID: 681165205}
   - component: {fileID: 681165204}
+  - component: {fileID: 681165207}
   m_Layer: 9
   m_Name: BulletCollision
   m_TagString: BulletCollision
@@ -2870,6 +2875,33 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &681165207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681165202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a878bea1f515d741a0518c3e7db52b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Collidable
+  filter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  collisionGroups: 05000000
 --- !u!1 &700888441
 GameObject:
   m_ObjectHideFlags: 0
@@ -26042,7 +26074,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -38.783752, y: 0, z: -39.995728, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -28825,6 +28857,7 @@ GameObject:
   - component: {fileID: 914398653}
   - component: {fileID: 914398652}
   - component: {fileID: 914398651}
+  - component: {fileID: 914398654}
   m_Layer: 7
   m_Name: Collision
   m_TagString: Collision
@@ -28877,7 +28910,7 @@ TilemapCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -29876,6 +29909,33 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &914398654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914398649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a878bea1f515d741a0518c3e7db52b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Collidable
+  filter:
+    useTriggers: 0
+    useLayerMask: 0
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 0
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  collisionGroups: 04000000
 --- !u!1 &972875873
 GameObject:
   m_ObjectHideFlags: 0
@@ -30128,11 +30188,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.43943638}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -30142,7 +30202,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.6666667, y: 2.6666667}
+  m_Size: {x: 2.6666667, y: 1.7877938}
   m_EdgeRadius: 0
 --- !u!114 &1002149264
 MonoBehaviour:
@@ -30170,6 +30230,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  collisionGroups: 03000000
 --- !u!1 &1033745691
 GameObject:
   m_ObjectHideFlags: 0
@@ -30655,6 +30716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 225077527}
   healthbarImage: {fileID: 1379250752}
+  healthbarImageLight: {fileID: 0}
   healthBarText: {fileID: 0}
 --- !u!114 &1379250752
 MonoBehaviour:
@@ -30784,6 +30846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 225077527}
   healthbarImage: {fileID: 1415340510}
+  healthbarImageLight: {fileID: 42378816}
   healthBarText: {fileID: 758548724}
 --- !u!1 &1469857299
 GameObject:
@@ -30841,8 +30904,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1924c3972802d00429f65f250e3661ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
-  maxHp: 100
+  hp: 270
+  maxHp: 300
   invincible: 0
   deathSound: {fileID: 8300000, guid: 19f46137f9bc2ec47b7a101bd71854a8, type: 3}
   hitSound: {fileID: 0}
@@ -30872,6 +30935,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  collisionGroups: 01000000
 --- !u!61 &1469857304
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -30902,7 +30966,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -31326,7 +31390,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -38.783752, y: 0, z: -39.995728, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -33234,6 +33298,7 @@ MonoBehaviour:
     maxDepth: 0
     minNormalAngle: 0
     maxNormalAngle: 0
+  collisionGroups: 03000000
 --- !u!1 &2032505509
 GameObject:
   m_ObjectHideFlags: 0
@@ -33535,13 +33600,29 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 7860581793131152279, guid: fc920363a5cee564e95302175fa8e339, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860581793131152280, guid: fc920363a5cee564e95302175fa8e339, type: 3}
+      propertyPath: collisionGroups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860581793131152280, guid: fc920363a5cee564e95302175fa8e339, type: 3}
+      propertyPath: 'collisionGroups.Array.data[0]'
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7860581793131152282, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: sceneViewId
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7860581793131152283, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: hp
-      value: 100
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860581793131152283, guid: fc920363a5cee564e95302175fa8e339, type: 3}
+      propertyPath: maxHp
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

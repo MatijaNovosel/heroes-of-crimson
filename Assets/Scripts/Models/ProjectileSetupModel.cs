@@ -1,4 +1,6 @@
-﻿using JetBrains.Annotations;
+﻿using System.Collections.Generic;
+using HeroesOfCrimson.Utils;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Models
@@ -10,21 +12,24 @@ namespace Models
         [CanBeNull] public readonly Sprite Sprite;
         public readonly float? Rotation;
         public readonly float? Speed;
-        [CanBeNull] public readonly GameObject Source;
+        public readonly List<Constants.CollisionGroups> WillDamage;
+        public readonly List<Constants.CollisionGroups> WillPenetrate;
         
         public ProjectileSetupModel(
             Vector3 direction,
             float? rotation,
             float? speed,
-            [CanBeNull] GameObject source,
-            [CanBeNull] Sprite sprite
+            [CanBeNull] Sprite sprite,
+            List<Constants.CollisionGroups> willDamage,
+            List<Constants.CollisionGroups> willPenetrate
         )
         {
             this.Direction = direction;
             this.Sprite = sprite;
-            this.Source = source;
             this.Speed = speed;
             this.Rotation = rotation;
+            this.WillDamage = willDamage;
+            this.WillPenetrate = willPenetrate;
         }
     }
 }

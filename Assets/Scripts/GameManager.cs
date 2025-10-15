@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using HeroesOfCrimson.Utils;
 using Models;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -44,8 +45,9 @@ public class GameManager : MonoBehaviour
         direction,
         0,
         speed,
-        null,
-        sprites[0]
+        sprites[0],
+        new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
+        new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player }
       ));
     }
   }

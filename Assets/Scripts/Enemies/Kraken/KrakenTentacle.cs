@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HeroesOfCrimson.Utils;
 using Models;
 using UnityEngine;
@@ -57,6 +58,7 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
 
     void Update()
     {
+        if (!kraken) Destroy(gameObject);
         Orbit(Time.deltaTime);
         ShootPlayer();
     }
@@ -84,8 +86,9 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
             shootDirection,
             45f, 
             null, 
-            gameObject,
-            sprite
+            sprite,
+            new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
+            new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy }
         ));
         
         lastFired = Time.time;
