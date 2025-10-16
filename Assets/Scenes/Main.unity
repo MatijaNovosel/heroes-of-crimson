@@ -300,6 +300,7 @@ MonoBehaviour:
   hp: 100
   maxHp: 100
   invincible: 0
+  statusEffects: 
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}
 --- !u!1 &42378813
@@ -599,6 +600,7 @@ MonoBehaviour:
   hp: 100
   maxHp: 100
   invincible: 1
+  statusEffects: 
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}
 --- !u!61 &196539759
@@ -857,6 +859,7 @@ MonoBehaviour:
   hp: 100
   maxHp: 100
   invincible: 0
+  statusEffects: 
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}
 --- !u!114 &219611474
@@ -1677,6 +1680,7 @@ MonoBehaviour:
   hp: 100
   maxHp: 100
   invincible: 0
+  statusEffects: 
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}
 --- !u!114 &625740659
@@ -30156,6 +30160,7 @@ MonoBehaviour:
   hp: 1000
   maxHp: 1000
   invincible: 0
+  statusEffects: 
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}
 --- !u!61 &1002149263
@@ -30907,6 +30912,7 @@ MonoBehaviour:
   hp: 270
   maxHp: 300
   invincible: 0
+  statusEffects: 
   deathSound: {fileID: 8300000, guid: 19f46137f9bc2ec47b7a101bd71854a8, type: 3}
   hitSound: {fileID: 0}
 --- !u!114 &1469857303
@@ -31075,6 +31081,7 @@ MonoBehaviour:
   hp: 100
   maxHp: 100
   invincible: 0
+  statusEffects: 
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}
 --- !u!114 &1500966097
@@ -33224,6 +33231,7 @@ MonoBehaviour:
   hp: 100
   maxHp: 100
   invincible: 0
+  statusEffects: 
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}
 --- !u!61 &2020502758

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using HeroesOfCrimson.Utils;
 using Models;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -8,6 +10,7 @@ public class BaseNPCBehaviour : MonoBehaviour
   public float hp = 100;
   public float maxHp = 100;
   public bool invincible = false;
+  public List<Constants.StatusEffects>  statusEffects;
 
   // Immunity
   private const float immuneTime = 1.0f;
@@ -25,6 +28,12 @@ public class BaseNPCBehaviour : MonoBehaviour
     }
 
     Destroy(gameObject);
+  }
+
+  private void DisplayStatusEffects()
+  {
+    if (statusEffects.Count == 0) return;
+    
   }
 
   private void ReceiveDamage(DamageModel payload)

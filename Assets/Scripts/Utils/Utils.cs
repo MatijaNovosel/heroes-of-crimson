@@ -19,6 +19,11 @@ namespace HeroesOfCrimson.Utils
       var player = GameObject.Find("Player");
       return !player ? Vector3.zero : player.gameObject.transform.position;
     }
+    public static bool IsPlayerDead()
+    {
+      var player = GameObject.Find("Player");
+      return player is null;
+    }
 
     public static float GetAngleFromShootDirection(Vector3 direction)
     {

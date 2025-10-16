@@ -18,7 +18,7 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
     public SpriteRenderer spriteRenderer;
 
     private float angleDeg;
-    private Rigidbody2D rb;
+    private Rigidbody2D RigidBody;
     
     private readonly float shootingDelay = 2f; // 0.8f -> 200 ms
     private float lastFired;
@@ -28,7 +28,6 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         projectile = Resources.Load<GameObject>("Prefabs/Projectile");
         Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/genericProjectiles");
@@ -71,10 +70,9 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
     
     private void ShootPlayer()
     {
-        if (!CanFire()) return;
+        if (!CanFire() || Utils.IsPlayerDead()) return;
         
         var shootDirection = (Utils.GetPlayerPosition() - gameObject.transform.position).normalized;
-        
         
         var proj = Instantiate(
             projectile,
@@ -119,7 +117,7 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
 
     void SetPosition(Vector2 pos)
     {
-        if (rb) rb.MovePosition(pos);
+        if (RigidBody) RigidBody.MovePosition(pos);
         else transform.position = new Vector3(pos.x, pos.y, transform.position.z);
     }
 }

@@ -17,5 +17,17 @@ namespace HeroesOfCrimson.Utils
       Collision = 4,
       BulletCollision = 5,
     }
+    
+    public enum StatusEffects
+    {
+       Speedy = 1,
+       Slowed = 2,
+       Armored = 3,
+       Invincible = 4,
+       Silenced = 5,
+       Poisoned = 6,
+       Bleeding = 7,
+       Regenerating = 8,
+    }
   }
 }

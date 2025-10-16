@@ -168,15 +168,12 @@ public class Player : MonoBehaviour
 
   private void HandleShooting()
   {
-    if (Input.GetMouseButton(0))
+    if (Input.GetMouseButton(0) && CanFire())
     {
-      if (CanFire())
-      {
-        isShooting = true;
-        animator.SetBool("Shooting", isShooting);
-        animator.SetTrigger("Shoot");
-        Fire();
-      }
+      isShooting = true;
+      animator.SetBool("Shooting", isShooting);
+      animator.SetTrigger("Shoot");
+      Fire();
     }
 
     if (!Input.GetMouseButtonUp(0)) return;
