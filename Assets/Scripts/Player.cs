@@ -231,7 +231,6 @@ public class Player : MonoBehaviour
   private void FixedUpdate()
   {
     HandleMoving();
-    healthBar.UpdateFillAmount();
   }
 
   private void Update()

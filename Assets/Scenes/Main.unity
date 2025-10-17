@@ -1017,7 +1017,6 @@ GameObject:
   - component: {fileID: 398518112}
   - component: {fileID: 398518115}
   - component: {fileID: 398518114}
-  - component: {fileID: 398518113}
   m_Layer: 5
   m_Name: ManabarBg
   m_TagString: Untagged
@@ -1044,22 +1043,6 @@ RectTransform:
   m_AnchoredPosition: {x: 87.70001, y: -18.393875}
   m_SizeDelta: {x: 125.24, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &398518113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 398518111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f253aaf7f6028445a5e2599aee9fd06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 225077527}
-  healthbarImage: {fileID: 398518114}
-  healthbarImageLight: {fileID: 0}
-  healthBarText: {fileID: 0}
 --- !u!114 &398518114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30680,7 +30663,6 @@ GameObject:
   - component: {fileID: 1379250750}
   - component: {fileID: 1379250753}
   - component: {fileID: 1379250752}
-  - component: {fileID: 1379250751}
   m_Layer: 5
   m_Name: HealthbarBg
   m_TagString: Untagged
@@ -30704,25 +30686,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 87.70001, y: 3.2661133}
+  m_AnchoredPosition: {x: 88.03, y: 3.2661133}
   m_SizeDelta: {x: 125.24, y: 18}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1379250751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1379250749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f253aaf7f6028445a5e2599aee9fd06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 225077527}
-  healthbarImage: {fileID: 1379250752}
-  healthbarImageLight: {fileID: 0}
-  healthBarText: {fileID: 0}
 --- !u!114 &1379250752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30736,7 +30702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.05490196, g: 0.047058824, b: 0.047058824, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

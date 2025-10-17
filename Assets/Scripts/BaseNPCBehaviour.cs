@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using HeroesOfCrimson.Utils;
 using Models;
@@ -11,6 +12,7 @@ public class BaseNPCBehaviour : MonoBehaviour
   public float maxHp = 100;
   public bool invincible = false;
   public List<Constants.StatusEffects> statusEffects = new () { Constants.StatusEffects.Poisoned };
+  private GameObject StatusEffectPanel;
 
   // Immunity
   private const float immuneTime = 1.0f;
@@ -19,6 +21,16 @@ public class BaseNPCBehaviour : MonoBehaviour
   // Other
   public AudioClip deathSound;
   public AudioClip hitSound;
+
+  private void Awake()
+  {
+    var statusEffectPanelPrefab = Resources.Load<GameObject>("Prefabs/StatusEffectPanel");
+    StatusEffectPanel = Instantiate(
+      statusEffectPanelPrefab,
+      new Vector3(transform.position.x, transform.position.y + 0.8f, 0),
+      Quaternion.identity
+    );
+  }
 
   private void Die()
   {
@@ -32,8 +44,13 @@ public class BaseNPCBehaviour : MonoBehaviour
 
   private void DisplayStatusEffects()
   {
+    StatusEffectPanel.GetComponent<StatusEffectPanel>().Setup(statusEffects, gameObject);
     if (statusEffects.Count == 0) return;
-    
+  }
+
+  private void Update()
+  {
+    DisplayStatusEffects();
   }
 
   private void ReceiveDamage(DamageModel payload)
