@@ -77,5 +77,8 @@ TagManager:
   - name: Collision
     uniqueID: 131492747
     locked: 0
+  - name: UI
+    uniqueID: 2957122233
+    locked: 0
   m_RenderingLayers:
   - Default

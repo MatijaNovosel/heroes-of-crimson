@@ -10,7 +10,7 @@ public class BaseNPCBehaviour : MonoBehaviour
   public float hp = 100;
   public float maxHp = 100;
   public bool invincible = false;
-  public List<Constants.StatusEffects>  statusEffects;
+  public List<Constants.StatusEffects> statusEffects = new () { Constants.StatusEffects.Poisoned };
 
   // Immunity
   private const float immuneTime = 1.0f;
