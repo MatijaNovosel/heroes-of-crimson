@@ -30,6 +30,7 @@ public class BaseNPCBehaviour : MonoBehaviour
       new Vector3(transform.position.x, transform.position.y + 0.8f, 0),
       Quaternion.identity
     );
+    StatusEffectPanel.GetComponent<StatusEffectPanel>().Setup(statusEffects, gameObject);
   }
 
   private void Die()
@@ -44,8 +45,8 @@ public class BaseNPCBehaviour : MonoBehaviour
 
   private void DisplayStatusEffects()
   {
-    StatusEffectPanel.GetComponent<StatusEffectPanel>().Setup(statusEffects, gameObject);
     if (statusEffects.Count == 0) return;
+    StatusEffectPanel.GetComponent<StatusEffectPanel>().SetStatusEffects(statusEffects);
   }
 
   private void Update()

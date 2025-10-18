@@ -8,6 +8,14 @@ namespace HeroesOfCrimson.Utils
       HORIZONTAL = 2,
       UP = 4
     }
+    
+    public enum ShootingDirections
+    {
+      DOWN = 1,
+      UP = 2,
+      LEFT = 3,
+      RIGHT = 4,
+    }
 
     public enum CollisionGroups
     {

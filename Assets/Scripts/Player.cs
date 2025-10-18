@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using HeroesOfCrimson.Utils;
 using Models;
+using Unity.Burst.CompilerServices;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(BaseNPCBehaviour))]
@@ -44,7 +46,7 @@ public class Player : MonoBehaviour
   {
     var shootDirection = (Utils.GetMousePosition() - gameObject.transform.position).normalized;
     var angle = Utils.GetAngleFromShootDirection(shootDirection);
-
+    var shootingDirection = Constants.ShootingDirections.UP;
 
     /*
 
@@ -66,26 +68,48 @@ public class Player : MonoBehaviour
         break;
       case > -45 and < 45:
         // Right
+        shootingDirection =  Constants.ShootingDirections.RIGHT;
         animator.SetFloat("IdleState", 0);
         transform.localScale = Vector3.one;
         animator.SetFloat("MouseDir", (int)Constants.ShootingMouseDirs.HORIZONTAL);
         break;
       case > 135 and < 180 or > -180 and < -135:
         // Left
+        shootingDirection =  Constants.ShootingDirections.LEFT;
         animator.SetFloat("IdleState", 0);
         transform.localScale = new Vector3(-1, 1, 1);
         animator.SetFloat("MouseDir", (int)Constants.ShootingMouseDirs.HORIZONTAL);
         break;
       default:
         // Down
+        shootingDirection =  Constants.ShootingDirections.DOWN;
         animator.SetFloat("IdleState", 2);
         animator.SetFloat("MouseDir", (int)Constants.ShootingMouseDirs.DOWN);
         break;
     }
 
+    var projectilePosX = gameObject.transform.position.x;
+    var projectilePosY = gameObject.transform.position.y;
+
+    switch (shootingDirection)
+    {
+      case Constants.ShootingDirections.DOWN:
+        projectilePosY -= 0.6f;
+        break;
+      case Constants.ShootingDirections.RIGHT:
+        projectilePosX += 0.6f;
+        break;
+      case Constants.ShootingDirections.LEFT:
+        projectilePosX -= 0.6f;
+        break;
+      case Constants.ShootingDirections.UP:
+        projectilePosY += 0.6f;
+        break;
+    }
+    
     var proj = Instantiate(
       Projectile,
-      new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0),
+      new Vector3(projectilePosX, projectilePosY, 0),
       Quaternion.identity
     );
 

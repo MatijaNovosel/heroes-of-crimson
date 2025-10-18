@@ -6,45 +6,53 @@ using UnityEngine;
 
 public class StatusEffectPanel : MonoBehaviour
 {
-    private GameObject statusEffectIconPrefab;
-    public List<StatusEffectUIModel> statusEffects;
-    public HashSet<Constants.StatusEffects> values;
+    private GameObject StatusEffectIconPrefab;
+    public List<StatusEffectUIModel> statusEffects = new();
+    private readonly HashSet<Constants.StatusEffects> values = new();
     public GameObject Obj;
     
     void Start()
     {
-        statusEffectIconPrefab = Resources.Load<GameObject>("Prefabs/StatusEffectIcon");
+        StatusEffectIconPrefab ??= Resources.Load<GameObject>("Prefabs/StatusEffectIcon");
     }
 
-    public void SetStatusEffects(List<Constants.StatusEffects> statusEffects)
+    public void SetStatusEffects(List<Constants.StatusEffects> newStatusEffects)
     {
-        statusEffects.AddRange(statusEffects);
+        foreach (var effect in newStatusEffects)
+            values.Add(effect);
     }
 
-    public void Setup(List<Constants.StatusEffects> statusEffects, GameObject obj)
+    public void Setup(List<Constants.StatusEffects> setupValues, GameObject obj)
     {
-        statusEffects.AddRange(statusEffects);
+        foreach (var statusEffect in setupValues)
+            values.Add(statusEffect);
+
         Obj = obj;
     }
 
     void Update()
     {
-        transform.position = new Vector3(Obj.transform.position.x, Obj.transform.position.y, 0);
-        
+        if (Obj is null) return;
+        print(values.Count);
+
+        transform.position = new Vector3(Obj.transform.position.x, Obj.transform.position.y + 1.15f, 0);
+
         foreach (var statusEffect in values)
         {
-            if (statusEffects.Any(x => x.StatusEffect == statusEffect))
-            {
-                return;
-            }
-            else
+            var statusObject = statusEffects.FirstOrDefault(x => x.StatusEffect == statusEffect);
+
+            if (EqualityComparer<StatusEffectUIModel>.Default.Equals(statusObject, default))
             {
                 var statusEffectIcon = Instantiate(
-                    statusEffectIconPrefab,
-                    new Vector3(transform.position.x, transform.position.y, 0),
+                    StatusEffectIconPrefab,
+                    transform.position,
                     Quaternion.identity
                 );
                 statusEffects.Add(new StatusEffectUIModel(statusEffectIcon, statusEffect));
+            }
+            else
+            {
+                statusObject.Icon.transform.position = transform.position;
             }
         }
     }
