@@ -6,54 +6,81 @@ using UnityEngine;
 
 public class StatusEffectPanel : MonoBehaviour
 {
-    private GameObject StatusEffectIconPrefab;
-    public List<StatusEffectUIModel> statusEffects = new();
-    private readonly HashSet<Constants.StatusEffects> values = new();
-    public GameObject Obj;
-    
-    void Start()
-    {
-        StatusEffectIconPrefab ??= Resources.Load<GameObject>("Prefabs/StatusEffectIcon");
-    }
+    private GameObject statusEffectIconPrefab;
+    private float iconSpacing = 0.6f;
 
-    public void SetStatusEffects(List<Constants.StatusEffects> newStatusEffects)
+    private readonly List<StatusEffectUIModel> activeIcons = new();
+    private Sprite[] sprites;
+    private HashSet<Constants.StatusEffects> currentEffects = new();
+
+    private GameObject Obj;
+
+    void Awake()
     {
-        foreach (var effect in newStatusEffects)
-            values.Add(effect);
+        statusEffectIconPrefab = Resources.Load<GameObject>("Prefabs/StatusEffectIcon");
+        sprites = Resources.LoadAll<Sprite>("Sprites/statusEffects");
     }
 
     public void Setup(List<Constants.StatusEffects> setupValues, GameObject obj)
     {
-        foreach (var statusEffect in setupValues)
-            values.Add(statusEffect);
-
+        currentEffects = new HashSet<Constants.StatusEffects>(setupValues);
         Obj = obj;
+        RefreshIcons();
     }
 
-    void Update()
+    public void SetStatusEffects(List<Constants.StatusEffects> newStatusEffects)
     {
-        if (Obj is null) return;
-        print(values.Count);
+        currentEffects = new HashSet<Constants.StatusEffects>(newStatusEffects);
+        RefreshIcons();
+    }
 
-        transform.position = new Vector3(Obj.transform.position.x, Obj.transform.position.y + 1.15f, 0);
-
-        foreach (var statusEffect in values)
+    private void RefreshIcons()
+    {
+        for (int i = activeIcons.Count - 1; i >= 0; i--)
         {
-            var statusObject = statusEffects.FirstOrDefault(x => x.StatusEffect == statusEffect);
+            if (currentEffects.Contains(activeIcons[i].StatusEffect)) continue;
+            Destroy(activeIcons[i].Icon);
+            activeIcons.RemoveAt(i);
+        }
 
-            if (EqualityComparer<StatusEffectUIModel>.Default.Equals(statusObject, default))
-            {
-                var statusEffectIcon = Instantiate(
-                    StatusEffectIconPrefab,
-                    transform.position,
-                    Quaternion.identity
-                );
-                statusEffects.Add(new StatusEffectUIModel(statusEffectIcon, statusEffect));
-            }
-            else
-            {
-                statusObject.Icon.transform.position = transform.position;
-            }
+        foreach (var effect in currentEffects)
+        {
+            if (activeIcons.Any(x => x.StatusEffect == effect)) continue;
+            var icon = Instantiate(statusEffectIconPrefab, transform);
+            icon.GetComponent<SpriteRenderer>().sprite = sprites[(int)effect - 1];
+            activeIcons.Add(new StatusEffectUIModel(icon, effect));
+        }
+
+        RepositionIcons();
+    }
+
+    private void Update()
+    {
+        if (!Obj)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        transform.position = new Vector3(Obj.transform.position.x, Obj.transform.position.y + 1f, 0);
+        RepositionIcons();
+    }
+
+    private void RepositionIcons()
+    {
+        var totalWidth = (activeIcons.Count - 1) * iconSpacing;
+        var startOffset = -totalWidth / 2f;
+
+        for (int i = 0; i < activeIcons.Count; i++)
+        {
+            var offsetX = startOffset + i * iconSpacing;
+            var iconObj = activeIcons[i].Icon;
+            if (iconObj is null) continue;
+
+            iconObj.transform.position = new Vector3(
+                transform.position.x + offsetX,
+                transform.position.y,
+                transform.position.z
+            );
         }
     }
 }

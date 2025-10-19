@@ -6,6 +6,7 @@ using UnityEngine;
 using HeroesOfCrimson.Utils;
 using JetBrains.Annotations;
 using Models;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class Projectile : MonoBehaviour
@@ -91,7 +92,7 @@ public class Projectile : MonoBehaviour
     
     if (collidableComponent.collisionGroups.Any(x => willDamage.Contains(x)))
     {
-      collider.SendMessage("ReceiveDamage", new DamageModel(damage));
+      collider.SendMessage("ReceiveDamage", new DamageModel((float)Math.Floor(Random.Range(1f, 100f))));
     }
     
     if (collidableComponent.collisionGroups.Any(x => willPenetrate.Contains(x)))

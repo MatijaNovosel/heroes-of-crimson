@@ -30778,7 +30778,7 @@ MonoBehaviour:
   hp: 270
   maxHp: 300
   invincible: 0
-  statusEffects: 06000000
+  statusEffects: 080000000700000004000000
   deathSound: {fileID: 8300000, guid: 19f46137f9bc2ec47b7a101bd71854a8, type: 3}
   hitSound: {fileID: 0}
 --- !u!114 &1469857303
@@ -33500,11 +33500,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7860581793131152283, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: statusEffects.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7860581793131152283, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: 'statusEffects.Array.data[0]'
-      value: 6
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860581793131152283, guid: fc920363a5cee564e95302175fa8e339, type: 3}
+      propertyPath: 'statusEffects.Array.data[1]'
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860581793131152283, guid: fc920363a5cee564e95302175fa8e339, type: 3}
+      propertyPath: 'statusEffects.Array.data[2]'
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

@@ -12,11 +12,11 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
   private BoxCollider2D boxCollider;
-  private readonly float moveSpeed = 130f;
+  private readonly float moveSpeed = 200f;
   public Animator animator;
   private AnimatorOverrideController animatorOverrideController;
   private BaseNPCBehaviour baseNPCBehaviour;
-  public HealthBar healthBar;
+  public PlayerHealthBar playerHealthBar;
   public Image abilityImage;
 
   private Vector3 moveDelta;

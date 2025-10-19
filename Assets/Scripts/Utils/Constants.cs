@@ -30,12 +30,14 @@ namespace HeroesOfCrimson.Utils
     {
        Speedy = 1,
        Slowed = 2,
-       Armored = 3,
-       Invincible = 4,
-       Silenced = 5,
-       Poisoned = 6,
-       Bleeding = 7,
-       Regenerating = 8,
+       Silenced = 3,
+       Damaging = 4,
+       ArmorBroken = 5,
+       Healing = 6,
+       Poisoned = 7,
+       Bleeding = 8,
+       Armored = 9,
+       Invincible = 10,
     }
   }
 }

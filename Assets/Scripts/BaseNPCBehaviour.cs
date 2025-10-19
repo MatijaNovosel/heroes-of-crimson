@@ -11,7 +11,7 @@ public class BaseNPCBehaviour : MonoBehaviour
   public float hp = 100;
   public float maxHp = 100;
   public bool invincible = false;
-  public List<Constants.StatusEffects> statusEffects = new () { Constants.StatusEffects.Poisoned };
+  public List<Constants.StatusEffects> statusEffects = new () { Constants.StatusEffects.Poisoned, Constants.StatusEffects.Bleeding };
   private GameObject StatusEffectPanel;
 
   // Immunity
@@ -66,11 +66,19 @@ public class BaseNPCBehaviour : MonoBehaviour
     var randomDirection = new Vector3(Mathf.Sin(radians), Mathf.Cos(radians), 0f);
 
     var randomRotation = Random.Range(-15f, 15f);
+
+    var minDamage = 1f;
+    var maxDamage = 100f;
+    var minFontSize = 100f;
+    var maxFontSize = 250f;
+
+    var t = Mathf.InverseLerp(minDamage, maxDamage, payload.Value);
+    var fontSize = Mathf.Lerp(minFontSize, maxFontSize, t);
     var randomScale = Random.Range(0.9f, 1.2f);
 
     var textObj = GameManager.instance.ShowText(
       $"-{payload.Value}",
-      170,
+      (int)fontSize,
       Color.red,
       new Vector3(transform.position.x, transform.position.y + 0.8f, 0),
       randomDirection,
@@ -82,7 +90,7 @@ public class BaseNPCBehaviour : MonoBehaviour
       textObj.obj.transform.rotation = Quaternion.Euler(0, 0, randomRotation);
       textObj.obj.transform.localScale *= randomScale;
     }
-    
+
     if (!(Time.time - lastImmune > immuneTime) || invincible) return;
 
     hp -= payload.Value;
@@ -93,4 +101,5 @@ public class BaseNPCBehaviour : MonoBehaviour
       Die();
     }
   }
+
 }

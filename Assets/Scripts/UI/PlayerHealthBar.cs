@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class HealthBar : MonoBehaviour
+public class PlayerHealthBar : MonoBehaviour
 {
     public Player player;
     public Image healthbarImage;
@@ -13,7 +13,7 @@ public class HealthBar : MonoBehaviour
 
     void Awake()
     {
-        if (player != null)
+        if (player)
         {
             baseNPC = player.GetComponent<BaseNPCBehaviour>();
         }
@@ -26,7 +26,7 @@ public class HealthBar : MonoBehaviour
 
     public void UpdateFillAmount()
     {
-        if (baseNPC == null)
+        if (!baseNPC)
         {
             if (healthbarImage) healthbarImage.fillAmount = 0f;
             if (healthbarImageLight) healthbarImageLight.fillAmount = 0f;
