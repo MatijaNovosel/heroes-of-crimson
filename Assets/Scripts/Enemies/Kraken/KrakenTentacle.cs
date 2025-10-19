@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class KrakenTentacleOrbit2D : MonoBehaviour
 {
-    private BaseNPCBehaviour baseNPCBehaviour;
-    
-    private GameObject kraken;
+    private GameObject _kraken;
     public float radius = 3.5f;
     public float angularSpeed = 20f;
     public bool clockwise = false;
@@ -15,49 +13,50 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
     public bool startFromCurrent = true;
     public float initialAngleDeg = 0f;
 
-    public SpriteRenderer spriteRenderer;
-
-    private float angleDeg;
-    private Rigidbody2D RigidBody;
+    private float _angleDeg;
     
-    private readonly float shootingDelay = 2f; // 0.8f -> 200 ms
-    private float lastFired;
+    private readonly float _shootingDelay = 2f;
+    private float _lastFired;
 
-    private Sprite sprite;
-    private GameObject projectile;
+    // Components
+    private BaseNPCBehaviour _baseNpcBehaviour;
+    private Rigidbody2D _rigidBody;
+    private Sprite _sprite;
+    private GameObject _projectile;
+    public SpriteRenderer spriteRenderer;
 
     void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        projectile = Resources.Load<GameObject>("Prefabs/Projectile");
-        Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/genericProjectiles");
-        sprite = sprites[1];
+        _projectile = Resources.Load<GameObject>("Prefabs/Projectile");
+        Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/projectiles");
+        _sprite = sprites[1];
     }
 
     void Start()
     {
         var go = GameObject.Find("Kraken");
-        if (go) kraken = go;
+        if (go) _kraken = go;
 
-        Vector2 center = kraken.transform.position;
+        Vector2 center = _kraken.transform.position;
 
         if (startFromCurrent)
         {
             var dir = (Vector2)transform.position - center;
             if (dir.sqrMagnitude < 1e-6f) dir = Vector2.right * Mathf.Max(0.001f, radius);
             if (radius <= 0.001f) radius = dir.magnitude;
-            angleDeg = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            _angleDeg = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         }
         else
         {
-            angleDeg = initialAngleDeg;
-            SetPosition(center + Dir(angleDeg) * radius);
+            _angleDeg = initialAngleDeg;
+            SetPosition(center + Dir(_angleDeg) * radius);
         }
     }
 
     void Update()
     {
-        if (!kraken) Destroy(gameObject);
+        if (!_kraken) Destroy(gameObject);
         Orbit(Time.deltaTime);
         ShootPlayer();
     }
@@ -65,7 +64,7 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
     bool CanFire()
     {
         // Current game time in seconds - last time fired in game seconds
-        return Time.time - lastFired > shootingDelay;
+        return Time.time - _lastFired > _shootingDelay;
     }
     
     private void ShootPlayer()
@@ -75,7 +74,7 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
         var shootDirection = (Utils.GetPlayerPosition() - gameObject.transform.position).normalized;
         
         var proj = Instantiate(
-            projectile,
+            _projectile,
             new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0),
             Quaternion.identity
         );
@@ -83,24 +82,26 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
         proj.GetComponent<Projectile>().Setup(new ProjectileSetupModel(
             shootDirection,
             45f, 
-            null, 
-            sprite,
+            null,
+            null,
+            50,
+            _sprite,
             new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
             new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy }
         ));
         
-        lastFired = Time.time;
+        _lastFired = Time.time;
     }
 
     void Orbit(float dt)
     {
-        if (!kraken) return;
+        if (!_kraken) return;
         
         var sign = clockwise ? -1f : 1f;
-        angleDeg = Mathf.Repeat(angleDeg + sign * angularSpeed * dt, 360f);
+        _angleDeg = Mathf.Repeat(_angleDeg + sign * angularSpeed * dt, 360f);
 
-        Vector2 center = kraken.transform.position;
-        var pos = center + Dir(angleDeg) * radius;
+        Vector2 center = _kraken.transform.position;
+        var pos = center + Dir(_angleDeg) * radius;
 
         SetPosition(pos);
 
@@ -117,7 +118,7 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
 
     void SetPosition(Vector2 pos)
     {
-        if (RigidBody) RigidBody.MovePosition(pos);
+        if (_rigidBody) _rigidBody.MovePosition(pos);
         else transform.position = new Vector3(pos.x, pos.y, transform.position.z);
     }
 }

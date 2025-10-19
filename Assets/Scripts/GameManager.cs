@@ -9,9 +9,11 @@ public class GameManager : MonoBehaviour
   public FloatingTextManager floatingTextManager;
   public DatabaseManager databaseManager;
   public static GameManager instance;
+  private Sprite[] projectileSprites;
 
   private void Awake()
   {
+    projectileSprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/projectiles");
     instance = this;
   }
   
@@ -19,7 +21,6 @@ public class GameManager : MonoBehaviour
   {
     yield return new WaitForSeconds(time);
     var projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectile");
-    Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/genericProjectiles");
 
     var speed = 12f;
     var projectileCount = 25;
@@ -44,7 +45,9 @@ public class GameManager : MonoBehaviour
         direction,
         0,
         speed,
-        sprites[0],
+        null,
+        50,
+        projectileSprites[0],
         new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
         new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player }
       ));

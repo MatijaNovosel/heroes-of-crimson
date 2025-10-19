@@ -36,17 +36,12 @@ namespace HeroesOfCrimson.Utils
       return new System.Random(seed).Next(min, max);
     }
 
-    public static float CalculatePlayerMovementSpeed(float moveSpeed)
+    public static float CalculatePlayerMovementSpeed(float SPD)
     {
-      /* 
-
-      0.02 - Minimum
-      0.05 - Maximum
-      [1, 75] SPD
-      [0.02, 0.05] RANGE
-
-    */
-      return 0.02f + (moveSpeed * 4.054054054054054e-4f);
+      SPD = Mathf.Clamp(SPD, 1f, 100f);
+      const float minSpeed = 0.05f;
+      const float maxSpeed = 0.25f;
+      return Mathf.Lerp(minSpeed, maxSpeed, (SPD - 1f) / 99f);
     }
   }
 }

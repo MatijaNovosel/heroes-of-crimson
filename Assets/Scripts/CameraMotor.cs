@@ -10,6 +10,8 @@ public class CameraMotor : MonoBehaviour
 
   private void LateUpdate()
   {
+    if (!lookAt) return;
+    
     var delta = Vector3.zero;
     var deltaX = lookAt.position.x - transform.position.x;
     var deltaY = lookAt.position.y - transform.position.y;

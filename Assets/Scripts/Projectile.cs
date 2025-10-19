@@ -11,29 +11,28 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Projectile : MonoBehaviour
 {
-  private Vector3 direction;
-  private float angle;
-  private bool piercingWall;
-  private bool piercing;
-  private float damage = 50;
-  private float rotation = 45;
-  private float moveSpeed = 10f;
-  private readonly float timeToLive = 2f; // 1 second?
-  private float frequency = 20.0f;
-  private float amplitude = 0.5f;
+  private Vector3 _direction;
+  private float _angle;
+  private bool _piercing;
+  private float _damage = 50;
+  private float _rotation = 45;
+  private float _moveSpeed = 10f;
+  private const float _timeToLive = 2f;
+  private const float _frequency = 20.0f;
+  private const float _amplitude = 0.5f;
   
-  List<Constants.CollisionGroups> willDamage = new();
-  List<Constants.CollisionGroups> willPenetrate = new();
+  private List<Constants.CollisionGroups> _willDamage = new();
+  private List<Constants.CollisionGroups> _willPenetrate = new();
 
   public void Setup(ProjectileSetupModel payload)
   {
     var spriteRenderer = GetComponent<SpriteRenderer>();
     
-    this.direction = payload.Direction;
+    _direction = payload.Direction;
 
     if (payload.Speed != null)
     {
-      this.moveSpeed = (float)payload.Speed;
+      _moveSpeed = (float)payload.Speed;
     }
 
     if (payload.Sprite)
@@ -43,27 +42,27 @@ public class Projectile : MonoBehaviour
 
     if (payload.Rotation != null)
     {
-      this.rotation = (float)payload.Rotation;
+      _rotation = (float)payload.Rotation;
     }
 
     if (payload.WillDamage.Count != 0)
     {
-      this.willDamage = payload.WillDamage;
+      _willDamage = payload.WillDamage;
     }
     
     if (payload.WillPenetrate.Count != 0)
     {
-      this.willPenetrate = payload.WillPenetrate;
+      _willPenetrate = payload.WillPenetrate;
     }
 
-    angle = Utils.GetAngleFromShootDirection(payload.Direction);
+    _angle = Utils.GetAngleFromShootDirection(payload.Direction);
 
-    Destroy(gameObject, timeToLive);
+    Destroy(gameObject, _timeToLive);
   }
 
   void Update()
   {
-    transform.position += direction * (moveSpeed * Time.deltaTime);
+    transform.position += _direction * (_moveSpeed * Time.deltaTime);
     /*
 
       Projectiles must be rotated according to the sprite
@@ -79,7 +78,7 @@ public class Projectile : MonoBehaviour
         transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * amplitude;
 
     */
-    transform.eulerAngles = new Vector3(0, 0, this.angle - this.rotation);
+    transform.eulerAngles = new Vector3(0, 0, this._angle - this._rotation);
   }
 
   private void OnTriggerEnter2D(Collider2D collider)
@@ -90,12 +89,12 @@ public class Projectile : MonoBehaviour
 
     if (!collidableComponent) return;
     
-    if (collidableComponent.collisionGroups.Any(x => willDamage.Contains(x)))
+    if (collidableComponent.collisionGroups.Any(x => _willDamage.Contains(x)))
     {
       collider.SendMessage("ReceiveDamage", new DamageModel((float)Math.Floor(Random.Range(1f, 100f))));
     }
     
-    if (collidableComponent.collisionGroups.Any(x => willPenetrate.Contains(x)))
+    if (collidableComponent.collisionGroups.Any(x => _willPenetrate.Contains(x)))
     {
       return;
     }

@@ -9,28 +9,39 @@ public class BaseNPCBehaviour : MonoBehaviour
 {
   // Public stats
   public float hp = 100;
+  public float mp = 100;
+  public float maxMp = 100;
   public float maxHp = 100;
+  
+  public float spd = 30;
+  public float att = 30;
+  public float def = 10;
+  public float vit = 30;
+  public float wis = 30;
+  
   public bool invincible = false;
   public List<Constants.StatusEffects> statusEffects = new () { Constants.StatusEffects.Poisoned, Constants.StatusEffects.Bleeding };
-  private GameObject StatusEffectPanel;
 
   // Immunity
-  private const float immuneTime = 1.0f;
-  protected float lastImmune;
+  private const float ImmuneTime = 1.0f;
+  private float _lastImmune;
 
   // Other
   public AudioClip deathSound;
   public AudioClip hitSound;
+  
+  // UI stuff
+  private GameObject _statusEffectPanel;
 
   private void Awake()
   {
     var statusEffectPanelPrefab = Resources.Load<GameObject>("Prefabs/StatusEffectPanel");
-    StatusEffectPanel = Instantiate(
+    _statusEffectPanel = Instantiate(
       statusEffectPanelPrefab,
       new Vector3(transform.position.x, transform.position.y + 0.8f, 0),
       Quaternion.identity
     );
-    StatusEffectPanel.GetComponent<StatusEffectPanel>().Setup(statusEffects, gameObject);
+    _statusEffectPanel.GetComponent<StatusEffectPanel>().Setup(statusEffects, gameObject);
   }
 
   private void Die()
@@ -46,7 +57,7 @@ public class BaseNPCBehaviour : MonoBehaviour
   private void DisplayStatusEffects()
   {
     if (statusEffects.Count == 0) return;
-    StatusEffectPanel.GetComponent<StatusEffectPanel>().SetStatusEffects(statusEffects);
+    _statusEffectPanel.GetComponent<StatusEffectPanel>().SetStatusEffects(statusEffects);
   }
 
   private void Update()
@@ -91,7 +102,7 @@ public class BaseNPCBehaviour : MonoBehaviour
       textObj.obj.transform.localScale *= randomScale;
     }
 
-    if (!(Time.time - lastImmune > immuneTime) || invincible) return;
+    if (!(Time.time - _lastImmune > ImmuneTime) || invincible) return;
 
     hp -= payload.Value;
 
@@ -101,5 +112,4 @@ public class BaseNPCBehaviour : MonoBehaviour
       Die();
     }
   }
-
 }

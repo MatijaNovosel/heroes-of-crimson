@@ -30,7 +30,7 @@ public class PlayerHealthBar : MonoBehaviour
         {
             if (healthbarImage) healthbarImage.fillAmount = 0f;
             if (healthbarImageLight) healthbarImageLight.fillAmount = 0f;
-            if (healthBarText) healthBarText.text = "";
+            if (healthBarText) healthBarText.text = "Dead";
             return;
         }
 

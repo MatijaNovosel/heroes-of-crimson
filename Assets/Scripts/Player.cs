@@ -11,35 +11,35 @@ using UnityEngine.UI;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Player : MonoBehaviour
 {
-  private BoxCollider2D boxCollider;
-  private readonly float moveSpeed = 200f;
-  public Animator animator;
-  private AnimatorOverrideController animatorOverrideController;
-  private BaseNPCBehaviour baseNPCBehaviour;
-  public PlayerHealthBar playerHealthBar;
-  public Image abilityImage;
-
   private Vector3 moveDelta;
   private RaycastHit2D hit;
 
-  public GameObject Projectile;
-  private float lastFired;
-  private float abilityUsedLast;
-  private readonly float delay = 0.3f; // 0.8f -> 200 ms
-  private readonly float abilityDelay = 1;
+  private float _lastFired;
+  private float _abilityUsedLast;
+  private const float FiringDelay = 0.3f;
+  private const float AbilityDelay = 1;
   private float abilityCooldownTimer = 0;
   private bool isShooting = false;
+
+  // Components
+  public GameObject Projectile;
+  public Image abilityImage;
+  public Animator animator;
+  public PlayerHealthBar playerHealthBar;
+  private BoxCollider2D _boxCollider;
+  private AnimatorOverrideController _animatorOverrideController;
+  private BaseNPCBehaviour _baseNpcBehaviour;
 
   bool CanFire()
   {
     // Current game time in seconds - last time fired in game seconds
-    return Time.time - lastFired > delay;
+    return Time.time - _lastFired > FiringDelay;
   }
 
   bool CanCastAbility()
   {
     // Current game time in seconds - last time fired in game seconds
-    return Time.time - abilityUsedLast > abilityDelay;
+    return Time.time - _abilityUsedLast > AbilityDelay;
   }
 
   void Fire()
@@ -115,14 +115,16 @@ public class Player : MonoBehaviour
 
     proj.GetComponent<Projectile>().Setup(new ProjectileSetupModel(
       shootDirection,
+      0,
       null,
-      null,
+      0.8f,
+      50,
       null,
       new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
       new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player }
     ));
     
-    lastFired = Time.time;
+    _lastFired = Time.time;
   }
 
   private void HandleMoving()
@@ -160,14 +162,14 @@ public class Player : MonoBehaviour
       }
     }
 
-    var speed = Utils.CalculatePlayerMovementSpeed(moveSpeed);
+    var speed = Utils.CalculatePlayerMovementSpeed(_baseNpcBehaviour.spd);
     LayerMask mask = LayerMask.GetMask("Actor", "Blocking", "NPC");
 
     var moveY = new Vector2(0, moveDelta.y);
     
     if (!Physics2D.BoxCast(
       transform.position,
-      boxCollider.size, 
+      _boxCollider.size, 
       0, 
       moveY, 
       Mathf.Abs(moveY.y * speed), mask)
@@ -180,7 +182,7 @@ public class Player : MonoBehaviour
     
     if (!Physics2D.BoxCast(
       transform.position,
-      boxCollider.size, 
+      _boxCollider.size, 
       0, 
       moveX, 
       Mathf.Abs(moveX.x * speed), mask)
@@ -216,7 +218,7 @@ public class Player : MonoBehaviour
     }
     else
     {
-      abilityImage.fillAmount = abilityCooldownTimer / abilityDelay;
+      abilityImage.fillAmount = abilityCooldownTimer / AbilityDelay;
     }
   }
 
@@ -231,7 +233,7 @@ public class Player : MonoBehaviour
 
     if (meteorPrefab is null) return;
 
-    abilityCooldownTimer = abilityDelay;
+    abilityCooldownTimer = AbilityDelay;
 
     var meteor = Instantiate(
       meteorPrefab,
@@ -241,15 +243,15 @@ public class Player : MonoBehaviour
 
     meteor.GetComponent<Meteor>().Setup(cursorPosition);
 
-    abilityUsedLast = Time.time;
+    _abilityUsedLast = Time.time;
   }
 
   private void Start()
   {
-    baseNPCBehaviour = GetComponent<BaseNPCBehaviour>();
-    boxCollider = GetComponent<BoxCollider2D>();
-    animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
-    animator.runtimeAnimatorController = animatorOverrideController;
+    _boxCollider = GetComponent<BoxCollider2D>();
+    _baseNpcBehaviour = GetComponent<BaseNPCBehaviour>();
+    _animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
+    animator.runtimeAnimatorController = _animatorOverrideController;
   }
 
   private void FixedUpdate()
