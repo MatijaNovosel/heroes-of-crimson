@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
   private float _angle;
   private bool _piercing;
   private float _damage = 50;
+  private float _scale = 1;
   private float _rotation = 45;
   private float _moveSpeed = 10f;
   private const float _timeToLive = 2f;
@@ -54,8 +55,15 @@ public class Projectile : MonoBehaviour
     {
       _willPenetrate = payload.WillPenetrate;
     }
+    
+    if (payload.Scale != null)
+    {
+      _scale = (float)payload.Scale;
+    }
 
     _angle = Utils.GetAngleFromShootDirection(payload.Direction);
+
+    gameObject.transform.localScale = new Vector3(_scale, _scale, 0);
 
     Destroy(gameObject, _timeToLive);
   }

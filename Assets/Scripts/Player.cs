@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
       shootDirection,
       0,
       null,
-      0.8f,
+      0.6f,
       50,
       null,
       new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
