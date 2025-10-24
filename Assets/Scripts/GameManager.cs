@@ -43,11 +43,11 @@ public class GameManager : MonoBehaviour
       
       projComponent.Setup(new ProjectileSetupModel(
         direction,
-        0,
+        45,
         speed,
         null,
         50,
-        projectileSprites[0],
+        projectileSprites[1],
         new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
         new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player }
       ));
