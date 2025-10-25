@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Database
@@ -13,18 +14,11 @@ public class Database
 
   Item GetItem(int id)
   {
-    return Items.Find(item => item.Id == id);
+    return Items.First();
   }
 
   public void Seed()
   {
-    Items.Add(new Item()
-    {
-      Id = 1,
-      Name = "Iron dagger",
-      Description = "An iron dagger.",
-      SpriteName = "sprWeapons1",
-      Type = ItemType.WEAPON
-    });
+    //
   }
 }

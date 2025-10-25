@@ -227,7 +227,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: weaponsDownsized_0
+      name: armorAndWeapons_0
       rect:
         serializedVersion: 2
         x: 0
@@ -240,16 +240,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 00f4fe84e73dd0d80800000000000000
-      internalID: -8282731600321491200
+      spriteID: a5e8833bd7e7e0d4aa1738c14f6da844
+      internalID: -838203647
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_1
+      name: armorAndWeapons_1
       rect:
         serializedVersion: 2
         x: 8
@@ -262,16 +262,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9d1b43357dc2dd3a0800000000000000
-      internalID: -6639100972348689959
+      spriteID: f4f616e80c9c8fb4d9d0bea067b685d9
+      internalID: 1743667268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_2
+      name: armorAndWeapons_2
       rect:
         serializedVersion: 2
         x: 16
@@ -284,16 +284,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2a58e217ab55be050800000000000000
-      internalID: 5830848401812391330
+      spriteID: 4bee8db37e99e1f449a108faa4dc1fdb
+      internalID: -1572016739
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_3
+      name: armorAndWeapons_3
       rect:
         serializedVersion: 2
         x: 24
@@ -306,16 +306,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: aaf82ac569fa79480800000000000000
-      internalID: -8892445878885642326
+      spriteID: 8ad071018cfdfbb4a961992b9f22a2cd
+      internalID: -372214805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_4
+      name: armorAndWeapons_4
       rect:
         serializedVersion: 2
         x: 32
@@ -328,16 +328,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8c2b24be8a74b9e80800000000000000
-      internalID: -8170858308106538296
+      spriteID: 158441ad89800874985ea82df6725e52
+      internalID: -42170425
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_5
+      name: armorAndWeapons_5
       rect:
         serializedVersion: 2
         x: 40
@@ -350,16 +350,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 550b66c54b63a4130800000000000000
-      internalID: 3551711404407304277
+      spriteID: b91ae5776a1b06149aa920456f6bb532
+      internalID: -324527126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_6
+      name: armorAndWeapons_6
       rect:
         serializedVersion: 2
         x: 48
@@ -372,16 +372,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: db884bfb005e0af40800000000000000
-      internalID: 5737837716649052349
+      spriteID: ffb668e17827aa144b50d5992c5d4542
+      internalID: -1143691182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_7
+      name: armorAndWeapons_7
       rect:
         serializedVersion: 2
         x: 56
@@ -394,16 +394,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 802a69b471e95e0d0800000000000000
-      internalID: -3394132921264201208
+      spriteID: 0924be0ac8572cd4f9152aa5ab185875
+      internalID: 1486844973
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_8
+      name: armorAndWeapons_8
       rect:
         serializedVersion: 2
         x: 64
@@ -416,16 +416,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 653c94d2ac8244a60800000000000000
-      internalID: 7657290115244999510
+      spriteID: 456a143a80e6b70478fadebd1c3ac360
+      internalID: 1839526622
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_9
+      name: armorAndWeapons_9
       rect:
         serializedVersion: 2
         x: 72
@@ -438,16 +438,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 86be31345150a1600800000000000000
-      internalID: 439669502499875688
+      spriteID: 4e54bd3aaed464d46bb115dda0e04eb5
+      internalID: -1832299110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_10
+      name: armorAndWeapons_10
       rect:
         serializedVersion: 2
         x: 80
@@ -460,16 +460,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: cbc69361728a8df80800000000000000
-      internalID: -8081524645486302020
+      spriteID: 9c54161b3cf7ec946a0ed45057ae0686
+      internalID: 1911582477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_11
+      name: armorAndWeapons_11
       rect:
         serializedVersion: 2
         x: 88
@@ -482,16 +482,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a726c2f78a8701aa0800000000000000
-      internalID: -6192316822550977926
+      spriteID: df892edbfe0582345a42da9c07893f51
+      internalID: -1462829521
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_12
+      name: armorAndWeapons_12
       rect:
         serializedVersion: 2
         x: 96
@@ -504,16 +504,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7fbeb78126088d7a0800000000000000
-      internalID: -6352186115600159753
+      spriteID: f7ba7442e97e7954c926424c32b9be06
+      internalID: -1103072974
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_13
+      name: armorAndWeapons_13
       rect:
         serializedVersion: 2
         x: 104
@@ -526,16 +526,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a5a2c7f7b7729c6a0800000000000000
-      internalID: -6428563581721367974
+      spriteID: 41ec73c398d760a42bba45028f590851
+      internalID: 152996647
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_14
+      name: armorAndWeapons_14
       rect:
         serializedVersion: 2
         x: 112
@@ -548,16 +548,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2a0f16107dbe916c0800000000000000
-      internalID: -4172044271108362078
+      spriteID: ed3986086f461e8488fa01242443a7d2
+      internalID: 614907482
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_15
+      name: armorAndWeapons_15
       rect:
         serializedVersion: 2
         x: 0
@@ -570,16 +570,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7984f42bde60c31e0800000000000000
-      internalID: -2216889298604570473
+      spriteID: 32084948f78bd3f4e95713fa39f04577
+      internalID: 962076189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_16
+      name: armorAndWeapons_16
       rect:
         serializedVersion: 2
         x: 8
@@ -592,16 +592,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 29d46aeb8116e2ea0800000000000000
-      internalID: -5895668103275721326
+      spriteID: 1d423b9473ed7e342889e7b2b7c412aa
+      internalID: 1265577819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_17
+      name: armorAndWeapons_17
       rect:
         serializedVersion: 2
         x: 16
@@ -614,16 +614,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 06217e26f985d3070800000000000000
-      internalID: 8087717947409633888
+      spriteID: 66bfb1b15708bf7449ca72ef1da7ca77
+      internalID: 2071282526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_18
+      name: armorAndWeapons_18
       rect:
         serializedVersion: 2
         x: 24
@@ -636,16 +636,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 191c83078cec66700800000000000000
-      internalID: 533340966161531281
+      spriteID: 918a31fd5c24f0d4388c30e43b60d752
+      internalID: -419010156
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_19
+      name: armorAndWeapons_19
       rect:
         serializedVersion: 2
         x: 32
@@ -658,16 +658,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 12ad92374ff686080800000000000000
-      internalID: -9193975543582041567
+      spriteID: 9df18ba6206fc7a4a85c3075d8f1d3b8
+      internalID: -1897815920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_20
+      name: armorAndWeapons_20
       rect:
         serializedVersion: 2
         x: 40
@@ -680,16 +680,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 78fbb4d09d6cefbf0800000000000000
-      internalID: -288574690571862137
+      spriteID: 6b53579b5869e73458da785efe6dc8d3
+      internalID: 1562615517
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_21
+      name: armorAndWeapons_21
       rect:
         serializedVersion: 2
         x: 48
@@ -702,16 +702,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ff2aea34eba1001c0800000000000000
-      internalID: -4539599019907833089
+      spriteID: ae16ec5f8a3be5d428a0d5116640ca58
+      internalID: -1045398746
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_22
+      name: armorAndWeapons_22
       rect:
         serializedVersion: 2
         x: 56
@@ -724,16 +724,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a766b864729760630800000000000000
-      internalID: 3892932137502598778
+      spriteID: 03bd7f7c90c64d84f913bca014bfae97
+      internalID: -542285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_23
+      name: armorAndWeapons_23
       rect:
         serializedVersion: 2
         x: 64
@@ -746,16 +746,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 297df3c4ff2ad66d0800000000000000
-      internalID: -2995558959751899246
+      spriteID: 3187873fe9b83be4580f12f34bbbe28e
+      internalID: 27135524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_24
+      name: armorAndWeapons_24
       rect:
         serializedVersion: 2
         x: 72
@@ -768,16 +768,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 07694283065288c90800000000000000
-      internalID: -7167437711771134352
+      spriteID: f951f4033214e914a9ffb4b58b0cb2ee
+      internalID: 692933082
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_25
+      name: armorAndWeapons_25
       rect:
         serializedVersion: 2
         x: 80
@@ -790,16 +790,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 58caf5d0ac9d149f0800000000000000
-      internalID: -485867822948307835
+      spriteID: ea308429c3999f04188fac74d480e12f
+      internalID: 337010890
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_26
+      name: armorAndWeapons_26
       rect:
         serializedVersion: 2
         x: 88
@@ -812,16 +812,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 897668961b846e7b0800000000000000
-      internalID: -5195385193308461160
+      spriteID: 72b16e8d88679b348b69a3aa9428aea2
+      internalID: 1862784362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_27
+      name: armorAndWeapons_27
       rect:
         serializedVersion: 2
         x: 96
@@ -834,16 +834,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 21b2934d3843ef980800000000000000
-      internalID: -8503301305623041262
+      spriteID: 112124542843d21418d8888287bae942
+      internalID: 830298194
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_28
+      name: armorAndWeapons_28
       rect:
         serializedVersion: 2
         x: 104
@@ -856,16 +856,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1d98c33fb7f9cd450800000000000000
-      internalID: 6114937748772915665
+      spriteID: aaac5efe680a8374fa0b4bb6bf44b9f1
+      internalID: -112554428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_29
+      name: armorAndWeapons_29
       rect:
         serializedVersion: 2
         x: 112
@@ -878,16 +878,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0c5652ce13b379a80800000000000000
-      internalID: -8460228289390877248
+      spriteID: e8d24b5648e8f594ba8752e79c6365a5
+      internalID: -504770972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_30
+      name: armorAndWeapons_30
       rect:
         serializedVersion: 2
         x: 0
@@ -900,16 +900,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7174c1427dbe86ac0800000000000000
-      internalID: -3861577371213871337
+      spriteID: fb7d2350094de6249b8611e7805b18b1
+      internalID: 1724908398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_31
+      name: armorAndWeapons_31
       rect:
         serializedVersion: 2
         x: 8
@@ -922,16 +922,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0ced772bb5b8cad30800000000000000
-      internalID: 4444080158260321984
+      spriteID: adf22a810dd758a4e9d1221581fff47d
+      internalID: -1320885908
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_32
+      name: armorAndWeapons_32
       rect:
         serializedVersion: 2
         x: 16
@@ -944,16 +944,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9c61ff827839dbe60800000000000000
-      internalID: 7979696323488061129
+      spriteID: f6de4c9ee8858a44689ed82f447c8067
+      internalID: -1944073657
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_33
+      name: armorAndWeapons_33
       rect:
         serializedVersion: 2
         x: 24
@@ -966,16 +966,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f24f6e0eabfd239d0800000000000000
-      internalID: -2795926424913513425
+      spriteID: 30ada1e81caa6624585ac77ad52d8586
+      internalID: -1088414094
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_34
+      name: armorAndWeapons_34
       rect:
         serializedVersion: 2
         x: 32
@@ -988,16 +988,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: afc6a1fd73b176820800000000000000
-      internalID: 2911325610898517242
+      spriteID: fdf61d5f8202b804b89655d78e3cb790
+      internalID: 847924428
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_35
+      name: armorAndWeapons_35
       rect:
         serializedVersion: 2
         x: 40
@@ -1010,16 +1010,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8aa0edcc1a6432d60800000000000000
-      internalID: 7864207035059800744
+      spriteID: 2aba3688a38c99c41850556efba263a4
+      internalID: -813002318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_36
+      name: armorAndWeapons_36
       rect:
         serializedVersion: 2
         x: 48
@@ -1032,16 +1032,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: c3a869d9c2f113070800000000000000
-      internalID: 8084277082589661756
+      spriteID: 8cf04e4f664455e4dbf3945ae319756e
+      internalID: -2073601167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_37
+      name: armorAndWeapons_37
       rect:
         serializedVersion: 2
         x: 56
@@ -1054,16 +1054,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ffa684aaf64a3a120800000000000000
-      internalID: 2423961823960656639
+      spriteID: e09285818ff0cc847bbec4e601272a90
+      internalID: 659102941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_38
+      name: armorAndWeapons_38
       rect:
         serializedVersion: 2
         x: 64
@@ -1076,16 +1076,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2dfaeda67786e5100800000000000000
-      internalID: 98631103952105426
+      spriteID: 715b092d5b0e9a64888e225173d04f5b
+      internalID: 662243969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_39
+      name: armorAndWeapons_39
       rect:
         serializedVersion: 2
         x: 72
@@ -1100,14 +1100,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f983b45a02c85b04e924841e1d2ec341
-      internalID: 2145334308
+      spriteID: 8edaa5d85ddf5d448b46becedbdeddf4
+      internalID: -1124217744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_40
+      name: armorAndWeapons_40
       rect:
         serializedVersion: 2
         x: 80
@@ -1122,14 +1122,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2273335bd55266d45b420fa07ff5a63a
-      internalID: 1096177601
+      spriteID: b5b549e9d4edcf34b88aa18a0f925539
+      internalID: 1655230301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_41
+      name: armorAndWeapons_41
       rect:
         serializedVersion: 2
         x: 88
@@ -1144,14 +1144,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81a98d4819971ee41ba64665e8d0ed8f
-      internalID: -143896102
+      spriteID: 58c059cdebc9dbe4994be7c5c2baf405
+      internalID: -1328076594
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_42
+      name: armorAndWeapons_42
       rect:
         serializedVersion: 2
         x: 96
@@ -1166,14 +1166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a97b9b38f343c3f4a9f274214bab16b7
-      internalID: -440479037
+      spriteID: ba47bbf75d0e7cf4fbb413a2e829c4ed
+      internalID: -2067604057
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_43
+      name: armorAndWeapons_43
       rect:
         serializedVersion: 2
         x: 104
@@ -1188,14 +1188,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 327e741f353b1654a97dcfb107c89ef9
-      internalID: 1343342454
+      spriteID: f3d581e41a7e04b40b11e0e832dcb57d
+      internalID: -637181519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_44
+      name: armorAndWeapons_44
       rect:
         serializedVersion: 2
         x: 112
@@ -1210,14 +1210,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 381ce24f689599d428c5627f3a26c395
-      internalID: -1579845568
+      spriteID: 0ee14b6abef29fc429e5d777a1029ba2
+      internalID: 302613475
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_45
+      name: armorAndWeapons_45
       rect:
         serializedVersion: 2
         x: 0
@@ -1232,14 +1232,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a1ba47ef89e90604b881bde5ce8a19e6
-      internalID: -1662968487
+      spriteID: cc5a08ab4f524f848a69f8e9b667a7d7
+      internalID: -1745386037
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_46
+      name: armorAndWeapons_46
       rect:
         serializedVersion: 2
         x: 8
@@ -1254,14 +1254,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8302620dbfedab4bb00674d39563ce3
-      internalID: 596688032
+      spriteID: 81de0f0339579b643a22df3386a2cc2d
+      internalID: 1271263604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_47
+      name: armorAndWeapons_47
       rect:
         serializedVersion: 2
         x: 16
@@ -1276,14 +1276,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c316e07792f86804894cd0d0007f3724
-      internalID: -354902235
+      spriteID: b17c7f8db05404943a8acffe481b81eb
+      internalID: -1815066305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_48
+      name: armorAndWeapons_48
       rect:
         serializedVersion: 2
         x: 24
@@ -1298,14 +1298,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 860d970b8c434324aa0243f672b383e6
-      internalID: 1530595077
+      spriteID: 75fb99254d6ba524594618b244cc4434
+      internalID: -25938262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_49
+      name: armorAndWeapons_49
       rect:
         serializedVersion: 2
         x: 32
@@ -1320,14 +1320,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aa7069b0b7ac8c845a26188f3155087b
-      internalID: -190613837
+      spriteID: 84ca6472f5ccc37479929734def40a74
+      internalID: -2143181055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_50
+      name: armorAndWeapons_50
       rect:
         serializedVersion: 2
         x: 40
@@ -1342,14 +1342,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39a618e3ad22a9c4984b6b236f972aa7
-      internalID: -1958740298
+      spriteID: 22770dcfd04c8654da866525710c7005
+      internalID: 755918905
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_51
+      name: armorAndWeapons_51
       rect:
         serializedVersion: 2
         x: 48
@@ -1364,14 +1364,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26da1843ae6d04841a0832f771e881cd
-      internalID: -1621261526
+      spriteID: a323c2c99a8c2744eb1ad013e240243b
+      internalID: -436898173
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_52
+      name: armorAndWeapons_52
       rect:
         serializedVersion: 2
         x: 56
@@ -1386,14 +1386,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2acae9a3ef401b46a487a637d9dac7d
-      internalID: -1910469533
+      spriteID: b475a75b022d0be488baa94a27426473
+      internalID: -1056257187
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_53
+      name: armorAndWeapons_53
       rect:
         serializedVersion: 2
         x: 64
@@ -1408,14 +1408,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 243671f2be6123f4f992f7b94084949b
-      internalID: 2108898942
+      spriteID: 2a5647e2ac5addd439bd84df8da7fbc6
+      internalID: 248671263
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_54
+      name: armorAndWeapons_54
       rect:
         serializedVersion: 2
         x: 72
@@ -1430,14 +1430,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 763ac4ad35756f443961769b12068bc9
-      internalID: 1864644414
+      spriteID: 8d4d06f6610c41a4eb771830aad4a9d3
+      internalID: -801190622
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_55
+      name: armorAndWeapons_55
       rect:
         serializedVersion: 2
         x: 80
@@ -1452,14 +1452,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07581bf38a9eaba419afbfc1ffefbcf5
-      internalID: -1504688406
+      spriteID: 06d21e327fd0c204d860de5dc8e38a41
+      internalID: -505129630
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_56
+      name: armorAndWeapons_56
       rect:
         serializedVersion: 2
         x: 88
@@ -1474,14 +1474,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c36b954c910031b41867670610e0f4d4
-      internalID: -1550908463
+      spriteID: 4b933103d2bf5184e9b6148a2e2ddae5
+      internalID: -1563320819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_57
+      name: armorAndWeapons_57
       rect:
         serializedVersion: 2
         x: 96
@@ -1496,14 +1496,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: caa788053dda3664b8fa4193491a417a
-      internalID: 2116899612
+      spriteID: 1402b62dc09ee964ba9d34e0610fa0d6
+      internalID: -67068488
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_58
+      name: armorAndWeapons_58
       rect:
         serializedVersion: 2
         x: 104
@@ -1518,14 +1518,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 09f227d1cdee5f140bb88378fa686025
-      internalID: 767792659
+      spriteID: ab0c590a9e8ad9946ba97eeb67d527b6
+      internalID: 1662770723
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_59
+      name: armorAndWeapons_59
       rect:
         serializedVersion: 2
         x: 112
@@ -1540,14 +1540,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 791f08a8dc2fa3f439c66ce77798429c
-      internalID: -400430354
+      spriteID: 810a396810075df44989f70d85884383
+      internalID: -626107675
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_60
+      name: armorAndWeapons_60
       rect:
         serializedVersion: 2
         x: 0
@@ -1562,14 +1562,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7237a098ebf773d409989fa1abb12f71
-      internalID: 5469671
+      spriteID: 24245cda7d3b23040aa549df1d2698e2
+      internalID: -1317233116
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_61
+      name: armorAndWeapons_61
       rect:
         serializedVersion: 2
         x: 8
@@ -1584,14 +1584,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 467af5aa4bbfbbe48a912e40f386851a
-      internalID: -1055169833
+      spriteID: e4fdb3bce142821449cbdd6e39228d71
+      internalID: 1439133247
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_62
+      name: armorAndWeapons_62
       rect:
         serializedVersion: 2
         x: 16
@@ -1606,14 +1606,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1da50c017778b2f4685b316c0e164e27
-      internalID: 528065652
+      spriteID: 3512923d14f3c1e47aaf3f81fe288758
+      internalID: 1644874602
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_63
+      name: armorAndWeapons_63
       rect:
         serializedVersion: 2
         x: 24
@@ -1628,14 +1628,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1321e31b03fdeca4a9f656d17906495f
-      internalID: 1570964160
+      spriteID: 3c3d79d9799d34e4a9f62bc3acf76176
+      internalID: -1119988376
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_64
+      name: armorAndWeapons_64
       rect:
         serializedVersion: 2
         x: 32
@@ -1650,14 +1650,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9008f4f4ae151047924728350f94acb
-      internalID: 2136993462
+      spriteID: a15dc9617ceb164469133de582d8cc1d
+      internalID: -2061376141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_65
+      name: armorAndWeapons_65
       rect:
         serializedVersion: 2
         x: 40
@@ -1672,14 +1672,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08d178d86660a8c4793965bd0f05f4dd
-      internalID: -1333708139
+      spriteID: 156194477546c7c47814fa0d4aea0e00
+      internalID: 1796477989
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_66
+      name: armorAndWeapons_66
       rect:
         serializedVersion: 2
         x: 48
@@ -1694,14 +1694,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1809cf980032a845b9b105008aac547
-      internalID: -1152117016
+      spriteID: 1e8b367c49bd8b64a84607e965766967
+      internalID: -337125963
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_67
+      name: armorAndWeapons_67
       rect:
         serializedVersion: 2
         x: 56
@@ -1716,14 +1716,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16fcec1542d284946b00883338ecae48
-      internalID: -806677852
+      spriteID: 4df84d42bd7b3844a96dee2d853776d0
+      internalID: 1778992429
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_68
+      name: armorAndWeapons_68
       rect:
         serializedVersion: 2
         x: 64
@@ -1738,14 +1738,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56239cc6266c4554aa6b5ed6729803e0
-      internalID: 228760782
+      spriteID: 1fb93f2d0d987ec448d2cc3b3a5effd3
+      internalID: -1047840758
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_69
+      name: armorAndWeapons_69
       rect:
         serializedVersion: 2
         x: 72
@@ -1760,14 +1760,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d73c8b5ac67ceb4fafb36c0d2f8ac2b
-      internalID: -1476881635
+      spriteID: ebeb3d2121258e74eb1e77ce9c750e74
+      internalID: 244247835
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_70
+      name: armorAndWeapons_70
       rect:
         serializedVersion: 2
         x: 80
@@ -1782,14 +1782,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d7f5b54e7ee5337479d34a29540ddad7
-      internalID: -927861448
+      spriteID: ac165de3ce3281c4ab7f9de012c1f019
+      internalID: -486371235
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_71
+      name: armorAndWeapons_71
       rect:
         serializedVersion: 2
         x: 88
@@ -1804,14 +1804,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf690f9503027d9409cdc0beb01eca51
-      internalID: -1345954393
+      spriteID: 57e0168e255a7164e89a9e0b08e2791a
+      internalID: -1229072843
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_72
+      name: armorAndWeapons_72
       rect:
         serializedVersion: 2
         x: 96
@@ -1826,14 +1826,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ef2e5ee82ca06b4f846061326131842
-      internalID: -1704375677
+      spriteID: df7f4a7d6e42d0c4a826f2b5e84ff3c4
+      internalID: -1121448085
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_73
+      name: armorAndWeapons_73
       rect:
         serializedVersion: 2
         x: 104
@@ -1848,14 +1848,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e0d79d02f7b3ad4da0d94d6d1eec71b
-      internalID: 334697606
+      spriteID: e848ead77153f2243ad4b6b0aaf2c7a2
+      internalID: -2090217828
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_74
+      name: armorAndWeapons_74
       rect:
         serializedVersion: 2
         x: 112
@@ -1870,14 +1870,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f8bb8dcf7f82a245b0b219a5b52eff0
-      internalID: 1154962699
+      spriteID: 50ac7303045404740b5ed339a61e35e1
+      internalID: 787010419
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_75
+      name: armorAndWeapons_75
       rect:
         serializedVersion: 2
         x: 0
@@ -1892,14 +1892,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90c9b837f0d9d154a9437837fd72b4bb
-      internalID: -13884713
+      spriteID: 2aec6924f21df3447923719aedb8c02f
+      internalID: -1493804912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_76
+      name: armorAndWeapons_76
       rect:
         serializedVersion: 2
         x: 8
@@ -1914,14 +1914,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26e46d718052f2946b40ae45c93a7e0f
-      internalID: 1098278480
+      spriteID: 7dd0f993d3c4f0842b3a3006591b7d16
+      internalID: -1182826391
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_77
+      name: armorAndWeapons_77
       rect:
         serializedVersion: 2
         x: 16
@@ -1936,14 +1936,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0e6064e090b8ef44bb169ee9ed483a33
-      internalID: 868403016
+      spriteID: 619863d5995a0224b9c1aa1b0a1d4a53
+      internalID: -803367584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_78
+      name: armorAndWeapons_78
       rect:
         serializedVersion: 2
         x: 24
@@ -1958,14 +1958,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39b67d966ec340844b96c7410b9c410f
-      internalID: 1961207781
+      spriteID: 7e04151c584e6884498d2053ea3f1aa0
+      internalID: 434714148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_79
+      name: armorAndWeapons_79
       rect:
         serializedVersion: 2
         x: 32
@@ -1980,14 +1980,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6ff9e38752a30b4791bdeee3716343d
-      internalID: -2076677603
+      spriteID: db2dab9d595e4a84497ebe271bc99182
+      internalID: -1415339431
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_80
+      name: armorAndWeapons_80
       rect:
         serializedVersion: 2
         x: 40
@@ -2002,14 +2002,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d6fb6a3437a4b94c9808e07f7e2378d
-      internalID: -154007578
+      spriteID: 9850eb20b4bdf0c44bc17090313c3b89
+      internalID: 1578329977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_81
+      name: armorAndWeapons_81
       rect:
         serializedVersion: 2
         x: 48
@@ -2024,14 +2024,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f403ca9a0fcb644aae14e11e5b95748
-      internalID: 453888168
+      spriteID: 9f5d9994d992aa64daca7654b8b86eb9
+      internalID: 1679722874
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_82
+      name: armorAndWeapons_82
       rect:
         serializedVersion: 2
         x: 56
@@ -2046,14 +2046,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7970bf8f0a31f3541a18c53f0bcec96e
-      internalID: -257882138
+      spriteID: a33f95451f4d7db40a1c4fcd5d0057b5
+      internalID: -565113074
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_83
+      name: armorAndWeapons_83
       rect:
         serializedVersion: 2
         x: 64
@@ -2068,14 +2068,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 451576060d8341e479d71dc3dbfea928
-      internalID: 1325595082
+      spriteID: ed6af9b20fa5e62489baf5a8de78a3b6
+      internalID: -1859334781
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_84
+      name: armorAndWeapons_84
       rect:
         serializedVersion: 2
         x: 72
@@ -2090,14 +2090,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ebb015c0fdb0a2439c80182e4045961
-      internalID: 579935478
+      spriteID: eecb126de2071de49b82227d542c9e36
+      internalID: 1821360936
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_85
+      name: armorAndWeapons_85
       rect:
         serializedVersion: 2
         x: 80
@@ -2112,14 +2112,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36cba5472fb63ad4ba764cb5f2ef7c70
-      internalID: 712265789
+      spriteID: da2aac67fb1ece94eacede5bce791a05
+      internalID: 1986810236
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_86
+      name: armorAndWeapons_86
       rect:
         serializedVersion: 2
         x: 88
@@ -2134,14 +2134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b37a2424184b374eb145c59a018b82e
-      internalID: 781846189
+      spriteID: c048e91aa0d5af64f9c7aaba2cc2da6a
+      internalID: -2134922161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_87
+      name: armorAndWeapons_87
       rect:
         serializedVersion: 2
         x: 96
@@ -2156,14 +2156,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b8c09eff01f1af4687fbaa974267ff7
-      internalID: -885046131
+      spriteID: 84c7fa5f7c448fc4e9ed03a8bfbf73f9
+      internalID: 1346144738
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_88
+      name: armorAndWeapons_88
       rect:
         serializedVersion: 2
         x: 104
@@ -2178,14 +2178,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 584f0e83d7951cd4caf1e4f0a2a62e64
-      internalID: -1302477558
+      spriteID: d90e1830d2c8f4d4a901e1b553fdc328
+      internalID: 972457587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_89
+      name: armorAndWeapons_89
       rect:
         serializedVersion: 2
         x: 112
@@ -2200,14 +2200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 67a98dd9f6fc17c4091789c2a50df92f
-      internalID: -1849317069
+      spriteID: 0952a77f06d957e408dab406cc9c7548
+      internalID: -1582464004
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_90
+      name: armorAndWeapons_90
       rect:
         serializedVersion: 2
         x: 0
@@ -2222,14 +2222,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22bc3085fda37114ebbe4a92d606b4a4
-      internalID: 1439330942
+      spriteID: aaf8512fef5d5de4ba49d158d4048624
+      internalID: 518880150
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_91
+      name: armorAndWeapons_91
       rect:
         serializedVersion: 2
         x: 8
@@ -2244,14 +2244,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f07f237ca4ecca439240a1cf68073da
-      internalID: -1938246573
+      spriteID: 0ab9e339569b2894c925132d92404df9
+      internalID: -569692592
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_92
+      name: armorAndWeapons_92
       rect:
         serializedVersion: 2
         x: 16
@@ -2266,14 +2266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 32cdb86dc564a4940a98481cd4aae817
-      internalID: 1688666814
+      spriteID: d1a3c0b979d5f1040a9937a0d401ef54
+      internalID: -25383949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_93
+      name: armorAndWeapons_93
       rect:
         serializedVersion: 2
         x: 24
@@ -2288,14 +2288,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6cfb0a39fc70bc446b1b2fd63b111a6e
-      internalID: -1291252852
+      spriteID: b8c9006a4fc2ad347be790a7aaa889fe
+      internalID: -1788701246
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_94
+      name: armorAndWeapons_94
       rect:
         serializedVersion: 2
         x: 32
@@ -2310,14 +2310,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64246929bb1bd3b46980cdfa9ab91308
-      internalID: -760625070
+      spriteID: 4c3ce301fe52dff42857567adf5dcbd1
+      internalID: -1072851772
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_95
+      name: armorAndWeapons_95
       rect:
         serializedVersion: 2
         x: 40
@@ -2332,14 +2332,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf856a952d0bac640bb227e32d5570bb
-      internalID: -84884628
+      spriteID: 776453d0e48a9324aa7f53844cbf07ef
+      internalID: 1224329579
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_96
+      name: armorAndWeapons_96
       rect:
         serializedVersion: 2
         x: 48
@@ -2354,14 +2354,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9b80ba644030c5499a587ff05c2a7af
-      internalID: -617232674
+      spriteID: 65a168e18db10a64d887005d7b2665ed
+      internalID: 649493584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_97
+      name: armorAndWeapons_97
       rect:
         serializedVersion: 2
         x: 56
@@ -2376,14 +2376,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5b6967b46a16b14f89116f354bcd6bd
-      internalID: 924313979
+      spriteID: 772702bd212309c429f901cb34cf129c
+      internalID: -142845144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_98
+      name: armorAndWeapons_98
       rect:
         serializedVersion: 2
         x: 64
@@ -2398,14 +2398,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4ebf810430915b4084b45750b90b490
-      internalID: -796242941
+      spriteID: d94bb16ff2d1423428e007ee8eb016be
+      internalID: 641417668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_99
+      name: armorAndWeapons_99
       rect:
         serializedVersion: 2
         x: 72
@@ -2420,14 +2420,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9dedc084e1a23044195e79d88624b2e8
-      internalID: 288671262
+      spriteID: a7401235ec4eb8f47bef8885f7b6f239
+      internalID: 1973123264
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_100
+      name: armorAndWeapons_100
       rect:
         serializedVersion: 2
         x: 80
@@ -2442,14 +2442,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef59e1d0d2adbd2489fbd403e0db0774
-      internalID: -270877979
+      spriteID: b9f778757fd213649b053f6b5cba0393
+      internalID: -1612200392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_101
+      name: armorAndWeapons_101
       rect:
         serializedVersion: 2
         x: 88
@@ -2464,14 +2464,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1ccb8d36ac7fddc48a6529c40d6bf3d6
-      internalID: 696853767
+      spriteID: 22ccd71d24664a8489ed0a3be7c986b8
+      internalID: 507001982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_102
+      name: armorAndWeapons_102
       rect:
         serializedVersion: 2
         x: 96
@@ -2486,14 +2486,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 104c1cc713cce3140852b0176303f4c2
-      internalID: -1138005078
+      spriteID: d7c3f7e96df0fe648a72dca8f845e1a4
+      internalID: 296296160
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_103
+      name: armorAndWeapons_103
       rect:
         serializedVersion: 2
         x: 104
@@ -2508,14 +2508,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 082b4209f0d1d234f85bc733e08ceb1d
-      internalID: 1755776210
+      spriteID: 511faa8e66195754f9b24efd2167c696
+      internalID: 668197782
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_104
+      name: armorAndWeapons_104
       rect:
         serializedVersion: 2
         x: 112
@@ -2530,14 +2530,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec12218a3b79e264ea55da23a5cded8e
-      internalID: 1887860153
+      spriteID: 0dc7af0610437784c868ca60981051a2
+      internalID: -1367654380
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_105
+      name: armorAndWeapons_105
       rect:
         serializedVersion: 2
         x: 0
@@ -2552,14 +2552,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a5e17f6f004f4d42906a8e19d40140f
-      internalID: -433488668
+      spriteID: fdf0c24565d38cd47bc0ed34d23c9698
+      internalID: 1325124435
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_106
+      name: armorAndWeapons_106
       rect:
         serializedVersion: 2
         x: 8
@@ -2574,14 +2574,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37fd1430e22d6e34aa5250504f48fcd6
-      internalID: 1965537975
+      spriteID: 9f92910cc9e292d4b966cd6b75e4ccbc
+      internalID: 1578084913
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_107
+      name: armorAndWeapons_107
       rect:
         serializedVersion: 2
         x: 16
@@ -2596,14 +2596,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e02d3df93c9e2f04eb1504984711f9a8
-      internalID: 464292471
+      spriteID: 5248af541d4e7914bad90bfbbc909176
+      internalID: -1532408620
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_108
+      name: armorAndWeapons_108
       rect:
         serializedVersion: 2
         x: 24
@@ -2618,14 +2618,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c912697e4e77334d9e2865cc7d3ece6
-      internalID: 1508175851
+      spriteID: 06731185378046e4ab76d9d10f77d030
+      internalID: 632322969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_109
+      name: armorAndWeapons_109
       rect:
         serializedVersion: 2
         x: 32
@@ -2640,14 +2640,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7dded7f5b0fb320428309659df77db3d
-      internalID: -1784836601
+      spriteID: ba9bda0d27b2ac24285aaef1e4596e58
+      internalID: -452931407
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_110
+      name: armorAndWeapons_110
       rect:
         serializedVersion: 2
         x: 40
@@ -2662,14 +2662,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d36bd576202a2f408b6152625c5dfaa
-      internalID: -152521143
+      spriteID: 534503f24ccaa7b4b8b9a7cb1a07cb47
+      internalID: 106908563
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_111
+      name: armorAndWeapons_111
       rect:
         serializedVersion: 2
         x: 48
@@ -2684,14 +2684,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7606b72ca43595249aa88c52231e0e1c
-      internalID: 1579777846
+      spriteID: 967f9b8b92815bd48a31727a70739428
+      internalID: -1270786029
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_112
+      name: armorAndWeapons_112
       rect:
         serializedVersion: 2
         x: 56
@@ -2706,14 +2706,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e54ae22b7469203488d6d1b47c0cd387
-      internalID: -479176570
+      spriteID: 864b1ea198ee67d4aa43f2f4a7824a48
+      internalID: -1282911167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_113
+      name: armorAndWeapons_113
       rect:
         serializedVersion: 2
         x: 64
@@ -2728,14 +2728,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b080b6624e0e7df42b2eb7f5b44105fe
-      internalID: 995039730
+      spriteID: 8e4153db6e919a14ab308afe57e2a15f
+      internalID: -871335543
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_114
+      name: armorAndWeapons_114
       rect:
         serializedVersion: 2
         x: 72
@@ -2750,14 +2750,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 912f43be3a3f578459f90b07c714f459
-      internalID: -1041829245
+      spriteID: cd2d97a54fb419541acd6f0f6c82b338
+      internalID: 1050757315
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_115
+      name: armorAndWeapons_115
       rect:
         serializedVersion: 2
         x: 80
@@ -2772,14 +2772,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b67cc56944bc6d045ad7af6cedf1de1a
-      internalID: 923134172
+      spriteID: 76034363d0366e441aada0628cb6675a
+      internalID: -841500325
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_116
+      name: armorAndWeapons_116
       rect:
         serializedVersion: 2
         x: 88
@@ -2794,14 +2794,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 809468183a94d2542bf5aab6336da11e
-      internalID: 148425962
+      spriteID: 85515b455cae7c94d93d93e772586a66
+      internalID: 1590045331
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_117
+      name: armorAndWeapons_117
       rect:
         serializedVersion: 2
         x: 96
@@ -2816,14 +2816,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fae3e0a8764c79e4aa260031c5e71d17
-      internalID: 1262148698
+      spriteID: d14b7f5c44d652747b088ca9f31c4a2d
+      internalID: -871370007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_118
+      name: armorAndWeapons_118
       rect:
         serializedVersion: 2
         x: 104
@@ -2838,14 +2838,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6a96e5185b4ad5419e18a3766180fba
-      internalID: -394586911
+      spriteID: 145986d792f7c2a418a2121586f0735f
+      internalID: 216193785
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_119
+      name: armorAndWeapons_119
       rect:
         serializedVersion: 2
         x: 112
@@ -2860,14 +2860,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4427908bdb760241a6311ecd9c12a9b
-      internalID: 2038720508
+      spriteID: 2ece4bd470a955e41ad04b10e0bf08e0
+      internalID: -1720373994
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_120
+      name: armorAndWeapons_120
       rect:
         serializedVersion: 2
         x: 0
@@ -2882,14 +2882,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f43e8972b220b0f448f93fddc4d981c1
-      internalID: -1709200432
+      spriteID: 6e804b2d0f4b5224893012043c90297a
+      internalID: -502711803
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_121
+      name: armorAndWeapons_121
       rect:
         serializedVersion: 2
         x: 8
@@ -2904,14 +2904,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2adfe6d63af58248a87c949b5d8b177
-      internalID: -837266055
+      spriteID: c9bc4911e9bd1fc4482ee0631a17f75d
+      internalID: -1669271465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_122
+      name: armorAndWeapons_122
       rect:
         serializedVersion: 2
         x: 16
@@ -2926,14 +2926,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8a3b614badd8d164c8713c5753feb8e2
-      internalID: -1221530533
+      spriteID: b7dd91c0ead3eae468b3bff44742caa0
+      internalID: -579949845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_123
+      name: armorAndWeapons_123
       rect:
         serializedVersion: 2
         x: 24
@@ -2948,14 +2948,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9886530d6921a444d82dab9f1a63ba5e
-      internalID: 2054552739
+      spriteID: 9603d4e64d6da4146a0f1552b97f2254
+      internalID: -2040597452
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_124
+      name: armorAndWeapons_124
       rect:
         serializedVersion: 2
         x: 32
@@ -2970,14 +2970,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b1890aeb698d7448867d347b8d22f70
-      internalID: -213701799
+      spriteID: e7e77edcd598841499edd67213fd56f7
+      internalID: -2135778657
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_125
+      name: armorAndWeapons_125
       rect:
         serializedVersion: 2
         x: 40
@@ -2992,14 +2992,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e47108d3855ca5440be804d00ba077d0
-      internalID: -1055472226
+      spriteID: 7494e63c78ce5e84b894c86dbc228471
+      internalID: -1119085968
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_126
+      name: armorAndWeapons_126
       rect:
         serializedVersion: 2
         x: 48
@@ -3014,14 +3014,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: defb7d9abda97534594648622ee5a611
-      internalID: 858284497
+      spriteID: 0cc29593b9b6f6d40a1a244af3a62060
+      internalID: -1198340084
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_127
+      name: armorAndWeapons_127
       rect:
         serializedVersion: 2
         x: 56
@@ -3036,14 +3036,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e2788c7da98f02489b4a98739883c40
-      internalID: 162684893
+      spriteID: a965a229ffc02174b9ca9526dfb7cfec
+      internalID: -241143849
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_128
+      name: armorAndWeapons_128
       rect:
         serializedVersion: 2
         x: 0
@@ -3058,14 +3058,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 800bc74bc214afa478295c3fef0deb4b
-      internalID: -1748592599
+      spriteID: 2ebc1f7417396784e9e666a1a602aee8
+      internalID: 184436151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_129
+      name: armorAndWeapons_129
       rect:
         serializedVersion: 2
         x: 8
@@ -3080,14 +3080,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cc26050d90f32b459bc846d0f223f9d
-      internalID: -155351120
+      spriteID: 8f1136acc4a696f4abf1155025329501
+      internalID: -2022343628
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_130
+      name: armorAndWeapons_130
       rect:
         serializedVersion: 2
         x: 16
@@ -3102,14 +3102,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e59a3f6a2343ca147a0200015d32de01
-      internalID: -130285134
+      spriteID: 3d66b8e5a66697d4b96108745870295a
+      internalID: 1543659455
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_131
+      name: armorAndWeapons_131
       rect:
         serializedVersion: 2
         x: 24
@@ -3124,14 +3124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5eeabd16996664b46b7e721da6f063c1
-      internalID: -1566796932
+      spriteID: 04b34b9856526e645837c97486a2ca89
+      internalID: 2005497596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_132
+      name: armorAndWeapons_132
       rect:
         serializedVersion: 2
         x: 32
@@ -3146,14 +3146,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 44246b8018753fc4680f790a0d0a5b3e
-      internalID: 1175477083
+      spriteID: b983e507de72e6244a760032caffae54
+      internalID: -814783878
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_133
+      name: armorAndWeapons_133
       rect:
         serializedVersion: 2
         x: 40
@@ -3168,14 +3168,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff6b1df6824b88a479f4bf2706cbb57a
-      internalID: -248587384
+      spriteID: 61acce467d2cfe140bfd5a2bbbef8910
+      internalID: -1482504326
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_134
+      name: armorAndWeapons_134
       rect:
         serializedVersion: 2
         x: 48
@@ -3190,14 +3190,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5bce289af2aedaf40a5cda8e440df156
-      internalID: -778479830
+      spriteID: 1f6314785e55a4440bcb5104cc1d882b
+      internalID: -1150326300
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_135
+      name: armorAndWeapons_135
       rect:
         serializedVersion: 2
         x: 56
@@ -3212,14 +3212,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba8a5190d9932e742bc83457a8252547
-      internalID: -1343635502
+      spriteID: 43b8b6e2d1adf744eab163b1cb4f6f0a
+      internalID: -46555917
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_136
+      name: armorAndWeapons_136
       rect:
         serializedVersion: 2
         x: 0
@@ -3234,14 +3234,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b703556e53574d24fb984424be98f5b1
-      internalID: -786302734
+      spriteID: 5bcbf2ff0edf1d04c95ea7a1e7d5528d
+      internalID: -1750277645
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_137
+      name: armorAndWeapons_137
       rect:
         serializedVersion: 2
         x: 8
@@ -3256,14 +3256,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9eeb8cf1c96540a43a5a2c60d9312a56
-      internalID: -1397459837
+      spriteID: 4432b4c5b2e6b0e4f8f8a50ac8959f06
+      internalID: -525079904
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_138
+      name: armorAndWeapons_138
       rect:
         serializedVersion: 2
         x: 16
@@ -3278,14 +3278,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da36a83487877b5428b6eb40be935a9a
-      internalID: 1350621208
+      spriteID: 5387f189a6213454d923f3334ff08f76
+      internalID: 940964718
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_139
+      name: armorAndWeapons_139
       rect:
         serializedVersion: 2
         x: 24
@@ -3300,14 +3300,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0c0b32884af274d4b918c473e836cf68
-      internalID: -1978550707
+      spriteID: 4e62dacb098af024ea1a80e39db478d2
+      internalID: 750454027
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_140
+      name: armorAndWeapons_140
       rect:
         serializedVersion: 2
         x: 32
@@ -3322,14 +3322,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9627f4d31d78e4845b0a65353b23cc53
-      internalID: -1447089218
+      spriteID: 1c90c882628dfd04ba2507e576a9f47c
+      internalID: 586290707
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_141
+      name: armorAndWeapons_141
       rect:
         serializedVersion: 2
         x: 40
@@ -3344,14 +3344,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cfea39ee2c4cec43be24f135eca8f5c
-      internalID: 1115323908
+      spriteID: f4cb1817eb4c4a04b8ce54e2b8335057
+      internalID: 1292037217
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_142
+      name: armorAndWeapons_142
       rect:
         serializedVersion: 2
         x: 48
@@ -3366,14 +3366,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a683f636252493c42b7042fd6686a6d7
-      internalID: 858447804
+      spriteID: 7edb401ad8e031a40abb361e5d810dbb
+      internalID: -1259542061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_143
+      name: armorAndWeapons_143
       rect:
         serializedVersion: 2
         x: 56
@@ -3388,14 +3388,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f0c1335c139ea8478043396f4ee62a2
-      internalID: 133159000
+      spriteID: 9d2e0377101ab3e4ca1f80fc2d43c301
+      internalID: -542059542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_144
+      name: armorAndWeapons_144
       rect:
         serializedVersion: 2
         x: 0
@@ -3410,14 +3410,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c71aa6d97ece3047b1055b639085629
-      internalID: 1711326062
+      spriteID: c25ae14912a60024c9bc2ba13c58c769
+      internalID: 959526242
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_145
+      name: armorAndWeapons_145
       rect:
         serializedVersion: 2
         x: 8
@@ -3432,14 +3432,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f802ebc41c154f74daf73aea324048f4
-      internalID: -365994008
+      spriteID: ea25b3f50a946d14aba6a64219d1f65d
+      internalID: 1067547365
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_146
+      name: armorAndWeapons_146
       rect:
         serializedVersion: 2
         x: 16
@@ -3454,14 +3454,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4c6e5cc422f4f1744a104a3334b96664
-      internalID: -592086415
+      spriteID: 837068e3b74a257449e7d94a1e2cd25a
+      internalID: 1555633494
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_147
+      name: armorAndWeapons_147
       rect:
         serializedVersion: 2
         x: 24
@@ -3476,14 +3476,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc9c5ab6926d38f4b9dbf8ca0f7daf6e
-      internalID: -380560107
+      spriteID: 18c0e6a775009404eb619fb69f308f47
+      internalID: 1259780805
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_148
+      name: armorAndWeapons_148
       rect:
         serializedVersion: 2
         x: 32
@@ -3498,14 +3498,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89244b360e1f3684b93ac30e69dc1d86
-      internalID: -1496420719
+      spriteID: 0133d049bfd3b2a4ca58af488b6c0068
+      internalID: -1868832993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_149
+      name: armorAndWeapons_149
       rect:
         serializedVersion: 2
         x: 40
@@ -3520,14 +3520,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a88ce4436c62f54ab4f0b5bddb67f2f
-      internalID: 709650158
+      spriteID: 2a085baa7a33a7a4aa3a5038e8fc03c1
+      internalID: -651439943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_150
+      name: armorAndWeapons_150
       rect:
         serializedVersion: 2
         x: 48
@@ -3542,14 +3542,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0231794ca330f146bca72d17b496c2b
-      internalID: 2050279639
+      spriteID: 1aaf1556173d17545ad7e01fda0647fa
+      internalID: -2098281256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_151
+      name: armorAndWeapons_151
       rect:
         serializedVersion: 2
         x: 56
@@ -3564,14 +3564,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffa10567da33c3a4f803fbf511d2572b
-      internalID: 1977340068
+      spriteID: a8204ba44c53b92499303206950d64de
+      internalID: 382952818
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_152
+      name: armorAndWeapons_152
       rect:
         serializedVersion: 2
         x: 0
@@ -3586,14 +3586,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b3b3bea1b743864ca8b440d3c342b3f
-      internalID: 1220485748
+      spriteID: 31463f1772f3918479da145ef874b0f2
+      internalID: 274736084
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_153
+      name: armorAndWeapons_153
       rect:
         serializedVersion: 2
         x: 8
@@ -3608,14 +3608,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0572d7a5bb4a2104f8d6c6cc416ed74d
-      internalID: 1711318836
+      spriteID: d07a3d7941caa3a4192460a10a83bd74
+      internalID: 1057357768
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_154
+      name: armorAndWeapons_154
       rect:
         serializedVersion: 2
         x: 16
@@ -3630,14 +3630,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ade2943637a6d141bfecb596c45c109
-      internalID: -217761655
+      spriteID: 6fa49c5b72682e2448c4433a46eb3d43
+      internalID: 865775977
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_155
+      name: armorAndWeapons_155
       rect:
         serializedVersion: 2
         x: 24
@@ -3652,14 +3652,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae375386e502ee14b8423d2f7dc3392d
-      internalID: 1525977612
+      spriteID: 9c4d9ce2c6ecbb44a80dd6414fbc4964
+      internalID: 2071363511
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_156
+      name: armorAndWeapons_156
       rect:
         serializedVersion: 2
         x: 32
@@ -3674,14 +3674,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8781b761d8aa6748a13794ff559ceb3
-      internalID: 1425185484
+      spriteID: 6309b3bc10adc8e4f8eba59e5d1a7426
+      internalID: 1912134489
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_157
+      name: armorAndWeapons_157
       rect:
         serializedVersion: 2
         x: 40
@@ -3696,14 +3696,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c97f4e7bc4ad5014eb419763dc6be724
-      internalID: -932804149
+      spriteID: b853a3e9a424f784abce0799f5378e99
+      internalID: -970384096
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_158
+      name: armorAndWeapons_158
       rect:
         serializedVersion: 2
         x: 48
@@ -3718,14 +3718,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69a43e215523fa84aa6863a343195752
-      internalID: 1102451093
+      spriteID: 316d625b36adc404aa86bfc9924e7c2c
+      internalID: 1330382335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weaponsDownsized_159
+      name: armorAndWeapons_159
       rect:
         serializedVersion: 2
         x: 56
@@ -3740,8 +3740,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6eb26ede2f21b045a9695af356bd6a4
-      internalID: 1177517845
+      spriteID: 0ddddc405787fa54f9e36cbe2c382dcf
+      internalID: -436221596
       vertices: []
       indices: 
       edges: []
@@ -3762,166 +3762,166 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":8.0,"y":8.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      weaponsDownsized_0: -8282731600321491200
-      weaponsDownsized_1: -6639100972348689959
-      weaponsDownsized_10: -8081524645486302020
-      weaponsDownsized_100: -270877979
-      weaponsDownsized_101: 696853767
-      weaponsDownsized_102: -1138005078
-      weaponsDownsized_103: 1755776210
-      weaponsDownsized_104: 1887860153
-      weaponsDownsized_105: -433488668
-      weaponsDownsized_106: 1965537975
-      weaponsDownsized_107: 464292471
-      weaponsDownsized_108: 1508175851
-      weaponsDownsized_109: -1784836601
-      weaponsDownsized_11: -6192316822550977926
-      weaponsDownsized_110: -152521143
-      weaponsDownsized_111: 1579777846
-      weaponsDownsized_112: -479176570
-      weaponsDownsized_113: 995039730
-      weaponsDownsized_114: -1041829245
-      weaponsDownsized_115: 923134172
-      weaponsDownsized_116: 148425962
-      weaponsDownsized_117: 1262148698
-      weaponsDownsized_118: -394586911
-      weaponsDownsized_119: 2038720508
-      weaponsDownsized_12: -6352186115600159753
-      weaponsDownsized_120: -1709200432
-      weaponsDownsized_121: -837266055
-      weaponsDownsized_122: -1221530533
-      weaponsDownsized_123: 2054552739
-      weaponsDownsized_124: -213701799
-      weaponsDownsized_125: -1055472226
-      weaponsDownsized_126: 858284497
-      weaponsDownsized_127: 162684893
-      weaponsDownsized_128: -1748592599
-      weaponsDownsized_129: -155351120
-      weaponsDownsized_13: -6428563581721367974
-      weaponsDownsized_130: -130285134
-      weaponsDownsized_131: -1566796932
-      weaponsDownsized_132: 1175477083
-      weaponsDownsized_133: -248587384
-      weaponsDownsized_134: -778479830
-      weaponsDownsized_135: -1343635502
-      weaponsDownsized_136: -786302734
-      weaponsDownsized_137: -1397459837
-      weaponsDownsized_138: 1350621208
-      weaponsDownsized_139: -1978550707
-      weaponsDownsized_14: -4172044271108362078
-      weaponsDownsized_140: -1447089218
-      weaponsDownsized_141: 1115323908
-      weaponsDownsized_142: 858447804
-      weaponsDownsized_143: 133159000
-      weaponsDownsized_144: 1711326062
-      weaponsDownsized_145: -365994008
-      weaponsDownsized_146: -592086415
-      weaponsDownsized_147: -380560107
-      weaponsDownsized_148: -1496420719
-      weaponsDownsized_149: 709650158
-      weaponsDownsized_15: -2216889298604570473
-      weaponsDownsized_150: 2050279639
-      weaponsDownsized_151: 1977340068
-      weaponsDownsized_152: 1220485748
-      weaponsDownsized_153: 1711318836
-      weaponsDownsized_154: -217761655
-      weaponsDownsized_155: 1525977612
-      weaponsDownsized_156: 1425185484
-      weaponsDownsized_157: -932804149
-      weaponsDownsized_158: 1102451093
-      weaponsDownsized_159: 1177517845
-      weaponsDownsized_16: -5895668103275721326
-      weaponsDownsized_17: 8087717947409633888
-      weaponsDownsized_18: 533340966161531281
-      weaponsDownsized_19: -9193975543582041567
-      weaponsDownsized_2: 5830848401812391330
-      weaponsDownsized_20: -288574690571862137
-      weaponsDownsized_21: -4539599019907833089
-      weaponsDownsized_22: 3892932137502598778
-      weaponsDownsized_23: -2995558959751899246
-      weaponsDownsized_24: -7167437711771134352
-      weaponsDownsized_25: -485867822948307835
-      weaponsDownsized_26: -5195385193308461160
-      weaponsDownsized_27: -8503301305623041262
-      weaponsDownsized_28: 6114937748772915665
-      weaponsDownsized_29: -8460228289390877248
-      weaponsDownsized_3: -8892445878885642326
-      weaponsDownsized_30: -3861577371213871337
-      weaponsDownsized_31: 4444080158260321984
-      weaponsDownsized_32: 7979696323488061129
-      weaponsDownsized_33: -2795926424913513425
-      weaponsDownsized_34: 2911325610898517242
-      weaponsDownsized_35: 7864207035059800744
-      weaponsDownsized_36: 8084277082589661756
-      weaponsDownsized_37: 2423961823960656639
-      weaponsDownsized_38: 98631103952105426
-      weaponsDownsized_39: 2145334308
-      weaponsDownsized_4: -8170858308106538296
-      weaponsDownsized_40: 1096177601
-      weaponsDownsized_41: -143896102
-      weaponsDownsized_42: -440479037
-      weaponsDownsized_43: 1343342454
-      weaponsDownsized_44: -1579845568
-      weaponsDownsized_45: -1662968487
-      weaponsDownsized_46: 596688032
-      weaponsDownsized_47: -354902235
-      weaponsDownsized_48: 1530595077
-      weaponsDownsized_49: -190613837
-      weaponsDownsized_5: 3551711404407304277
-      weaponsDownsized_50: -1958740298
-      weaponsDownsized_51: -1621261526
-      weaponsDownsized_52: -1910469533
-      weaponsDownsized_53: 2108898942
-      weaponsDownsized_54: 1864644414
-      weaponsDownsized_55: -1504688406
-      weaponsDownsized_56: -1550908463
-      weaponsDownsized_57: 2116899612
-      weaponsDownsized_58: 767792659
-      weaponsDownsized_59: -400430354
-      weaponsDownsized_6: 5737837716649052349
-      weaponsDownsized_60: 5469671
-      weaponsDownsized_61: -1055169833
-      weaponsDownsized_62: 528065652
-      weaponsDownsized_63: 1570964160
-      weaponsDownsized_64: 2136993462
-      weaponsDownsized_65: -1333708139
-      weaponsDownsized_66: -1152117016
-      weaponsDownsized_67: -806677852
-      weaponsDownsized_68: 228760782
-      weaponsDownsized_69: -1476881635
-      weaponsDownsized_7: -3394132921264201208
-      weaponsDownsized_70: -927861448
-      weaponsDownsized_71: -1345954393
-      weaponsDownsized_72: -1704375677
-      weaponsDownsized_73: 334697606
-      weaponsDownsized_74: 1154962699
-      weaponsDownsized_75: -13884713
-      weaponsDownsized_76: 1098278480
-      weaponsDownsized_77: 868403016
-      weaponsDownsized_78: 1961207781
-      weaponsDownsized_79: -2076677603
-      weaponsDownsized_8: 7657290115244999510
-      weaponsDownsized_80: -154007578
-      weaponsDownsized_81: 453888168
-      weaponsDownsized_82: -257882138
-      weaponsDownsized_83: 1325595082
-      weaponsDownsized_84: 579935478
-      weaponsDownsized_85: 712265789
-      weaponsDownsized_86: 781846189
-      weaponsDownsized_87: -885046131
-      weaponsDownsized_88: -1302477558
-      weaponsDownsized_89: -1849317069
-      weaponsDownsized_9: 439669502499875688
-      weaponsDownsized_90: 1439330942
-      weaponsDownsized_91: -1938246573
-      weaponsDownsized_92: 1688666814
-      weaponsDownsized_93: -1291252852
-      weaponsDownsized_94: -760625070
-      weaponsDownsized_95: -84884628
-      weaponsDownsized_96: -617232674
-      weaponsDownsized_97: 924313979
-      weaponsDownsized_98: -796242941
-      weaponsDownsized_99: 288671262
+      armorAndWeapons_0: -838203647
+      armorAndWeapons_1: 1743667268
+      armorAndWeapons_10: 1911582477
+      armorAndWeapons_100: -1612200392
+      armorAndWeapons_101: 507001982
+      armorAndWeapons_102: 296296160
+      armorAndWeapons_103: 668197782
+      armorAndWeapons_104: -1367654380
+      armorAndWeapons_105: 1325124435
+      armorAndWeapons_106: 1578084913
+      armorAndWeapons_107: -1532408620
+      armorAndWeapons_108: 632322969
+      armorAndWeapons_109: -452931407
+      armorAndWeapons_11: -1462829521
+      armorAndWeapons_110: 106908563
+      armorAndWeapons_111: -1270786029
+      armorAndWeapons_112: -1282911167
+      armorAndWeapons_113: -871335543
+      armorAndWeapons_114: 1050757315
+      armorAndWeapons_115: -841500325
+      armorAndWeapons_116: 1590045331
+      armorAndWeapons_117: -871370007
+      armorAndWeapons_118: 216193785
+      armorAndWeapons_119: -1720373994
+      armorAndWeapons_12: -1103072974
+      armorAndWeapons_120: -502711803
+      armorAndWeapons_121: -1669271465
+      armorAndWeapons_122: -579949845
+      armorAndWeapons_123: -2040597452
+      armorAndWeapons_124: -2135778657
+      armorAndWeapons_125: -1119085968
+      armorAndWeapons_126: -1198340084
+      armorAndWeapons_127: -241143849
+      armorAndWeapons_128: 184436151
+      armorAndWeapons_129: -2022343628
+      armorAndWeapons_13: 152996647
+      armorAndWeapons_130: 1543659455
+      armorAndWeapons_131: 2005497596
+      armorAndWeapons_132: -814783878
+      armorAndWeapons_133: -1482504326
+      armorAndWeapons_134: -1150326300
+      armorAndWeapons_135: -46555917
+      armorAndWeapons_136: -1750277645
+      armorAndWeapons_137: -525079904
+      armorAndWeapons_138: 940964718
+      armorAndWeapons_139: 750454027
+      armorAndWeapons_14: 614907482
+      armorAndWeapons_140: 586290707
+      armorAndWeapons_141: 1292037217
+      armorAndWeapons_142: -1259542061
+      armorAndWeapons_143: -542059542
+      armorAndWeapons_144: 959526242
+      armorAndWeapons_145: 1067547365
+      armorAndWeapons_146: 1555633494
+      armorAndWeapons_147: 1259780805
+      armorAndWeapons_148: -1868832993
+      armorAndWeapons_149: -651439943
+      armorAndWeapons_15: 962076189
+      armorAndWeapons_150: -2098281256
+      armorAndWeapons_151: 382952818
+      armorAndWeapons_152: 274736084
+      armorAndWeapons_153: 1057357768
+      armorAndWeapons_154: 865775977
+      armorAndWeapons_155: 2071363511
+      armorAndWeapons_156: 1912134489
+      armorAndWeapons_157: -970384096
+      armorAndWeapons_158: 1330382335
+      armorAndWeapons_159: -436221596
+      armorAndWeapons_16: 1265577819
+      armorAndWeapons_17: 2071282526
+      armorAndWeapons_18: -419010156
+      armorAndWeapons_19: -1897815920
+      armorAndWeapons_2: -1572016739
+      armorAndWeapons_20: 1562615517
+      armorAndWeapons_21: -1045398746
+      armorAndWeapons_22: -542285
+      armorAndWeapons_23: 27135524
+      armorAndWeapons_24: 692933082
+      armorAndWeapons_25: 337010890
+      armorAndWeapons_26: 1862784362
+      armorAndWeapons_27: 830298194
+      armorAndWeapons_28: -112554428
+      armorAndWeapons_29: -504770972
+      armorAndWeapons_3: -372214805
+      armorAndWeapons_30: 1724908398
+      armorAndWeapons_31: -1320885908
+      armorAndWeapons_32: -1944073657
+      armorAndWeapons_33: -1088414094
+      armorAndWeapons_34: 847924428
+      armorAndWeapons_35: -813002318
+      armorAndWeapons_36: -2073601167
+      armorAndWeapons_37: 659102941
+      armorAndWeapons_38: 662243969
+      armorAndWeapons_39: -1124217744
+      armorAndWeapons_4: -42170425
+      armorAndWeapons_40: 1655230301
+      armorAndWeapons_41: -1328076594
+      armorAndWeapons_42: -2067604057
+      armorAndWeapons_43: -637181519
+      armorAndWeapons_44: 302613475
+      armorAndWeapons_45: -1745386037
+      armorAndWeapons_46: 1271263604
+      armorAndWeapons_47: -1815066305
+      armorAndWeapons_48: -25938262
+      armorAndWeapons_49: -2143181055
+      armorAndWeapons_5: -324527126
+      armorAndWeapons_50: 755918905
+      armorAndWeapons_51: -436898173
+      armorAndWeapons_52: -1056257187
+      armorAndWeapons_53: 248671263
+      armorAndWeapons_54: -801190622
+      armorAndWeapons_55: -505129630
+      armorAndWeapons_56: -1563320819
+      armorAndWeapons_57: -67068488
+      armorAndWeapons_58: 1662770723
+      armorAndWeapons_59: -626107675
+      armorAndWeapons_6: -1143691182
+      armorAndWeapons_60: -1317233116
+      armorAndWeapons_61: 1439133247
+      armorAndWeapons_62: 1644874602
+      armorAndWeapons_63: -1119988376
+      armorAndWeapons_64: -2061376141
+      armorAndWeapons_65: 1796477989
+      armorAndWeapons_66: -337125963
+      armorAndWeapons_67: 1778992429
+      armorAndWeapons_68: -1047840758
+      armorAndWeapons_69: 244247835
+      armorAndWeapons_7: 1486844973
+      armorAndWeapons_70: -486371235
+      armorAndWeapons_71: -1229072843
+      armorAndWeapons_72: -1121448085
+      armorAndWeapons_73: -2090217828
+      armorAndWeapons_74: 787010419
+      armorAndWeapons_75: -1493804912
+      armorAndWeapons_76: -1182826391
+      armorAndWeapons_77: -803367584
+      armorAndWeapons_78: 434714148
+      armorAndWeapons_79: -1415339431
+      armorAndWeapons_8: 1839526622
+      armorAndWeapons_80: 1578329977
+      armorAndWeapons_81: 1679722874
+      armorAndWeapons_82: -565113074
+      armorAndWeapons_83: -1859334781
+      armorAndWeapons_84: 1821360936
+      armorAndWeapons_85: 1986810236
+      armorAndWeapons_86: -2134922161
+      armorAndWeapons_87: 1346144738
+      armorAndWeapons_88: 972457587
+      armorAndWeapons_89: -1582464004
+      armorAndWeapons_9: -1832299110
+      armorAndWeapons_90: 518880150
+      armorAndWeapons_91: -569692592
+      armorAndWeapons_92: -25383949
+      armorAndWeapons_93: -1788701246
+      armorAndWeapons_94: -1072851772
+      armorAndWeapons_95: 1224329579
+      armorAndWeapons_96: 649493584
+      armorAndWeapons_97: -142845144
+      armorAndWeapons_98: 641417668
+      armorAndWeapons_99: 1973123264
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

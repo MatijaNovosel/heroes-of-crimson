@@ -39,5 +39,7 @@ namespace HeroesOfCrimson.Utils
        Armored = 9,
        Invincible = 10,
     }
+    
+    public enum SlotTag { None, Weapon, Ability, Armor, Accessory }
   }
 }

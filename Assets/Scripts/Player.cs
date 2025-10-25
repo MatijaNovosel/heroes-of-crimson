@@ -5,6 +5,7 @@ using UnityEngine;
 using HeroesOfCrimson.Utils;
 using Models;
 using Unity.Burst.CompilerServices;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(BaseNPCBehaviour))]
@@ -191,21 +192,34 @@ public class Player : MonoBehaviour
       transform.Translate(moveX.x * speed, 0, 0);
     }
   }
-
   private void HandleShooting()
   {
+    bool pointerOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+
+    if (pointerOverUI)
+    {
+      if (isShooting)
+      {
+        isShooting = false;
+        animator.SetBool("Shooting", false);
+      }
+      return;
+    }
+
+    if (Input.GetMouseButtonUp(0))
+    {
+      isShooting = false;
+      animator.SetBool("Shooting", false);
+      return;
+    }
+
     if (Input.GetMouseButton(0) && CanFire())
     {
       isShooting = true;
-      animator.SetBool("Shooting", isShooting);
+      animator.SetBool("Shooting", true);
       animator.SetTrigger("Shoot");
       Fire();
     }
-
-    if (!Input.GetMouseButtonUp(0)) return;
-    
-    isShooting = false;
-    animator.SetBool("Shooting", isShooting);
   }
 
   private void HandleAbilityCooldown()
