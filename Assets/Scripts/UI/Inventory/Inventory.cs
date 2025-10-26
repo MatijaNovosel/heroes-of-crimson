@@ -1,70 +1,81 @@
+using HeroesOfCrimson.Utils;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour
+namespace UI.Inventory
 {
-    public static Inventory Singleton;
-    [SerializeField] private InventorySlot[] inventorySlots;
-    [SerializeField] public Transform draggablesTransform;
-    [SerializeField] private InventoryItem itemPrefab;
-
-    private void Awake()
+    public class Inventory : MonoBehaviour
     {
-        Singleton = this;
-    }
+        public static Inventory Singleton;
+        [SerializeField] private InventorySlot[] inventorySlots;
+        [SerializeField] public Transform draggablesTransform;
+        [SerializeField] private InventoryItem itemPrefab;
 
-    private void Start()
-    {
-        var sprites = Resources.LoadAll<Sprite>("Sprites/Items/armorAndWeapons");
-        var consumables = Resources.LoadAll<Sprite>("Sprites/Items/consumables");
+        private Sprite[] _armorAndWeaponSprites;
+        private Sprite[] _consumablesSprites;
 
-        if (name == "Hotbar")
+        private void Awake()
         {
-            var weaponItem = ScriptableObject.CreateInstance<Item>();
-            var armorItem = ScriptableObject.CreateInstance<Item>();
-            var ringItem = ScriptableObject.CreateInstance<Item>();
-
-            weaponItem.sprite = sprites[117];
-            armorItem.sprite = sprites[27];
-            ringItem.sprite = sprites[127];
-
-            SpawnItem(weaponItem, 0);
-            SpawnItem(armorItem, 2);
-            SpawnItem(ringItem, 3);
-        }
-        else
-        {
-            var item1 = ScriptableObject.CreateInstance<Item>();
-            var item2 = ScriptableObject.CreateInstance<Item>();
-            var item3 = ScriptableObject.CreateInstance<Item>();
-
-            item1.sprite = consumables[0];
-            item2.sprite = consumables[1];
-            item3.sprite = consumables[2];
-
-            SpawnItem(item1);
-            SpawnItem(item2);
-            SpawnItem(item3);
-        }
-    }
-
-    private void SpawnItem(Item item = null, int? index = null)
-    {
-        if (index != null)
-        {
-            var slot = inventorySlots[(int)index];
-            if (slot.CurrentItem) return;
-
-            var newItem = Instantiate(itemPrefab, slot.transform);
-            newItem.Initialize(item, slot);
-            return;
+            _armorAndWeaponSprites = Resources.LoadAll<Sprite>("Sprites/Items/armorAndWeapons");
+            _consumablesSprites = Resources.LoadAll<Sprite>("Sprites/Items/consumables");
+            Singleton = this;
         }
 
-        foreach (var slot in inventorySlots)
+        private void Start()
         {
-            if (slot.CurrentItem != null) continue;
-            var newItem = Instantiate(itemPrefab, slot.transform);
-            newItem.Initialize(item, slot);
-            break;
+            if (name == "Hotbar")
+            {
+                var weaponItem = ScriptableObject.CreateInstance<Item>();
+                var armorItem = ScriptableObject.CreateInstance<Item>();
+                var ringItem = ScriptableObject.CreateInstance<Item>();
+
+                weaponItem.sprite = _armorAndWeaponSprites[117];
+                weaponItem.id = Utils.RandInt(1, 9999);
+                armorItem.sprite = _armorAndWeaponSprites[27];
+                armorItem.id = Utils.RandInt(1, 9999);
+                ringItem.sprite = _armorAndWeaponSprites[127];
+                ringItem.id = Utils.RandInt(1, 9999);
+
+                SpawnItem(weaponItem, 0);
+                SpawnItem(armorItem, 2);
+                SpawnItem(ringItem, 3);
+            }
+            else
+            {
+                var item1 = ScriptableObject.CreateInstance<Item>();
+                var item2 = ScriptableObject.CreateInstance<Item>();
+                var item3 = ScriptableObject.CreateInstance<Item>();
+
+                item1.sprite = _consumablesSprites[0];
+                item1.id = Utils.RandInt(1, 9999);
+                item2.sprite = _consumablesSprites[1];
+                item2.id = Utils.RandInt(1, 9999);
+                item3.sprite = _consumablesSprites[2];
+                item3.id = Utils.RandInt(1, 9999);
+
+                SpawnItem(item1);
+                SpawnItem(item2);
+                SpawnItem(item3);
+            }
+        }
+
+        private void SpawnItem(Item item = null, int? index = null)
+        {
+            if (index != null)
+            {
+                var slot = inventorySlots[(int)index];
+                if (slot.CurrentInventoryItem) return;
+                var newItem = Instantiate(itemPrefab, slot.transform);
+                newItem.Initialize(item, slot);
+                return;
+            }
+
+            foreach (var slot in inventorySlots)
+            {
+                if (slot.CurrentInventoryItem != null) continue;
+                var newItem = Instantiate(itemPrefab, slot.transform);
+                newItem.Initialize(item, slot);
+                break;
+            }
         }
     }
 }

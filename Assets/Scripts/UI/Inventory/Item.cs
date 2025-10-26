@@ -1,10 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+using HeroesOfCrimson.Utils;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Scriptable Objects/Item")]
-public class Item : ScriptableObject
+namespace UI.Inventory
 {
-    public Sprite sprite;
-    public SlotTag tag;
+    [CreateAssetMenu(menuName = "Scriptable Objects/Item")]
+    public class Item : ScriptableObject
+    {
+        // Meta data
+        public int id;
+        public Constants.SlotTag tag;
+        public Sprite sprite;
+        public string name;
+        public string description;
+    
+        // Projectile info
+        public int minDamage;
+        public int maxDamage;
+        public int projectileCount;
+    }
 }

@@ -2,48 +2,51 @@ using HeroesOfCrimson.Utils;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+namespace UI.Inventory
 {
-    public InventoryItem CurrentItem { get; set; }
-    public Constants.SlotTag Tag;
-
-    public void OnDrop(PointerEventData eventData)
+    public class InventorySlot : MonoBehaviour, IDropHandler
     {
-        var droppedItem = eventData.pointerDrag?.GetComponent<InventoryItem>();
-        if (droppedItem == null) return;
+        public InventoryItem CurrentInventoryItem { get; set; }
+        public Constants.SlotTag Tag;
 
-        if (Tag != Constants.SlotTag.None && droppedItem.CurrentItem.tag != Tag)
+        public void OnDrop(PointerEventData eventData)
         {
-            return;
-        }
+            var droppedItem = eventData.pointerDrag?.GetComponent<InventoryItem>();
+            if (!droppedItem) return;
 
-        var fromSlot = droppedItem.ActiveSlot;
-        var toSlot = this;
+            if (Tag != Constants.SlotTag.None && droppedItem.ItemInSlot.tag != Tag)
+            {
+                return;
+            }
 
-        if (toSlot.CurrentItem == null)
-        {
-            MoveItem(droppedItem, toSlot);
-            return;
-        }
+            var fromSlot = droppedItem.ActiveSlot;
+            var toSlot = this;
 
-        if (toSlot.CurrentItem == null || toSlot.CurrentItem == droppedItem) return;
+            if (!toSlot.CurrentInventoryItem)
+            {
+                MoveItem(droppedItem, toSlot);
+                return;
+            }
+
+            if (toSlot.CurrentInventoryItem.ItemInSlot.id == droppedItem.ItemInSlot.id) return;
         
-        var otherItem = toSlot.CurrentItem;
-        MoveItem(otherItem, fromSlot);
-        MoveItem(droppedItem, toSlot);
-    }
-
-    private void MoveItem(InventoryItem item, InventorySlot targetSlot)
-    {
-        if (item.ActiveSlot != null)
-        {
-            item.ActiveSlot.CurrentItem = null;
+            var otherItem = toSlot.CurrentInventoryItem;
+            MoveItem(otherItem, fromSlot);
+            MoveItem(droppedItem, toSlot);
         }
 
-        targetSlot.CurrentItem = item;
-        item.ActiveSlot = targetSlot;
+        private static void MoveItem(InventoryItem item, InventorySlot targetSlot)
+        {
+            if (item.ActiveSlot)
+            {
+                item.ActiveSlot.CurrentInventoryItem = null;
+            }
 
-        item.transform.SetParent(targetSlot.transform, false);
-        ((RectTransform)item.transform).anchoredPosition = Vector2.zero;
+            targetSlot.CurrentInventoryItem = item;
+            item.ActiveSlot = targetSlot;
+
+            item.transform.SetParent(targetSlot.transform, false);
+            ((RectTransform)item.transform).anchoredPosition = Vector2.zero;
+        }
     }
 }
