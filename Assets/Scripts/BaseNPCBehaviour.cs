@@ -15,12 +15,13 @@ public class BaseNPCBehaviour : MonoBehaviour
   
   public float spd = 30;
   public float att = 30;
-  public float def = 10;
+  public float def = 0;
   public float vit = 30;
   public float wis = 30;
+  public float dex = 30;
   
   public bool invincible = false;
-  public List<Constants.StatusEffects> statusEffects = new () { Constants.StatusEffects.Poisoned, Constants.StatusEffects.Bleeding };
+  public List<Constants.StatusEffects> statusEffects = new () { Constants.StatusEffects.ArmorBroken, Constants.StatusEffects.Bleeding };
 
   // Immunity
   private const float ImmuneTime = 1.0f;

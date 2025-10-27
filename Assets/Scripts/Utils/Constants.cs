@@ -26,6 +26,16 @@ namespace HeroesOfCrimson.Utils
       BulletCollision = 5,
     }
     
+    public enum Stats
+    {
+      ATT = 1,
+      DEF = 2,
+      WIS = 3,
+      VIT = 4,
+      DEX = 5,
+      SPD = 6
+    }
+    
     public enum StatusEffects
     {
        Speedy = 1,
