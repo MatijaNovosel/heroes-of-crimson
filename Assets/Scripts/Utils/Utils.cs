@@ -38,10 +38,10 @@ namespace HeroesOfCrimson.Utils
 
     public static float CalculatePlayerMovementSpeed(float SPD)
     {
-      SPD = Mathf.Clamp(SPD, 1f, 100f);
+      var spd = Mathf.Clamp(SPD, 1f, 100f);
       const float minSpeed = 0.05f;
       const float maxSpeed = 0.25f;
-      return Mathf.Lerp(minSpeed, maxSpeed, (SPD - 1f) / 99f);
+      return Mathf.Lerp(minSpeed, maxSpeed, (spd - 1f) / 99f);
     }
   }
 }
