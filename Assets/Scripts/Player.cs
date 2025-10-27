@@ -21,12 +21,13 @@ public class Player : MonoBehaviour
   private const float AbilityDelay = 1;
   private float abilityCooldownTimer = 0;
   private bool isShooting = false;
+  
+  public AudioClip shootSound;
 
   // Components
   public GameObject Projectile;
   public Image abilityImage;
   public Animator animator;
-  public PlayerHealthBar playerHealthBar;
   private BoxCollider2D _boxCollider;
   private AnimatorOverrideController _animatorOverrideController;
   private BaseNPCBehaviour _baseNpcBehaviour;
@@ -107,6 +108,8 @@ public class Player : MonoBehaviour
         projectilePosY += 0.6f;
         break;
     }
+    
+    AudioSource.PlayClipAtPoint(shootSound, transform.position, 1.5f);
     
     var proj = Instantiate(
       Projectile,

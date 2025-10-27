@@ -1,0 +1,34 @@
+﻿{
+  "items": [
+    {
+      "id": 1,
+      "name": "Red staff",
+      "description": "A basic staff.",
+      "tag": 2,
+      "spritePath": "armorAndWeapons_112",
+      "minDamage": 30,
+      "maxDamage": 80,
+      "projectileCount": 1
+    },
+    {
+      "id": 2,
+      "name": "Orange staff",
+      "description": "A cool orange staff.",
+      "tag": 2,
+      "spritePath": "armorAndWeapons_118",
+      "minDamage": 30,
+      "maxDamage": 80,
+      "projectileCount": 2
+    },
+    {
+      "id": 3,
+      "name": "Crossbow",
+      "description": "A wooden crossbow.",
+      "tag": 2,
+      "spritePath": "armorAndWeapons_82",
+      "minDamage": 30,
+      "maxDamage": 80,
+      "projectileCount": 1
+    }
+  ]
+}

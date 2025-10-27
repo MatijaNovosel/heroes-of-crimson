@@ -57,11 +57,16 @@ namespace UI.Inventory
         public void OnDrop(PointerEventData eventData)
         {
             var droppedItem = eventData.pointerDrag?.GetComponent<InventoryItem>();
-            if (!droppedItem) return;
+            if (!droppedItem)
+            {
+                Inventory.Singleton.HandleInvalidAction();
+                return;
+            }
 
             // Do not mismatch tags - look @ Slot tag enum
             if (Tag != Constants.SlotTag.None && droppedItem.ItemInSlot.tag != Tag)
             {
+                Inventory.Singleton.HandleInvalidAction();
                 return;
             }
             
@@ -77,6 +82,8 @@ namespace UI.Inventory
             {
                 toSlot.ChangeImage(true);
             }
+            
+            AudioManager.Singleton.PlaySound(Inventory.Singleton.moveSound);
 
             if (!toSlot.CurrentInventoryItem)
             {
@@ -85,8 +92,12 @@ namespace UI.Inventory
             }
         
             var otherItem = toSlot.CurrentInventoryItem;
-            
-            if (toSlot.CurrentInventoryItem.ItemInSlot.id == droppedItem.ItemInSlot.id) return;
+
+            if (toSlot.CurrentInventoryItem.ItemInSlot.id == droppedItem.ItemInSlot.id)
+            {
+                Inventory.Singleton.HandleInvalidAction();
+                return;
+            }
             
             MoveItem(otherItem, fromSlot);
             MoveItem(droppedItem, toSlot);

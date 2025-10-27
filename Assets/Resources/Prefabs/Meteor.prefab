@@ -104,8 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcf7992695b6a549ab3ab78b356fa4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  Projectile: {fileID: 5144726427392865407, guid: 4e01153d9ce6d134ba19d3164d6be11d, type: 3}
   animationClip: {fileID: 7400000, guid: b9967c1f07e65c94a87dcadc0bc8cebe, type: 2}
+  audioClip: {fileID: 8300000, guid: 0357f51bbaa1a6d4c990028f42e586c2, type: 3}
 --- !u!95 &9190779053475919803
 Animator:
   serializedVersion: 7

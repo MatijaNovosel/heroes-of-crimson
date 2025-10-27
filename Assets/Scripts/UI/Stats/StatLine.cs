@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class StatLine : MonoBehaviour
 {
-    public GameObject statLineLabel;
     public GameObject statLineText;
     public Player player;
     public Constants.Stats stat;

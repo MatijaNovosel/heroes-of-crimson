@@ -7,7 +7,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
   public FloatingTextManager floatingTextManager;
-  public DatabaseManager databaseManager;
   public static GameManager instance;
   private Sprite[] projectileSprites;
 
