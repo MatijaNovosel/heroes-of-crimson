@@ -29,6 +29,16 @@
       "minDamage": 30,
       "maxDamage": 80,
       "projectileCount": 1
+    },
+    {
+      "id": 4,
+      "name": "Ring",
+      "description": "A shiny ring.",
+      "tag": 5,
+      "spritePath": "armorAndWeapons_158",
+      "minDamage": 0,
+      "maxDamage": 0,
+      "projectileCount": 0
     }
   ]
 }

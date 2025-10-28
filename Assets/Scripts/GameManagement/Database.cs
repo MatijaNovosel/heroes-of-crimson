@@ -12,10 +12,6 @@ public class Database : MonoBehaviour
   private void Awake()
   {
     Singleton = this;
-  }
-
-  private void Start()
-  {
     _armorAndWeaponSprites = Resources.LoadAll<Sprite>("Sprites/Items/armorAndWeapons");
     _loadItems();
   }

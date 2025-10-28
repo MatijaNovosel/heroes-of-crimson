@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cd2ca78b5cd9b084d8a0e2c456031e09
+guid: d4200ffe3a8b1d34cb4df90b9932ed0f
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Pixeled
+  - Pixelify Sans
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

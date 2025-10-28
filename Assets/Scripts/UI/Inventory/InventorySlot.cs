@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace UI.Inventory
 {
-    public class InventorySlot : MonoBehaviour, IDropHandler
+    public class InventorySlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
     {
         public InventoryItem CurrentInventoryItem { get; set; }
         public bool IsHotbar;
@@ -22,6 +22,23 @@ namespace UI.Inventory
         private void SetImage(Sprite sprite)
         {
             _image.sprite = sprite;
+        }
+        
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (CurrentInventoryItem && CurrentInventoryItem.ItemInSlot)
+            {
+                TooltipManager.Singleton.SetInfo(
+                    CurrentInventoryItem.ItemInSlot.name,
+                    CurrentInventoryItem.ItemInSlot.description
+                );
+                TooltipManager.Singleton.Show();
+            }
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            TooltipManager.Singleton.Hide();
         }
 
         public void ChangeImage(bool shouldRevertToDefault = false)
@@ -59,7 +76,6 @@ namespace UI.Inventory
             var droppedItem = eventData.pointerDrag?.GetComponent<InventoryItem>();
             if (!droppedItem)
             {
-                Inventory.Singleton.HandleInvalidAction();
                 return;
             }
 

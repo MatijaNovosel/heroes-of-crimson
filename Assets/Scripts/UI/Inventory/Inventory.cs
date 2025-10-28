@@ -35,12 +35,10 @@ namespace UI.Inventory
             }
             else
             {
-                var item1 = Database.Singleton.GetItem(1);
-                SpawnItem(item1);
-                var item2 = Database.Singleton.GetItem(2);
-                SpawnItem(item2);
-                var item3 = Database.Singleton.GetItem(3);
-                SpawnItem(item3);
+                SpawnItem(Database.Singleton.GetItem(1));
+                SpawnItem(Database.Singleton.GetItem(2));
+                SpawnItem(Database.Singleton.GetItem(3));
+                SpawnItem(Database.Singleton.GetItem(4));
             }
         }
 
