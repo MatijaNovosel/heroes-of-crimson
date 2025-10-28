@@ -30,7 +30,9 @@ namespace UI.Inventory
             {
                 TooltipManager.Singleton.SetInfo(
                     CurrentInventoryItem.ItemInSlot.name,
-                    CurrentInventoryItem.ItemInSlot.description
+                    CurrentInventoryItem.ItemInSlot.description,
+                    CurrentInventoryItem.ItemInSlot.tag,
+                    CurrentInventoryItem.ItemInSlot.rarity
                 );
                 TooltipManager.Singleton.Show();
             }

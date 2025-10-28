@@ -8,7 +8,8 @@
       "spritePath": "armorAndWeapons_112",
       "minDamage": 30,
       "maxDamage": 80,
-      "projectileCount": 1
+      "projectileCount": 1,
+      "rarity": 1
     },
     {
       "id": 2,
@@ -18,27 +19,30 @@
       "spritePath": "armorAndWeapons_118",
       "minDamage": 30,
       "maxDamage": 80,
-      "projectileCount": 2
+      "projectileCount": 2,
+      "rarity": 2
     },
     {
       "id": 3,
-      "name": "Crossbow",
-      "description": "A wooden crossbow.",
+      "name": "Crossbow with a long ass name. A LONG ASS NAME. A REALLY LONG ASS NAME.",
+      "description": "A wooden crossbow. With a long description. With a long description. With a long description. With a long description. With a long description. With a long description. With a long description. With a long description.",
       "tag": 2,
       "spritePath": "armorAndWeapons_82",
       "minDamage": 30,
       "maxDamage": 80,
-      "projectileCount": 1
+      "projectileCount": 1,
+      "rarity": 3
     },
     {
       "id": 4,
       "name": "Ring",
-      "description": "A shiny ring.",
+      "description": "A shiny ring. A shiny ring. A shiny ring. A shiny ring. A shiny ring. A shiny ring. A shiny ring. A shiny ring.",
       "tag": 5,
       "spritePath": "armorAndWeapons_158",
       "minDamage": 0,
       "maxDamage": 0,
-      "projectileCount": 0
+      "projectileCount": 0,
+      "rarity": 4
     }
   ]
 }

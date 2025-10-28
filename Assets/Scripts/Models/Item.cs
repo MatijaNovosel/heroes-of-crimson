@@ -7,6 +7,7 @@ namespace Models
     {
         // Meta data
         public int id;
+        public Constants.ItemRarity rarity;
         public string name;
         public string description;
         public Constants.SlotTag tag;

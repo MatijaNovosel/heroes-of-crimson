@@ -51,5 +51,7 @@ namespace HeroesOfCrimson.Utils
     }
     
     public enum SlotTag { None = 1, Weapon = 2, Ability = 3, Armor = 4, Accessory = 5 }
+    
+    public enum ItemRarity { Common = 1, Uncommon = 2, Rare = 3, Epic = 4, Legendary = 5 }
   }
 }

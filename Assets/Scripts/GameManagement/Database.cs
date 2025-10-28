@@ -32,6 +32,7 @@ public class Database : MonoBehaviour
     item.minDamage = databaseItem.minDamage;
     item.maxDamage = databaseItem.maxDamage;
     item.tag = (Constants.SlotTag)databaseItem.tag;
+    item.rarity = (Constants.ItemRarity)databaseItem.rarity;
     item.projectileCount = databaseItem.projectileCount;
     
     return item;
