@@ -32,7 +32,9 @@ namespace UI.Inventory
                     CurrentInventoryItem.ItemInSlot.name,
                     CurrentInventoryItem.ItemInSlot.description,
                     CurrentInventoryItem.ItemInSlot.tag,
-                    CurrentInventoryItem.ItemInSlot.rarity
+                    CurrentInventoryItem.ItemInSlot.rarity,
+                    CurrentInventoryItem.ItemInSlot.minDamage,
+                    CurrentInventoryItem.ItemInSlot.maxDamage
                 );
                 TooltipManager.Singleton.Show();
             }

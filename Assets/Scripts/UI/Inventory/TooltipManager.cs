@@ -8,11 +8,15 @@ using UnityEngine.UI;
 public class TooltipManager : MonoBehaviour
 {
     public Canvas ParentCanvas;
-    public Transform TooltipTransform;
+    public RectTransform TooltipTransform;
+    public RectTransform TooltipBg;
     public static TooltipManager Singleton;
     public TMP_Text TitleText;
     public TMP_Text DescriptionText;
     public TMP_Text TypeText;
+    public TMP_Text TooltipDamageMin;
+    public TMP_Text TooltipDamageMax;
+    public Divider DividerWeapons;
     public Image TooltipRarityImg;
     
     void Start()
@@ -20,11 +24,35 @@ public class TooltipManager : MonoBehaviour
         Singleton = this;
     }
 
-    public void SetInfo(string title, string description, Constants.SlotTag tag, Constants.ItemRarity rarity)
+    public void SetInfo(
+        string title,
+        string description,
+        Constants.SlotTag tag,
+        Constants.ItemRarity rarity,
+        int minDamage,
+        int maxDamage
+    )
     {
         TitleText.text = title;
         DescriptionText.text = description;
         TypeText.text = tag.ToString();
+        
+        TooltipDamageMax.text = $"Damage (min): {minDamage}";
+        TooltipDamageMin.text = $"Damage (max): {maxDamage}";
+
+        if (tag == Constants.SlotTag.Weapon)
+        {
+            TooltipDamageMin.enabled = true;
+            TooltipDamageMax.enabled = true;
+            DividerWeapons.gameObject.SetActive(true);
+        }
+        else
+        {
+            TooltipDamageMin.enabled = false;
+            TooltipDamageMax.enabled = false;
+            DividerWeapons.gameObject.SetActive(false);
+        }
+            
         TooltipRarityImg.color = rarity switch
         {
             Constants.ItemRarity.Common => Color.white,
@@ -39,13 +67,19 @@ public class TooltipManager : MonoBehaviour
     void Update()
     {
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            ParentCanvas.transform as RectTransform, 
-            Input.mousePosition, 
-            ParentCanvas.worldCamera, 
+            ParentCanvas.transform as RectTransform,
+            Input.mousePosition,
+            ParentCanvas.worldCamera,
             out var mousePosition
         );
-        TooltipTransform.position = ParentCanvas.transform.TransformPoint(mousePosition);
+
+        var tooltipHeight = TooltipBg.rect.height;
+        var offset = new Vector2(0, tooltipHeight / 2);
+        var transformPoint = ParentCanvas.transform.TransformPoint(mousePosition + offset);
+        
+        TooltipTransform.position = transformPoint;
     }
+
 
     public void Show()
     {
