@@ -12,15 +12,20 @@ using UnityEngine.UI;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Player : MonoBehaviour
 {
-  private Vector3 moveDelta;
-  private RaycastHit2D hit;
+  private static readonly int Shooting = Animator.StringToHash("Shooting");
+  private static readonly int Shoot = Animator.StringToHash("Shoot");
+  private static readonly int IdleState = Animator.StringToHash("IdleState");
+  private static readonly int MouseDir = Animator.StringToHash("MouseDir");
+
+  private Vector3 _moveDelta;
+  private RaycastHit2D _hit;
 
   private float _lastFired;
   private float _abilityUsedLast;
   private const float FiringDelay = 0.3f;
   private const float AbilityDelay = 1;
-  private float abilityCooldownTimer = 0;
-  private bool isShooting = false;
+  private float _abilityCooldownTimer = 0;
+  private bool _isShooting = false;
   
   public AudioClip shootSound;
 
@@ -65,28 +70,28 @@ public class Player : MonoBehaviour
     {
       case < 135 and > 45:
         // Up
-        animator.SetFloat("MouseDir", (int)Constants.ShootingMouseDirs.UP);
-        animator.SetFloat("IdleState", 1);
+        animator.SetFloat(MouseDir, (int)Constants.ShootingMouseDirs.UP);
+        animator.SetFloat(IdleState, 1);
         break;
       case > -45 and < 45:
         // Right
         shootingDirection =  Constants.ShootingDirections.RIGHT;
-        animator.SetFloat("IdleState", 0);
+        animator.SetFloat(IdleState, 0);
         transform.localScale = Vector3.one;
-        animator.SetFloat("MouseDir", (int)Constants.ShootingMouseDirs.HORIZONTAL);
+        animator.SetFloat(MouseDir, (int)Constants.ShootingMouseDirs.HORIZONTAL);
         break;
       case > 135 and < 180 or > -180 and < -135:
         // Left
         shootingDirection =  Constants.ShootingDirections.LEFT;
-        animator.SetFloat("IdleState", 0);
+        animator.SetFloat(IdleState, 0);
         transform.localScale = new Vector3(-1, 1, 1);
-        animator.SetFloat("MouseDir", (int)Constants.ShootingMouseDirs.HORIZONTAL);
+        animator.SetFloat(MouseDir, (int)Constants.ShootingMouseDirs.HORIZONTAL);
         break;
       default:
         // Down
         shootingDirection =  Constants.ShootingDirections.DOWN;
-        animator.SetFloat("IdleState", 2);
-        animator.SetFloat("MouseDir", (int)Constants.ShootingMouseDirs.DOWN);
+        animator.SetFloat(IdleState, 2);
+        animator.SetFloat(MouseDir, (int)Constants.ShootingMouseDirs.DOWN);
         break;
     }
 
@@ -135,33 +140,33 @@ public class Player : MonoBehaviour
   {
     var x = Input.GetAxisRaw("Horizontal");
     var y = Input.GetAxisRaw("Vertical");
-    moveDelta = new Vector3(x, y, 0);
+    _moveDelta = new Vector3(x, y, 0);
 
     animator.SetFloat("Horizontal", x);
     animator.SetFloat("Vertical", y);
-    animator.SetFloat("Speed", moveDelta.sqrMagnitude);
+    animator.SetFloat("Speed", _moveDelta.sqrMagnitude);
 
-    if (!isShooting)
+    if (!_isShooting)
     {
       if (Input.GetKey(KeyCode.W))
       {
-        animator.SetFloat("IdleState", 1);
+        animator.SetFloat(IdleState, 1);
       }
 
       if (Input.GetKey(KeyCode.S))
       {
-        animator.SetFloat("IdleState", 2);
+        animator.SetFloat(IdleState, 2);
       }
 
       if (Input.GetKey(KeyCode.A))
       {
-        animator.SetFloat("IdleState", 0);
+        animator.SetFloat(IdleState, 0);
         transform.localScale = new Vector3(-1, 1, 1);
       }
 
       if (Input.GetKey(KeyCode.D))
       {
-        animator.SetFloat("IdleState", 0);
+        animator.SetFloat(IdleState, 0);
         transform.localScale = Vector3.one;
       }
     }
@@ -169,7 +174,7 @@ public class Player : MonoBehaviour
     var speed = Utils.CalculatePlayerMovementSpeed(_baseNpcBehaviour.spd);
     LayerMask mask = LayerMask.GetMask("Actor", "Blocking", "NPC");
 
-    var moveY = new Vector2(0, moveDelta.y);
+    var moveY = new Vector2(0, _moveDelta.y);
     
     if (!Physics2D.BoxCast(
       transform.position,
@@ -182,7 +187,7 @@ public class Player : MonoBehaviour
       transform.Translate(0, moveY.y * speed, 0);
     }
 
-    var moveX = new Vector2(moveDelta.x, 0);
+    var moveX = new Vector2(_moveDelta.x, 0);
     
     if (!Physics2D.BoxCast(
       transform.position,
@@ -197,45 +202,45 @@ public class Player : MonoBehaviour
   }
   private void HandleShooting()
   {
-    bool pointerOverUI = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+    var pointerOverUI = EventSystem.current && EventSystem.current.IsPointerOverGameObject();
 
     if (pointerOverUI)
     {
-      if (isShooting)
+      if (_isShooting)
       {
-        isShooting = false;
-        animator.SetBool("Shooting", false);
+        _isShooting = false;
+        animator.SetBool(Shooting, false);
       }
       return;
     }
 
     if (Input.GetMouseButtonUp(0))
     {
-      isShooting = false;
-      animator.SetBool("Shooting", false);
+      _isShooting = false;
+      animator.SetBool(Shooting, false);
       return;
     }
 
     if (Input.GetMouseButton(0) && CanFire())
     {
-      isShooting = true;
-      animator.SetBool("Shooting", true);
-      animator.SetTrigger("Shoot");
+      _isShooting = true;
+      animator.SetBool(Shooting, true);
+      animator.SetTrigger(Shoot);
       Fire();
     }
   }
 
   private void HandleAbilityCooldown()
   {
-    abilityCooldownTimer -= Time.deltaTime;
+    _abilityCooldownTimer -= Time.deltaTime;
 
-    if (abilityCooldownTimer < 0.0f)
+    if (_abilityCooldownTimer < 0.0f)
     {
       abilityImage.fillAmount = 1.0f;
     }
     else
     {
-      abilityImage.fillAmount = abilityCooldownTimer / AbilityDelay;
+      abilityImage.fillAmount = _abilityCooldownTimer / AbilityDelay;
     }
   }
 
@@ -250,7 +255,7 @@ public class Player : MonoBehaviour
 
     if (meteorPrefab is null) return;
 
-    abilityCooldownTimer = AbilityDelay;
+    _abilityCooldownTimer = AbilityDelay;
 
     var meteor = Instantiate(
       meteorPrefab,
