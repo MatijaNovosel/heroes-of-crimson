@@ -7,19 +7,20 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
   public FloatingTextManager floatingTextManager;
-  public static GameManager instance;
-  private Sprite[] projectileSprites;
+  public static GameManager Instance;
+  private Sprite[] _projectileSprites;
+  private GameObject _projectilePrefab;
 
   private void Awake()
   {
-    projectileSprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/projectiles");
-    instance = this;
+    _projectileSprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/projectiles");
+    _projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectile");
+    Instance = this;
   }
   
-  private IEnumerator SpawnProjectilesCoroutine(Vector3 position, float time)
+  private IEnumerator SpawnProjectilesCoroutine(Vector3 position, float time, Constants.ProjectilePattern pattern)
   {
     yield return new WaitForSeconds(time);
-    var projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectile");
 
     var speed = 12f;
     var projectileCount = 25;
@@ -33,29 +34,27 @@ public class GameManager : MonoBehaviour
       var direction = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad), 0);
 
       var projectile = Instantiate(
-          projectilePrefab,
+        _projectilePrefab,
           new Vector3(position.x, position.y, 0),
           Quaternion.identity
       );
-
-      var projComponent = projectile.GetComponent<Projectile>();
       
-      projComponent.Setup(new ProjectileSetupModel(
+      projectile.GetComponent<Projectile>().Setup(new ProjectileSetupModel(
         direction,
         45,
         speed,
         null,
         50,
-        projectileSprites[1],
+        _projectileSprites[1],
         new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
         new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player }
       ));
     }
   }
 
-  public void SpawnProjectiles(Vector3 position, float delay)
+  public void SpawnProjectiles(Vector3 position, float delay, Constants.ProjectilePattern pattern)
   {
-    StartCoroutine(SpawnProjectilesCoroutine(position, delay));
+    StartCoroutine(SpawnProjectilesCoroutine(position, delay, pattern));
   }
 
   public FloatingText ShowText(
@@ -67,7 +66,7 @@ public class GameManager : MonoBehaviour
     float duration
   )
   {
-    var ft = floatingTextManager.Show(
+    return floatingTextManager.Show(
       msg,
       fontSize,
       color,
@@ -75,7 +74,5 @@ public class GameManager : MonoBehaviour
       motion,
       duration
     );
-
-    return ft;
   }
 }

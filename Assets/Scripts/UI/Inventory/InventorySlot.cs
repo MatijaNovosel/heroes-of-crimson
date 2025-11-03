@@ -26,18 +26,19 @@ namespace UI.Inventory
         
         public void OnPointerEnter(PointerEventData eventData)
         {
-            if (CurrentInventoryItem && CurrentInventoryItem.ItemInSlot)
-            {
-                TooltipManager.Singleton.SetInfo(
-                    CurrentInventoryItem.ItemInSlot.name,
-                    CurrentInventoryItem.ItemInSlot.description,
-                    CurrentInventoryItem.ItemInSlot.tag,
-                    CurrentInventoryItem.ItemInSlot.rarity,
-                    CurrentInventoryItem.ItemInSlot.minDamage,
-                    CurrentInventoryItem.ItemInSlot.maxDamage
-                );
-                TooltipManager.Singleton.Show();
-            }
+            if (!CurrentInventoryItem || !CurrentInventoryItem.ItemInSlot) return;
+            
+            TooltipManager.Singleton.SetInfo(
+                CurrentInventoryItem.ItemInSlot.name,
+                CurrentInventoryItem.ItemInSlot.description,
+                CurrentInventoryItem.ItemInSlot.tag,
+                CurrentInventoryItem.ItemInSlot.rarity,
+                CurrentInventoryItem.ItemInSlot.minDamage,
+                CurrentInventoryItem.ItemInSlot.maxDamage,
+                CurrentInventoryItem.ItemInSlot.stats
+            );
+            
+            TooltipManager.Singleton.Show();
         }
 
         public void OnPointerExit(PointerEventData eventData)

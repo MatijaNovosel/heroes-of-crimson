@@ -88,7 +88,7 @@ public class BaseNPCBehaviour : MonoBehaviour
     var fontSize = Mathf.Lerp(minFontSize, maxFontSize, t);
     var randomScale = Random.Range(0.9f, 1.2f);
 
-    var textObj = GameManager.instance.ShowText(
+    var textObj = GameManager.Instance.ShowText(
       $"-{payload.Value}",
       (int)fontSize,
       Color.red,

@@ -22,6 +22,8 @@ namespace UI.Inventory
         [SerializeField] public AudioClip errorSound;
         [SerializeField] public AudioClip moveSound;
 
+        public bool HoldingItem;
+
         private void Awake()
         {
             Singleton = this;

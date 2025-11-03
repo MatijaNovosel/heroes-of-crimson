@@ -2,7 +2,7 @@ using System.Collections;
 using HeroesOfCrimson.Utils;
 using UnityEngine;
 
-public class Meteor : MonoBehaviour
+public class Lightning : MonoBehaviour
 {
   public AnimationClip animationClip;
   public AudioClip audioClip;

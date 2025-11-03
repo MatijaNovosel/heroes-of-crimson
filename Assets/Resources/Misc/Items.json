@@ -9,7 +9,8 @@
       "minDamage": 30,
       "maxDamage": 80,
       "projectileCount": 1,
-      "rarity": 1
+      "rarity": 1,
+      "stats": [0, 0, 0, 0, 0, 0]
     },
     {
       "id": 2,
@@ -20,29 +21,32 @@
       "minDamage": 30,
       "maxDamage": 80,
       "projectileCount": 2,
-      "rarity": 2
+      "rarity": 2,
+      "stats": [0, 1, -3, 5, 2, 0]
     },
     {
       "id": 3,
-      "name": "Crossbow with a long name",
-      "description": "A wooden crossbow. With a long description. With a long description. With a long description. With a long description. With a long description. With a long description. With a long description. With a long description.",
+      "name": "Wooden crossbow",
+      "description": "A crossbow is a ranged weapon using an elastic launching device consisting of a bow-like assembly called a prod, mounted horizontally on a main frame called a tiller, which is hand-held in a similar fashion to the stock of a long gun. Crossbows shoot arrow-like projectiles called bolts or quarrels. A person who shoots crossbow is called a crossbowman, an arbalister or an arbalist",
       "tag": 2,
       "spritePath": "armorAndWeapons_82",
       "minDamage": 30,
       "maxDamage": 80,
       "projectileCount": 1,
-      "rarity": 3
+      "rarity": 3,
+      "stats": [5, 0, 4, 3, 0, 0]
     },
     {
       "id": 4,
       "name": "Ring",
-      "description": "A shiny ring. A shiny ring. A shiny ring. A shiny ring. A shiny ring. A shiny ring. A shiny ring. A shiny ring.",
+      "description": "A ring is a round band, usually made of metal, worn as ornamental jewelry. The term \"ring\" by itself denotes jewellery worn on the finger; when worn as an ornament elsewhere, the body part is specified within the term, e.g., earrings, neck rings, arm rings, and toe rings.",
       "tag": 5,
       "spritePath": "armorAndWeapons_158",
       "minDamage": 0,
       "maxDamage": 0,
       "projectileCount": 0,
-      "rarity": 4
+      "rarity": 4,
+      "stats": [3, 1, -3, 0, 2, 0]
     }
   ]
 }

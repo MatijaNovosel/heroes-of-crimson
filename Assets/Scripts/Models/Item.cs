@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HeroesOfCrimson.Utils;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace Models
         public string description;
         public Constants.SlotTag tag;
         public Sprite sprite;
+        public List<int> stats;
     
         // Projectile info
         public int minDamage;

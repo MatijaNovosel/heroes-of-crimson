@@ -12,6 +12,7 @@ namespace Models
         public string spritePath;
         public int tag;
         public int rarity;
+        public List<int> stats;
 
         // Projectile info
         public int minDamage;

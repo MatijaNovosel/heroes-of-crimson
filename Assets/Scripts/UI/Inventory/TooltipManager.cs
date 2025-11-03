@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using HeroesOfCrimson.Utils;
 using TMPro;
 using UnityEngine;
@@ -7,17 +8,35 @@ using UnityEngine.UI;
 
 public class TooltipManager : MonoBehaviour
 {
+    public static TooltipManager Singleton;
+    
     public Canvas ParentCanvas;
+    
+    // Root elements
     public RectTransform TooltipTransform;
     public RectTransform TooltipBg;
-    public static TooltipManager Singleton;
+    
+    // Title
     public TMP_Text TitleText;
-    public TMP_Text DescriptionText;
     public TMP_Text TypeText;
-    public TMP_Text TooltipDamageMin;
-    public TMP_Text TooltipDamageMax;
-    public Divider DividerWeapons;
     public Image TooltipRarityImg;
+    
+    // Description
+    public TMP_Text DescriptionText;
+    
+    // Damage
+    public TMP_Text TooltipDamage;
+    public Divider DividerWeapons;
+    
+    // Stats
+    public Divider DividerStats;
+    public RectTransform TooltipStats;
+    public Image TooltipAtt;
+    public Image TooltipSpd;
+    public Image TooltipDex;
+    public Image TooltipDef;
+    public Image TooltipVit;
+    public Image TooltipWis;
     
     void Start()
     {
@@ -30,27 +49,96 @@ public class TooltipManager : MonoBehaviour
         Constants.SlotTag tag,
         Constants.ItemRarity rarity,
         int minDamage,
-        int maxDamage
+        int maxDamage,
+        List<int> stats
     )
     {
         TitleText.text = title;
         DescriptionText.text = description;
         TypeText.text = tag.ToString();
         
-        TooltipDamageMax.text = $"Damage (min): {minDamage}";
-        TooltipDamageMin.text = $"Damage (max): {maxDamage}";
+        TooltipDamage.text = $"Damage: {minDamage} - {maxDamage}";
 
         if (tag == Constants.SlotTag.Weapon)
         {
-            TooltipDamageMin.enabled = true;
-            TooltipDamageMax.enabled = true;
+            TooltipDamage.gameObject.SetActive(true);
             DividerWeapons.gameObject.SetActive(true);
         }
         else
         {
-            TooltipDamageMin.enabled = false;
-            TooltipDamageMax.enabled = false;
+            TooltipDamage.gameObject.SetActive(false);
             DividerWeapons.gameObject.SetActive(false);
+        }
+
+        if (!stats.TrueForAll(x => x == 0))
+        {
+            DividerStats.gameObject.SetActive(true);
+            TooltipStats.gameObject.SetActive(true);
+            
+            if (stats[0] != 0)
+            {
+                TooltipAtt.GetComponentInChildren<TMP_Text>().text = stats[0].ToString();
+                TooltipAtt.gameObject.SetActive(true);
+            }
+            else
+            {
+                TooltipAtt.gameObject.SetActive(false);
+            }
+            
+            if (stats[1] != 0)
+            {
+                TooltipSpd.GetComponentInChildren<TMP_Text>().text = stats[1].ToString();
+                TooltipSpd.gameObject.SetActive(true);
+            }
+            else
+            {
+                TooltipSpd.gameObject.SetActive(false);
+            }
+            
+            if (stats[2] != 0)
+            {
+                TooltipDex.GetComponentInChildren<TMP_Text>().text = stats[2].ToString();
+                TooltipDex.gameObject.SetActive(true);
+            }
+            else
+            {
+                TooltipDex.gameObject.SetActive(false);
+            }
+            
+            if (stats[3] != 0)
+            {
+                TooltipDef.GetComponentInChildren<TMP_Text>().text = stats[3].ToString();
+                TooltipDef.gameObject.SetActive(true);
+            }
+            else
+            {
+                TooltipDef.gameObject.SetActive(false);
+            }
+            
+            if (stats[4] != 0)
+            {
+                TooltipVit.GetComponentInChildren<TMP_Text>().text = stats[4].ToString();
+                TooltipVit.gameObject.SetActive(true);
+            }
+            else
+            {
+                TooltipVit.gameObject.SetActive(false);
+            }
+            
+            if (stats[5] != 0)
+            {
+                TooltipWis.GetComponentInChildren<TMP_Text>().text = stats[5].ToString();
+                TooltipWis.gameObject.SetActive(true);
+            }
+            else
+            {
+                TooltipWis.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            DividerStats.gameObject.SetActive(false);
+            TooltipStats.gameObject.SetActive(false);
         }
             
         TooltipRarityImg.color = rarity switch
@@ -73,14 +161,35 @@ public class TooltipManager : MonoBehaviour
             out var mousePosition
         );
 
+        var tooltipWidth = TooltipBg.rect.width;
         var tooltipHeight = TooltipBg.rect.height;
-        var offset = new Vector2(0, tooltipHeight / 2);
-        var transformPoint = ParentCanvas.transform.TransformPoint(mousePosition + offset);
-        
-        TooltipTransform.position = transformPoint;
+        const float padding = 3f;
+
+        var offset = new Vector2(padding, tooltipHeight / 2 + padding);
+
+        var worldPoint = ParentCanvas.transform.TransformPoint(mousePosition + offset);
+        TooltipTransform.position = worldPoint;
+
+        var corners = new Vector3[4];
+        TooltipBg.GetWorldCorners(corners);
+
+        var outOfBoundsTop = corners[1].y > Screen.height;
+        var outOfBoundsRight = corners[2].x > Screen.width;
+
+        if (outOfBoundsTop)
+        {
+            offset.y = -(tooltipHeight / 2 + padding);
+        }
+
+        if (outOfBoundsRight)
+        {
+            offset.x = -(tooltipWidth + padding);
+        }
+
+        worldPoint = ParentCanvas.transform.TransformPoint(mousePosition + offset);
+        TooltipTransform.position = worldPoint;
     }
-
-
+    
     public void Show()
     {
         TooltipTransform.gameObject.SetActive(true);

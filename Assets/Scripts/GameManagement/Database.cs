@@ -34,6 +34,7 @@ public class Database : MonoBehaviour
     item.tag = (Constants.SlotTag)databaseItem.tag;
     item.rarity = (Constants.ItemRarity)databaseItem.rarity;
     item.projectileCount = databaseItem.projectileCount;
+    item.stats = databaseItem.stats;
     
     return item;
   }

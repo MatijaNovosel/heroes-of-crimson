@@ -33,6 +33,7 @@ namespace UI.Inventory
             transform.SetParent(Inventory.Singleton.draggablesTransform);
             CanvasGroup.blocksRaycasts = false;
             _itemIcon.raycastTarget = false;
+            Inventory.Singleton.HoldingItem = true;
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -48,7 +49,8 @@ namespace UI.Inventory
         {
             CanvasGroup.blocksRaycasts = true;
             _itemIcon.raycastTarget = true;
-
+            Inventory.Singleton.HoldingItem = false;
+            
             if (transform.parent != Inventory.Singleton.draggablesTransform) return;
             transform.SetParent(ActiveSlot.transform);
             ((RectTransform)transform).anchoredPosition = Vector2.zero;

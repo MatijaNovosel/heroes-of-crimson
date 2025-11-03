@@ -1,10 +1,28 @@
 fileFormatVersion: 2
-guid: 08c85ffa925a5ab47b23a41def6e1092
+guid: 40760d887e270d54aabad32f03ee1e3e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6324234681856226949
-    second: rarity_0
+      213: 7028325769904605368
+    second: tentacle2_0
+  - first:
+      213: -331320838363355110
+    second: tentacle2_1
+  - first:
+      213: -3557169292177840606
+    second: tentacle2_2
+  - first:
+      213: -8388819369464459848
+    second: tentacle2_3
+  - first:
+      213: 2687168487934140667
+    second: tentacle2_4
+  - first:
+      213: -3298262408513499490
+    second: tentacle2_5
+  - first:
+      213: -1492290716802471890
+    second: tentacle2_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +131,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rarity_0
+      name: tentacle2_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 8
-        height: 8
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,86 +146,152 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b7901c7601ecb38a0800000000000000
-      internalID: -6324234681856226949
+      spriteID: 8b843e0dc01a98160800000000000000
+      internalID: 7028325769904605368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rarity_1
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b4ac364f01cb70a46ae6a3b9f91635c7
-      internalID: 885939054
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rarity_2
+      name: tentacle2_1
       rect:
         serializedVersion: 2
         x: 16
-        y: 0
-        width: 8
-        height: 8
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ae71b7c07e6774f4a8926b8afc9679bf
-      internalID: -1049229696
+      spriteID: a18eaa2f379e66bf0800000000000000
+      internalID: -331320838363355110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rarity_3
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5872280848f94d54ba41e3df8cde4260
-      internalID: -481767958
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rarity_4
+      name: tentacle2_2
       rect:
         serializedVersion: 2
         x: 32
-        y: 0
-        width: 8
-        height: 8
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 226efcd106562aec0800000000000000
+      internalID: -3557169292177840606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacle2_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bd8726ba3de49b80800000000000000
+      internalID: -8388819369464459848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacle2_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf020f6a08dba4520800000000000000
+      internalID: 2687168487934140667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacle2_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9e478c70d73a32d0800000000000000
+      internalID: -3298262408513499490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacle2_6
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e282063ef715a4be0800000000000000
+      internalID: -1492290716802471890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tentacle2_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 16
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,52 +300,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15d2d3cfc0fd1f847ba4a8ca7a374341
-      internalID: 1108784325
+      spriteID: 0f8ff363c90d89a469c0e2e82ff067e5
+      internalID: -2103362352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rarity_5
+      name: tentacle2_8
       rect:
         serializedVersion: 2
-        x: 40
+        x: 0
         y: 0
-        width: 8
-        height: 8
+        width: 16
+        height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e59eec489e555f04faaff31185b34fd5
-      internalID: -900338300
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rarity_6
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8938718d49424de448281c7e03d3aa14
-      internalID: 1400086632
+      spriteID: e49f8b34b8a4c3d4191051ab4eb9afab
+      internalID: -1906203828
       vertices: []
       indices: 
       edges: []
@@ -270,7 +332,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 124518e39bc5b99458db03b8521ceef4
+    spriteID: 9e7cb09551c6b9a43833184ece13475c
     internalID: 0
     vertices: []
     indices: 
@@ -280,15 +342,17 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":8.0,"y":8.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      rarity_0: -6324234681856226949
-      rarity_1: 885939054
-      rarity_2: -1049229696
-      rarity_3: -481767958
-      rarity_4: 1108784325
-      rarity_5: -900338300
-      rarity_6: 1400086632
+      tentacle2_0: 7028325769904605368
+      tentacle2_1: -331320838363355110
+      tentacle2_2: -3557169292177840606
+      tentacle2_3: -8388819369464459848
+      tentacle2_4: 2687168487934140667
+      tentacle2_5: -3298262408513499490
+      tentacle2_6: -1492290716802471890
+      tentacle2_7: -2103362352
+      tentacle2_8: -1906203828
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
