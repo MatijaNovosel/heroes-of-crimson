@@ -1,0 +1,124 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ItemAtlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 4
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_IgnorePlatformSupport: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -1462829521
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -1832299110
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 1839526622
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -372214805
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -1572016739
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 1743667268
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -838203647
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 1486844973
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -1143691182
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -324527126
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -42170425
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -419010156
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -1045398746
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -1897815920
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 1562615517
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 1265577819
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 2071282526
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 614907482
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 962076189
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -1103072974
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 152996647
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 1911582477
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -1462829521, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -1832299110, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 1839526622, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -372214805, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -1572016739, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 1743667268, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -838203647, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 1486844973, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -1143691182, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -324527126, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -42170425, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -419010156, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -1045398746, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -1897815920, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 1562615517, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 1265577819, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 2071282526, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 614907482, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 962076189, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -1103072974, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 152996647, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 1911582477, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - armorAndWeapons_11
+  - armorAndWeapons_9
+  - armorAndWeapons_8
+  - armorAndWeapons_3
+  - armorAndWeapons_2
+  - armorAndWeapons_1
+  - armorAndWeapons_0
+  - armorAndWeapons_7
+  - armorAndWeapons_6
+  - armorAndWeapons_5
+  - armorAndWeapons_4
+  - armorAndWeapons_18
+  - armorAndWeapons_21
+  - armorAndWeapons_19
+  - armorAndWeapons_20
+  - armorAndWeapons_16
+  - armorAndWeapons_17
+  - armorAndWeapons_14
+  - armorAndWeapons_15
+  - armorAndWeapons_12
+  - armorAndWeapons_13
+  - armorAndWeapons_10
+  m_RenderDataMap: {}
+  m_Tag: ItemAtlas
+  m_IsVariant: 0

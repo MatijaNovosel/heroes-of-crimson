@@ -7,113 +7,108 @@ using UnityEngine.UI;
 namespace UI.Inventory
 {
     public class InventorySlot : MonoBehaviour, IDropHandler
+{
+    public InventoryItem CurrentInventoryItem { get; set; }
+    public bool IsHotbar;
+    public Constants.SlotTag Tag;
+
+    private Image _image;
+    private Inventory _owner;
+
+    private void Awake()
     {
-        public InventoryItem CurrentInventoryItem { get; set; }
-        public bool IsHotbar;
-        private Image _image;
+        _image = GetComponent<Image>();
+        _image.raycastTarget = true;
+        _owner = GetComponentInParent<Inventory>();
+    }
+
+    private void SetImage(Sprite sprite) => _image.sprite = sprite;
+
+    public void ChangeImage(bool shouldRevertToDefault = false)
+    {
+        if (shouldRevertToDefault)
+        {
+            SetImage(_owner.slotImage);
+            return;
+        }
         
-        public Constants.SlotTag Tag;
-
-        private void Awake()
+        switch (Tag)
         {
-            _image = GetComponent<Image>();
-        }
-
-        private void SetImage(Sprite sprite)
-        {
-            _image.sprite = sprite;
-        }
-
-        public void ChangeImage(bool shouldRevertToDefault = false)
-        {
-            if (shouldRevertToDefault)
+            case Constants.SlotTag.Weapon:
             {
-                SetImage(Inventory.Singleton.slotImage);
-                return;
+                SetImage(_owner.hotbarWeaponImage);
+                break;
             }
-            
-            switch (Tag)
+            case Constants.SlotTag.None:
             {
-                case Constants.SlotTag.Weapon:
-                    SetImage(Inventory.Singleton.hotbarWeaponImage);
-                    break;
-                case Constants.SlotTag.None:
-                    SetImage(Inventory.Singleton.slotImage);
-                    break;
-                case Constants.SlotTag.Ability:
-                    SetImage(Inventory.Singleton.hotbarAbilityImage);
-                    break;
-                case Constants.SlotTag.Armor:
-                    SetImage(Inventory.Singleton.hotbarArmorImage);
-                    break;
-                case Constants.SlotTag.Accessory:
-                    SetImage(Inventory.Singleton.hotbarAccessoryImage);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                SetImage(_owner.slotImage);
+                break;
             }
-        }
-
-        public void OnDrop(PointerEventData eventData)
-        {
-            var droppedItem = eventData.pointerDrag?.GetComponent<InventoryItem>();
-            if (!droppedItem)
+            case Constants.SlotTag.Ability:
             {
-                return;
+                SetImage(_owner.hotbarAbilityImage);
+                break;
             }
-
-            // Do not mismatch tags - look @ Slot tag enum
-            if (Tag != Constants.SlotTag.None && droppedItem.ItemInSlot.tag != Tag)
+            case Constants.SlotTag.Armor:
             {
-                Inventory.Singleton.HandleInvalidAction();
-                return;
+                SetImage(_owner.hotbarArmorImage);
+                break;
             }
-            
-            var fromSlot = droppedItem.ActiveSlot;
-            var toSlot = this;
-            
-            if (toSlot.Tag == Constants.SlotTag.None && fromSlot.IsHotbar)
+            case Constants.SlotTag.Accessory:
             {
-                fromSlot.ChangeImage();
+                SetImage(_owner.hotbarAccessoryImage);
+                break;
             }
-            
-            if (toSlot.IsHotbar && fromSlot.Tag == Constants.SlotTag.None)
-            {
-                toSlot.ChangeImage(true);
-            }
-            
-            AudioManager.Singleton.PlaySound(Inventory.Singleton.moveSound);
-
-            if (!toSlot.CurrentInventoryItem)
-            {
-                MoveItem(droppedItem, toSlot);
-                return;
-            }
-        
-            var otherItem = toSlot.CurrentInventoryItem;
-
-            if (toSlot.CurrentInventoryItem.ItemInSlot.id == droppedItem.ItemInSlot.id)
-            {
-                Inventory.Singleton.HandleInvalidAction();
-                return;
-            }
-            
-            MoveItem(otherItem, fromSlot);
-            MoveItem(droppedItem, toSlot);
-        }
-
-        private static void MoveItem(InventoryItem item, InventorySlot targetSlot)
-        {
-            if (item.ActiveSlot)
-            {
-                item.ActiveSlot.CurrentInventoryItem = null;
-            }
-
-            targetSlot.CurrentInventoryItem = item;
-            item.ActiveSlot = targetSlot;
-
-            item.transform.SetParent(targetSlot.transform, false);
-            ((RectTransform)item.transform).anchoredPosition = Vector2.zero;
         }
     }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        var droppedItem = eventData.pointerDrag?.GetComponent<InventoryItem>();
+        if (!droppedItem) return;
+
+        // enforce tags
+        if (Tag != Constants.SlotTag.None && droppedItem.ItemInSlot.tag != Tag)
+        {
+            AudioManager.Singleton.PlaySound(_owner.errorSound);
+            return;
+        }
+
+        var fromSlot = droppedItem.ActiveSlot;
+        var toSlot = this;
+
+        if (toSlot.Tag == Constants.SlotTag.None && fromSlot.IsHotbar) fromSlot.ChangeImage();
+        if (toSlot.IsHotbar && fromSlot.Tag == Constants.SlotTag.None) toSlot.ChangeImage(true);
+
+        AudioManager.Singleton.PlaySound(_owner.moveSound);
+
+        if (!toSlot.CurrentInventoryItem)
+        {
+            MoveItem(droppedItem, toSlot);
+            return;
+        }
+
+        var otherItem = toSlot.CurrentInventoryItem;
+        if (otherItem.ItemInSlot.id == droppedItem.ItemInSlot.id)
+        {
+            AudioManager.Singleton.PlaySound(_owner.errorSound);
+            return;
+        }
+
+        MoveItem(otherItem, fromSlot);
+        MoveItem(droppedItem, toSlot);
+    }
+
+    private static void MoveItem(InventoryItem item, InventorySlot targetSlot)
+    {
+        if (item.ActiveSlot) item.ActiveSlot.CurrentInventoryItem = null;
+
+        targetSlot.CurrentInventoryItem = item;
+        item.ActiveSlot = targetSlot;
+
+        item.transform.SetParent(targetSlot.transform, false);
+        ((RectTransform)item.transform).anchoredPosition = Vector2.zero;
+    }
+}
+
 }

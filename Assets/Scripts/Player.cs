@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
   private float _abilityCooldownTimer = 0;
   private bool _isShooting = false;
   
+  public bool HoldingItem;
+  
   public AudioClip shootSound;
 
   // Components
@@ -37,6 +39,7 @@ public class Player : MonoBehaviour
   private BoxCollider2D _boxCollider;
   private AnimatorOverrideController _animatorOverrideController;
   private BaseNPCBehaviour _baseNpcBehaviour;
+  public Inventory Hotbar;
 
   bool CanFire()
   {
@@ -123,13 +126,24 @@ public class Player : MonoBehaviour
       Quaternion.identity
     );
 
+    Sprite weaponProjectile = null;
+    int weaponProjectileDegree = 0;
+
+    var weaponInventorySlot = Hotbar.GetHotbarSlot(0);
+
+    if (weaponInventorySlot.CurrentInventoryItem.ItemInSlot)
+    {
+      weaponProjectileDegree = weaponInventorySlot.CurrentInventoryItem.ItemInSlot.projectileDegree;
+      weaponProjectile = weaponInventorySlot.CurrentInventoryItem.ItemInSlot.projectileSprite;
+    }
+    
     proj.GetComponent<Projectile>().Setup(new ProjectileSetupModel(
       shootDirection,
-      0,
+      weaponProjectileDegree,
       null,
       0.6f,
       50,
-      null,
+      weaponProjectile,
       new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
       new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player }
     ));
@@ -204,8 +218,9 @@ public class Player : MonoBehaviour
   private void HandleShooting()
   {
     var pointerOverUI = EventSystem.current && EventSystem.current.IsPointerOverGameObject();
+    var weaponSlot = Hotbar.GetHotbarSlot(0);
 
-    if (pointerOverUI || Inventory.Singleton.HoldingItem)
+    if (pointerOverUI || HoldingItem || weaponSlot.CurrentInventoryItem is null)
     {
       if (_isShooting)
       {

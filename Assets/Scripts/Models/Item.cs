@@ -19,5 +19,7 @@ namespace Models
         public int minDamage;
         public int maxDamage;
         public int projectileCount;
+        public int projectileDegree;
+        public Sprite projectileSprite;
     }
 }

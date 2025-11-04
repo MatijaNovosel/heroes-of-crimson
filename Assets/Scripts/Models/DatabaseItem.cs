@@ -10,8 +10,10 @@ namespace Models
         public string name;
         public string description;
         public string spritePath;
+        public string projectilePath;
         public int tag;
         public int rarity;
+        public int projectileDegree;
         public List<int> stats;
 
         // Projectile info

@@ -7,7 +7,6 @@ namespace UI.Inventory
 {
     public class Inventory : MonoBehaviour
     {
-        public static Inventory Singleton;
         [SerializeField] private InventorySlot[] inventorySlots;
         [SerializeField] public Transform draggablesTransform;
         [SerializeField] private InventoryItem itemPrefab;
@@ -22,13 +21,6 @@ namespace UI.Inventory
         [SerializeField] public AudioClip errorSound;
         [SerializeField] public AudioClip moveSound;
 
-        public bool HoldingItem;
-
-        private void Awake()
-        {
-            Singleton = this;
-        }
-
         private void Start()
         {
             if (name == "Hotbar")
@@ -41,12 +33,20 @@ namespace UI.Inventory
                 SpawnItem(Database.Singleton.GetItem(2));
                 SpawnItem(Database.Singleton.GetItem(3));
                 SpawnItem(Database.Singleton.GetItem(4));
+                SpawnItem(Database.Singleton.GetItem(5));
+                SpawnItem(Database.Singleton.GetItem(6));
+                SpawnItem(Database.Singleton.GetItem(7));
             }
         }
 
         public void HandleInvalidAction()
         {
             AudioManager.Singleton.PlaySound(errorSound);
+        }
+
+        public InventorySlot GetHotbarSlot(int idx)
+        {
+            return name == "Hotbar" ? inventorySlots[idx] : null;
         }
 
         private void SpawnItem(Item item = null, int? index = null)
@@ -63,12 +63,11 @@ namespace UI.Inventory
 
             foreach (var slot in inventorySlots)
             {
-                if (slot.CurrentInventoryItem != null) continue;
+                if (slot.CurrentInventoryItem) continue;
                 var newItem = Instantiate(itemPrefab, slot.transform);
                 newItem.Initialize(item, slot);
                 break;
             }
-            
         }
     }
 }

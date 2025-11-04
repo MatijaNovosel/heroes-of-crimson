@@ -2155,10 +2155,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cd0cfa374908b4e97de9762f7010af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HoldingItem: 0
   shootSound: {fileID: 8300000, guid: b195f96b5dad02b4185ef71ea07b98cf, type: 3}
   Projectile: {fileID: 5144726427392865407, guid: 4e01153d9ce6d134ba19d3164d6be11d, type: 3}
   abilityImage: {fileID: 1052094881}
   animator: {fileID: 1469857300}
+  Hotbar: {fileID: 1001678528}
 --- !u!1001 &261977807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2533,13 +2535,12 @@ MonoBehaviour:
   draggablesTransform: {fileID: 1655340475}
   itemPrefab: {fileID: 8527893814601168996, guid: 1028cb616073445408e5c9f2550546dc, type: 3}
   slotImage: {fileID: 21300000, guid: ef9bf25eb39d7a745b03c11099ef2cb6, type: 3}
-  hotbarWeaponImage: {fileID: 21300000, guid: 3c4e2748bc40b4c4da3e3919c9fe6251, type: 3}
-  hotbarAbilityImage: {fileID: 21300000, guid: 560c8f5b87ead5d43a0e9c7bae4bdc5b, type: 3}
-  hotbarArmorImage: {fileID: 21300000, guid: 408a7e7bd7e1430418a43b16624cd187, type: 3}
-  hotbarAccessoryImage: {fileID: 21300000, guid: 37167bb81784c05448596a7ada6b5bd8, type: 3}
+  hotbarWeaponImage: {fileID: 0}
+  hotbarAbilityImage: {fileID: 0}
+  hotbarArmorImage: {fileID: 0}
+  hotbarAccessoryImage: {fileID: 0}
   errorSound: {fileID: 8300000, guid: 20160d69e84efd247a5a0ca0f15ea4b4, type: 3}
   moveSound: {fileID: 8300000, guid: 3937d6babe3227a4b86863aba477c0ad, type: 3}
-  HoldingItem: 0
 --- !u!1 &392066307
 GameObject:
   m_ObjectHideFlags: 0
@@ -26430,7 +26431,6 @@ GameObject:
   - component: {fileID: 1001678525}
   - component: {fileID: 1001678528}
   - component: {fileID: 1001678527}
-  - component: {fileID: 1001678526}
   m_Layer: 5
   m_Name: Hotbar
   m_TagString: Untagged
@@ -26458,36 +26458,6 @@ RectTransform:
   m_AnchoredPosition: {x: 65.352005, y: -62.4}
   m_SizeDelta: {x: 178.51, y: 45.3821}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1001678526
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1001678524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.14117648, g: 0.12156863, b: 0.12156863, a: 0}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1001678527
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26522,7 +26492,6 @@ MonoBehaviour:
   hotbarAccessoryImage: {fileID: 21300000, guid: 37167bb81784c05448596a7ada6b5bd8, type: 3}
   errorSound: {fileID: 8300000, guid: 20160d69e84efd247a5a0ca0f15ea4b4, type: 3}
   moveSound: {fileID: 8300000, guid: 3937d6babe3227a4b86863aba477c0ad, type: 3}
-  HoldingItem: 0
 --- !u!1 &1002149257
 GameObject:
   m_ObjectHideFlags: 0
@@ -27719,7 +27688,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1343961923
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29236,6 +29205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1655340475}
+  - component: {fileID: 1655340476}
   m_Layer: 5
   m_Name: Draggables
   m_TagString: Untagged
@@ -29259,9 +29229,17 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -471.648, y: 94.31}
+  m_AnchoredPosition: {x: -318.9, y: 104.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1655340476
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655340474}
+  m_CullTransparentMesh: 1
 --- !u!1 &1673891020
 GameObject:
   m_ObjectHideFlags: 0
@@ -31836,7 +31814,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 31
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -31854,8 +31832,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1967071324}
-  - {fileID: 1655340475}
   - {fileID: 437235865}
+  - {fileID: 1655340475}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -33.893}
   m_AnchorMin: {x: 0, y: 0}
