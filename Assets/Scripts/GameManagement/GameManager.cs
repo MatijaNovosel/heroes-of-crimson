@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using GameManagement;
 using HeroesOfCrimson.Utils;
 using Models;
 using UnityEngine;
@@ -8,12 +9,10 @@ public class GameManager : MonoBehaviour
 {
   public FloatingTextManager floatingTextManager;
   public static GameManager Instance;
-  private Sprite[] _projectileSprites;
   private GameObject _projectilePrefab;
 
   private void Awake()
   {
-    _projectileSprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/projectiles");
     _projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectile");
     Instance = this;
   }
@@ -45,7 +44,7 @@ public class GameManager : MonoBehaviour
         speed,
         null,
         50,
-        _projectileSprites[1],
+        ResourceCacher.Singleton.ProjectileSprites[1],
         new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
         new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player }
       ));

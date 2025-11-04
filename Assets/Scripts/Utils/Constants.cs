@@ -49,11 +49,36 @@ namespace HeroesOfCrimson.Utils
        Armored = 9,
        Invincible = 10,
     }
-    
-    public enum SlotTag { None = 1, Weapon = 2, Ability = 3, Armor = 4, Accessory = 5 }
-    
-    public enum ItemRarity { Common = 1, Uncommon = 2, Rare = 3, Epic = 4, Legendary = 5 }
-    
-    public enum ProjectilePattern { Circular = 1, Star = 2, Wave = 3 }
+
+    public enum SlotTag
+    {
+      None = 1, 
+      Weapon = 2, 
+      Ability = 3, 
+      Armor = 4, 
+      Accessory = 5
+    }
+
+    public enum ItemRarity
+    {
+      Common = 1, 
+      Uncommon = 2, 
+      Rare = 3, 
+      Epic = 4, 
+      Legendary = 5
+    }
+
+    public enum ProjectilePattern
+    {
+      Circular = 1, 
+      Star = 2, 
+      Wave = 3
+    }
+
+    public enum ShootSound
+    {
+      Magic = 1, 
+      Arrow = 2, 
+    }
   }
 }

@@ -1,4 +1,5 @@
 using System.Linq;
+using GameManagement;
 using HeroesOfCrimson.Utils;
 using Models;
 using UnityEngine;
@@ -7,14 +8,10 @@ public class Database : MonoBehaviour
 {
   public static Database Singleton;
   private DatabaseItemList _databaseItemList;
-  private Sprite[] _armorAndWeaponSprites;
-  private Sprite[] _projectileSprites;
 
   private void Awake()
   {
     Singleton = this;
-    _armorAndWeaponSprites = Resources.LoadAll<Sprite>("Sprites/Items/armorAndWeapons");
-    _projectileSprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/projectiles");
     _loadItems();
   }
 
@@ -30,8 +27,8 @@ public class Database : MonoBehaviour
     item.id = databaseItem.id;
     item.name = databaseItem.name;
     item.description = databaseItem.description;
-    item.sprite = _armorAndWeaponSprites.First(x => x.name == databaseItem.spritePath);
-    item.projectileSprite = _projectileSprites.First(x => x.name == databaseItem.projectilePath);
+    item.sprite = ResourceCacher.Singleton.ArmorAndWeaponSprites.First(x => x.name == databaseItem.spritePath);
+    item.projectileSprite = ResourceCacher.Singleton.ProjectileSprites.First(x => x.name == databaseItem.projectilePath);
     item.minDamage = databaseItem.minDamage;
     item.maxDamage = databaseItem.maxDamage;
     item.tag = (Constants.SlotTag)databaseItem.tag;
@@ -39,6 +36,7 @@ public class Database : MonoBehaviour
     item.projectileCount = databaseItem.projectileCount;
     item.stats = databaseItem.stats;
     item.projectileDegree = databaseItem.projectileDegree;
+    item.shootSound = (Constants.ShootSound)databaseItem.shootSound;
     
     return item;
   }

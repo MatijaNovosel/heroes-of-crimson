@@ -12,6 +12,7 @@ namespace Models
         public string name;
         public string description;
         public Constants.SlotTag tag;
+        public Constants.ShootSound shootSound;
         public Sprite sprite;
         public List<int> stats;
     

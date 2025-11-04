@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using GameManagement;
 using UnityEngine;
 using HeroesOfCrimson.Utils;
 using Models;
@@ -29,8 +30,6 @@ public class Player : MonoBehaviour
   private bool _isShooting = false;
   
   public bool HoldingItem;
-  
-  public AudioClip shootSound;
 
   // Components
   public GameObject Projectile;
@@ -118,7 +117,6 @@ public class Player : MonoBehaviour
         break;
     }
     
-    AudioSource.PlayClipAtPoint(shootSound, transform.position, 1.5f);
     
     var proj = Instantiate(
       Projectile,
@@ -126,16 +124,29 @@ public class Player : MonoBehaviour
       Quaternion.identity
     );
 
+    AudioClip shootSound = null;
+    
     Sprite weaponProjectile = null;
     int weaponProjectileDegree = 0;
-
     var weaponInventorySlot = Hotbar.GetHotbarSlot(0);
 
     if (weaponInventorySlot.CurrentInventoryItem.ItemInSlot)
     {
       weaponProjectileDegree = weaponInventorySlot.CurrentInventoryItem.ItemInSlot.projectileDegree;
       weaponProjectile = weaponInventorySlot.CurrentInventoryItem.ItemInSlot.projectileSprite;
+
+      switch (weaponInventorySlot.CurrentInventoryItem.ItemInSlot.shootSound)
+      {
+        case Constants.ShootSound.Arrow:
+          shootSound = ResourceCacher.Singleton.ShootSounds[0];
+          break;
+        default:
+          shootSound = ResourceCacher.Singleton.ShootSounds[1];
+          break;
+      }
     }
+    
+    AudioSource.PlayClipAtPoint(shootSound, transform.position, 1.5f);
     
     proj.GetComponent<Projectile>().Setup(new ProjectileSetupModel(
       shootDirection,

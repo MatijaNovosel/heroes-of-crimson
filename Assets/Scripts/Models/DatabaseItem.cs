@@ -20,6 +20,7 @@ namespace Models
         public int minDamage;
         public int maxDamage;
         public int projectileCount;
+        public int shootSound;
     }
     
     [System.Serializable]

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GameManagement;
 using HeroesOfCrimson.Utils;
 using Models;
 using UnityEngine;
@@ -25,16 +26,12 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
     private GameObject _projectile;
     public SpriteRenderer spriteRenderer;
 
-    void Awake()
+    void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         _projectile = Resources.Load<GameObject>("Prefabs/Projectile");
-        Sprite[] sprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/projectiles");
-        _sprite = sprites[1];
-    }
-
-    void Start()
-    {
+        _sprite = ResourceCacher.Singleton.ProjectileSprites[1];
+        
         var go = GameObject.Find("Kraken");
         if (go) _kraken = go;
 
