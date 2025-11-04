@@ -2539,6 +2539,7 @@ MonoBehaviour:
   hotbarAccessoryImage: {fileID: 21300000, guid: 37167bb81784c05448596a7ada6b5bd8, type: 3}
   errorSound: {fileID: 8300000, guid: 20160d69e84efd247a5a0ca0f15ea4b4, type: 3}
   moveSound: {fileID: 8300000, guid: 3937d6babe3227a4b86863aba477c0ad, type: 3}
+  HoldingItem: 0
 --- !u!1 &392066307
 GameObject:
   m_ObjectHideFlags: 0
@@ -26521,6 +26522,7 @@ MonoBehaviour:
   hotbarAccessoryImage: {fileID: 21300000, guid: 37167bb81784c05448596a7ada6b5bd8, type: 3}
   errorSound: {fileID: 8300000, guid: 20160d69e84efd247a5a0ca0f15ea4b4, type: 3}
   moveSound: {fileID: 8300000, guid: 3937d6babe3227a4b86863aba477c0ad, type: 3}
+  HoldingItem: 0
 --- !u!1 &1002149257
 GameObject:
   m_ObjectHideFlags: 0

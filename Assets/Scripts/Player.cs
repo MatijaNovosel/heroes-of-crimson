@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using HeroesOfCrimson.Utils;
 using Models;
+using UI.Inventory;
 using Unity.Burst.CompilerServices;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -204,7 +205,7 @@ public class Player : MonoBehaviour
   {
     var pointerOverUI = EventSystem.current && EventSystem.current.IsPointerOverGameObject();
 
-    if (pointerOverUI)
+    if (pointerOverUI || Inventory.Singleton.HoldingItem)
     {
       if (_isShooting)
       {

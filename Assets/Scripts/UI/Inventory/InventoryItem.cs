@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace UI.Inventory
 {
-    public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
     {
         private Image _itemIcon;
         private CanvasGroup CanvasGroup { get; set; }
@@ -26,6 +26,28 @@ namespace UI.Inventory
             ActiveSlot.CurrentInventoryItem = this;
             ItemInSlot = item;
             _itemIcon.sprite = item.sprite;
+        }
+        
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            if (!ItemInSlot) return;
+            
+            TooltipManager.Singleton.SetInfo(
+                ItemInSlot.name,
+                ItemInSlot.description,
+                ItemInSlot.tag,
+                ItemInSlot.rarity,
+                ItemInSlot.minDamage,
+                ItemInSlot.maxDamage,
+                ItemInSlot.stats
+            );
+            
+            TooltipManager.Singleton.Show();
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            TooltipManager.Singleton.Hide();
         }
 
         public void OnBeginDrag(PointerEventData eventData)

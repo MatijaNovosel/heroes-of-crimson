@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace UI.Inventory
 {
-    public class InventorySlot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
+    public class InventorySlot : MonoBehaviour, IDropHandler
     {
         public InventoryItem CurrentInventoryItem { get; set; }
         public bool IsHotbar;
@@ -22,28 +22,6 @@ namespace UI.Inventory
         private void SetImage(Sprite sprite)
         {
             _image.sprite = sprite;
-        }
-        
-        public void OnPointerEnter(PointerEventData eventData)
-        {
-            if (!CurrentInventoryItem || !CurrentInventoryItem.ItemInSlot) return;
-            
-            TooltipManager.Singleton.SetInfo(
-                CurrentInventoryItem.ItemInSlot.name,
-                CurrentInventoryItem.ItemInSlot.description,
-                CurrentInventoryItem.ItemInSlot.tag,
-                CurrentInventoryItem.ItemInSlot.rarity,
-                CurrentInventoryItem.ItemInSlot.minDamage,
-                CurrentInventoryItem.ItemInSlot.maxDamage,
-                CurrentInventoryItem.ItemInSlot.stats
-            );
-            
-            TooltipManager.Singleton.Show();
-        }
-
-        public void OnPointerExit(PointerEventData eventData)
-        {
-            TooltipManager.Singleton.Hide();
         }
 
         public void ChangeImage(bool shouldRevertToDefault = false)

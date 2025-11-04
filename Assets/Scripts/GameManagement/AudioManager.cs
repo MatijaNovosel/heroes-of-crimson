@@ -9,13 +9,13 @@ public class AudioManager : MonoBehaviour
     {
         Singleton = this;
     }
-    
-    void Start()
+
+    private void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
     }
-
-    void Update()
+    
+    private void Update()
     {
         transform.position = player.transform.position;
     }

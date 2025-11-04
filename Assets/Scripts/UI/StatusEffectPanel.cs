@@ -6,49 +6,49 @@ using UnityEngine;
 
 public class StatusEffectPanel : MonoBehaviour
 {
-    private GameObject statusEffectIconPrefab;
-    private float iconSpacing = 0.6f;
+    private GameObject _statusEffectIconPrefab;
+    private readonly float _iconSpacing = 0.6f;
 
-    private readonly List<StatusEffectUIModel> activeIcons = new();
-    private Sprite[] sprites;
-    private HashSet<Constants.StatusEffects> currentEffects = new();
+    private readonly List<StatusEffectUIModel> _activeIcons = new();
+    private Sprite[] _sprites;
+    private HashSet<Constants.StatusEffects> _currentEffects = new();
 
     private GameObject Obj;
 
     void Awake()
     {
-        statusEffectIconPrefab = Resources.Load<GameObject>("Prefabs/StatusEffectIcon");
-        sprites = Resources.LoadAll<Sprite>("Sprites/statusEffects");
+        _statusEffectIconPrefab = Resources.Load<GameObject>("Prefabs/StatusEffectIcon");
+        _sprites = Resources.LoadAll<Sprite>("Sprites/Misc/statusEffects");
     }
 
     public void Setup(List<Constants.StatusEffects> setupValues, GameObject obj)
     {
-        currentEffects = new HashSet<Constants.StatusEffects>(setupValues);
+        _currentEffects = new HashSet<Constants.StatusEffects>(setupValues);
         Obj = obj;
         RefreshIcons();
     }
 
     public void SetStatusEffects(List<Constants.StatusEffects> newStatusEffects)
     {
-        currentEffects = new HashSet<Constants.StatusEffects>(newStatusEffects);
+        _currentEffects = new HashSet<Constants.StatusEffects>(newStatusEffects);
         RefreshIcons();
     }
 
     private void RefreshIcons()
     {
-        for (int i = activeIcons.Count - 1; i >= 0; i--)
+        for (int i = _activeIcons.Count - 1; i >= 0; i--)
         {
-            if (currentEffects.Contains(activeIcons[i].StatusEffect)) continue;
-            Destroy(activeIcons[i].Icon);
-            activeIcons.RemoveAt(i);
+            if (_currentEffects.Contains(_activeIcons[i].StatusEffect)) continue;
+            Destroy(_activeIcons[i].Icon);
+            _activeIcons.RemoveAt(i);
         }
 
-        foreach (var effect in currentEffects)
+        foreach (var effect in _currentEffects)
         {
-            if (activeIcons.Any(x => x.StatusEffect == effect)) continue;
-            var icon = Instantiate(statusEffectIconPrefab, transform);
-            icon.GetComponent<SpriteRenderer>().sprite = sprites[(int)effect - 1];
-            activeIcons.Add(new StatusEffectUIModel(icon, effect));
+            if (_activeIcons.Any(x => x.StatusEffect == effect)) continue;
+            var icon = Instantiate(_statusEffectIconPrefab, transform);
+            icon.GetComponent<SpriteRenderer>().sprite = _sprites[(int)effect - 1];
+            _activeIcons.Add(new StatusEffectUIModel(icon, effect));
         }
 
         RepositionIcons();
@@ -67,13 +67,13 @@ public class StatusEffectPanel : MonoBehaviour
 
     private void RepositionIcons()
     {
-        var totalWidth = (activeIcons.Count - 1) * iconSpacing;
+        var totalWidth = (_activeIcons.Count - 1) * _iconSpacing;
         var startOffset = -totalWidth / 2f;
 
-        for (int i = 0; i < activeIcons.Count; i++)
+        for (int i = 0; i < _activeIcons.Count; i++)
         {
-            var offsetX = startOffset + i * iconSpacing;
-            var iconObj = activeIcons[i].Icon;
+            var offsetX = startOffset + i * _iconSpacing;
+            var iconObj = _activeIcons[i].Icon;
             if (iconObj is null) continue;
 
             iconObj.transform.position = new Vector3(
