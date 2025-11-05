@@ -26,8 +26,8 @@ public class Player : MonoBehaviour
   private float _abilityUsedLast;
   private const float FiringDelay = 0.3f;
   private const float AbilityDelay = 1;
-  private float _abilityCooldownTimer = 0;
-  private bool _isShooting = false;
+  private float _abilityCooldownTimer;
+  private bool _isShooting;
   
   public bool HoldingItem;
 
@@ -40,19 +40,19 @@ public class Player : MonoBehaviour
   private BaseNPCBehaviour _baseNpcBehaviour;
   public Inventory Hotbar;
 
-  bool CanFire()
+  private bool CanFire()
   {
     // Current game time in seconds - last time fired in game seconds
     return Time.time - _lastFired > FiringDelay;
   }
 
-  bool CanCastAbility()
+  private bool CanCastAbility()
   {
     // Current game time in seconds - last time fired in game seconds
     return Time.time - _abilityUsedLast > AbilityDelay;
   }
 
-  void Fire()
+  private void Fire()
   {
     var shootDirection = (Utils.GetMousePosition() - gameObject.transform.position).normalized;
     var angle = Utils.GetAngleFromShootDirection(shootDirection);
@@ -137,11 +137,11 @@ public class Player : MonoBehaviour
 
       switch (weaponInventorySlot.CurrentInventoryItem.ItemInSlot.shootSound)
       {
-        case Constants.ShootSound.Arrow:
-          shootSound = ResourceCacher.Singleton.ShootSounds[0];
+        case Constants.Sounds.ArrowShoot:
+          shootSound = ResourceCacher.Singleton.Sounds[Constants.Sounds.ArrowShoot];
           break;
         default:
-          shootSound = ResourceCacher.Singleton.ShootSounds[1];
+          shootSound = ResourceCacher.Singleton.Sounds[Constants.Sounds.MagicShoot];
           break;
       }
     }
@@ -176,23 +176,23 @@ public class Player : MonoBehaviour
     {
       if (Input.GetKey(KeyCode.W))
       {
-        animator.SetFloat(IdleState, 1);
+        animator.SetFloat(IdleState, (int)Constants.AnimationIdleState.Up);
       }
 
       if (Input.GetKey(KeyCode.S))
       {
-        animator.SetFloat(IdleState, 2);
+        animator.SetFloat(IdleState, (int)Constants.AnimationIdleState.Down);
       }
 
       if (Input.GetKey(KeyCode.A))
       {
-        animator.SetFloat(IdleState, 0);
+        animator.SetFloat(IdleState, (int)Constants.AnimationIdleState.Horizonal);
         transform.localScale = new Vector3(-1, 1, 1);
       }
 
       if (Input.GetKey(KeyCode.D))
       {
-        animator.SetFloat(IdleState, 0);
+        animator.SetFloat(IdleState, (int)Constants.AnimationIdleState.Horizonal);
         transform.localScale = Vector3.one;
       }
     }

@@ -36,7 +36,7 @@ public class Database : MonoBehaviour
     item.projectileCount = databaseItem.projectileCount;
     item.stats = databaseItem.stats;
     item.projectileDegree = databaseItem.projectileDegree;
-    item.shootSound = (Constants.ShootSound)databaseItem.shootSound;
+    item.shootSound = (Constants.Sounds)databaseItem.shootSound;
     
     return item;
   }

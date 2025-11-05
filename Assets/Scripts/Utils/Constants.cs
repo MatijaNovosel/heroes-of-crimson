@@ -75,10 +75,30 @@ namespace HeroesOfCrimson.Utils
       Wave = 3
     }
 
-    public enum ShootSound
+    public enum AnimationIdleState
     {
-      Magic = 1, 
-      Arrow = 2, 
+      Horizonal = 0,
+      Up = 1,
+      Down = 2
+    }
+
+    public enum Sounds
+    {
+      Error = 1,
+      InventoryMove = 2,
+      InventoryEquip = 3,
+      ArrowShoot = 4,
+      MagicShoot = 5,
+      GenericHit = 6
+    }
+    
+    public enum InventorySprites
+    {
+      Weapon = 1,
+      Ability = 2,
+      Armor = 3,
+      Accessory = 4,
+      Empty = 5,
     }
   }
 }

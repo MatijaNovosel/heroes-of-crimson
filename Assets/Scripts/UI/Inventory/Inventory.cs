@@ -10,16 +10,6 @@ namespace UI.Inventory
         [SerializeField] private InventorySlot[] inventorySlots;
         [SerializeField] public Transform draggablesTransform;
         [SerializeField] private InventoryItem itemPrefab;
-        
-        [SerializeField] public Sprite slotImage;
-        
-        [SerializeField] public Sprite hotbarWeaponImage;
-        [SerializeField] public Sprite hotbarAbilityImage;
-        [SerializeField] public Sprite hotbarArmorImage;
-        [SerializeField] public Sprite hotbarAccessoryImage;
-        
-        [SerializeField] public AudioClip errorSound;
-        [SerializeField] public AudioClip moveSound;
 
         private void Start()
         {
@@ -37,11 +27,6 @@ namespace UI.Inventory
                 SpawnItem(Database.Singleton.GetItem(6));
                 SpawnItem(Database.Singleton.GetItem(7));
             }
-        }
-
-        public void HandleInvalidAction()
-        {
-            AudioManager.Singleton.PlaySound(errorSound);
         }
 
         public InventorySlot GetHotbarSlot(int idx)

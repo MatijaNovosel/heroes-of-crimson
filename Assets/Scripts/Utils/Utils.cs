@@ -10,6 +10,9 @@ namespace HeroesOfCrimson.Utils
     public static Vector3 GetMousePosition()
     {
       var screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+
+      if (Camera.main is null) return Vector3.zero;
+      
       var worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
       return new Vector3(worldPosition.x, worldPosition.y, 0);
     }
@@ -19,6 +22,7 @@ namespace HeroesOfCrimson.Utils
       var player = GameObject.Find("Player");
       return !player ? Vector3.zero : player.gameObject.transform.position;
     }
+    
     public static bool IsPlayerDead()
     {
       var player = GameObject.Find("Player");

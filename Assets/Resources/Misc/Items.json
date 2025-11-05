@@ -91,7 +91,7 @@
       "tag": 2,
       "spritePath": "armorAndWeapons_3",
       "projectilePath": "projectiles_9",
-      "shootSound": 2,
+      "shootSound": 4,
       "projectileDegree": 45,
       "minDamage": 30,
       "maxDamage": 80,

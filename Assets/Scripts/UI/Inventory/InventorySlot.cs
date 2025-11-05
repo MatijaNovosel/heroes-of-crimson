@@ -1,5 +1,7 @@
 using System;
+using GameManagement;
 using HeroesOfCrimson.Utils;
+using Mono.Cecil;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -13,13 +15,11 @@ namespace UI.Inventory
     public Constants.SlotTag Tag;
 
     private Image _image;
-    private Inventory _owner;
 
     private void Awake()
     {
         _image = GetComponent<Image>();
         _image.raycastTarget = true;
-        _owner = GetComponentInParent<Inventory>();
     }
 
     private void SetImage(Sprite sprite) => _image.sprite = sprite;
@@ -28,7 +28,7 @@ namespace UI.Inventory
     {
         if (shouldRevertToDefault)
         {
-            SetImage(_owner.slotImage);
+            SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Empty]);
             return;
         }
         
@@ -36,27 +36,27 @@ namespace UI.Inventory
         {
             case Constants.SlotTag.Weapon:
             {
-                SetImage(_owner.hotbarWeaponImage);
+                SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Weapon]);
                 break;
             }
             case Constants.SlotTag.None:
             {
-                SetImage(_owner.slotImage);
+                SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Empty]);
                 break;
             }
             case Constants.SlotTag.Ability:
             {
-                SetImage(_owner.hotbarAbilityImage);
+                SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Ability]);
                 break;
             }
             case Constants.SlotTag.Armor:
             {
-                SetImage(_owner.hotbarArmorImage);
+                SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Armor]);
                 break;
             }
             case Constants.SlotTag.Accessory:
             {
-                SetImage(_owner.hotbarAccessoryImage);
+                SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Accessory]);
                 break;
             }
         }
@@ -70,7 +70,7 @@ namespace UI.Inventory
         // enforce tags
         if (Tag != Constants.SlotTag.None && droppedItem.ItemInSlot.tag != Tag)
         {
-            AudioManager.Singleton.PlaySound(_owner.errorSound);
+            AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Error);
             return;
         }
 
@@ -80,7 +80,7 @@ namespace UI.Inventory
         if (toSlot.Tag == Constants.SlotTag.None && fromSlot.IsHotbar) fromSlot.ChangeImage();
         if (toSlot.IsHotbar && fromSlot.Tag == Constants.SlotTag.None) toSlot.ChangeImage(true);
 
-        AudioManager.Singleton.PlaySound(_owner.moveSound);
+        AudioManager.Singleton.PlaySoundCached(Constants.Sounds.InventoryMove);
 
         if (!toSlot.CurrentInventoryItem)
         {
@@ -91,7 +91,7 @@ namespace UI.Inventory
         var otherItem = toSlot.CurrentInventoryItem;
         if (otherItem.ItemInSlot.id == droppedItem.ItemInSlot.id)
         {
-            AudioManager.Singleton.PlaySound(_owner.errorSound);
+            AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Error);
             return;
         }
 
