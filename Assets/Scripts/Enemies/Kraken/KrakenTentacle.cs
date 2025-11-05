@@ -22,15 +22,13 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
     // Components
     private BaseNPCBehaviour _baseNpcBehaviour;
     private Rigidbody2D _rigidBody;
-    private Sprite _sprite;
     private GameObject _projectile;
     public SpriteRenderer spriteRenderer;
 
-    void Start()
+    private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         _projectile = Resources.Load<GameObject>("Prefabs/Projectile");
-        _sprite = ResourceCacher.Singleton.ProjectileSprites[1];
         
         var go = GameObject.Find("Kraken");
         if (go) _kraken = go;
@@ -51,14 +49,14 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
         }
     }
 
-    void Update()
+    private void Update()
     {
         if (!_kraken) Destroy(gameObject);
         Orbit(Time.deltaTime);
         ShootPlayer();
     }
 
-    bool CanFire()
+    private bool CanFire()
     {
         // Current game time in seconds - last time fired in game seconds
         return Time.time - _lastFired > _shootingDelay;
@@ -82,7 +80,7 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
             null,
             null,
             50,
-            _sprite,
+            ResourceCacher.Singleton.ProjectileSprites[22],
             new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
             new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy }
         ));
@@ -90,7 +88,7 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
         _lastFired = Time.time;
     }
 
-    void Orbit(float dt)
+    private void Orbit(float dt)
     {
         if (!_kraken) return;
         
@@ -107,13 +105,13 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
         spriteRenderer.flipX = onRight;
     }
 
-    static Vector2 Dir(float deg)
+    private static Vector2 Dir(float deg)
     {
         var r = deg * Mathf.Deg2Rad;
         return new Vector2(Mathf.Cos(r), Mathf.Sin(r));
     }
 
-    void SetPosition(Vector2 pos)
+    private void SetPosition(Vector2 pos)
     {
         if (_rigidBody) _rigidBody.MovePosition(pos);
         else transform.position = new Vector3(pos.x, pos.y, transform.position.z);

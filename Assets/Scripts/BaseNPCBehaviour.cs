@@ -70,7 +70,7 @@ public class BaseNPCBehaviour : MonoBehaviour
   {
     if (hitSound)
     {
-      AudioSource.PlayClipAtPoint(hitSound, transform.position, 1.5f);
+      AudioManager.Singleton.PlaySound(hitSound);
     }
     
     var angle = Random.Range(-40f, 40f);
