@@ -10,6 +10,7 @@ TagManager:
   - Collision
   - Design
   - NPC
+  - Water
   layers:
   - Default
   - TransparentFX

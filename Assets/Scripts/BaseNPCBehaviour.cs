@@ -81,8 +81,8 @@ public class BaseNPCBehaviour : MonoBehaviour
 
     var minDamage = 1f;
     var maxDamage = 100f;
-    var minFontSize = 100f;
-    var maxFontSize = 250f;
+    var minFontSize = 200f;
+    var maxFontSize = 280f;
 
     var t = Mathf.InverseLerp(minDamage, maxDamage, payload.Value);
     var fontSize = Mathf.Lerp(minFontSize, maxFontSize, t);
