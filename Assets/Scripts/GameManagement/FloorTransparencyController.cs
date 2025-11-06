@@ -9,22 +9,22 @@ public class FloorTransparencyController : MonoBehaviour
   public Color normalColor = Color.white;
   public int radius = 1;
 
-  private Vector3Int lastTilePosition;
+  private Vector3Int _lastTilePosition;
 
-  void Update()
+  private void Update()
   {
     if (!player) return;
     
     var tilePosition = floorTilemap.WorldToCell(player.transform.position);
 
-    if (tilePosition == lastTilePosition) return;
+    if (tilePosition == _lastTilePosition) return;
     
     // Reset
     for (var x = -radius; x <= radius; x++)
     {
       for (var y = -radius; y <= radius; y++)
       {
-        var pos = lastTilePosition + new Vector3Int(x, y, 0);
+        var pos = _lastTilePosition + new Vector3Int(x, y, 0);
         if (!floorTilemap.HasTile(pos)) continue;
         floorTilemap.SetTileFlags(pos, TileFlags.None);
         floorTilemap.SetColor(pos, normalColor);
@@ -43,6 +43,6 @@ public class FloorTransparencyController : MonoBehaviour
       }
     }
 
-    lastTilePosition = tilePosition;
+    _lastTilePosition = tilePosition;
   }
 }
