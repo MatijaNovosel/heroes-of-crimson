@@ -9,106 +9,114 @@ using UnityEngine.UI;
 namespace UI.Inventory
 {
     public class InventorySlot : MonoBehaviour, IDropHandler
-{
-    public InventoryItem CurrentInventoryItem { get; set; }
-    public bool IsHotbar;
-    public Constants.SlotTag Tag;
-
-    private Image _image;
-
-    private void Awake()
     {
-        _image = GetComponent<Image>();
-        _image.raycastTarget = true;
-    }
+        public InventoryItem CurrentInventoryItem { get; set; }
+        public bool IsHotbar;
+        public Constants.SlotTag Tag;
 
-    private void SetImage(Sprite sprite) => _image.sprite = sprite;
+        private Image _image;
 
-    public void ChangeImage(bool shouldRevertToDefault = false)
-    {
-        if (shouldRevertToDefault)
+        private void Awake()
         {
-            SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Empty]);
-            return;
+            _image = GetComponent<Image>();
+            _image.raycastTarget = true;
         }
-        
-        switch (Tag)
+
+        private void SetImage(Sprite sprite) => _image.sprite = sprite;
+
+        public void ChangeImage(bool shouldRevertToDefault = false)
         {
-            case Constants.SlotTag.Weapon:
-            {
-                SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Weapon]);
-                break;
-            }
-            case Constants.SlotTag.None:
+            if (shouldRevertToDefault)
             {
                 SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Empty]);
-                break;
+                return;
             }
-            case Constants.SlotTag.Ability:
+            
+            switch (Tag)
             {
-                SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Ability]);
-                break;
+                case Constants.SlotTag.Weapon:
+                {
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Weapon]);
+                    break;
+                }
+                case Constants.SlotTag.None:
+                {
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Empty]);
+                    break;
+                }
+                case Constants.SlotTag.Ability:
+                {
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Ability]);
+                    break;
+                }
+                case Constants.SlotTag.Armor:
+                {
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Armor]);
+                    break;
+                }
+                case Constants.SlotTag.Accessory:
+                {
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Accessory]);
+                    break;
+                }
             }
-            case Constants.SlotTag.Armor:
+        }
+
+        public void OnDrop(PointerEventData eventData)
+        {
+            var droppedItem = eventData.pointerDrag?.GetComponent<InventoryItem>();
+            if (droppedItem is null) return;
+
+            if (Tag != Constants.SlotTag.None && droppedItem.ItemInSlot.tag != Tag)
             {
-                SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Armor]);
-                break;
+                AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Error);
+                return;
             }
-            case Constants.SlotTag.Accessory:
+
+            var fromSlot = droppedItem.ActiveSlot;
+            var toSlot = this;
+
+            if (toSlot.Tag == Constants.SlotTag.None && fromSlot.IsHotbar) fromSlot.ChangeImage();
+            if (toSlot.IsHotbar && fromSlot.Tag == Constants.SlotTag.None) toSlot.ChangeImage(true);
+
+            AudioManager.Singleton.PlaySoundCached(Constants.Sounds.InventoryMove);
+
+            if (toSlot.CurrentInventoryItem is null)
             {
-                SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Accessory]);
-                break;
+                MoveItem(droppedItem, toSlot);
+                return;
             }
+
+            SwapItems(fromSlot, toSlot);
+        }
+
+        private static void MoveItem(InventoryItem item, InventorySlot targetSlot)
+        {
+            if (item.ActiveSlot) item.ActiveSlot.CurrentInventoryItem = null;
+
+            item.ActiveSlot = targetSlot;
+            targetSlot.CurrentInventoryItem = item;
+
+            item.transform.SetParent(targetSlot.transform, false);
+            ((RectTransform)item.transform).anchoredPosition = Vector2.zero;
+        }
+        
+        private static void SwapItems(InventorySlot slotA, InventorySlot slotB)
+        {
+            (slotA.CurrentInventoryItem, slotB.CurrentInventoryItem) = (slotB.CurrentInventoryItem, slotA.CurrentInventoryItem);
+
+            if (slotA.CurrentInventoryItem != null)
+            {
+                slotA.CurrentInventoryItem.ActiveSlot = slotA;
+                slotA.CurrentInventoryItem.transform.SetParent(slotA.transform, false);
+                ((RectTransform)slotA.CurrentInventoryItem.transform).anchoredPosition = Vector2.zero;
+            }
+
+            if (slotB.CurrentInventoryItem == null) return;
+            
+            slotB.CurrentInventoryItem.ActiveSlot = slotB;
+            slotB.CurrentInventoryItem.transform.SetParent(slotB.transform, false);
+            ((RectTransform)slotB.CurrentInventoryItem.transform).anchoredPosition = Vector2.zero;
         }
     }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        var droppedItem = eventData.pointerDrag?.GetComponent<InventoryItem>();
-        if (!droppedItem) return;
-
-        // enforce tags
-        if (Tag != Constants.SlotTag.None && droppedItem.ItemInSlot.tag != Tag)
-        {
-            AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Error);
-            return;
-        }
-
-        var fromSlot = droppedItem.ActiveSlot;
-        var toSlot = this;
-
-        if (toSlot.Tag == Constants.SlotTag.None && fromSlot.IsHotbar) fromSlot.ChangeImage();
-        if (toSlot.IsHotbar && fromSlot.Tag == Constants.SlotTag.None) toSlot.ChangeImage(true);
-
-        AudioManager.Singleton.PlaySoundCached(Constants.Sounds.InventoryMove);
-
-        if (!toSlot.CurrentInventoryItem)
-        {
-            MoveItem(droppedItem, toSlot);
-            return;
-        }
-
-        var otherItem = toSlot.CurrentInventoryItem;
-        if (otherItem.ItemInSlot.id == droppedItem.ItemInSlot.id)
-        {
-            AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Error);
-            return;
-        }
-
-        MoveItem(otherItem, fromSlot);
-        MoveItem(droppedItem, toSlot);
-    }
-
-    private static void MoveItem(InventoryItem item, InventorySlot targetSlot)
-    {
-        if (item.ActiveSlot) item.ActiveSlot.CurrentInventoryItem = null;
-
-        targetSlot.CurrentInventoryItem = item;
-        item.ActiveSlot = targetSlot;
-
-        item.transform.SetParent(targetSlot.transform, false);
-        ((RectTransform)item.transform).anchoredPosition = Vector2.zero;
-    }
-}
-
 }
