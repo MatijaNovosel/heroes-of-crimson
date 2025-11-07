@@ -11,7 +11,7 @@ namespace Models
         public Constants.ItemRarity rarity;
         public string name;
         public string description;
-        public Constants.SlotTag tag;
+        public Constants.ItemTag tag;
         public Constants.Sounds shootSound;
         public Sprite sprite;
         public List<int> stats;

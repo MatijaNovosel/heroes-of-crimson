@@ -46,7 +46,7 @@ public class TooltipManager : MonoBehaviour
     public void SetInfo(
         string title,
         string description,
-        Constants.SlotTag tag,
+        Constants.ItemTag tag,
         Constants.ItemRarity rarity,
         int minDamage,
         int maxDamage,
@@ -59,7 +59,7 @@ public class TooltipManager : MonoBehaviour
         
         TooltipDamage.text = $"Damage: {minDamage} - {maxDamage}";
 
-        if (tag == Constants.SlotTag.Weapon)
+        if (tag == Constants.ItemTag.Weapon)
         {
             TooltipDamage.gameObject.SetActive(true);
             DividerWeapons.gameObject.SetActive(true);

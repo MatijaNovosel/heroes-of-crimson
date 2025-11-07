@@ -50,13 +50,15 @@ namespace HeroesOfCrimson.Utils
        Invincible = 10,
     }
 
-    public enum SlotTag
+    public enum ItemTag
     {
       None = 1, 
       Weapon = 2, 
       Ability = 3, 
       Armor = 4, 
-      Accessory = 5
+      Accessory = 5,
+      Misc = 6,
+      Consumable = 7
     }
 
     public enum ItemRarity
@@ -92,7 +94,7 @@ namespace HeroesOfCrimson.Utils
       GenericHit = 6
     }
     
-    public enum InventorySprites
+    public enum InventorySlotSpritesEnum
     {
       Weapon = 1,
       Ability = 2,

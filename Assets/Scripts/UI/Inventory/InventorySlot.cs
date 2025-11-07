@@ -12,7 +12,7 @@ namespace UI.Inventory
     {
         public InventoryItem CurrentInventoryItem { get; set; }
         public bool IsHotbar;
-        public Constants.SlotTag Tag;
+        public Constants.ItemTag Tag;
 
         private Image _image;
 
@@ -28,35 +28,35 @@ namespace UI.Inventory
         {
             if (shouldRevertToDefault)
             {
-                SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Empty]);
+                SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Empty]);
                 return;
             }
             
             switch (Tag)
             {
-                case Constants.SlotTag.Weapon:
+                case Constants.ItemTag.Weapon:
                 {
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Weapon]);
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Weapon]);
                     break;
                 }
-                case Constants.SlotTag.None:
+                case Constants.ItemTag.None:
                 {
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Empty]);
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Empty]);
                     break;
                 }
-                case Constants.SlotTag.Ability:
+                case Constants.ItemTag.Ability:
                 {
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Ability]);
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Ability]);
                     break;
                 }
-                case Constants.SlotTag.Armor:
+                case Constants.ItemTag.Armor:
                 {
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Armor]);
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Armor]);
                     break;
                 }
-                case Constants.SlotTag.Accessory:
+                case Constants.ItemTag.Accessory:
                 {
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySprites.Accessory]);
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Accessory]);
                     break;
                 }
             }
@@ -67,7 +67,7 @@ namespace UI.Inventory
             var droppedItem = eventData.pointerDrag?.GetComponent<InventoryItem>();
             if (droppedItem is null) return;
 
-            if (Tag != Constants.SlotTag.None && droppedItem.ItemInSlot.tag != Tag)
+            if (Tag != Constants.ItemTag.None && droppedItem.ItemInSlot.tag != Tag)
             {
                 AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Error);
                 return;
@@ -76,8 +76,8 @@ namespace UI.Inventory
             var fromSlot = droppedItem.ActiveSlot;
             var toSlot = this;
 
-            if (toSlot.Tag == Constants.SlotTag.None && fromSlot.IsHotbar) fromSlot.ChangeImage();
-            if (toSlot.IsHotbar && fromSlot.Tag == Constants.SlotTag.None) toSlot.ChangeImage(true);
+            if (toSlot.Tag == Constants.ItemTag.None && fromSlot.IsHotbar) fromSlot.ChangeImage();
+            if (toSlot.IsHotbar && fromSlot.Tag == Constants.ItemTag.None) toSlot.ChangeImage(true);
 
             AudioManager.Singleton.PlaySoundCached(Constants.Sounds.InventoryMove);
 

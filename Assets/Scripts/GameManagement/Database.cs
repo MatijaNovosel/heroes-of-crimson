@@ -27,7 +27,30 @@ public class Database : MonoBehaviour
     item.id = databaseItem.id;
     item.name = databaseItem.name;
     item.description = databaseItem.description;
-    item.sprite = ResourceCacher.Singleton.ArmorAndWeaponSprites.First(x => x.name == databaseItem.spritePath);
+    item.tag = (Constants.ItemTag)databaseItem.tag;
+
+    switch (item.tag)
+    {
+      case Constants.ItemTag.Misc:
+      {
+        item.sprite = ResourceCacher.Singleton.MiscSprites.First(x => x.name == databaseItem.spritePath);
+        break;
+      }
+      case Constants.ItemTag.Weapon:
+      case Constants.ItemTag.Ability:
+      case Constants.ItemTag.Armor:
+      case Constants.ItemTag.Accessory:
+      {
+        item.sprite = ResourceCacher.Singleton.ArmorAndWeaponSprites.First(x => x.name == databaseItem.spritePath);
+        break;
+      }
+      case Constants.ItemTag.Consumable:
+      {
+        item.sprite = ResourceCacher.Singleton.ConsumableSprites.First(x => x.name == databaseItem.spritePath);
+        break;
+      }
+    }
+    
 
     var projectileSprite = ResourceCacher.Singleton.ProjectileSprites.FirstOrDefault(x => x.name == databaseItem.projectilePath);
     
@@ -35,7 +58,6 @@ public class Database : MonoBehaviour
     
     item.minDamage = databaseItem.minDamage;
     item.maxDamage = databaseItem.maxDamage;
-    item.tag = (Constants.SlotTag)databaseItem.tag;
     item.rarity = (Constants.ItemRarity)databaseItem.rarity;
     item.projectileCount = databaseItem.projectileCount;
     item.stats = databaseItem.stats;
