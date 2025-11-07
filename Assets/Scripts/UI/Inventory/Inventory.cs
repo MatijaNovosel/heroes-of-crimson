@@ -17,7 +17,7 @@ namespace UI.Inventory
             {
                 //
             }
-            else
+            else if (name == "Inventory")
             {
                 SpawnItem(Database.Singleton.GetItem(1));
                 SpawnItem(Database.Singleton.GetItem(2));
