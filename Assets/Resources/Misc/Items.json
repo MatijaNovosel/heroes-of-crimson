@@ -1,11 +1,11 @@
 ﻿{
   "items": [
     {
-      "id": 1,
+      "id": 2000,
       "name": "White staff",
       "description": "A basic white staff.",
       "tag": 2,
-      "spritePath": "armorAndWeapons_5",
+      "spritePath": "armorAndWeapons_7",
       "projectilePath": "projectiles_16",
       "projectileDegree": 0,
       "minDamage": 10,
@@ -15,77 +15,7 @@
       "stats": [0, 0, 0, 0, 0, 0]
     },
     {
-      "id": 2,
-      "name": "Orange staff",
-      "description": "A cool orange staff.",
-      "tag": 2,
-      "spritePath": "armorAndWeapons_6",
-      "projectilePath": "projectiles_17",
-      "projectileDegree": 0,
-      "minDamage": 20,
-      "maxDamage": 50,
-      "projectileCount": 2,
-      "rarity": 1,
-      "stats": [0, 0, 1, 0, 0, 0]
-    },
-    {
-      "id": 3,
-      "name": "Green staff",
-      "description": "A cool green staff.",
-      "tag": 2,
-      "spritePath": "armorAndWeapons_7",
-      "projectilePath": "projectiles_18",
-      "projectileDegree": 0,
-      "minDamage": 20,
-      "maxDamage": 50,
-      "projectileCount": 2,
-      "rarity": 2,
-      "stats": [0, 0, 2, 0, 0, 0]
-    },
-    {
-      "id": 4,
-      "name": "Red staff",
-      "description": "A cool red staff.",
-      "tag": 2,
-      "spritePath": "armorAndWeapons_8",
-      "projectilePath": "projectiles_19",
-      "projectileDegree": 0,
-      "minDamage": 20,
-      "maxDamage": 50,
-      "projectileCount": 2,
-      "rarity": 2,
-      "stats": [0, 0, 3, 0, 0, 0]
-    },
-    {
-      "id": 5,
-      "name": "Blue staff",
-      "description": "A cool blue staff.",
-      "tag": 2,
-      "spritePath": "armorAndWeapons_9",
-      "projectilePath": "projectiles_20",
-      "projectileDegree": 0,
-      "minDamage": 20,
-      "maxDamage": 50,
-      "projectileCount": 2,
-      "rarity": 3,
-      "stats": [1, 0, 4, 0, 0, 0]
-    },
-    {
-      "id": 6,
-      "name": "Yellow staff",
-      "description": "A cool yellow staff.",
-      "tag": 2,
-      "spritePath": "armorAndWeapons_10",
-      "projectilePath": "projectiles_21",
-      "projectileDegree": 0,
-      "minDamage": 20,
-      "maxDamage": 50,
-      "projectileCount": 2,
-      "rarity": 4,
-      "stats": [2, 0, 5, 0, 0, 0]
-    },
-    {
-      "id": 7,
+      "id": 2001,
       "name": "Wooden crossbow",
       "description": "A crossbow is a ranged weapon using an elastic launching device consisting of a bow-like assembly called a prod, mounted horizontally on a main frame called a tiller, which is hand-held in a similar fashion to the stock of a long gun. Crossbows shoot arrow-like projectiles called bolts or quarrels. A person who shoots crossbow is called a crossbowman, an arbalister or an arbalist",
       "tag": 2,
@@ -100,13 +30,40 @@
       "stats": [5, 0, 4, 0, 0, 0]
     },
     {
-      "id": 8,
-      "name": "Ring",
-      "description": "A ring is a round band, usually made of metal, worn as ornamental jewelry. The term \"ring\" by itself denotes jewellery worn on the finger; when worn as an ornament elsewhere, the body part is specified within the term, e.g., earrings, neck rings, arm rings, and toe rings.",
+      "id": 5000,
+      "name": "Iron ring of attack",
+      "description": "A basic ring made of iron that makes you feel more feisty, an amethyst is embedded into it.",
       "tag": 5,
-      "spritePath": "armorAndWeapons_19",
+      "spritePath": "armorAndWeapons_24",
+      "rarity": 1,
+      "stats": [1, 0, 0, 0, 0, 0]
+    },
+    {
+      "id": 5001,
+      "name": "Silver ring of attack",
+      "description": "A fancy ring made of silver that makes you feel more feisty, an amethyst is embedded into it.",
+      "tag": 5,
+      "spritePath": "armorAndWeapons_32",
+      "rarity": 2,
+      "stats": [2, 0, 0, 0, 0, 0]
+    },
+    {
+      "id": 5002,
+      "name": "Sapphire ring of attack",
+      "description": "An extravagant ring made of sapphire that makes you feel more feisty, an amethyst is embedded into it.",
+      "tag": 5,
+      "spritePath": "armorAndWeapons_40",
+      "rarity": 3,
+      "stats": [3, 0, 0, 0, 0, 0]
+    },
+    {
+      "id": 5003,
+      "name": "Golden ring of attack",
+      "description": "An opulent ring made of sapphire that makes you feel more feisty, an amethyst is embedded into it.",
+      "tag": 5,
+      "spritePath": "armorAndWeapons_48",
       "rarity": 4,
-      "stats": [3, 1, -3, 0, 2, 0]
+      "stats": [4, 0, 0, 0, 0, 0]
     }
   ]
 }

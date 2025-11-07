@@ -28,7 +28,11 @@ public class Database : MonoBehaviour
     item.name = databaseItem.name;
     item.description = databaseItem.description;
     item.sprite = ResourceCacher.Singleton.ArmorAndWeaponSprites.First(x => x.name == databaseItem.spritePath);
-    item.projectileSprite = ResourceCacher.Singleton.ProjectileSprites.First(x => x.name == databaseItem.projectilePath);
+
+    var projectileSprite = ResourceCacher.Singleton.ProjectileSprites.FirstOrDefault(x => x.name == databaseItem.projectilePath);
+    
+    item.projectileSprite = projectileSprite;
+    
     item.minDamage = databaseItem.minDamage;
     item.maxDamage = databaseItem.maxDamage;
     item.tag = (Constants.SlotTag)databaseItem.tag;

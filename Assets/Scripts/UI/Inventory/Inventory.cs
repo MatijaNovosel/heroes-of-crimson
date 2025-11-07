@@ -19,13 +19,11 @@ namespace UI.Inventory
             }
             else if (name == "Inventory")
             {
-                SpawnItem(Database.Singleton.GetItem(1));
-                SpawnItem(Database.Singleton.GetItem(2));
-                SpawnItem(Database.Singleton.GetItem(3));
-                SpawnItem(Database.Singleton.GetItem(4));
-                SpawnItem(Database.Singleton.GetItem(5));
-                SpawnItem(Database.Singleton.GetItem(6));
-                SpawnItem(Database.Singleton.GetItem(7));
+                SpawnItem(Database.Singleton.GetItem(2000));
+                SpawnItem(Database.Singleton.GetItem(5000));
+                SpawnItem(Database.Singleton.GetItem(5001));
+                SpawnItem(Database.Singleton.GetItem(5002));
+                SpawnItem(Database.Singleton.GetItem(5003));
             }
         }
 

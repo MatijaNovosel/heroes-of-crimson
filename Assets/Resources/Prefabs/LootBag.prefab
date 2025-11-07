@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7703667645775966057}
   - component: {fileID: 6989085116998507714}
+  - component: {fileID: 6559301374437243440}
+  - component: {fileID: 3874692225793464894}
   m_Layer: 0
   m_Name: LootBag
   m_TagString: Untagged
@@ -76,8 +78,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: -1337845063
-  m_SortingLayer: 11
+  m_SortingLayerID: -1653998307
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: 5770958956045166959, guid: ecb5de08adfaadd4391c71d9cab1322f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -90,3 +92,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6559301374437243440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391078489379675557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c9ebed2dab89ce42b7becbed5810477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LootBag
+  InteractionRange: 2
+--- !u!114 &3874692225793464894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391078489379675557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4dd43ecff7a5134c92328e89a4d7cbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::YSort
