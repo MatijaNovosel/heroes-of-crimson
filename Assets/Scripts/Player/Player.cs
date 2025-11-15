@@ -39,6 +39,14 @@ public class Player : MonoBehaviour
   private AnimatorOverrideController _animatorOverrideController;
   private BaseNPCBehaviour _baseNpcBehaviour;
   public Inventory Hotbar;
+  
+  // Stats
+  public float actualSpd = 0;
+  public float actualAtt = 0;
+  public float actualDef = 0;
+  public float actualVit = 0;
+  public float actualWis = 0;
+  public float actualDex = 0;
 
   private bool CanFire()
   {
@@ -295,6 +303,37 @@ public class Player : MonoBehaviour
     _abilityUsedLast = Time.time;
   }
 
+  private void UpdateStats()
+  {
+    var weaponSlot = Hotbar.GetHotbarSlot(0);
+    var abilitySlot = Hotbar.GetHotbarSlot(1);
+    var armorSlot = Hotbar.GetHotbarSlot(2);
+    var accessorySlot = Hotbar.GetHotbarSlot(3);
+
+    // ATT, SPD, DEX, DEF, VIT, WIS
+    var totalStats = new List<int> { 0, 0, 0, 0, 0, 0 };
+    
+    var weaponItem = weaponSlot.CurrentInventoryItem;
+    var abilityItem = abilitySlot.CurrentInventoryItem;
+    var armorItem = armorSlot.CurrentInventoryItem;
+    var accessoryItem = accessorySlot.CurrentInventoryItem;
+    
+    if (weaponItem)
+    {
+      for (var i = 0; i < 6; i++)
+      {
+       totalStats[i] += weaponItem.ItemInSlot.stats[i];
+      }
+    }
+
+    actualAtt = _baseNpcBehaviour.att + totalStats[0];
+    actualSpd = _baseNpcBehaviour.spd + totalStats[1];
+    actualDex = _baseNpcBehaviour.def + totalStats[2];
+    actualDef = _baseNpcBehaviour.def + totalStats[3];
+    actualVit = _baseNpcBehaviour.vit + totalStats[4];
+    actualWis = _baseNpcBehaviour.wis + totalStats[5];
+  }
+
   private void Start()
   {
     _boxCollider = GetComponent<BoxCollider2D>();
@@ -306,6 +345,7 @@ public class Player : MonoBehaviour
   private void FixedUpdate()
   {
     HandleMoving();
+    UpdateStats();
   }
 
   private void Update()

@@ -12,7 +12,7 @@
       "maxDamage": 40,
       "projectileCount": 1,
       "rarity": 1,
-      "stats": [0, 0, 0, 0, 0, 0]
+      "stats": [2, 0, 0, 0, 0, 0]
     },
     {
       "id": 3000,
@@ -73,6 +73,42 @@
       "spritePath": "armorAndWeapons_48",
       "rarity": 4,
       "stats": [4, 0, 0, 0, 0, 0]
+    },
+    {
+      "id": 5004,
+      "name": "Iron ring of dexterity",
+      "description": "A basic ring made of iron that makes you feel more feisty, an amber is embedded into it.",
+      "tag": 5,
+      "spritePath": "armorAndWeapons_29",
+      "rarity": 1,
+      "stats": [0, 0, 1, 0, 0, 0]
+    },
+    {
+      "id": 5005,
+      "name": "Silver ring of dexterity",
+      "description": "A fancy ring made of silver that makes you feel more feisty, an amber is embedded into it.",
+      "tag": 5,
+      "spritePath": "armorAndWeapons_37",
+      "rarity": 2,
+      "stats": [0, 0, 2, 0, 0, 0]
+    },
+    {
+      "id": 5006,
+      "name": "Sapphire ring of dexterity",
+      "description": "An extravagant ring made of sapphire that makes you feel more feisty, an amber is embedded into it.",
+      "tag": 5,
+      "spritePath": "armorAndWeapons_45",
+      "rarity": 3,
+      "stats": [0, 0, 3, 0, 0, 0]
+    },
+    {
+      "id": 5007,
+      "name": "Golden ring of dexterity",
+      "description": "An opulent ring made of sapphire that makes you feel more feisty, an amber is embedded into it.",
+      "tag": 5,
+      "spritePath": "armorAndWeapons_53",
+      "rarity": 4,
+      "stats": [0, 0, 4, 0, 0, 0]
     },
     {
       "id": 6000,

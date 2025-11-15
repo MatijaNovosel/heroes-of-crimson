@@ -10,24 +10,22 @@ public class StatLine : MonoBehaviour
     public Constants.Stats stat;
 
     private TMP_Text _statText;
-    private BaseNPCBehaviour _playerBaseNpcBehaviour;
     
-    void Start()
+    private void Start()
     {
         _statText = statLineText.GetComponent<TMP_Text>();
-        _playerBaseNpcBehaviour = player.GetComponent<BaseNPCBehaviour>();
     }
 
-    void Update()
+    private void Update()
     {
         _statText.text = stat switch
         {
-            Constants.Stats.ATT => _playerBaseNpcBehaviour.att.ToString(),
-            Constants.Stats.DEF => _playerBaseNpcBehaviour.def.ToString(),
-            Constants.Stats.WIS => _playerBaseNpcBehaviour.wis.ToString(),
-            Constants.Stats.VIT => _playerBaseNpcBehaviour.vit.ToString(),
-            Constants.Stats.DEX => _playerBaseNpcBehaviour.dex.ToString(),
-            Constants.Stats.SPD => _playerBaseNpcBehaviour.spd.ToString(),
+            Constants.Stats.ATT => player.actualAtt.ToString(),
+            Constants.Stats.DEF => player.actualDef.ToString(),
+            Constants.Stats.WIS => player.actualWis.ToString(),
+            Constants.Stats.VIT => player.actualVit.ToString(),
+            Constants.Stats.DEX => player.actualDex.ToString(),
+            Constants.Stats.SPD => player.actualSpd.ToString(),
             _ => throw new ArgumentOutOfRangeException()
         };
     }

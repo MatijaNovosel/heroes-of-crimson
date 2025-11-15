@@ -23,8 +23,8 @@ namespace UI.Inventory
                 SpawnItem(Database.Singleton.GetItem(3000));
                 SpawnItem(Database.Singleton.GetItem(5000));
                 SpawnItem(Database.Singleton.GetItem(5001));
-                SpawnItem(Database.Singleton.GetItem(5002));
-                SpawnItem(Database.Singleton.GetItem(5003));
+                SpawnItem(Database.Singleton.GetItem(5005));
+                SpawnItem(Database.Singleton.GetItem(5006));
                 SpawnItem(Database.Singleton.GetItem(6000));
             }
         }
