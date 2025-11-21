@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
   private bool _isShooting;
   
   public bool HoldingItem;
+  public bool InventoryOpen;
 
   // Components
   public GameObject Projectile;
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
   private AnimatorOverrideController _animatorOverrideController;
   private BaseNPCBehaviour _baseNpcBehaviour;
   public Inventory Hotbar;
+  public RectTransform TopLeftGroup;
   
   // Stats
   public float actualSpd = 0;
@@ -334,6 +336,15 @@ public class Player : MonoBehaviour
     actualWis = _baseNpcBehaviour.wis + totalStats[5];
   }
 
+  private void HandleUIKeys()
+  {
+    if (Input.GetKeyDown(KeyCode.Tab))
+    {
+      InventoryOpen = !InventoryOpen;
+      TopLeftGroup.transform.localScale = InventoryOpen ? Vector3.one : Vector3.zero;
+    }
+  }
+
   private void Start()
   {
     _boxCollider = GetComponent<BoxCollider2D>();
@@ -352,5 +363,6 @@ public class Player : MonoBehaviour
   {
     HandleAbility();
     HandleShooting();
+    HandleUIKeys();
   }
 }
