@@ -31,6 +31,7 @@ public class Player : MonoBehaviour
   
   public bool HoldingItem;
   public bool InventoryOpen;
+  public bool PauseMenuOpen;
 
   // Components
   public GameObject Projectile;
@@ -41,6 +42,7 @@ public class Player : MonoBehaviour
   private BaseNPCBehaviour _baseNpcBehaviour;
   public Inventory Hotbar;
   public RectTransform TopLeftGroup;
+  public RectTransform PauseMenu;
   
   // Stats
   public float actualSpd = 0;
@@ -322,10 +324,22 @@ public class Player : MonoBehaviour
     
     if (weaponItem)
     {
-      for (var i = 0; i < 6; i++)
-      {
-       totalStats[i] += weaponItem.ItemInSlot.stats[i];
-      }
+      for (var i = 0; i < 6; i++) totalStats[i] += weaponItem.ItemInSlot.stats[i];
+    }
+    
+    if (abilityItem)
+    {
+      for (var i = 0; i < 6; i++) totalStats[i] += abilityItem.ItemInSlot.stats[i];
+    }
+    
+    if (armorItem)
+    {
+      for (var i = 0; i < 6; i++) totalStats[i] += armorItem.ItemInSlot.stats[i];
+    }
+    
+    if (accessoryItem)
+    {
+      for (var i = 0; i < 6; i++) totalStats[i] += accessoryItem.ItemInSlot.stats[i];
     }
 
     actualAtt = _baseNpcBehaviour.att + totalStats[0];
@@ -342,6 +356,13 @@ public class Player : MonoBehaviour
     {
       InventoryOpen = !InventoryOpen;
       TopLeftGroup.transform.localScale = InventoryOpen ? Vector3.one : Vector3.zero;
+    }
+    
+    if (Input.GetKeyDown(KeyCode.Escape))
+    {
+      PauseMenuOpen = !PauseMenuOpen;
+      Time.timeScale = PauseMenuOpen ? 0f : 1f;
+      PauseMenu.transform.localPosition = new Vector3(PauseMenuOpen ? 0 : 1500, 0, 0);
     }
   }
 
