@@ -42,7 +42,6 @@ public class Player : MonoBehaviour
   private BaseNPCBehaviour _baseNpcBehaviour;
   public Inventory Hotbar;
   public RectTransform TopLeftGroup;
-  public RectTransform PauseMenu;
   
   // Stats
   public float actualSpd = 0;
@@ -356,13 +355,6 @@ public class Player : MonoBehaviour
     {
       InventoryOpen = !InventoryOpen;
       TopLeftGroup.transform.localScale = InventoryOpen ? Vector3.one : Vector3.zero;
-    }
-    
-    if (Input.GetKeyDown(KeyCode.Escape))
-    {
-      PauseMenuOpen = !PauseMenuOpen;
-      Time.timeScale = PauseMenuOpen ? 0f : 1f;
-      PauseMenu.transform.localPosition = new Vector3(PauseMenuOpen ? 0 : 1500, 0, 0);
     }
   }
 
