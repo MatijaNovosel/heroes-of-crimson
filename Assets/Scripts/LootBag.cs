@@ -16,7 +16,7 @@ public class LootBag : MonoBehaviour
 
     void Update()
     {
-        if (_player is null) return;
+        if (!_player) return;
 
         float distance = Vector3.Distance(_player.transform.position, transform.position);
         bool isNear = distance <= InteractionRange;

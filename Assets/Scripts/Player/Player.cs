@@ -5,6 +5,7 @@ using GameManagement;
 using UnityEngine;
 using HeroesOfCrimson.Utils;
 using Models;
+using TMPro;
 using UI.Inventory;
 using Unity.Burst.CompilerServices;
 using UnityEngine.EventSystems;
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
   private BaseNPCBehaviour _baseNpcBehaviour;
   public Inventory Hotbar;
   public RectTransform TopLeftGroup;
+  public TMP_Text HealthbarRegenText;
   
   // Stats
   public float actualSpd = 0;
@@ -306,6 +308,17 @@ public class Player : MonoBehaviour
     _abilityUsedLast = Time.time;
   }
 
+  private void HandleRegen()
+  {
+    var regenPerSecond = Mathf.Max(0f, actualVit * 0.1f);
+    HealthbarRegenText.text = $"+{regenPerSecond}";
+    _baseNpcBehaviour.hp += regenPerSecond * Time.deltaTime;
+    _baseNpcBehaviour.hp = Mathf.Min(
+      _baseNpcBehaviour.hp,
+      _baseNpcBehaviour.maxHp
+    );
+  }
+
   private void UpdateStats()
   {
     var weaponSlot = Hotbar.GetHotbarSlot(0);
@@ -377,5 +390,6 @@ public class Player : MonoBehaviour
     HandleAbility();
     HandleShooting();
     HandleUIKeys();
+    HandleRegen();
   }
 }
