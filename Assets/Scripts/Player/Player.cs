@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
   public Inventory Hotbar;
   public RectTransform TopLeftGroup;
   public TMP_Text HealthbarRegenText;
+  public TMP_Text ManaBarRegenText;
   
   // Stats
   public float actualSpd = 0;
@@ -63,6 +64,12 @@ public class Player : MonoBehaviour
   {
     // Current game time in seconds - last time fired in game seconds
     return Time.time - _abilityUsedLast > AbilityDelay;
+  }
+  
+  private float GetManaRegenPerSecond()
+  {
+    // MP per second = 0.5 + 0.12 * WIS
+    return Mathf.Max(0f, 0.5f + (0.12f * actualWis));
   }
 
   private void Fire()
@@ -289,6 +296,10 @@ public class Player : MonoBehaviour
     HandleAbilityCooldown();
     
     if (!Input.GetKey(KeyCode.R) || !CanCastAbility()) return;
+
+    if (_baseNpcBehaviour.mp < 30) return;
+
+    _baseNpcBehaviour.mp -= 30;
     
     var cursorPosition = Utils.GetMousePosition();
     var meteorPrefab = Resources.Load<GameObject>("Prefabs/Meteor");
@@ -310,12 +321,27 @@ public class Player : MonoBehaviour
 
   private void HandleRegen()
   {
-    var regenPerSecond = Mathf.Max(0f, actualVit * 0.1f);
-    HealthbarRegenText.text = $"+{regenPerSecond}";
+    // HP per second = 2 + 0.2407 * VIT
+    var regenPerSecond = 2f + (0.2407f * actualVit);
+    regenPerSecond = Mathf.Max(0f, regenPerSecond);
+    
+    HealthbarRegenText.text = $"+{regenPerSecond:F2}";
     _baseNpcBehaviour.hp += regenPerSecond * Time.deltaTime;
     _baseNpcBehaviour.hp = Mathf.Min(
       _baseNpcBehaviour.hp,
       _baseNpcBehaviour.maxHp
+    );
+  }
+
+  private void HandleManaRegen()
+  {
+    float manaRegenPerSecond = GetManaRegenPerSecond();
+    
+    ManaBarRegenText.text = $"+{manaRegenPerSecond:F2}";
+    _baseNpcBehaviour.mp += manaRegenPerSecond * Time.deltaTime;
+    _baseNpcBehaviour.mp = Mathf.Min(
+      _baseNpcBehaviour.mp,
+      _baseNpcBehaviour.maxMp
     );
   }
 
@@ -391,5 +417,6 @@ public class Player : MonoBehaviour
     HandleShooting();
     HandleUIKeys();
     HandleRegen();
+    HandleManaRegen();
   }
 }
