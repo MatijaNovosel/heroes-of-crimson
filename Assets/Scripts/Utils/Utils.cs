@@ -47,5 +47,46 @@ namespace HeroesOfCrimson.Utils
       const float maxSpeed = 0.25f;
       return Mathf.Lerp(minSpeed, maxSpeed, (spd - 1f) / 99f);
     }
+    
+    public static LineRenderer CreateCircle(
+      Transform transform,
+      string name,
+      float radius,
+      Color color,
+      int circleSegments = 48
+    )
+    {
+      var go = new GameObject(name);
+      go.transform.SetParent(transform);
+      go.transform.localPosition = Vector3.zero;
+
+      var lr = go.AddComponent<LineRenderer>();
+      lr.useWorldSpace = false;
+      lr.loop = true;
+      lr.positionCount = circleSegments;
+      lr.startWidth = 0.1f;
+      lr.endWidth = 0.1f;
+      lr.material = new Material(Shader.Find("Sprites/Default"));
+      lr.startColor = color;
+      lr.endColor = color;
+      lr.sortingLayerName = "Collision";
+
+      float angleStep = 2 * Mathf.PI / circleSegments;
+
+      for (int i = 0; i < circleSegments; i++)
+      {
+        float angle = i * angleStep;
+        lr.SetPosition(
+          i,
+          new Vector3(
+            Mathf.Cos(angle) * radius,
+            Mathf.Sin(angle) * radius,
+            0
+          )
+        );
+      }
+
+      return lr;
+    }
   }
 }

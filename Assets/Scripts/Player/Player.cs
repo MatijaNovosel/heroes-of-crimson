@@ -294,10 +294,14 @@ public class Player : MonoBehaviour
   private void HandleAbility()
   {
     HandleAbilityCooldown();
-    
-    if (!Input.GetKey(KeyCode.R) || !CanCastAbility()) return;
 
-    if (_baseNpcBehaviour.mp < 30) return;
+    if (!Input.GetKeyDown(KeyCode.R) || !CanCastAbility()) return;
+
+    if (_baseNpcBehaviour.mp < 30)
+    {
+      AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Error);
+      return;
+    }
 
     _baseNpcBehaviour.mp -= 30;
     

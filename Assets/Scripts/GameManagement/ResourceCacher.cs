@@ -24,12 +24,18 @@ namespace GameManagement
             MiscSprites = Resources.LoadAll<Sprite>("Sprites/Items/misc");
             ConsumableSprites = Resources.LoadAll<Sprite>("Sprites/Items/consumables");
             
+            // General sounds
             Sounds.Add(Constants.Sounds.Error, Resources.Load<AudioClip>("Sounds/General/error"));
             Sounds.Add(Constants.Sounds.InventoryMove, Resources.Load<AudioClip>("Sounds/General/inventoryMoveItem"));
             Sounds.Add(Constants.Sounds.InventoryEquip, Resources.Load<AudioClip>("Sounds/General/equipItem"));
             Sounds.Add(Constants.Sounds.ArrowShoot, Resources.Load<AudioClip>("Sounds/General/arrowShoot"));
             Sounds.Add(Constants.Sounds.MagicShoot, Resources.Load<AudioClip>("Sounds/General/magicShoot"));
             Sounds.Add(Constants.Sounds.GenericHit, Resources.Load<AudioClip>("Sounds/General/hit"));
+            Sounds.Add(Constants.Sounds.NoMana, Resources.Load<AudioClip>("Sounds/General/noMana"));
+            
+            // Enemy sounds
+            Sounds.Add(Constants.Sounds.SkeletonDeath, Resources.Load<AudioClip>("Sounds/Enemies/skeletonDeath"));
+            Sounds.Add(Constants.Sounds.SkeletonHit, Resources.Load<AudioClip>("Sounds/Enemies/skeletonHit"));
             
             InventorySprites.Add(Constants.InventorySlotSpritesEnum.Weapon, Resources.Load<Sprite>("Sprites/UI/HotbarWeaponSlot"));
             InventorySprites.Add(Constants.InventorySlotSpritesEnum.Ability, Resources.Load<Sprite>("Sprites/UI/HotbarAbilitySlot"));

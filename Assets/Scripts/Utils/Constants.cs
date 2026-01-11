@@ -86,12 +86,17 @@ namespace HeroesOfCrimson.Utils
 
     public enum Sounds
     {
-      Error = 1,
-      InventoryMove = 2,
-      InventoryEquip = 3,
-      ArrowShoot = 4,
-      MagicShoot = 5,
-      GenericHit = 6
+      // General sounds
+      Error = 1000,
+      InventoryMove = 1001,
+      InventoryEquip = 1002,
+      ArrowShoot = 1003,
+      MagicShoot = 1004,
+      GenericHit = 1005,
+      NoMana = 1006,
+      // Eenemy sounds
+      SkeletonHit = 2000,
+      SkeletonDeath = 2001
     }
     
     public enum InventorySlotSpritesEnum

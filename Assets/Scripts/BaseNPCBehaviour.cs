@@ -22,6 +22,7 @@ public class BaseNPCBehaviour : MonoBehaviour
   
   public bool invincible = false;
   public List<Constants.StatusEffects> statusEffects = new () { Constants.StatusEffects.ArmorBroken, Constants.StatusEffects.Bleeding };
+  private BoxCollider2D _boxCollider;
 
   // Immunity
   private const float ImmuneTime = 1.0f;
@@ -43,6 +44,7 @@ public class BaseNPCBehaviour : MonoBehaviour
       Quaternion.identity
     );
     _statusEffectPanel.GetComponent<StatusEffectPanel>().Setup(statusEffects, gameObject);
+    _boxCollider = GetComponent<BoxCollider2D>();
   }
 
   private void Die()
@@ -54,6 +56,45 @@ public class BaseNPCBehaviour : MonoBehaviour
 
     Destroy(gameObject);
   }
+  
+  public void Move(Vector2 direction)
+  {
+    if (_boxCollider == null) return;
+
+    direction = direction.normalized;
+
+    var speed = Utils.CalculatePlayerMovementSpeed(spd);
+    LayerMask mask = LayerMask.GetMask("Actor", "Blocking", "NPC");
+
+    var moveY = new Vector2(0, direction.y);
+
+    if (moveY.y != 0 &&
+        !Physics2D.BoxCast(
+          transform.position,
+          _boxCollider.size,
+          0,
+          moveY,
+          Mathf.Abs(moveY.y * speed),
+          mask))
+    {
+      transform.Translate(0, moveY.y * speed, 0);
+    }
+
+    var moveX = new Vector2(direction.x, 0);
+
+    if (moveX.x != 0 &&
+        !Physics2D.BoxCast(
+          transform.position,
+          _boxCollider.size,
+          0,
+          moveX,
+          Mathf.Abs(moveX.x * speed),
+          mask))
+    {
+      transform.Translate(moveX.x * speed, 0, 0);
+    }
+  }
+
 
   private void DisplayStatusEffects()
   {
