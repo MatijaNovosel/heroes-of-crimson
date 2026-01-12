@@ -60,6 +60,11 @@ public class Projectile : MonoBehaviour
     {
       _scale = (float)payload.Scale;
     }
+    
+    if (payload.Damage != null)
+    {
+      _damage = (float)payload.Damage;
+    }
 
     _angle = Utils.GetAngleFromShootDirection(payload.Direction);
 
@@ -99,7 +104,7 @@ public class Projectile : MonoBehaviour
     
     if (collidableComponent.collisionGroups.Any(x => _willDamage.Contains(x)))
     {
-      collider.SendMessage("ReceiveDamage", new DamageModel((float)Math.Floor(Random.Range(1f, 100f))));
+      collider.SendMessage("ReceiveDamage", new DamageModel(_damage));
     }
     
     if (collidableComponent.collisionGroups.Any(x => _willPenetrate.Contains(x)))

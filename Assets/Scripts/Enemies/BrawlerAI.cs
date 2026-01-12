@@ -20,12 +20,10 @@ public class BrawlerAI : MonoBehaviour
     [Header("Ranges")]
     [SerializeField] private float SearchRadius = 5f;
     [SerializeField] private float AttackEnterRange = 4f;
-    [SerializeField] private float AttackExitRange = 4.8f;
 
     private readonly float _shootingDelay = 0.8f;
     private float _lastFired;
 
-    private float wanderRadius = 1f;
     private float wanderDuration = 0.2f;
     private float wanderPause = 2f;
 
@@ -34,12 +32,25 @@ public class BrawlerAI : MonoBehaviour
     private float _wanderPauseTimer;
     
     private float combatMoveDuration = 1f;
-    private float combatPause = 1f;
     private Vector2 _combatMoveDirection;
     private float _combatMoveTimer;
     
     private bool _inAttackRange;
     private Vector2 _combatTarget;
+
+    private const float CombatArriveRadius = 0.15f;
+    private bool _isShooting;
+    
+    private float combatSpeedMultiplier = 0.4f;
+    private float wanderSpeedMultiplier = 0.6f;
+    
+    private static readonly int Attacking = Animator.StringToHash("Attacking");
+    private static readonly int Attack = Animator.StringToHash("Attack");
+
+    private Vector2 _lastPosition;
+    private float _animSpeed;
+    
+    private Animator _animator;
 
     void Start()
     {
@@ -62,13 +73,14 @@ public class BrawlerAI : MonoBehaviour
             _attackExitRangeCircle = Utils.CreateCircle(
                 transform,
                 "AttackExitRangeCircle",
-                AttackExitRange,
+                AttackEnterRange + 0.8f,
                 new Color(0.1f, 1f, 0f, 0.5f)
             );
         }
         
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _npcBehaviour = GetComponent<BaseNPCBehaviour>();
+        _animator = GetComponent<Animator>();
         _projectile = Resources.Load<GameObject>("Prefabs/Projectile");
 
         PickNewWanderDirection();
@@ -92,6 +104,8 @@ public class BrawlerAI : MonoBehaviour
 
     void FixedUpdate()
     {
+        _animSpeed = 0f;
+        
         if (Utils.IsPlayerDead())
         {
             Wander();
@@ -100,21 +114,27 @@ public class BrawlerAI : MonoBehaviour
 
         HandleFlipping();
         HandleMovementAndAttack();
+        _animator.SetFloat("Speed", _animSpeed);
     }
     
     private void CombatMove()
     {
         _combatMoveTimer -= Time.deltaTime;
 
-        if (_combatMoveTimer <= 0f)
+        var toTarget = _combatTarget - (Vector2)transform.position;
+        var distance = toTarget.magnitude;
+
+        if (distance < CombatArriveRadius || _combatMoveTimer <= 0f)
         {
             PickNewCombatTarget();
             return;
         }
 
-        var dir = (_combatTarget - (Vector2)transform.position).normalized;
-        _npcBehaviour.Move(dir);
+        var dir = toTarget / distance;
+        _npcBehaviour.Move(dir * combatSpeedMultiplier);
+        _animSpeed = combatSpeedMultiplier;
     }
+
 
     private void HandleMovementAndAttack()
     {
@@ -130,43 +150,46 @@ public class BrawlerAI : MonoBehaviour
         _wanderTimer = 0;
         _wanderPauseTimer = 0;
 
+        var attackExitRange = AttackEnterRange + 0.8f;
+
         if (!_inAttackRange && distance <= AttackEnterRange)
         {
             _inAttackRange = true;
             PickNewCombatTarget();
         }
-        else if (_inAttackRange && distance >= AttackExitRange)
+        else if (_inAttackRange && distance >= attackExitRange)
         {
             _inAttackRange = false;
         }
 
-        if (!_inAttackRange)
+        if (_inAttackRange)
         {
-            MoveTowards(playerPos);
-            return;
+            if (!_isShooting) CombatMove();
+            ShootPlayer();
         }
-
-        CombatMove();
-        ShootPlayer();
+        else
+        {
+            _animator.SetBool(Attacking, false);
+            MoveTowards(playerPos);
+        }
     }
 
     
     private void MoveTowards(Vector3 target)
     {
-        var direction = (target - transform.position).normalized;
-        _npcBehaviour.Move(direction);
+        var dir = (target - transform.position).normalized;
+        _npcBehaviour.Move(dir);
+        _animSpeed = 1f;
     }
 
     private void Wander()
     {
-        // Pause between wanders
         if (_wanderPauseTimer > 0)
         {
             _wanderPauseTimer -= Time.deltaTime;
             return;
         }
 
-        // Wander in chosen direction
         _wanderTimer -= Time.deltaTime;
 
         if (_wanderTimer <= 0)
@@ -175,7 +198,8 @@ public class BrawlerAI : MonoBehaviour
             return;
         }
 
-        _npcBehaviour.Move(_wanderDirection);
+        _npcBehaviour.Move(_wanderDirection * wanderSpeedMultiplier);
+        _animSpeed = wanderSpeedMultiplier;
     }
 
     private void PickNewWanderDirection()
@@ -193,12 +217,15 @@ public class BrawlerAI : MonoBehaviour
     void ShootPlayer()
     {
         if (!CanShoot()) return;
+        
+        _isShooting = true;
+        _animator.SetTrigger(Attack);
 
         var shootDirection = (Utils.GetPlayerPosition() - transform.position).normalized;
 
         var proj = Instantiate(
             _projectile,
-            new Vector3(transform.position.x, transform.position.y, 0),
+            transform.position,
             Quaternion.identity
         );
 
@@ -207,21 +234,25 @@ public class BrawlerAI : MonoBehaviour
             0,
             null,
             null,
-            50,
+            10,
             ResourceCacher.Singleton.ProjectileSprites[17],
             new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
             new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy }
         ));
 
         _lastFired = Time.time;
+        Invoke(nameof(EndShootPause), 0.15f);
+    }
+
+    void EndShootPause()
+    {
+        _isShooting = false;
     }
 
     private void HandleFlipping()
     {
-        var targetX = Utils.IsPlayerDead()
-            ? transform.position.x + _wanderDirection.x
-            : Utils.GetPlayerPosition().x;
-
-        _spriteRenderer.flipX = targetX < transform.position.x;
+        var playerPos = Utils.GetPlayerPosition();
+        if (Vector2.Distance(playerPos, transform.position) > SearchRadius) return;
+        _spriteRenderer.flipX = playerPos.x < transform.position.x;
     }
 }

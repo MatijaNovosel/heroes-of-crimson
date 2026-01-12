@@ -48,6 +48,13 @@ namespace HeroesOfCrimson.Utils
       return Mathf.Lerp(minSpeed, maxSpeed, (spd - 1f) / 99f);
     }
     
+    public static float GetDistanceToPlayer(Vector3 from)
+    {
+      var player = GameObject.Find("Player");
+      if (!player) return float.MaxValue;
+      return ((Vector2)player.transform.position - (Vector2)from).sqrMagnitude;
+    }
+    
     public static LineRenderer CreateCircle(
       Transform transform,
       string name,

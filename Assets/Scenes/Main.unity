@@ -5958,6 +5958,7 @@ GameObject:
   - component: {fileID: 616151565}
   - component: {fileID: 616151566}
   - component: {fileID: 616151567}
+  - component: {fileID: 616151568}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: NPC
@@ -6053,7 +6054,6 @@ MonoBehaviour:
   showRanges: 1
   SearchRadius: 10
   AttackEnterRange: 3
-  AttackExitRange: 3.8
 --- !u!114 &616151565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6153,6 +6153,28 @@ MonoBehaviour:
     minNormalAngle: 0
     maxNormalAngle: 0
   collisionGroups: 03000000
+--- !u!95 &616151568
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 616151561}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ff00489cf403e4c46844d2df50d26938, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &625740657
 GameObject:
   m_ObjectHideFlags: 0
@@ -24835,7 +24857,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -235.5, y: 26.341}
+  m_AnchoredPosition: {x: -234.9, y: 26.341}
   m_SizeDelta: {x: 45.003, y: 50.141}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &886896401
@@ -30910,7 +30932,7 @@ MonoBehaviour:
   invincible: 0
   statusEffects: 0500000008000000
   deathSound: {fileID: 8300000, guid: 19f46137f9bc2ec47b7a101bd71854a8, type: 3}
-  hitSound: {fileID: 8300000, guid: 2279bcdee249f964282a39c703df26b7, type: 3}
+  hitSound: {fileID: 8300000, guid: 8bbf2a77b5ddac54babd19f638e8f816, type: 3}
 --- !u!114 &1469857303
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -96,7 +96,9 @@ namespace HeroesOfCrimson.Utils
       NoMana = 1006,
       // Eenemy sounds
       SkeletonHit = 2000,
-      SkeletonDeath = 2001
+      SkeletonDeath = 2001,
+      // Player sounds
+      MageHit = 3000,
     }
     
     public enum InventorySlotSpritesEnum

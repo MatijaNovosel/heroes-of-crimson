@@ -37,6 +37,9 @@ namespace GameManagement
             Sounds.Add(Constants.Sounds.SkeletonDeath, Resources.Load<AudioClip>("Sounds/Enemies/skeletonDeath"));
             Sounds.Add(Constants.Sounds.SkeletonHit, Resources.Load<AudioClip>("Sounds/Enemies/skeletonHit"));
             
+            // Player sounds
+            Sounds.Add(Constants.Sounds.MageHit, Resources.Load<AudioClip>("Sounds/Player/mageHit"));
+            
             InventorySprites.Add(Constants.InventorySlotSpritesEnum.Weapon, Resources.Load<Sprite>("Sprites/UI/HotbarWeaponSlot"));
             InventorySprites.Add(Constants.InventorySlotSpritesEnum.Ability, Resources.Load<Sprite>("Sprites/UI/HotbarAbilitySlot"));
             InventorySprites.Add(Constants.InventorySlotSpritesEnum.Armor, Resources.Load<Sprite>("Sprites/UI/HotbarArmorSlot"));
