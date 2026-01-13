@@ -72,6 +72,9 @@ TagManager:
   - name: Actor
     uniqueID: 2640968989
     locked: 0
+  - name: WallTop
+    uniqueID: 2983388237
+    locked: 0
   - name: Roof
     uniqueID: 2243474537
     locked: 0

@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
 
   private Vector3 _moveDelta;
   private RaycastHit2D _hit;
+  
+  // Experience
+  public float Level = 1;
+  public float Experience = 0;
 
   private float _lastFired;
   private float _abilityUsedLast;
