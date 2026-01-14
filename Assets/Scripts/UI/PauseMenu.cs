@@ -10,7 +10,7 @@ public class PauseMenu : MonoBehaviour
         {
             PauseMenuOpen = !PauseMenuOpen;
             Time.timeScale = PauseMenuOpen ? 0f : 1f;
-            this.transform.localPosition = new Vector3(PauseMenuOpen ? 0 : 1500, 0, 0);
+            this.transform.localPosition = new Vector3(PauseMenuOpen ? 0 : 9999, 0, 0);
         }
     }
     
