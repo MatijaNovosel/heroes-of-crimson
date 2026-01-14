@@ -15,6 +15,7 @@ namespace Models
         public readonly float? Damage;
         public readonly List<Constants.CollisionGroups> WillDamage;
         public readonly List<Constants.CollisionGroups> WillPenetrate;
+        public readonly Color? ParticleColor;
         
         public ProjectileSetupModel(
             Vector3 direction,
@@ -24,7 +25,8 @@ namespace Models
             float? damage,
             [CanBeNull] Sprite sprite,
             List<Constants.CollisionGroups> willDamage,
-            List<Constants.CollisionGroups> willPenetrate
+            List<Constants.CollisionGroups> willPenetrate,
+            Color? particleColor 
         )
         {
             this.Direction = direction;
@@ -35,6 +37,7 @@ namespace Models
             this.Rotation = rotation;
             this.WillDamage = willDamage;
             this.WillPenetrate = willPenetrate;
+            this.ParticleColor = particleColor ?? null;
         }
     }
 }

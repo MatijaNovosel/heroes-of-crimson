@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 731521fec32079a47b090d8c779a02bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  impactParticlePrefab: {fileID: 3088879294283105140, guid: 2e3428e85f5637f40bb66c1c3ab158a2, type: 3}
 --- !u!61 &1418672833864924281
 BoxCollider2D:
   m_ObjectHideFlags: 0

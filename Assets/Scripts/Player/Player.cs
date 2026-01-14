@@ -180,7 +180,8 @@ public class Player : MonoBehaviour
       50,
       weaponProjectile,
       new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
-      new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player }
+      new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
+      null
     ));
     
     _lastFired = Time.time;

@@ -46,7 +46,8 @@ public class GameManager : MonoBehaviour
         50,
         ResourceCacher.Singleton.ProjectileSprites[1],
         new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
-        new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player }
+        new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
+        Color.orange
       ));
     }
   }

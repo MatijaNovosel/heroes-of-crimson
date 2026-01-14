@@ -11,10 +11,13 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Projectile : MonoBehaviour
 {
+  [SerializeField] private GameObject impactParticlePrefab;
+  
   private Vector3 _direction;
   private float _angle;
   private bool _piercing;
   private float _damage = 50;
+  private Color _particleColor = Color.white;
   private float _scale = 1;
   private float _rotation = 45;
   private float _moveSpeed = 10f;
@@ -65,6 +68,8 @@ public class Projectile : MonoBehaviour
     {
       _damage = (float)payload.Damage;
     }
+    
+    _particleColor = payload.ParticleColor ?? Color.white;
 
     _angle = Utils.GetAngleFromShootDirection(payload.Direction);
 
@@ -93,6 +98,21 @@ public class Projectile : MonoBehaviour
     */
     transform.eulerAngles = new Vector3(0, 0, this._angle - this._rotation);
   }
+  
+  private void SpawnImpactParticles()
+  {
+    for (int i = 0; i < 6; i++)
+    {
+      var p = Instantiate(
+        impactParticlePrefab,
+        transform.position,
+        Quaternion.Euler(0, 0, Random.Range(0f, 360f))
+      );
+      
+      p.transform.localScale = Vector3.one * Random.Range(0.1f, 0.6f);
+      p.GetComponent<ImpactParticle>().Init(_particleColor);
+    }
+  }
 
   private void OnTriggerEnter2D(Collider2D collider)
   {
@@ -110,6 +130,11 @@ public class Projectile : MonoBehaviour
     if (collidableComponent.collisionGroups.Any(x => _willPenetrate.Contains(x)))
     {
       return;
+    }
+
+    if (collider.name != "BulletCollision")
+    {
+      SpawnImpactParticles();
     }
     
     Destroy(gameObject);
