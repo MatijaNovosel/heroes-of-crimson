@@ -109,5 +109,27 @@ namespace HeroesOfCrimson.Utils
       Accessory = 4,
       Empty = 5,
     }
+    
+    public enum RoomType
+    {
+      Start,
+      Normal1,
+      Normal2,
+      Normal3,
+      Normal4,
+      Normal5,
+      Normal6,
+      Normal7,
+      Treasure,
+      Boss
+    }
+    
+    public enum Direction
+    {
+      Up,
+      Right,
+      Down,
+      Left
+    }
   }
 }
