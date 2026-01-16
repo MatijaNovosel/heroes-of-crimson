@@ -109,74 +109,11 @@ public class DungeonGenerator : MonoBehaviour
 
     void GenerateMainPath()
     {
-        Vector2Int pos = Vector2Int.zero;
-
-        var start = new RoomNode(Constants.RoomType.Start, pos, RoomEntries[Constants.RoomType.Start]);
-        _grid[pos] = start;
-        mainPath.Add(start);
-
-        Constants.Direction prevDir = Constants.Direction.Up;
-
-        int length = Random.Range(8, 12);
-
-        for (int i = 0; i < length; i++)
-        {
-            var candidates = RoomEntries
-                .Where(r => r.Key.ToString().StartsWith("Normal"))
-                .Where(r => r.Value.Contains(Opposite(prevDir)))
-                .ToList();
-
-            var picked = candidates[Random.Range(0, candidates.Count)];
-            Vector2Int newPos = pos + ToOffset(prevDir);
-
-            if (_grid.ContainsKey(newPos))
-            {
-                i--;
-                prevDir = RandomDirection();
-                continue;
-            }
-
-            var room = new RoomNode(picked.Key, newPos, picked.Value);
-            _grid[newPos] = room;
-            mainPath.Add(room);
-
-            pos = newPos;
-            prevDir = PickExit(room, Opposite(prevDir));
-        }
-
-        Vector2Int bossPos = pos + ToOffset(prevDir);
-        var boss = new RoomNode(Constants.RoomType.Boss, bossPos, RoomEntries[Constants.RoomType.Boss]);
-        _grid[bossPos] = boss;
-    }
-    
-    Constants.Direction PickExit(RoomNode room, Constants.Direction forbidden)
-    {
-        var exits = room.EntryDirections.Where(d => d != forbidden).ToList();
-        if (exits.Count == 0) return forbidden;
-        return exits[Random.Range(0, exits.Count)];
-    }
-
-    Constants.Direction RandomDirection()
-    {
-        return (Constants.Direction)Random.Range(0, 4);
+        //
     }
 
     void GenerateBranches()
     {
-        foreach (var room in mainPath)
-        {
-            foreach (var dir in room.EntryDirections)
-            {
-                Vector2Int target = room.GridPos + ToOffset(dir);
-                if (_grid.ContainsKey(target)) continue;
-
-                if (Random.value < 0.4f)
-                {
-                    var branchType = Constants.RoomType.Treasure;
-                    if (!RoomEntries[branchType].Contains(Opposite(dir))) continue;
-                    _grid[target] = new RoomNode(branchType, target, RoomEntries[branchType]);
-                }
-            }
-        }
+        //
     }
 }
