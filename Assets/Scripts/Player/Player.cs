@@ -22,25 +22,23 @@ public class Player : MonoBehaviour
 
   private Vector3 _moveDelta;
   private RaycastHit2D _hit;
+  private const float FiringDelay = 0.3f;
   
   // Experience
   public float Level = 1;
   public float Experience = 0;
 
+  [Header("Abilities")]
+  public AbilitySlot[] abilities = new AbilitySlot[4];
+  
   private float _lastFired;
-  private float _abilityUsedLast;
-  private const float FiringDelay = 0.3f;
-  private const float AbilityDelay = 1;
-  private float _abilityCooldownTimer;
   private bool _isShooting;
   
   public bool HoldingItem;
   public bool InventoryOpen;
-  public bool PauseMenuOpen;
 
   // Components
   public GameObject Projectile;
-  public Image abilityImage;
   public Animator animator;
   private BoxCollider2D _boxCollider;
   private AnimatorOverrideController _animatorOverrideController;
@@ -57,17 +55,40 @@ public class Player : MonoBehaviour
   public float actualVit = 0;
   public float actualWis = 0;
   public float actualDex = 0;
+  
+  private void HandleAbilityCooldowns()
+  {
+    foreach (var ability in abilities)
+    {
+      if (ability.cooldownImage is null) continue;
+
+      if (ability.IsReady)
+      {
+        ability.cooldownImage.fillAmount = 1f;
+      }
+      else
+      {
+        ability.cooldownImage.fillAmount = ability.CooldownRemaining / ability.cooldown;
+      }
+    }
+  }
+  
+  private GameObject GetAbilityPrefab(int index)
+  {
+    return index switch
+    {
+      0 => Resources.Load<GameObject>("Prefabs/Abilities/Meteor"),
+      1 => Resources.Load<GameObject>("Prefabs/Abilities/FireSphere"),
+      2 => Resources.Load<GameObject>("Prefabs/Abilities/FireSphere"),
+      3 => Resources.Load<GameObject>("Prefabs/Abilities/FireSphere"),
+      _ => null
+    };
+  }
 
   private bool CanFire()
   {
     // Current game time in seconds - last time fired in game seconds
     return Time.time - _lastFired > FiringDelay;
-  }
-
-  private bool CanCastAbility()
-  {
-    // Current game time in seconds - last time fired in game seconds
-    return Time.time - _abilityUsedLast > AbilityDelay;
   }
   
   private float GetManaRegenPerSecond()
@@ -282,50 +303,45 @@ public class Player : MonoBehaviour
     }
   }
 
-  private void HandleAbilityCooldown()
-  {
-    _abilityCooldownTimer -= Time.deltaTime;
-
-    if (_abilityCooldownTimer < 0.0f)
-    {
-      abilityImage.fillAmount = 1.0f;
-    }
-    else
-    {
-      abilityImage.fillAmount = _abilityCooldownTimer / AbilityDelay;
-    }
-  }
-
   private void HandleAbility()
   {
-    HandleAbilityCooldown();
+    HandleAbilityCooldowns();
 
-    if (!Input.GetKeyDown(KeyCode.R) || !CanCastAbility()) return;
-
-    if (_baseNpcBehaviour.mp < 30)
+    for (int i = 0; i < abilities.Length; i++)
     {
-      AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Error);
-      return;
+      var ability = abilities[i];
+
+      if (!Input.GetKeyDown(ability.key) || !ability.IsReady) continue;
+
+      if (_baseNpcBehaviour.mp < ability.manaCost)
+      {
+        AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Error);
+        return;
+      }
+
+      var prefab = GetAbilityPrefab(i);
+      if (!prefab) return;
+
+      _baseNpcBehaviour.mp -= ability.manaCost;
+      ability.lastUsedTime = Time.time;
+
+      var cursorPosition = Utils.GetMousePosition();
+
+      var abilityObj = Instantiate(
+        prefab,
+        new Vector3(cursorPosition.x, cursorPosition.y + 0.8f, 0),
+        Quaternion.identity
+      );
+
+      if (abilityObj.TryGetComponent<Meteor>(out var meteor))
+      {
+        meteor.Init(cursorPosition);
+      }
+      else if (abilityObj.TryGetComponent<FireSphere>(out var fireSphere))
+      {
+        fireSphere.Init();
+      }
     }
-
-    _baseNpcBehaviour.mp -= 30;
-    
-    var cursorPosition = Utils.GetMousePosition();
-    var meteorPrefab = Resources.Load<GameObject>("Prefabs/Meteor");
-
-    if (meteorPrefab is null) return;
-
-    _abilityCooldownTimer = AbilityDelay;
-
-    var meteor = Instantiate(
-      meteorPrefab,
-      new Vector3(cursorPosition.x, cursorPosition.y + 0.8f, 0),
-      Quaternion.identity
-    );
-
-    meteor.GetComponent<Meteor>().Setup(cursorPosition);
-
-    _abilityUsedLast = Time.time;
   }
 
   private void HandleRegen()
@@ -344,7 +360,7 @@ public class Player : MonoBehaviour
 
   private void HandleManaRegen()
   {
-    float manaRegenPerSecond = GetManaRegenPerSecond();
+    var manaRegenPerSecond = GetManaRegenPerSecond();
     
     ManaBarRegenText.text = $"+{manaRegenPerSecond:F2}";
     _baseNpcBehaviour.mp += manaRegenPerSecond * Time.deltaTime;
@@ -408,6 +424,7 @@ public class Player : MonoBehaviour
 
   private void Start()
   {
+    animator = GetComponent<Animator>();
     _boxCollider = GetComponent<BoxCollider2D>();
     _baseNpcBehaviour = GetComponent<BaseNPCBehaviour>();
     _animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
