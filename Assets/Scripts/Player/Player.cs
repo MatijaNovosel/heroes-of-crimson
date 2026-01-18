@@ -15,10 +15,10 @@ using UnityEngine.UI;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Player : MonoBehaviour
 {
-  private static readonly int Shooting = Animator.StringToHash("Shooting");
-  private static readonly int Shoot = Animator.StringToHash("Shoot");
-  private static readonly int IdleState = Animator.StringToHash("IdleState");
-  private static readonly int MouseDir = Animator.StringToHash("MouseDir");
+  private static readonly int AnimationShootingKey = Animator.StringToHash("Shooting");
+  private static readonly int AnimationShootKey = Animator.StringToHash("Shoot");
+  private static readonly int AnimationIdleStateKey = Animator.StringToHash("IdleState");
+  private static readonly int AnimationMouseDirKey = Animator.StringToHash("MouseDir");
 
   private Vector3 _moveDelta;
   private RaycastHit2D _hit;
@@ -118,28 +118,28 @@ public class Player : MonoBehaviour
     {
       case < 135 and > 45:
         // Up
-        animator.SetFloat(MouseDir, (int)Constants.ShootingMouseDirs.UP);
-        animator.SetFloat(IdleState, 1);
+        animator.SetFloat(AnimationMouseDirKey, (int)Constants.ShootingMouseDirs.UP);
+        animator.SetFloat(AnimationIdleStateKey, 1);
         break;
       case > -45 and < 45:
         // Right
         shootingDirection =  Constants.ShootingDirections.RIGHT;
-        animator.SetFloat(IdleState, 0);
+        animator.SetFloat(AnimationIdleStateKey, 0);
         transform.localScale = Vector3.one;
-        animator.SetFloat(MouseDir, (int)Constants.ShootingMouseDirs.HORIZONTAL);
+        animator.SetFloat(AnimationMouseDirKey, (int)Constants.ShootingMouseDirs.HORIZONTAL);
         break;
       case > 135 and < 180 or > -180 and < -135:
         // Left
         shootingDirection =  Constants.ShootingDirections.LEFT;
-        animator.SetFloat(IdleState, 0);
+        animator.SetFloat(AnimationIdleStateKey, 0);
         transform.localScale = new Vector3(-1, 1, 1);
-        animator.SetFloat(MouseDir, (int)Constants.ShootingMouseDirs.HORIZONTAL);
+        animator.SetFloat(AnimationMouseDirKey, (int)Constants.ShootingMouseDirs.HORIZONTAL);
         break;
       default:
         // Down
         shootingDirection =  Constants.ShootingDirections.DOWN;
-        animator.SetFloat(IdleState, 2);
-        animator.SetFloat(MouseDir, (int)Constants.ShootingMouseDirs.DOWN);
+        animator.SetFloat(AnimationIdleStateKey, 2);
+        animator.SetFloat(AnimationMouseDirKey, (int)Constants.ShootingMouseDirs.DOWN);
         break;
     }
 
@@ -191,7 +191,7 @@ public class Player : MonoBehaviour
       }
     }
     
-    AudioSource.PlayClipAtPoint(shootSound, transform.position, 1.5f);
+    AudioManager.Singleton.PlaySoundCached(Constants.Sounds.MagicShoot);
     
     proj.GetComponent<Projectile>().Setup(new ProjectileSetupModel(
       shootDirection,
@@ -222,23 +222,23 @@ public class Player : MonoBehaviour
     {
       if (Input.GetKey(KeyCode.W))
       {
-        animator.SetFloat(IdleState, (int)Constants.AnimationIdleState.Up);
+        animator.SetFloat(AnimationIdleStateKey, (int)Constants.AnimationIdleState.Up);
       }
 
       if (Input.GetKey(KeyCode.S))
       {
-        animator.SetFloat(IdleState, (int)Constants.AnimationIdleState.Down);
+        animator.SetFloat(AnimationIdleStateKey, (int)Constants.AnimationIdleState.Down);
       }
 
       if (Input.GetKey(KeyCode.A))
       {
-        animator.SetFloat(IdleState, (int)Constants.AnimationIdleState.Horizonal);
+        animator.SetFloat(AnimationIdleStateKey, (int)Constants.AnimationIdleState.Horizonal);
         transform.localScale = new Vector3(-1, 1, 1);
       }
 
       if (Input.GetKey(KeyCode.D))
       {
-        animator.SetFloat(IdleState, (int)Constants.AnimationIdleState.Horizonal);
+        animator.SetFloat(AnimationIdleStateKey, (int)Constants.AnimationIdleState.Horizonal);
         transform.localScale = Vector3.one;
       }
     }
@@ -282,7 +282,7 @@ public class Player : MonoBehaviour
       if (_isShooting)
       {
         _isShooting = false;
-        animator.SetBool(Shooting, false);
+        animator.SetBool(AnimationShootingKey, false);
       }
       return;
     }
@@ -290,15 +290,15 @@ public class Player : MonoBehaviour
     if (Input.GetMouseButtonUp(0))
     {
       _isShooting = false;
-      animator.SetBool(Shooting, false);
+      animator.SetBool(AnimationShootingKey, false);
       return;
     }
 
     if (Input.GetMouseButton(0) && CanFire())
     {
       _isShooting = true;
-      animator.SetBool(Shooting, true);
-      animator.SetTrigger(Shoot);
+      animator.SetBool(AnimationShootingKey, true);
+      animator.SetTrigger(AnimationShootKey);
       Fire();
     }
   }

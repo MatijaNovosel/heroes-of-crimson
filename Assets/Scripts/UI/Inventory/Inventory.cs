@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HeroesOfCrimson.Utils;
 using Models;
 using Unity.Burst.CompilerServices;
@@ -10,6 +11,9 @@ namespace UI.Inventory
         [SerializeField] private InventorySlot[] inventorySlots;
         [SerializeField] public Transform draggablesTransform;
         [SerializeField] private InventoryItem itemPrefab;
+        
+        [Header("Initial items")]
+        public List<int> initialItemIds = new ();
 
         private void Start()
         {

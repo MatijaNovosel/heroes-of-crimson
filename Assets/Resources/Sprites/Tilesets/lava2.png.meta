@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2fd4fb2011f40c749968f0842a399197
+guid: accf2e6a942076f43a704d6841d5ab33
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8509550459451208454
-    second: water_0
+      213: 1786072519122086593
+    second: lava2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,9 +40,9 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 2
-    wrapV: 2
-    wrapW: 2
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -73,7 +73,7 @@ TextureImporter:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
-    resizeAlgorithm: 1
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: water_0
+      name: lava2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,14 +128,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 603f9ddae0ff71670800000000000000
-      internalID: 8509550459451208454
+      spriteID: 1caeb5d3e7769c810800000000000000
+      internalID: 1786072519122086593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: water_1
+      name: lava2_1
       rect:
         serializedVersion: 2
         x: 8
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b46011ad9a18214eb839438cf757c31
-      internalID: 473854263
+      spriteID: ed9bbf4ca87290448a9ac141314ffc7c
+      internalID: -464322185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: water_2
+      name: lava2_2
       rect:
         serializedVersion: 2
         x: 16
@@ -172,8 +172,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f918d62ee2339e141a208f2ad5deb615
-      internalID: 136226053
+      spriteID: 7ecf47f8f7e5a4346bb85a386762d07b
+      internalID: 118940844
       vertices: []
       indices: 
       edges: []
@@ -182,7 +182,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 8db8e50aac226d24d9b398e853a3b1c0
+    spriteID: 18ae33c5cfcf793409366bb631cf31b2
     internalID: 0
     vertices: []
     indices: 
@@ -194,9 +194,9 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":8.0,"y":8.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      water_0: 8509550459451208454
-      water_1: 473854263
-      water_2: 136226053
+      lava2_0: 1786072519122086593
+      lava2_1: -464322185
+      lava2_2: 118940844
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

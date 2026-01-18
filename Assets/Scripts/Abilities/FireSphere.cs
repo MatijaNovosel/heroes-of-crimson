@@ -32,6 +32,7 @@ public class FireSphere : MonoBehaviour
 
     public void Init()
     {
+        AudioManager.Singleton.PlaySoundCached(Constants.Sounds.FireSphere);
         SpawnParticles();
         StartCoroutine(SpawnProjectilesCoroutine(4.9f));
         Destroy(gameObject, 5f);

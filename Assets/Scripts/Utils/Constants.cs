@@ -99,6 +99,8 @@ namespace HeroesOfCrimson.Utils
       SkeletonDeath = 2001,
       // Player sounds
       MageHit = 3000,
+      // Ability sounds
+      FireSphere = 4000
     }
     
     public enum InventorySlotSpritesEnum

@@ -9,7 +9,7 @@ namespace Models
         // Meta data
         public int id;
         public Constants.ItemRarity rarity;
-        public string name;
+        public new string name;
         public string description;
         public Constants.ItemTag tag;
         public Constants.Sounds shootSound;

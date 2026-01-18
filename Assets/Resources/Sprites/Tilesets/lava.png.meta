@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2fd4fb2011f40c749968f0842a399197
+guid: 35c50498eaa7b9844ac40bd9b0c3d947
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: water_0
+      name: lava_0
       rect:
         serializedVersion: 2
         x: 0
@@ -126,16 +126,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 603f9ddae0ff71670800000000000000
-      internalID: 8509550459451208454
+      spriteID: e22a5746ce6aea448adf47ee65775f86
+      internalID: 735311684
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: water_1
+      name: lava_1
       rect:
         serializedVersion: 2
         x: 8
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b46011ad9a18214eb839438cf757c31
-      internalID: 473854263
+      spriteID: 806dc3b33e737d74c9e4a26446909b8a
+      internalID: -200775149
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: water_2
+      name: lava_2
       rect:
         serializedVersion: 2
         x: 16
@@ -172,8 +172,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f918d62ee2339e141a208f2ad5deb615
-      internalID: 136226053
+      spriteID: 114b5cc16f5dfad418b11411ccd84a53
+      internalID: 1528502554
       vertices: []
       indices: 
       edges: []
@@ -193,10 +193,12 @@ TextureImporter:
       entries:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":8.0,"y":8.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      - key: SpriteEditor.SliceOnImport
+        value: False
     nameFileIdTable:
-      water_0: 8509550459451208454
-      water_1: 473854263
-      water_2: 136226053
+      lava_0: 735311684
+      lava_1: -200775149
+      lava_2: 1528502554
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
