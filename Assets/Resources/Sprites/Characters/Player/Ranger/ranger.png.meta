@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 7737a643cccab4a4ba21d041ed73cf28
+guid: 28ac5efb507f7424f8ad4a62533485f0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2971653748508199937
-    second: mage_0
+      213: -2850707533075056667
+    second: ranger_0
   - first:
-      213: -1182937539813507409
-    second: mage_1
+      213: 2747413984754389643
+    second: ranger_1
   - first:
-      213: 7310728498343965544
-    second: mage_2
+      213: 1004050130200608572
+    second: ranger_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -30,7 +30,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -54,7 +54,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 8
@@ -119,32 +119,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mageUp1
+      name: ranger_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 10c0a4bf65f6d3920800000000000000
-      internalID: 2971653748508199937
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mageAttackRight1
-      rect:
-        serializedVersion: 2
-        x: 32
         y: 16
         width: 8
         height: 8
@@ -156,36 +134,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 863fd19d5dce47560800000000000000
-      internalID: 7310728498343965544
+      spriteID: 5e7f7843a904078d0800000000000000
+      internalID: -2850707533075056667
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageRight1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 16
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 26e93950a582ee445895bbc7252c072f
-      internalID: -1892815437
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mageRight2
+      name: ranger_1
       rect:
         serializedVersion: 2
         x: 8
@@ -193,21 +149,43 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: cbb42d9453c76d94bb7bec053aeb76ce
-      internalID: 154969701
+      spriteID: b82d9347676c02620800000000000000
+      internalID: 2747413984754389643
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageRight3
+      name: ranger_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3fba43164a1fed00800000000000000
+      internalID: 1004050130200608572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranger_3
       rect:
         serializedVersion: 2
         x: 16
@@ -222,36 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 082599935b7128043a064a882a554a60
-      internalID: 1445215944
+      spriteID: 36658679351c13f46a2eb263d8d6dba1
+      internalID: -765901193
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageDown1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 8
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1ea90715f3f003447a6c75534dfbe9fd
-      internalID: 751863805
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mageDown2
+      name: ranger_4
       rect:
         serializedVersion: 2
         x: 8
@@ -266,14 +222,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adbbf515895ce6e45b06d94c2e41499d
-      internalID: 1561729321
+      spriteID: 0025462e00a4b4d4e8d66e334dff17a8
+      internalID: -2092139806
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageDown3
+      name: ranger_5
       rect:
         serializedVersion: 2
         x: 16
@@ -288,14 +244,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 17a402b61af7b034494d366a47ef807f
-      internalID: -596316308
+      spriteID: 2731c186c1c4ac94aa48f532c539d521
+      internalID: 237161144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageUp2
+      name: ranger_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b27d324c7064b82478886ab08910a5d7
+      internalID: 405362651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranger_7
       rect:
         serializedVersion: 2
         x: 8
@@ -310,14 +288,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aaf3c4b8fac51f3418b7b9e81377100b
-      internalID: -34955591
+      spriteID: c1e15852790442649b728496ae21ce8e
+      internalID: -885038556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageUp3
+      name: ranger_8
       rect:
         serializedVersion: 2
         x: 16
@@ -332,19 +310,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b72f74283aa59f643b03a5f145fe0778
-      internalID: 2112624007
+      spriteID: 5990aeaa678c0b94c99cd038daff198a
+      internalID: 308240854
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageAttackRight2
+      name: ranger_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c14bcbdb8395a44699fa92334467014
+      internalID: -322426682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ranger_10
       rect:
         serializedVersion: 2
         x: 40
         y: 16
-        width: 10
+        width: 8
         height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -354,14 +354,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 608070d6e7394ea438a91f8305e1cb81
-      internalID: -1991565177
+      spriteID: 4442233ecd7c40e4dbe3c765ef5fd9c4
+      internalID: 1299501007
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageAttackDown1
+      name: ranger_11
       rect:
         serializedVersion: 2
         x: 32
@@ -376,19 +376,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 69886747e2e3919438f53283e81042a5
-      internalID: -24815911
+      spriteID: 6cf006b7b9af28440b0d75d34e2fec48
+      internalID: 1453965897
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageAttackDown2
+      name: ranger_12
       rect:
         serializedVersion: 2
         x: 40
         y: 8
-        width: 10
+        width: 8
         height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -398,14 +398,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18e147999d1596141abe51796e31a1f8
-      internalID: -585785529
+      spriteID: 19551235484e890478e1d64686035f7e
+      internalID: 1706752754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageAttackUp1
+      name: ranger_13
       rect:
         serializedVersion: 2
         x: 32
@@ -420,19 +420,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23b6400c0db613f4aa2fc2ea50395298
-      internalID: 1559927261
+      spriteID: 23c4dbc78a8f3f042a30f6c658dac62f
+      internalID: -945888579
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageAttackUp2
+      name: ranger_14
       rect:
         serializedVersion: 2
         x: 40
         y: 0
-        width: 10
+        width: 8
         height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -442,8 +442,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfe49cfc7b80f1a43a02c2919268689c
-      internalID: 1037561702
+      spriteID: b9c1bb3e785e52649837080ed1ec6c8a
+      internalID: -1576591072
       vertices: []
       indices: 
       edges: []
@@ -452,7 +452,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f71d67cb11e0da841bee38981275f2b9
+    spriteID: 5f2b2c4f1909ee14a97d6b2396b7d893
     internalID: 0
     vertices: []
     indices: 
@@ -462,21 +462,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mageAttackDown1: -24815911
-      mageAttackDown2: -585785529
-      mageAttackRight1: 7310728498343965544
-      mageAttackRight2: -1991565177
-      mageAttackUp1: 1559927261
-      mageAttackUp2: 1037561702
-      mageDown1: 751863805
-      mageDown2: 1561729321
-      mageDown3: -596316308
-      mageRight1: -1892815437
-      mageRight2: 154969701
-      mageRight3: 1445215944
-      mageUp1: 2971653748508199937
-      mageUp2: -34955591
-      mageUp3: 2112624007
+      ranger_0: -2850707533075056667
+      ranger_1: 2747413984754389643
+      ranger_10: 1299501007
+      ranger_11: 1453965897
+      ranger_12: 1706752754
+      ranger_13: -945888579
+      ranger_14: -1576591072
+      ranger_2: 1004050130200608572
+      ranger_3: -765901193
+      ranger_4: -2092139806
+      ranger_5: 237161144
+      ranger_6: 405362651
+      ranger_7: -885038556
+      ranger_8: 308240854
+      ranger_9: -322426682
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

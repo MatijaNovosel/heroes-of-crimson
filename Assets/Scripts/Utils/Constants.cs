@@ -133,5 +133,12 @@ namespace HeroesOfCrimson.Utils
       Down,
       Left
     }
+
+    public enum Character
+    {
+      Knight = 1,
+      Mage = 2,
+      Ranger = 3
+    }
   }
 }
