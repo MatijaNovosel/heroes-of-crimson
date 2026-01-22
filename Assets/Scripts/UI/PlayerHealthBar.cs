@@ -8,6 +8,7 @@ public class PlayerHealthBar : MonoBehaviour
     public Image healthbarImage;
     public Image healthbarImageLight;
     public TMP_Text healthBarText;
+    public TMP_Text regenText;
 
     private BaseNPCBehaviour baseNPC;
 
@@ -22,6 +23,11 @@ public class PlayerHealthBar : MonoBehaviour
     void Update()
     {
         UpdateFillAmount();
+    }
+
+    public void UpdateRegenText(float regenPerSecond)
+    {
+        regenText.text = $"+{regenPerSecond:F2}";
     }
 
     public void UpdateFillAmount()

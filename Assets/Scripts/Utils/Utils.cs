@@ -2,6 +2,7 @@
 using UnityEngine;
 using System;
 using System.Text.RegularExpressions;
+using Random = System.Random;
 
 namespace HeroesOfCrimson.Utils
 {
@@ -53,6 +54,12 @@ namespace HeroesOfCrimson.Utils
       var player = GameObject.Find("Player");
       if (!player) return float.MaxValue;
       return ((Vector2)player.transform.position - (Vector2)from).sqrMagnitude;
+    }
+    
+    public static double RandFloat(float minimum, float maximum)
+    { 
+      Random random = new Random();
+      return random.NextDouble() * (maximum - minimum) + minimum;
     }
     
     public static LineRenderer CreateCircle(

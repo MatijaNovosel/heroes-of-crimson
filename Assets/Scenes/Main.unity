@@ -390,6 +390,7 @@ MonoBehaviour:
   healthbarImage: {fileID: 42378816}
   healthbarImageLight: {fileID: 0}
   healthBarText: {fileID: 758548724}
+  regenText: {fileID: 0}
 --- !u!114 &42378816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3513,6 +3514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cd0cfa374908b4e97de9762f7010af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalCursor: {fileID: 2800000, guid: 8fd4af637bdabda4fa21cef97d8ba2e4, type: 3}
+  forbiddenCursor: {fileID: 2800000, guid: 69458415facefb74189bebc8a3d1d99b, type: 3}
+  cursorHotspot: {x: 5, y: 0}
   Level: 1
   Experience: 44
   abilities:
@@ -3520,21 +3524,25 @@ MonoBehaviour:
     cooldownImage: {fileID: 1193286956}
     cooldown: 1
     manaCost: 30
+    ignoreForbiddenTiles: 0
     lastUsedTime: -999
   - key: 50
     cooldownImage: {fileID: 1618175027}
     cooldown: 1
     manaCost: 30
+    ignoreForbiddenTiles: 0
     lastUsedTime: -999
   - key: 51
     cooldownImage: {fileID: 941271637}
     cooldown: 1
     manaCost: 30
+    ignoreForbiddenTiles: 0
     lastUsedTime: -999
   - key: 52
     cooldownImage: {fileID: 231357626}
     cooldown: 1
     manaCost: 30
+    ignoreForbiddenTiles: 0
     lastUsedTime: -999
   HoldingItem: 0
   InventoryOpen: 1
@@ -3542,8 +3550,12 @@ MonoBehaviour:
   animator: {fileID: 0}
   Hotbar: {fileID: 1001678528}
   TopLeftGroup: {fileID: 1967071324}
-  HealthbarRegenText: {fileID: 1948883862}
-  ManaBarRegenText: {fileID: 1914208278}
+  HealthBar: {fileID: 809111553}
+  ManaBar: {fileID: 415278812}
+  forbiddenAbilityTilemaps:
+  - {fileID: 914398653}
+  - {fileID: 681165206}
+  - {fileID: 909961758}
   actualSpd: 0
   actualAtt: 0
   actualDef: 0
@@ -5883,6 +5895,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 415278811}
+  - component: {fileID: 415278812}
   m_Layer: 5
   m_Name: Mana
   m_TagString: Untagged
@@ -5914,6 +5927,23 @@ RectTransform:
   m_AnchoredPosition: {x: -20, y: 4.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &415278812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415278810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff6dad1b45d9db44865f5c536ebbb2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerManaBar
+  player: {fileID: 225077527}
+  image: {fileID: 2035012152}
+  imageLight: {fileID: 972875875}
+  text: {fileID: 1673891022}
+  regenText: {fileID: 1914208278}
 --- !u!1 &426680656
 GameObject:
   m_ObjectHideFlags: 0
@@ -7463,7 +7493,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12.5
+  orthographic size: 14
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -31651,6 +31681,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 809111552}
+  - component: {fileID: 809111553}
   m_Layer: 5
   m_Name: Health
   m_TagString: Untagged
@@ -31682,6 +31713,23 @@ RectTransform:
   m_AnchoredPosition: {x: -20, y: 15}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &809111553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809111551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f253aaf7f6028445a5e2599aee9fd06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 225077527}
+  healthbarImage: {fileID: 1415340510}
+  healthbarImageLight: {fileID: 42378816}
+  healthBarText: {fileID: 758548724}
+  regenText: {fileID: 1948883862}
 --- !u!224 &810590984 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4948953762977797396, guid: b48124ec7dd9c9643b140f32ae65b6b9, type: 3}
@@ -44078,7 +44126,6 @@ GameObject:
   - component: {fileID: 1415340509}
   - component: {fileID: 1415340511}
   - component: {fileID: 1415340510}
-  - component: {fileID: 1415340512}
   m_Layer: 5
   m_Name: Healthbar
   m_TagString: Untagged
@@ -44143,22 +44190,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415340508}
   m_CullTransparentMesh: 1
---- !u!114 &1415340512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1415340508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f253aaf7f6028445a5e2599aee9fd06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 225077527}
-  healthbarImage: {fileID: 1415340510}
-  healthbarImageLight: {fileID: 42378816}
-  healthBarText: {fileID: 758548724}
 --- !u!1 &1419546043
 GameObject:
   m_ObjectHideFlags: 0
@@ -92348,7 +92379,6 @@ GameObject:
   - component: {fileID: 2035012151}
   - component: {fileID: 2035012153}
   - component: {fileID: 2035012152}
-  - component: {fileID: 2035012154}
   m_Layer: 5
   m_Name: ManaBar
   m_TagString: Untagged
@@ -92413,22 +92443,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035012150}
   m_CullTransparentMesh: 1
---- !u!114 &2035012154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2035012150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ff6dad1b45d9db44865f5c536ebbb2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerManaBar
-  player: {fileID: 225077527}
-  image: {fileID: 2035012152}
-  imageLight: {fileID: 972875875}
-  text: {fileID: 1673891022}
 --- !u!1 &2044772625
 GameObject:
   m_ObjectHideFlags: 0
@@ -93640,7 +93654,7 @@ PrefabInstance:
     - target: {fileID: 7860581793131152278, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 1415340512}
+      objectReference: {fileID: 0}
     - target: {fileID: 7860581793131152278, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: Experience
       value: 44
@@ -93648,6 +93662,10 @@ PrefabInstance:
     - target: {fileID: 7860581793131152278, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: InventoryOpen
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860581793131152278, guid: fc920363a5cee564e95302175fa8e339, type: 3}
+      propertyPath: cursorHotspot.x
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7860581793131152278, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: abilities.Array.data[0].key
@@ -93664,6 +93682,10 @@ PrefabInstance:
     - target: {fileID: 7860581793131152278, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: abilities.Array.data[3].key
       value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860581793131152278, guid: fc920363a5cee564e95302175fa8e339, type: 3}
+      propertyPath: forbiddenAbilityTilemaps.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7860581793131152279, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: m_Size.x

@@ -8,6 +8,7 @@ public class PlayerManaBar : MonoBehaviour
     public Image image;
     public Image imageLight;
     public TMP_Text text;
+    public TMP_Text regenText;
 
     private BaseNPCBehaviour baseNPC;
 
@@ -22,6 +23,11 @@ public class PlayerManaBar : MonoBehaviour
     void Update()
     {
         UpdateFillAmount();
+    }
+    
+    public void UpdateRegenText(float regenPerSecond)
+    {
+        regenText.text = $"+{regenPerSecond:F2}";
     }
 
     void UpdateFillAmount()

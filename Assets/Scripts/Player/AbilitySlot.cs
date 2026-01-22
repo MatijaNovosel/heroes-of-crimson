@@ -9,6 +9,7 @@ public class AbilitySlot
     public Image cooldownImage;
     public float cooldown = 1f;
     public float manaCost = 30f;
+    public bool ignoreForbiddenTiles;
 
     [HideInInspector] public float lastUsedTime = -999f;
 

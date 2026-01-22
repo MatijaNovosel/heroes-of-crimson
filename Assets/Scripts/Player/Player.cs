@@ -9,6 +9,7 @@ using TMPro;
 using UI.Inventory;
 using Unity.Burst.CompilerServices;
 using UnityEngine.EventSystems;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(BaseNPCBehaviour))]
@@ -23,6 +24,11 @@ public class Player : MonoBehaviour
   private Vector3 _moveDelta;
   private RaycastHit2D _hit;
   private const float FiringDelay = 0.3f;
+  
+  [Header("Cursor")]
+  public Texture2D normalCursor;
+  public Texture2D forbiddenCursor;
+  public Vector2 cursorHotspot = Vector2.zero;
   
   // Experience
   public float Level = 1;
@@ -45,8 +51,10 @@ public class Player : MonoBehaviour
   private BaseNPCBehaviour _baseNpcBehaviour;
   public Inventory Hotbar;
   public RectTransform TopLeftGroup;
-  public TMP_Text HealthbarRegenText;
-  public TMP_Text ManaBarRegenText;
+  public PlayerHealthBar HealthBar;
+  public PlayerManaBar ManaBar;
+  
+  public List<Tilemap> forbiddenAbilityTilemaps;
   
   // Stats
   public float actualSpd = 0;
@@ -91,11 +99,16 @@ public class Player : MonoBehaviour
     return Time.time - _lastFired > FiringDelay;
   }
   
-  private float GetManaRegenPerSecond()
+  private void UpdateCursor()
   {
-    // MP per second = 0.5 + 0.12 * WIS
-    return Mathf.Max(0f, 0.5f + (0.12f * actualWis));
+    bool forbidden = IsCursorOverForbiddenAbilityTile();
+    Cursor.SetCursor(
+      forbidden ? forbiddenCursor : normalCursor,
+      cursorHotspot,
+      CursorMode.Auto
+    );
   }
+
 
   private void Fire()
   {
@@ -190,15 +203,20 @@ public class Player : MonoBehaviour
           break;
       }
     }
+
+    var damage = Utils.RandFloat(
+      weaponInventorySlot.CurrentInventoryItem.ItemInSlot.minDamage,
+      weaponInventorySlot.CurrentInventoryItem.ItemInSlot.maxDamage
+    );
     
-    AudioManager.Singleton.PlaySoundCached(Constants.Sounds.MagicShoot);
+    AudioManager.Singleton.PlaySound(shootSound);
     
     proj.GetComponent<Projectile>().Setup(new ProjectileSetupModel(
       shootDirection,
       weaponProjectileDegree,
       null,
       0.6f,
-      50,
+      (float)damage,
       weaponProjectile,
       new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
       new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
@@ -207,6 +225,21 @@ public class Player : MonoBehaviour
     
     _lastFired = Time.time;
   }
+  
+  private bool IsCursorOverForbiddenAbilityTile()
+  {
+    Vector3 mouseWorldPos = Utils.GetMousePosition();
+
+    foreach (var tilemap in forbiddenAbilityTilemaps)
+    {
+      if (!tilemap) continue;
+      Vector3Int cellPos = tilemap.WorldToCell(mouseWorldPos);
+      if (tilemap.HasTile(cellPos)) return true;
+    }
+
+    return false;
+  }
+
 
   private void HandleMoving()
   {
@@ -313,14 +346,14 @@ public class Player : MonoBehaviour
 
       if (!Input.GetKeyDown(ability.key) || !ability.IsReady) continue;
 
-      if (_baseNpcBehaviour.mp < ability.manaCost)
+      if (IsCursorOverForbiddenAbilityTile() || _baseNpcBehaviour.mp < ability.manaCost)
       {
         AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Error);
-        return;
+        continue;
       }
 
       var prefab = GetAbilityPrefab(i);
-      if (!prefab) return;
+      if (!prefab) continue;
 
       _baseNpcBehaviour.mp -= ability.manaCost;
       ability.lastUsedTime = Time.time;
@@ -350,7 +383,7 @@ public class Player : MonoBehaviour
     var regenPerSecond = 2f + (0.2407f * actualVit);
     regenPerSecond = Mathf.Max(0f, regenPerSecond);
     
-    HealthbarRegenText.text = $"+{regenPerSecond:F2}";
+    HealthBar.UpdateRegenText(regenPerSecond);
     _baseNpcBehaviour.hp += regenPerSecond * Time.deltaTime;
     _baseNpcBehaviour.hp = Mathf.Min(
       _baseNpcBehaviour.hp,
@@ -360,9 +393,10 @@ public class Player : MonoBehaviour
 
   private void HandleManaRegen()
   {
-    var manaRegenPerSecond = GetManaRegenPerSecond();
+    var regenPerSecond = 0.5f + (0.12f * actualWis);
+    var manaRegenPerSecond = Mathf.Max(0f, regenPerSecond);
     
-    ManaBarRegenText.text = $"+{manaRegenPerSecond:F2}";
+    ManaBar.UpdateRegenText(manaRegenPerSecond);
     _baseNpcBehaviour.mp += manaRegenPerSecond * Time.deltaTime;
     _baseNpcBehaviour.mp = Mathf.Min(
       _baseNpcBehaviour.mp,
@@ -439,6 +473,7 @@ public class Player : MonoBehaviour
 
   private void Update()
   {
+    UpdateCursor();
     HandleAbility();
     HandleShooting();
     HandleUIKeys();
