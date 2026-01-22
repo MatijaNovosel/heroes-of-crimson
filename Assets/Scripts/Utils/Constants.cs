@@ -140,5 +140,12 @@ namespace HeroesOfCrimson.Utils
       Mage = 2,
       Ranger = 3
     }
+
+    public enum AbilityType
+    {
+      Meteor = 1,
+      FireSphere = 2,
+      Teleport = 3
+    }
   }
 }

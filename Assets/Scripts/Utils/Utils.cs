@@ -59,7 +59,7 @@ namespace HeroesOfCrimson.Utils
     public static double RandFloat(float minimum, float maximum)
     { 
       Random random = new Random();
-      return random.NextDouble() * (maximum - minimum) + minimum;
+      return Math.Floor(random.NextDouble() * (maximum - minimum) + minimum);
     }
     
     public static LineRenderer CreateCircle(

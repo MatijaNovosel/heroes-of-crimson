@@ -98,21 +98,6 @@ public class Projectile : MonoBehaviour
     */
     transform.eulerAngles = new Vector3(0, 0, this._angle - this._rotation);
   }
-  
-  private void SpawnImpactParticles()
-  {
-    for (int i = 0; i < 6; i++)
-    {
-      var p = Instantiate(
-        impactParticlePrefab,
-        transform.position,
-        Quaternion.Euler(0, 0, Random.Range(0f, 360f))
-      );
-      
-      p.transform.localScale = Vector3.one * Random.Range(0.1f, 0.6f);
-      p.GetComponent<ImpactParticle>().Init(_particleColor);
-    }
-  }
 
   private void OnTriggerEnter2D(Collider2D collider)
   {
@@ -134,7 +119,7 @@ public class Projectile : MonoBehaviour
 
     if (collider.name != "BulletCollision")
     {
-      SpawnImpactParticles();
+      ParticleManager.Singleton.SpawnParticles(transform, _particleColor, 6);
     }
     
     Destroy(gameObject);

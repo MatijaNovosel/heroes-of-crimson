@@ -69,15 +69,8 @@ public class Player : MonoBehaviour
     foreach (var ability in abilities)
     {
       if (ability.cooldownImage is null) continue;
-
-      if (ability.IsReady)
-      {
-        ability.cooldownImage.fillAmount = 1f;
-      }
-      else
-      {
-        ability.cooldownImage.fillAmount = ability.CooldownRemaining / ability.cooldown;
-      }
+      if (ability.IsReady) ability.cooldownImage.fillAmount = 1f;
+      else ability.cooldownImage.fillAmount = ability.CooldownRemaining / ability.cooldown;
     }
   }
   
@@ -108,7 +101,6 @@ public class Player : MonoBehaviour
       CursorMode.Auto
     );
   }
-
 
   private void Fire()
   {
@@ -360,19 +352,30 @@ public class Player : MonoBehaviour
 
       var cursorPosition = Utils.GetMousePosition();
 
-      var abilityObj = Instantiate(
-        prefab,
-        new Vector3(cursorPosition.x, cursorPosition.y + 0.8f, 0),
-        Quaternion.identity
-      );
+      switch (ability.abilityType)
+      {
+        case Constants.AbilityType.Meteor:
+        case Constants.AbilityType.FireSphere:
+          var abilityObj = Instantiate(
+            prefab,
+            new Vector3(cursorPosition.x, cursorPosition.y + 0.8f, 0),
+            Quaternion.identity
+          );
 
-      if (abilityObj.TryGetComponent<Meteor>(out var meteor))
-      {
-        meteor.Init(cursorPosition);
-      }
-      else if (abilityObj.TryGetComponent<FireSphere>(out var fireSphere))
-      {
-        fireSphere.Init();
+          if (abilityObj.TryGetComponent<Meteor>(out var meteor))
+          {
+            meteor.Init(cursorPosition);
+          }
+          else if (abilityObj.TryGetComponent<FireSphere>(out var fireSphere))
+          {
+            fireSphere.Init();
+          }
+          
+          break;
+        case Constants.AbilityType.Teleport:
+          transform.position = cursorPosition;
+          ParticleManager.Singleton.SpawnParticles(transform, Color.white, 50);
+          break;
       }
     }
   }

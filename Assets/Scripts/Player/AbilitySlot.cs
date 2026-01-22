@@ -1,4 +1,5 @@
 using System;
+using HeroesOfCrimson.Utils;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,7 @@ public class AbilitySlot
     public float cooldown = 1f;
     public float manaCost = 30f;
     public bool ignoreForbiddenTiles;
+    public Constants.AbilityType abilityType;
 
     [HideInInspector] public float lastUsedTime = -999f;
 
