@@ -12,8 +12,15 @@ namespace UI.Inventory
         [SerializeField] public Transform draggablesTransform;
         [SerializeField] private InventoryItem itemPrefab;
         
-        [Header("Initial items")]
-        public List<int> initialItemIds = new ();
+        private LootBag _currentLootBag;
+        public bool IsLootInventory => _currentLootBag != null;
+
+        public void SetLootSource(LootBag bag)
+        {
+            _currentLootBag = bag;
+        }
+
+        public LootBag GetCurrentLootBag() => _currentLootBag;
 
         private void Start()
         {
@@ -30,6 +37,27 @@ namespace UI.Inventory
                 SpawnItem(Database.Singleton.GetItem(5005));
                 SpawnItem(Database.Singleton.GetItem(5006));
                 SpawnItem(Database.Singleton.GetItem(6000));
+            }
+        }
+        
+        public void ShowLoot(LootBag bag)
+        {
+            ClearInventory();
+            SetLootSource(bag);
+            var items = bag.GetLootItems();
+            for (int i = 0; i < items.Count && i < inventorySlots.Length; i++) SpawnItem(items[i], i);
+        }
+        
+        public void ClearInventory()
+        {
+            foreach (var slot in inventorySlots)
+            {
+                if (slot.CurrentInventoryItem)
+                {
+                    Destroy(slot.CurrentInventoryItem.gameObject);
+                    slot.CurrentInventoryItem = null;
+                    slot.ChangeImage(false);
+                }
             }
         }
 
@@ -53,6 +81,7 @@ namespace UI.Inventory
             foreach (var slot in inventorySlots)
             {
                 if (slot.CurrentInventoryItem) continue;
+                slot.ChangeImage(true);
                 var newItem = Instantiate(itemPrefab, slot.transform);
                 newItem.Initialize(item, slot);
                 break;

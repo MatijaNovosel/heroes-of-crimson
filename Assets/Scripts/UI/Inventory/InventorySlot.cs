@@ -74,20 +74,61 @@ namespace UI.Inventory
             var fromSlot = droppedItem.ActiveSlot;
             var toSlot = this;
 
-            if (toSlot.Tag == Constants.ItemTag.None && fromSlot.IsHotbar) fromSlot.ChangeImage();
-            if (toSlot.IsHotbar && fromSlot.Tag == Constants.ItemTag.None) toSlot.ChangeImage(true);
+            var fromInventory = fromSlot.GetComponentInParent<Inventory>();
+            var toInventory = GetComponentInParent<Inventory>();
+
+            bool fromLoot = fromInventory != null && fromInventory.IsLootInventory;
+            bool toLoot = toInventory != null && toInventory.IsLootInventory;
 
             AudioManager.Singleton.PlaySoundCached(Constants.Sounds.InventoryMove);
 
+            // HOTBAR
+            if (toSlot.Tag == Constants.ItemTag.None && fromSlot.IsHotbar)
+            {
+                fromSlot.ChangeImage();
+            }
+
+            if (toSlot.IsHotbar && fromSlot.Tag == Constants.ItemTag.None)
+            {
+                toSlot.ChangeImage(true);
+            }
+
+            // MOVE (empty target)
             if (toSlot.CurrentInventoryItem is null)
             {
+                if (fromLoot && !toLoot)
+                {
+                    fromInventory.GetCurrentLootBag()?.RemoveItem(droppedItem.ItemInSlot);
+                }
+
+                if (!fromLoot && toLoot)
+                {
+                    toInventory.GetCurrentLootBag()?.AddItem(droppedItem.ItemInSlot);
+                }
+
                 MoveItem(droppedItem, toSlot);
                 return;
             }
 
+            // SWAP
+            var targetItem = toSlot.CurrentInventoryItem;
+
+            if (fromLoot && !toLoot)
+            {
+                var bag = fromInventory.GetCurrentLootBag();
+                bag?.RemoveItem(droppedItem.ItemInSlot);
+                bag?.AddItem(targetItem.ItemInSlot);
+            }
+            else if (!fromLoot && toLoot)
+            {
+                var bag = toInventory.GetCurrentLootBag();
+                bag?.RemoveItem(targetItem.ItemInSlot);
+                bag?.AddItem(droppedItem.ItemInSlot);
+            }
+
             SwapItems(fromSlot, toSlot);
         }
-
+        
         private static void MoveItem(InventoryItem item, InventorySlot targetSlot)
         {
             if (item.ActiveSlot) item.ActiveSlot.CurrentInventoryItem = null;

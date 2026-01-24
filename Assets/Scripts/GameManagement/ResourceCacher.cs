@@ -32,6 +32,7 @@ namespace GameManagement
             Sounds.Add(Constants.Sounds.MagicShoot, Resources.Load<AudioClip>("Sounds/General/magicShoot"));
             Sounds.Add(Constants.Sounds.GenericHit, Resources.Load<AudioClip>("Sounds/General/hit"));
             Sounds.Add(Constants.Sounds.NoMana, Resources.Load<AudioClip>("Sounds/General/noMana"));
+            Sounds.Add(Constants.Sounds.LootDrop, Resources.Load<AudioClip>("Sounds/General/lootDrop"));
             
             // Enemy sounds
             Sounds.Add(Constants.Sounds.SkeletonDeath, Resources.Load<AudioClip>("Sounds/Enemies/skeletonDeath"));
@@ -42,6 +43,7 @@ namespace GameManagement
             
             // Ability sounds
             Sounds.Add(Constants.Sounds.FireSphere, Resources.Load<AudioClip>("Sounds/Abilities/fireSphere"));
+            Sounds.Add(Constants.Sounds.Teleport, Resources.Load<AudioClip>("Sounds/Abilities/teleport"));
             
             InventorySprites.Add(Constants.InventorySlotSpritesEnum.Weapon, Resources.Load<Sprite>("Sprites/UI/HotbarWeaponSlot"));
             InventorySprites.Add(Constants.InventorySlotSpritesEnum.Ability, Resources.Load<Sprite>("Sprites/UI/HotbarAbilitySlot"));

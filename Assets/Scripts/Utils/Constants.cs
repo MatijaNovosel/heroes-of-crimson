@@ -94,13 +94,15 @@ namespace HeroesOfCrimson.Utils
       MagicShoot = 1004,
       GenericHit = 1005,
       NoMana = 1006,
+      LootDrop = 1007,
       // Eenemy sounds
       SkeletonHit = 2000,
       SkeletonDeath = 2001,
       // Player sounds
       MageHit = 3000,
       // Ability sounds
-      FireSphere = 4000
+      FireSphere = 4000,
+      Teleport = 4001
     }
     
     public enum InventorySlotSpritesEnum

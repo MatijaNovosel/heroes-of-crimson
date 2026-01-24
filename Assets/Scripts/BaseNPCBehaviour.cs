@@ -31,6 +31,7 @@ public class BaseNPCBehaviour : MonoBehaviour
   // Other
   public AudioClip deathSound;
   public AudioClip hitSound;
+  public GameObject lootBagPrefab;
   
   // UI stuff
   private GameObject _statusEffectPanel;
@@ -53,6 +54,14 @@ public class BaseNPCBehaviour : MonoBehaviour
     {
       AudioSource.PlayClipAtPoint(deathSound, transform.position, 1.5f);
     }
+    
+    var lootBag = Instantiate(
+      lootBagPrefab,
+      transform.position,
+      Quaternion.identity
+    );
+    
+    AudioManager.Singleton.PlaySoundCached(Constants.Sounds.LootDrop);
 
     Destroy(gameObject);
   }

@@ -374,6 +374,7 @@ public class Player : MonoBehaviour
           break;
         case Constants.AbilityType.Teleport:
           transform.position = cursorPosition;
+          AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Teleport);
           ParticleManager.Singleton.SpawnParticles(transform, Color.white, 50);
           break;
       }
@@ -406,48 +407,29 @@ public class Player : MonoBehaviour
       _baseNpcBehaviour.maxMp
     );
   }
+  
+  private void AddItemStats(InventoryItem item, int[] totals)
+  {
+    if (item == null || item.ItemInSlot == null) return;
+    var stats = item.ItemInSlot.stats;
+    for (int i = 0; i < 6; i++) totals[i] += stats[i];
+  }
 
   private void UpdateStats()
   {
-    var weaponSlot = Hotbar.GetHotbarSlot(0);
-    var abilitySlot = Hotbar.GetHotbarSlot(1);
-    var armorSlot = Hotbar.GetHotbarSlot(2);
-    var accessorySlot = Hotbar.GetHotbarSlot(3);
+    int[] totalStats = new int[6];
 
-    // ATT, SPD, DEX, DEF, VIT, WIS
-    var totalStats = new List<int> { 0, 0, 0, 0, 0, 0 };
-    
-    var weaponItem = weaponSlot.CurrentInventoryItem;
-    var abilityItem = abilitySlot.CurrentInventoryItem;
-    var armorItem = armorSlot.CurrentInventoryItem;
-    var accessoryItem = accessorySlot.CurrentInventoryItem;
-    
-    if (weaponItem)
-    {
-      for (var i = 0; i < 6; i++) totalStats[i] += weaponItem.ItemInSlot.stats[i];
-    }
-    
-    if (abilityItem)
-    {
-      for (var i = 0; i < 6; i++) totalStats[i] += abilityItem.ItemInSlot.stats[i];
-    }
-    
-    if (armorItem)
-    {
-      for (var i = 0; i < 6; i++) totalStats[i] += armorItem.ItemInSlot.stats[i];
-    }
-    
-    if (accessoryItem)
-    {
-      for (var i = 0; i < 6; i++) totalStats[i] += accessoryItem.ItemInSlot.stats[i];
-    }
+    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotSpritesEnum.Weapon - 1)?.CurrentInventoryItem, totalStats); // Weapon
+    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotSpritesEnum.Ability - 1)?.CurrentInventoryItem, totalStats); // Ability
+    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotSpritesEnum.Armor - 1)?.CurrentInventoryItem, totalStats); // Armor
+    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotSpritesEnum.Accessory - 1)?.CurrentInventoryItem, totalStats); // Accessory
 
-    actualAtt = _baseNpcBehaviour.att + totalStats[0];
-    actualSpd = _baseNpcBehaviour.spd + totalStats[1];
-    actualDex = _baseNpcBehaviour.def + totalStats[2];
-    actualDef = _baseNpcBehaviour.def + totalStats[3];
-    actualVit = _baseNpcBehaviour.vit + totalStats[4];
-    actualWis = _baseNpcBehaviour.wis + totalStats[5];
+    actualAtt = _baseNpcBehaviour.att + totalStats[(int)Constants.Stats.ATT - 1];
+    actualSpd = _baseNpcBehaviour.spd + totalStats[(int)Constants.Stats.DEF - 1];
+    actualDex = _baseNpcBehaviour.dex + totalStats[(int)Constants.Stats.WIS - 1];
+    actualDef = _baseNpcBehaviour.def + totalStats[(int)Constants.Stats.VIT - 1];
+    actualVit = _baseNpcBehaviour.vit + totalStats[(int)Constants.Stats.DEX - 1];
+    actualWis = _baseNpcBehaviour.wis + totalStats[(int)Constants.Stats.SPD - 1];
   }
 
   private void HandleUIKeys()
