@@ -13,10 +13,10 @@ public class LootBag : MonoBehaviour
     private bool isUIActive = false;
 
     private LineRenderer _rangeCircle;
-
-    // 🔹 Seeded loot stored here
+    
     private List<Item> _seededItems = new List<Item>();
     private bool _lootGenerated = false;
+    public int[] initialItemIds;
 
     void Start()
     {
@@ -31,7 +31,10 @@ public class LootBag : MonoBehaviour
             new Color(0.8f, 0f, 0f, 0.4f)
         );
 
-        GenerateLoot();
+        if (initialItemIds.Length > 0)
+        {
+            GenerateLoot(initialItemIds);
+        }
     }
 
     void Update()
@@ -57,26 +60,30 @@ public class LootBag : MonoBehaviour
         }
     }
 
-    private void GenerateLoot()
+    public void GenerateLoot(int[] itemIds, bool? randomize = false)
     {
         if (_lootGenerated) return;
         _lootGenerated = true;
 
-        int seed = GetInstanceID();
-        Random.InitState(seed);
-        int itemCount = Random.Range(1, 4);
-
-        int[] possibleItemIds = { 2000, 2001, 2002, 2003, 6001, 2004 };
-
-        for (int i = 0; i < itemCount; i++)
+        if (randomize == true)
         {
-            int id = possibleItemIds[Random.Range(0, possibleItemIds.Length)];
-            _seededItems.Add(Database.Singleton.GetItem(id));
+            int seed = GetInstanceID();
+            Random.InitState(seed);
+            int itemCount = Random.Range(1, 4);
+
+            for (int i = 0; i < itemCount; i++)
+            {
+                int id = itemIds[Random.Range(0, itemIds.Length)];
+                _seededItems.Add(Database.Singleton.GetItem(id));
+            }   
         }
-        
-        _seededItems.Add(Database.Singleton.GetItem(2004));
-        _seededItems.Add(Database.Singleton.GetItem(2002));
-        _seededItems.Add(Database.Singleton.GetItem(6001));
+        else
+        {
+            foreach (var id in itemIds)
+            {
+                _seededItems.Add(Database.Singleton.GetItem(id));
+            }
+        }
     }
     
     public void AddItem(Item item)

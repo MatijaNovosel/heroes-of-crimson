@@ -60,6 +60,19 @@ public class BaseNPCBehaviour : MonoBehaviour
       transform.position,
       Quaternion.identity
     );
+
+    lootBag.GetComponent<LootBag>().GenerateLoot(new []
+    {
+      2000,
+      2001,
+      2002,
+      2003,
+      5000,
+      5001,
+      5002
+    }, 
+      true
+    );
     
     AudioManager.Singleton.PlaySoundCached(Constants.Sounds.LootDrop);
 
@@ -84,7 +97,8 @@ public class BaseNPCBehaviour : MonoBehaviour
           0,
           moveY,
           Mathf.Abs(moveY.y * speed),
-          mask))
+          mask)
+        )
     {
       transform.Translate(0, moveY.y * speed, 0);
     }
@@ -98,7 +112,8 @@ public class BaseNPCBehaviour : MonoBehaviour
           0,
           moveX,
           Mathf.Abs(moveX.x * speed),
-          mask))
+          mask)
+        )
     {
       transform.Translate(moveX.x * speed, 0, 0);
     }

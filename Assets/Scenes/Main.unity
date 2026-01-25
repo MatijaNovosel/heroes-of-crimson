@@ -7118,6 +7118,26 @@ PrefabInstance:
       propertyPath: InteractionRange
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6559301374437243440, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
+      propertyPath: initialItemIds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559301374437243440, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
+      propertyPath: 'initialItemIds.Array.data[0]'
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559301374437243440, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
+      propertyPath: 'initialItemIds.Array.data[1]'
+      value: 2001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559301374437243440, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
+      propertyPath: 'initialItemIds.Array.data[2]'
+      value: 2002
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559301374437243440, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
+      propertyPath: 'initialItemIds.Array.data[3]'
+      value: 2003
+      objectReference: {fileID: 0}
     - target: {fileID: 7703667645775966057, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
       propertyPath: m_LocalPosition.x
       value: -39.39
