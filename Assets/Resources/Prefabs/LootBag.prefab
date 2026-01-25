@@ -104,7 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c9ebed2dab89ce42b7becbed5810477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LootBag
-  InteractionRange: 2
+  InteractionRange: 1
+  initialItemIds: 
 --- !u!114 &3874692225793464894
 MonoBehaviour:
   m_ObjectHideFlags: 0

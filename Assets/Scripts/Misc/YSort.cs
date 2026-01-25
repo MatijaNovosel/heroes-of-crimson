@@ -13,7 +13,6 @@ public class YSort : MonoBehaviour
     void LateUpdate()
     {
         // Multiply Y by -100 to convert world position to sorting order
-        // (You can tweak the multiplier for better granularity)
         spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
     }
 }

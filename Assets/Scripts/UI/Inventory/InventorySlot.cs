@@ -21,6 +21,38 @@ namespace UI.Inventory
         }
 
         private void SetImage(Sprite sprite) => _image.sprite = sprite;
+        
+        public void RefreshVisual()
+        {
+            if (CurrentInventoryItem != null)
+            {
+                SetImage(ResourceCacher.Singleton.InventorySprites[
+                    Constants.InventorySlotSpritesEnum.Empty
+                ]);
+                return;
+            }
+
+            switch (Tag)
+            {
+                case Constants.ItemTag.Weapon:
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Weapon]);
+                    break;
+                case Constants.ItemTag.Ability:
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Ability]);
+                    break;
+                case Constants.ItemTag.Armor:
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Armor]);
+                    break;
+                case Constants.ItemTag.Accessory:
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Accessory]);
+                    break;
+                case Constants.ItemTag.None:
+                default:
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Empty]);
+                    break;
+            }
+        }
+
 
         public void ChangeImage(bool shouldRevertToDefault = false)
         {
@@ -82,17 +114,6 @@ namespace UI.Inventory
 
             AudioManager.Singleton.PlaySoundCached(Constants.Sounds.InventoryMove);
 
-            // HOTBAR
-            if (toSlot.Tag == Constants.ItemTag.None && fromSlot.IsHotbar)
-            {
-                fromSlot.ChangeImage();
-            }
-
-            if (toSlot.IsHotbar && fromSlot.Tag == Constants.ItemTag.None)
-            {
-                toSlot.ChangeImage(true);
-            }
-
             // MOVE (empty target)
             if (toSlot.CurrentInventoryItem is null)
             {
@@ -131,31 +152,49 @@ namespace UI.Inventory
         
         private static void MoveItem(InventoryItem item, InventorySlot targetSlot)
         {
-            if (item.ActiveSlot) item.ActiveSlot.CurrentInventoryItem = null;
+            var previousSlot = item.ActiveSlot;
+
+            if (previousSlot)
+            {
+                previousSlot.CurrentInventoryItem = null;
+                previousSlot.RefreshVisual();
+            }
 
             item.ActiveSlot = targetSlot;
             targetSlot.CurrentInventoryItem = item;
 
             item.transform.SetParent(targetSlot.transform, false);
             ((RectTransform)item.transform).anchoredPosition = Vector2.zero;
+
+            targetSlot.RefreshVisual();
         }
+
         
         private static void SwapItems(InventorySlot slotA, InventorySlot slotB)
         {
-            (slotA.CurrentInventoryItem, slotB.CurrentInventoryItem) = (slotB.CurrentInventoryItem, slotA.CurrentInventoryItem);
+            var itemA = slotA.CurrentInventoryItem;
+            var itemB = slotB.CurrentInventoryItem;
 
-            if (slotA.CurrentInventoryItem != null)
+            slotA.CurrentInventoryItem = itemB;
+            slotB.CurrentInventoryItem = itemA;
+
+            if (itemB != null)
             {
-                slotA.CurrentInventoryItem.ActiveSlot = slotA;
-                slotA.CurrentInventoryItem.transform.SetParent(slotA.transform, false);
-                ((RectTransform)slotA.CurrentInventoryItem.transform).anchoredPosition = Vector2.zero;
+                itemB.ActiveSlot = slotA;
+                itemB.transform.SetParent(slotA.transform, false);
+                ((RectTransform)itemB.transform).anchoredPosition = Vector2.zero;
             }
 
-            if (slotB.CurrentInventoryItem == null) return;
-            
-            slotB.CurrentInventoryItem.ActiveSlot = slotB;
-            slotB.CurrentInventoryItem.transform.SetParent(slotB.transform, false);
-            ((RectTransform)slotB.CurrentInventoryItem.transform).anchoredPosition = Vector2.zero;
+            if (itemA != null)
+            {
+                itemA.ActiveSlot = slotB;
+                itemA.transform.SetParent(slotB.transform, false);
+                ((RectTransform)itemA.transform).anchoredPosition = Vector2.zero;
+            }
+
+            slotA.RefreshVisual();
+            slotB.RefreshVisual();
         }
+
     }
 }

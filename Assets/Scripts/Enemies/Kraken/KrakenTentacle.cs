@@ -18,13 +18,23 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
     
     private readonly float _shootingDelay = 2f;
     private float _lastFired;
+    
+    [Header("Combat")]
+    public float attackRange = 8f;
 
     // Components
     private BaseNPCBehaviour _baseNpcBehaviour;
     private Rigidbody2D _rigidBody;
     private GameObject _projectile;
     public SpriteRenderer spriteRenderer;
-
+    
+    private bool IsPlayerInRange()
+    {
+        Vector2 playerPos = Utils.GetPlayerPosition();
+        return Vector2.SqrMagnitude(playerPos - (Vector2)transform.position) 
+               <= attackRange * attackRange;
+    }
+    
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -64,7 +74,7 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
     
     private void ShootPlayer()
     {
-        if (!CanFire() || Utils.IsPlayerDead()) return;
+        if (!CanFire() || Utils.IsPlayerDead() || !IsPlayerInRange()) return;
         
         var shootDirection = (Utils.GetPlayerPosition() - gameObject.transform.position).normalized;
         
@@ -83,7 +93,7 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
             ResourceCacher.Singleton.ProjectileSprites[22],
             new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
             new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
-            null
+            Color.purple
         ));
         
         _lastFired = Time.time;
@@ -101,9 +111,11 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
 
         SetPosition(pos);
 
-        // Flip when on the right half of the circle
-        var onRight = pos.x > center.x;
-        spriteRenderer.flipX = onRight;
+        if (IsPlayerInRange())
+        {
+            var playerDir = Utils.GetPlayerPosition() - transform.position;
+            spriteRenderer.flipX = playerDir.x > 0;
+        }
     }
 
     private static Vector2 Dir(float deg)

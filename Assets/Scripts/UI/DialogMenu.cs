@@ -10,7 +10,7 @@ public class DialogMenu : MonoBehaviour
         {
             DialogMenuOpen = !DialogMenuOpen;
             Time.timeScale = DialogMenuOpen ? 0f : 1f;
-            this.transform.localPosition = new Vector3(DialogMenuOpen ? 0 : 1500, DialogMenuOpen ? 0 : -750, 0);
+            this.transform.localPosition = new Vector3(DialogMenuOpen ? 0 : 9999, DialogMenuOpen ? 0 : 9999, 0);
         }
     }
 
