@@ -25,11 +25,6 @@ public class Player : MonoBehaviour
   private RaycastHit2D _hit;
   private const float FiringDelay = 0.3f;
   
-  [Header("Cursor")]
-  public Texture2D normalCursor;
-  public Texture2D forbiddenCursor;
-  public Vector2 cursorHotspot = Vector2.zero;
-  
   // Experience
   public float Level = 1;
   public float Experience = 0;
