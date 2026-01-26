@@ -13,7 +13,7 @@ namespace GameManagement
         public Sprite[] MiscSprites;
 
         public Dictionary<Constants.Sounds, AudioClip> Sounds = new ();
-        public Dictionary<Constants.InventorySlotSpritesEnum, Sprite> InventorySprites = new ();
+        public Dictionary<Constants.InventorySlotEnum, Sprite> InventorySprites = new ();
         
         private void Awake()
         {
@@ -45,11 +45,11 @@ namespace GameManagement
             Sounds.Add(Constants.Sounds.FireSphere, Resources.Load<AudioClip>("Sounds/Abilities/fireSphere"));
             Sounds.Add(Constants.Sounds.Teleport, Resources.Load<AudioClip>("Sounds/Abilities/teleport"));
             
-            InventorySprites.Add(Constants.InventorySlotSpritesEnum.Weapon, Resources.Load<Sprite>("Sprites/UI/HotbarWeaponSlot"));
-            InventorySprites.Add(Constants.InventorySlotSpritesEnum.Ability, Resources.Load<Sprite>("Sprites/UI/HotbarAbilitySlot"));
-            InventorySprites.Add(Constants.InventorySlotSpritesEnum.Armor, Resources.Load<Sprite>("Sprites/UI/HotbarArmorSlot"));
-            InventorySprites.Add(Constants.InventorySlotSpritesEnum.Accessory, Resources.Load<Sprite>("Sprites/UI/HotbarAccessorySlot"));
-            InventorySprites.Add(Constants.InventorySlotSpritesEnum.Empty, Resources.Load<Sprite>("Sprites/UI/InventoryPanel"));
+            InventorySprites.Add(Constants.InventorySlotEnum.Weapon, Resources.Load<Sprite>("Sprites/UI/HotbarWeaponSlot"));
+            InventorySprites.Add(Constants.InventorySlotEnum.Ability, Resources.Load<Sprite>("Sprites/UI/HotbarAbilitySlot"));
+            InventorySprites.Add(Constants.InventorySlotEnum.Armor, Resources.Load<Sprite>("Sprites/UI/HotbarArmorSlot"));
+            InventorySprites.Add(Constants.InventorySlotEnum.Accessory, Resources.Load<Sprite>("Sprites/UI/HotbarAccessorySlot"));
+            InventorySprites.Add(Constants.InventorySlotEnum.Empty, Resources.Load<Sprite>("Sprites/UI/InventoryPanel"));
         }
     }
 }

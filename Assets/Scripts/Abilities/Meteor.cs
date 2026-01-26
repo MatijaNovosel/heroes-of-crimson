@@ -11,7 +11,7 @@ public class Meteor : MonoBehaviour
   {
     var timeToLive = animationClip.length;
     AudioSource.PlayClipAtPoint(audioClip, transform.position, 1.5f);
-    GameManager.Instance.SpawnProjectiles(position, timeToLive, Constants.ProjectilePattern.Circular);
+    GameManager.Singleton.SpawnProjectiles(position, timeToLive, Constants.ProjectilePattern.Circular);
     Destroy(gameObject, timeToLive);
   }
 }

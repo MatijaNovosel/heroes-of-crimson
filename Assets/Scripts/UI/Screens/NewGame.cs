@@ -28,6 +28,7 @@ public class NewGame : MonoBehaviour
 
     public void SelectCharacter(int character)
     {
+        GameManager.Singleton.SetCharacter(character);
         selectedCharacter = character;
         switch (selectedCharacter)
         {

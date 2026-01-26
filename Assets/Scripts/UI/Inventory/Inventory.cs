@@ -56,7 +56,6 @@ namespace UI.Inventory
                 {
                     Destroy(slot.CurrentInventoryItem.gameObject);
                     slot.CurrentInventoryItem = null;
-                    slot.ChangeImage(false);
                 }
             }
         }
@@ -72,7 +71,6 @@ namespace UI.Inventory
             {
                 var slot = inventorySlots[(int)index];
                 if (slot.CurrentInventoryItem) return;
-                slot.ChangeImage(true);
                 var newItem = Instantiate(itemPrefab, slot.transform);
                 newItem.Initialize(item, slot);
                 return;
@@ -81,7 +79,6 @@ namespace UI.Inventory
             foreach (var slot in inventorySlots)
             {
                 if (slot.CurrentInventoryItem) continue;
-                slot.ChangeImage(true);
                 var newItem = Instantiate(itemPrefab, slot.transform);
                 newItem.Initialize(item, slot);
                 break;

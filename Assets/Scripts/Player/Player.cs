@@ -74,14 +74,12 @@ public class Player : MonoBehaviour
     }
   }
   
-  private GameObject GetAbilityPrefab(int index)
+  private GameObject GetAbilityPrefab(Constants.AbilityType abilityType)
   {
-    return index switch
+    return abilityType switch
     {
-      0 => Resources.Load<GameObject>("Prefabs/Abilities/Meteor"),
-      1 => Resources.Load<GameObject>("Prefabs/Abilities/FireSphere"),
-      2 => Resources.Load<GameObject>("Prefabs/Abilities/FireSphere"),
-      3 => Resources.Load<GameObject>("Prefabs/Abilities/FireSphere"),
+      Constants.AbilityType.Meteor => Resources.Load<GameObject>("Prefabs/Abilities/Meteor"),
+      Constants.AbilityType.FireSphere => Resources.Load<GameObject>("Prefabs/Abilities/FireSphere"),
       _ => null
     };
   }
@@ -90,16 +88,6 @@ public class Player : MonoBehaviour
   {
     // Current game time in seconds - last time fired in game seconds
     return Time.time - _lastFired > FiringDelay;
-  }
-  
-  private void UpdateCursor()
-  {
-    bool forbidden = IsCursorOverForbiddenAbilityTile();
-    Cursor.SetCursor(
-      forbidden ? forbiddenCursor : normalCursor,
-      cursorHotspot,
-      CursorMode.Auto
-    );
   }
 
   private void Fire()
@@ -344,8 +332,7 @@ public class Player : MonoBehaviour
         continue;
       }
 
-      var prefab = GetAbilityPrefab(i);
-      if (!prefab) continue;
+      var prefab = GetAbilityPrefab(ability.abilityType);
 
       _baseNpcBehaviour.mp -= ability.manaCost;
       ability.lastUsedTime = Time.time;
@@ -419,17 +406,17 @@ public class Player : MonoBehaviour
   {
     int[] totalStats = new int[6];
 
-    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotSpritesEnum.Weapon - 1)?.CurrentInventoryItem, totalStats); // Weapon
-    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotSpritesEnum.Ability - 1)?.CurrentInventoryItem, totalStats); // Ability
-    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotSpritesEnum.Armor - 1)?.CurrentInventoryItem, totalStats); // Armor
-    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotSpritesEnum.Accessory - 1)?.CurrentInventoryItem, totalStats); // Accessory
+    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Weapon)?.CurrentInventoryItem, totalStats);
+    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Ability)?.CurrentInventoryItem, totalStats);
+    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Armor)?.CurrentInventoryItem, totalStats);
+    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Accessory)?.CurrentInventoryItem, totalStats);
 
-    actualAtt = _baseNpcBehaviour.att + totalStats[(int)Constants.Stats.ATT - 1];
-    actualSpd = _baseNpcBehaviour.spd + totalStats[(int)Constants.Stats.DEF - 1];
-    actualDex = _baseNpcBehaviour.dex + totalStats[(int)Constants.Stats.WIS - 1];
-    actualDef = _baseNpcBehaviour.def + totalStats[(int)Constants.Stats.VIT - 1];
-    actualVit = _baseNpcBehaviour.vit + totalStats[(int)Constants.Stats.DEX - 1];
-    actualWis = _baseNpcBehaviour.wis + totalStats[(int)Constants.Stats.SPD - 1];
+    actualAtt = _baseNpcBehaviour.att + totalStats[(int)Constants.Stats.ATT];
+    actualSpd = _baseNpcBehaviour.spd + totalStats[(int)Constants.Stats.DEF];
+    actualDex = _baseNpcBehaviour.dex + totalStats[(int)Constants.Stats.WIS];
+    actualDef = _baseNpcBehaviour.def + totalStats[(int)Constants.Stats.VIT];
+    actualVit = _baseNpcBehaviour.vit + totalStats[(int)Constants.Stats.DEX];
+    actualWis = _baseNpcBehaviour.wis + totalStats[(int)Constants.Stats.SPD];
   }
 
   private void HandleUIKeys()
@@ -458,7 +445,6 @@ public class Player : MonoBehaviour
 
   private void Update()
   {
-    UpdateCursor();
     HandleAbility();
     HandleShooting();
     HandleUIKeys();

@@ -8,13 +8,21 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
   public FloatingTextManager floatingTextManager;
-  public static GameManager Instance;
+  public static GameManager Singleton;
   private GameObject _projectilePrefab;
+
+  public static int selectedCharacter;
+
+  public void SetCharacter(int character)
+  {
+    selectedCharacter = character;
+  }
 
   private void Awake()
   {
+    Singleton = this;
     _projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectile");
-    Instance = this;
+    DontDestroyOnLoad(gameObject);
   }
   
   private IEnumerator SpawnProjectilesCoroutine(Vector3 position, float time, Constants.ProjectilePattern pattern)

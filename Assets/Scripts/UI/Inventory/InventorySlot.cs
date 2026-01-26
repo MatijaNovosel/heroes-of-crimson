@@ -27,7 +27,7 @@ namespace UI.Inventory
             if (CurrentInventoryItem != null)
             {
                 SetImage(ResourceCacher.Singleton.InventorySprites[
-                    Constants.InventorySlotSpritesEnum.Empty
+                    Constants.InventorySlotEnum.Empty
                 ]);
                 return;
             }
@@ -35,60 +35,21 @@ namespace UI.Inventory
             switch (Tag)
             {
                 case Constants.ItemTag.Weapon:
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Weapon]);
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotEnum.Weapon]);
                     break;
                 case Constants.ItemTag.Ability:
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Ability]);
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotEnum.Ability]);
                     break;
                 case Constants.ItemTag.Armor:
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Armor]);
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotEnum.Armor]);
                     break;
                 case Constants.ItemTag.Accessory:
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Accessory]);
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotEnum.Accessory]);
                     break;
                 case Constants.ItemTag.None:
                 default:
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Empty]);
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotEnum.Empty]);
                     break;
-            }
-        }
-
-
-        public void ChangeImage(bool shouldRevertToDefault = false)
-        {
-            if (shouldRevertToDefault)
-            {
-                SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Empty]);
-                return;
-            }
-            
-            switch (Tag)
-            {
-                case Constants.ItemTag.Weapon:
-                {
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Weapon]);
-                    break;
-                }
-                case Constants.ItemTag.None:
-                {
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Empty]);
-                    break;
-                }
-                case Constants.ItemTag.Ability:
-                {
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Ability]);
-                    break;
-                }
-                case Constants.ItemTag.Armor:
-                {
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Armor]);
-                    break;
-                }
-                case Constants.ItemTag.Accessory:
-                {
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotSpritesEnum.Accessory]);
-                    break;
-                }
             }
         }
 

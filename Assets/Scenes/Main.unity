@@ -309,7 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatLine
   statLineText: {fileID: 392066307}
   player: {fileID: 225077527}
-  stat: 4
+  stat: 3
 --- !u!114 &24983211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2043,7 +2043,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatLine
   statLineText: {fileID: 1734073875}
   player: {fileID: 225077527}
-  stat: 5
+  stat: 4
 --- !u!114 &121160808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46696,7 +46696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatLine
   statLineText: {fileID: 270428275}
   player: {fileID: 225077527}
-  stat: 3
+  stat: 2
 --- !u!114 &1397258185
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48365,7 +48365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   statLineText: {fileID: 761995251}
   player: {fileID: 225077527}
-  stat: 1
+  stat: 0
 --- !u!114 &1530895861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99711,7 +99711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatLine
   statLineText: {fileID: 1084735758}
   player: {fileID: 225077527}
-  stat: 6
+  stat: 5
 --- !u!114 &1852222768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101497,7 +101497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StatLine
   statLineText: {fileID: 2014777416}
   player: {fileID: 225077527}
-  stat: 2
+  stat: 1
 --- !u!114 &1983896543
 MonoBehaviour:
   m_ObjectHideFlags: 0

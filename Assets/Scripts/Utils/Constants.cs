@@ -28,12 +28,12 @@ namespace HeroesOfCrimson.Utils
     
     public enum Stats
     {
-      ATT = 1,
-      DEF = 2,
-      WIS = 3,
-      VIT = 4,
-      DEX = 5,
-      SPD = 6
+      ATT = 0,
+      DEF = 1,
+      WIS = 2,
+      VIT = 3,
+      DEX = 4,
+      SPD = 5
     }
     
     public enum StatusEffects
@@ -105,13 +105,13 @@ namespace HeroesOfCrimson.Utils
       Teleport = 4001
     }
     
-    public enum InventorySlotSpritesEnum
+    public enum InventorySlotEnum
     {
-      Weapon = 1,
-      Ability = 2,
-      Armor = 3,
-      Accessory = 4,
-      Empty = 5,
+      Weapon = 0,
+      Ability = 1,
+      Armor = 2,
+      Accessory = 3,
+      Empty = 4,
     }
     
     public enum RoomType
