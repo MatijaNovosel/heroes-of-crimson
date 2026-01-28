@@ -152,7 +152,7 @@ public class Player : MonoBehaviour
       Quaternion.identity
     );
 
-    AudioClip shootSound = null;
+    AudioClip shootSound = ResourceCacher.Singleton.Sounds[Constants.Sounds.MagicShoot];
     
     Sprite weaponProjectile = null;
     int weaponProjectileDegree = 0;
@@ -162,16 +162,7 @@ public class Player : MonoBehaviour
     {
       weaponProjectileDegree = weaponInventorySlot.CurrentInventoryItem.ItemInSlot.projectileDegree;
       weaponProjectile = weaponInventorySlot.CurrentInventoryItem.ItemInSlot.projectileSprite;
-
-      switch (weaponInventorySlot.CurrentInventoryItem.ItemInSlot.shootSound)
-      {
-        case Constants.Sounds.ArrowShoot:
-          shootSound = ResourceCacher.Singleton.Sounds[Constants.Sounds.ArrowShoot];
-          break;
-        default:
-          shootSound = ResourceCacher.Singleton.Sounds[Constants.Sounds.MagicShoot];
-          break;
-      }
+      shootSound = ResourceCacher.Singleton.Sounds[weaponInventorySlot.CurrentInventoryItem.ItemInSlot.shootSound];
     }
 
     var damage = Utils.RandFloat(

@@ -11,17 +11,14 @@ public class GameManager : MonoBehaviour
   public static GameManager Singleton;
   private GameObject _projectilePrefab;
 
-  public static int selectedCharacter = (int)Constants.Character.Mage;
+  public static int selectedCharacter = (int)Constants.Character.Knight;
 
   public void SetCharacter(int character)
   {
     selectedCharacter = character;
   }
 
-  public int GetSelectedCharacter()
-  {
-    return selectedCharacter;
-  }
+  public int GetSelectedCharacter() => selectedCharacter;
 
   private void Awake()
   {
