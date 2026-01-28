@@ -1,16 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using GameManagement;
 using UnityEngine;
 using HeroesOfCrimson.Utils;
 using Models;
-using TMPro;
 using UI.Inventory;
-using Unity.Burst.CompilerServices;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(BaseNPCBehaviour))]
 [RequireComponent(typeof(BoxCollider2D))]
@@ -426,6 +421,22 @@ public class Player : MonoBehaviour
   private void Start()
   {
     animator = GetComponent<Animator>();
+
+    print(GameManager.Singleton.GetSelectedCharacter());
+    
+    switch (GameManager.Singleton.GetSelectedCharacter())
+    {
+      case (int)Constants.Character.Mage:
+        animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/Player/Mage/PlayerMage");
+        break;
+      case (int)Constants.Character.Knight:
+        animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/Player/Knight/PlayerKnight");
+        break;
+      case (int)Constants.Character.Ranger:
+        animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/Player/Ranger/PlayerRanger");
+        break;
+    }
+    
     _boxCollider = GetComponent<BoxCollider2D>();
     _baseNpcBehaviour = GetComponent<BaseNPCBehaviour>();
     _animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);

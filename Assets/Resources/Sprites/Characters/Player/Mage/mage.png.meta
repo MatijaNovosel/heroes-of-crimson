@@ -119,7 +119,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mageUp1
+      name: up1
       rect:
         serializedVersion: 2
         x: 0
@@ -141,7 +141,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageAttackRight1
+      name: attackRight1
       rect:
         serializedVersion: 2
         x: 32
@@ -163,7 +163,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageRight1
+      name: right1
       rect:
         serializedVersion: 2
         x: 0
@@ -171,7 +171,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -185,7 +185,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageRight2
+      name: right2
       rect:
         serializedVersion: 2
         x: 8
@@ -193,7 +193,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -207,7 +207,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageRight3
+      name: right3
       rect:
         serializedVersion: 2
         x: 16
@@ -215,7 +215,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -229,7 +229,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageDown1
+      name: down1
       rect:
         serializedVersion: 2
         x: 0
@@ -237,7 +237,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -251,7 +251,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageDown2
+      name: down2
       rect:
         serializedVersion: 2
         x: 8
@@ -259,7 +259,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -273,7 +273,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageDown3
+      name: down3
       rect:
         serializedVersion: 2
         x: 16
@@ -281,7 +281,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -295,7 +295,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageUp2
+      name: up2
       rect:
         serializedVersion: 2
         x: 8
@@ -303,7 +303,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -317,7 +317,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageUp3
+      name: up3
       rect:
         serializedVersion: 2
         x: 16
@@ -325,7 +325,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -339,7 +339,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageAttackRight2
+      name: attackRight2
       rect:
         serializedVersion: 2
         x: 40
@@ -347,7 +347,7 @@ TextureImporter:
         width: 10
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -361,7 +361,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageAttackDown1
+      name: attackDown1
       rect:
         serializedVersion: 2
         x: 32
@@ -369,7 +369,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -383,7 +383,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageAttackDown2
+      name: attackDown2
       rect:
         serializedVersion: 2
         x: 40
@@ -391,7 +391,7 @@ TextureImporter:
         width: 10
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -405,7 +405,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageAttackUp1
+      name: attackUp1
       rect:
         serializedVersion: 2
         x: 32
@@ -413,7 +413,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -427,7 +427,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mageAttackUp2
+      name: attackUp2
       rect:
         serializedVersion: 2
         x: 40
@@ -435,7 +435,7 @@ TextureImporter:
         width: 10
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -462,21 +462,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mageAttackDown1: -24815911
-      mageAttackDown2: -585785529
-      mageAttackRight1: 7310728498343965544
-      mageAttackRight2: -1991565177
-      mageAttackUp1: 1559927261
-      mageAttackUp2: 1037561702
-      mageDown1: 751863805
-      mageDown2: 1561729321
-      mageDown3: -596316308
-      mageRight1: -1892815437
-      mageRight2: 154969701
-      mageRight3: 1445215944
-      mageUp1: 2971653748508199937
-      mageUp2: -34955591
-      mageUp3: 2112624007
+      attackDown1: -24815911
+      attackDown2: -585785529
+      attackRight1: 7310728498343965544
+      attackRight2: -1991565177
+      attackUp1: 1559927261
+      attackUp2: 1037561702
+      down1: 751863805
+      down2: 1561729321
+      down3: -596316308
+      right1: -1892815437
+      right2: 154969701
+      right3: 1445215944
+      up1: 2971653748508199937
+      up2: -34955591
+      up3: 2112624007
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

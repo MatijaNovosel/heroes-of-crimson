@@ -119,7 +119,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ranger_0
+      name: right1
       rect:
         serializedVersion: 2
         x: 0
@@ -141,7 +141,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_1
+      name: right2
       rect:
         serializedVersion: 2
         x: 8
@@ -163,7 +163,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_2
+      name: down1
       rect:
         serializedVersion: 2
         x: 0
@@ -185,7 +185,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_3
+      name: right3
       rect:
         serializedVersion: 2
         x: 16
@@ -193,7 +193,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -207,7 +207,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_4
+      name: down2
       rect:
         serializedVersion: 2
         x: 8
@@ -215,7 +215,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -229,7 +229,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_5
+      name: down3
       rect:
         serializedVersion: 2
         x: 16
@@ -237,7 +237,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -251,7 +251,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_6
+      name: up1
       rect:
         serializedVersion: 2
         x: 0
@@ -259,7 +259,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -273,7 +273,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_7
+      name: up2
       rect:
         serializedVersion: 2
         x: 8
@@ -281,7 +281,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -295,7 +295,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_8
+      name: up3
       rect:
         serializedVersion: 2
         x: 16
@@ -303,7 +303,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -317,7 +317,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_9
+      name: attackRight1
       rect:
         serializedVersion: 2
         x: 32
@@ -325,7 +325,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -339,7 +339,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_10
+      name: attackRight2
       rect:
         serializedVersion: 2
         x: 40
@@ -347,7 +347,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -361,7 +361,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_11
+      name: attackDown1
       rect:
         serializedVersion: 2
         x: 32
@@ -369,7 +369,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -383,7 +383,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_12
+      name: attackDown2
       rect:
         serializedVersion: 2
         x: 40
@@ -391,7 +391,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -405,7 +405,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_13
+      name: attackUp1
       rect:
         serializedVersion: 2
         x: 32
@@ -413,7 +413,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -427,7 +427,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ranger_14
+      name: attackUp2
       rect:
         serializedVersion: 2
         x: 40
@@ -435,7 +435,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -462,21 +462,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ranger_0: -2850707533075056667
-      ranger_1: 2747413984754389643
-      ranger_10: 1299501007
-      ranger_11: 1453965897
-      ranger_12: 1706752754
-      ranger_13: -945888579
-      ranger_14: -1576591072
-      ranger_2: 1004050130200608572
-      ranger_3: -765901193
-      ranger_4: -2092139806
-      ranger_5: 237161144
-      ranger_6: 405362651
-      ranger_7: -885038556
-      ranger_8: 308240854
-      ranger_9: -322426682
+      attackDown1: 1453965897
+      attackDown2: 1706752754
+      attackRight1: -322426682
+      attackRight2: 1299501007
+      attackUp1: -945888579
+      attackUp2: -1576591072
+      down1: 1004050130200608572
+      down2: -2092139806
+      down3: 237161144
+      right1: -2850707533075056667
+      right2: 2747413984754389643
+      right3: -765901193
+      up1: 405362651
+      up2: -885038556
+      up3: 308240854
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

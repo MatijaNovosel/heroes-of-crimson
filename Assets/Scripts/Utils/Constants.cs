@@ -95,6 +95,7 @@ namespace HeroesOfCrimson.Utils
       GenericHit = 1005,
       NoMana = 1006,
       LootDrop = 1007,
+      BladeSwing = 1008,
       // Eenemy sounds
       SkeletonHit = 2000,
       SkeletonDeath = 2001,

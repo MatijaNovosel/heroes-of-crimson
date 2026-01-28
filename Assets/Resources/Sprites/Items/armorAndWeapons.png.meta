@@ -1643,7 +1643,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1665,7 +1665,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1674,6 +1674,50 @@ TextureImporter:
       bones: []
       spriteID: 227761afb1785b44bad9f2b907085cf0
       internalID: 1341613374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armorAndWeapons_66
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61b5f523e75a6446b7485f6d351ed49
+      internalID: -1618723902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armorAndWeapons_67
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 929fa9b8e6f68e64cae941bec993d717
+      internalID: 745495659
       vertices: []
       indices: 
       edges: []
@@ -1757,6 +1801,8 @@ TextureImporter:
       armorAndWeapons_63: -1456516299
       armorAndWeapons_64: 1958866609
       armorAndWeapons_65: 1341613374
+      armorAndWeapons_66: -1618723902
+      armorAndWeapons_67: 745495659
       armorAndWeapons_7: 1486844973
       armorAndWeapons_8: 1839526622
       armorAndWeapons_9: -1832299110

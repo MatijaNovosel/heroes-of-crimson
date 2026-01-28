@@ -62,7 +62,9 @@ SpriteAtlas:
     - fc237ac3410d8ae4bab70d6b3dabd86d: -1793033751
     - fc237ac3410d8ae4bab70d6b3dabd86d: -708673484
     - 9ea06e6d48b3bd945abdafad9ec15e24: -1462829521
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 745495659
     - 9ea06e6d48b3bd945abdafad9ec15e24: -1041511369
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -1618723902
     - 9ea06e6d48b3bd945abdafad9ec15e24: -2059970351
     - 9ea06e6d48b3bd945abdafad9ec15e24: 1341613374
     - 9ea06e6d48b3bd945abdafad9ec15e24: 1958866609
@@ -140,7 +142,9 @@ SpriteAtlas:
   - {fileID: -1793033751, guid: fc237ac3410d8ae4bab70d6b3dabd86d, type: 3}
   - {fileID: -708673484, guid: fc237ac3410d8ae4bab70d6b3dabd86d, type: 3}
   - {fileID: -1462829521, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 745495659, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
   - {fileID: -1041511369, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -1618723902, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
   - {fileID: -2059970351, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
   - {fileID: 1341613374, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
   - {fileID: 1958866609, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
@@ -217,7 +221,9 @@ SpriteAtlas:
   - consumables_3
   - consumables_8
   - armorAndWeapons_11
+  - armorAndWeapons_67
   - armorAndWeapons_38
+  - armorAndWeapons_66
   - armorAndWeapons_39
   - armorAndWeapons_65
   - armorAndWeapons_64

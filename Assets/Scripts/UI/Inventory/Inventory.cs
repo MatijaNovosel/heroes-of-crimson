@@ -26,7 +26,16 @@ namespace UI.Inventory
         {
             if (name == "Hotbar")
             {
-                //
+                int itemId = GameManager.Singleton.GetSelectedCharacter() switch
+                {
+                    (int)Constants.Character.Mage => 2000,
+                    (int)Constants.Character.Knight => 2005,
+                    (int)Constants.Character.Ranger => 2003,
+                    _ => 2000
+                };
+
+                SpawnItem(Database.Singleton.GetItem(itemId), (int)Constants.InventorySlotEnum.Weapon);
+                inventorySlots[(int)Constants.InventorySlotEnum.Weapon].RefreshVisual();
             }
             else if (name == "Inventory")
             {
