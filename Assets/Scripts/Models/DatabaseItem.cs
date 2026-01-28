@@ -21,6 +21,7 @@ namespace Models
         public int maxDamage;
         public int projectileCount;
         public int shootSound;
+        public string impactColor;
     }
     
     [System.Serializable]

@@ -11,6 +11,7 @@ namespace Models
         public Constants.ItemRarity rarity;
         public new string name;
         public string description;
+        public Color impactColor;
         public Constants.ItemTag tag;
         public Constants.Sounds shootSound;
         public Sprite sprite;

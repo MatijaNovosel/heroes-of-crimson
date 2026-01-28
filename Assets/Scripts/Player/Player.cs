@@ -157,18 +157,18 @@ public class Player : MonoBehaviour
     Sprite weaponProjectile = null;
     int weaponProjectileDegree = 0;
     var weaponInventorySlot = Hotbar.GetHotbarSlot(0);
+    Color impactColor = Color.white;
+    var damage = 0.0;
 
     if (weaponInventorySlot.CurrentInventoryItem.ItemInSlot)
     {
-      weaponProjectileDegree = weaponInventorySlot.CurrentInventoryItem.ItemInSlot.projectileDegree;
-      weaponProjectile = weaponInventorySlot.CurrentInventoryItem.ItemInSlot.projectileSprite;
-      shootSound = ResourceCacher.Singleton.Sounds[weaponInventorySlot.CurrentInventoryItem.ItemInSlot.shootSound];
+      var item = weaponInventorySlot.CurrentInventoryItem.ItemInSlot;
+      weaponProjectileDegree = item.projectileDegree;
+      weaponProjectile = item.projectileSprite;
+      shootSound = ResourceCacher.Singleton.Sounds[item.shootSound];
+      impactColor = item.impactColor;
+      damage = Utils.RandFloat(item.minDamage, item.maxDamage);
     }
-
-    var damage = Utils.RandFloat(
-      weaponInventorySlot.CurrentInventoryItem.ItemInSlot.minDamage,
-      weaponInventorySlot.CurrentInventoryItem.ItemInSlot.maxDamage
-    );
     
     AudioManager.Singleton.PlaySound(shootSound);
     
@@ -181,7 +181,7 @@ public class Player : MonoBehaviour
       weaponProjectile,
       new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
       new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
-      null
+      impactColor
     ));
     
     _lastFired = Time.time;

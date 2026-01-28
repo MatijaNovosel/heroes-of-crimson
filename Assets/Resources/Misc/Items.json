@@ -39,6 +39,7 @@
       "projectilePath": "projectiles_23",
       "shootSound": 1008,
       "projectileDegree": 0,
+      "impactColor": "3498DB",
       "minDamage": 30,
       "maxDamage": 80,
       "projectileCount": 1,
@@ -72,6 +73,7 @@
       "minDamage": 30,
       "maxDamage": 80,
       "projectileCount": 1,
+      "impactColor": "E74C3C",
       "rarity": 4,
       "stats": [0, 0, 0, 0, 0, 0]
     },
@@ -99,6 +101,7 @@
       "projectilePath": "projectiles_23",
       "shootSound": 1008,
       "projectileDegree": 0,
+      "impactColor": "F1C40F",
       "minDamage": 30,
       "maxDamage": 80,
       "projectileCount": 1,
