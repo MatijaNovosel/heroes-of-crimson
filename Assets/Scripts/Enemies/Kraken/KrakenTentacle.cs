@@ -93,7 +93,8 @@ public class KrakenTentacleOrbit2D : MonoBehaviour
             ResourceCacher.Singleton.ProjectileSprites[22],
             new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
             new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
-            Color.purple
+            Color.purple,
+            new ()
         ));
         
         _lastFired = Time.time;

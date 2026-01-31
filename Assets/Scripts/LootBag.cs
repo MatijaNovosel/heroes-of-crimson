@@ -62,7 +62,7 @@ public class LootBag : MonoBehaviour
 
     public void GenerateLoot(int[] itemIds, bool? randomize = false)
     {
-        if (_lootGenerated) return;
+        if (_lootGenerated || itemIds.Length == 0) return;
         _lootGenerated = true;
 
         if (randomize == true)

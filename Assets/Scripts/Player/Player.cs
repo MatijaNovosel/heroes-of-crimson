@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using GameManagement;
 using UnityEngine;
 using HeroesOfCrimson.Utils;
@@ -78,6 +79,27 @@ public class Player : MonoBehaviour
   {
     // Current game time in seconds - last time fired in game seconds
     return Time.time - _lastFired > FiringDelay;
+  }
+  
+  public float CalculateWeaponDamage(int minDamage, int maxDamage)
+  {
+    int rolledBaseDamage = Random.Range(minDamage, maxDamage);
+
+    float multiplier;
+
+    if (_baseNpcBehaviour.ActiveStatusEffects.Any(e => e.Type == Constants.StatusEffects.Weak))
+    {
+      multiplier = 0.5f;
+    }
+    else
+    {
+      multiplier = 0.5f + (_baseNpcBehaviour.att / 50f);
+    }
+
+    bool hasDamaging = _baseNpcBehaviour.ActiveStatusEffects.Any(e => e.Type == Constants.StatusEffects.Damaging);
+    if (hasDamaging) multiplier *= 1.25f;
+
+    return rolledBaseDamage * multiplier;
   }
 
   private void Fire()
@@ -167,7 +189,7 @@ public class Player : MonoBehaviour
       weaponProjectile = item.projectileSprite;
       shootSound = ResourceCacher.Singleton.Sounds[item.shootSound];
       impactColor = item.impactColor;
-      damage = Utils.RandFloat(item.minDamage, item.maxDamage);
+      damage = CalculateWeaponDamage(item.minDamage, item.maxDamage);
     }
     
     AudioManager.Singleton.PlaySound(shootSound);
@@ -181,7 +203,8 @@ public class Player : MonoBehaviour
       weaponProjectile,
       new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
       new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
-      impactColor
+      impactColor,
+      new ()
     ));
     
     _lastFired = Time.time;

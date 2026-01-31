@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using HeroesOfCrimson.Utils;
 using Models;
 using UnityEngine;
@@ -21,12 +22,10 @@ public class BaseNPCBehaviour : MonoBehaviour
   public float dex = 30;
   
   public bool invincible = false;
-  public List<Constants.StatusEffects> statusEffects = new () { Constants.StatusEffects.ArmorBroken, Constants.StatusEffects.Bleeding };
+  public List<ActiveStatusEffect> ActiveStatusEffects = new();
   private BoxCollider2D _boxCollider;
-
-  // Immunity
-  private const float ImmuneTime = 1.0f;
-  private float _lastImmune;
+  
+  public int[] lootIds;
 
   // Other
   public AudioClip deathSound;
@@ -44,7 +43,10 @@ public class BaseNPCBehaviour : MonoBehaviour
       new Vector3(transform.position.x, transform.position.y + 0.8f, 0),
       Quaternion.identity
     );
-    _statusEffectPanel.GetComponent<StatusEffectPanel>().Setup(statusEffects, gameObject);
+    _statusEffectPanel.GetComponent<StatusEffectPanel>().Setup(
+      ActiveStatusEffects.Select(x => x.Type).ToList(),
+      gameObject
+    );
     _boxCollider = GetComponent<BoxCollider2D>();
   }
 
@@ -61,18 +63,7 @@ public class BaseNPCBehaviour : MonoBehaviour
       Quaternion.identity
     );
 
-    lootBag.GetComponent<LootBag>().GenerateLoot(new []
-    {
-      2000,
-      2001,
-      2002,
-      2003,
-      5000,
-      5001,
-      5002
-    }, 
-      true
-    );
+    lootBag.GetComponent<LootBag>().GenerateLoot(lootIds, true);
     
     AudioManager.Singleton.PlaySoundCached(Constants.Sounds.LootDrop);
 
@@ -119,29 +110,111 @@ public class BaseNPCBehaviour : MonoBehaviour
     }
   }
 
+  public float CalculateWeaponDamage(int minDamage, int maxDamage)
+  {
+    // Roll weapon base damage (max is automatically exclusive for ints)
+    int rolledBaseDamage = Random.Range(minDamage, maxDamage);
 
+    float multiplier;
+
+    if (ActiveStatusEffects.Any(e => e.Type == Constants.StatusEffects.Weak)) multiplier = 0.5f;
+    else multiplier = 0.5f + (att / 50f);
+
+    bool hasDamaging = ActiveStatusEffects.Any(e => e.Type == Constants.StatusEffects.Damaging);
+    if (hasDamaging) multiplier *= 1.25f;
+
+    return rolledBaseDamage * multiplier;
+  }
+  
   private void DisplayStatusEffects()
   {
-    if (statusEffects.Count == 0) return;
-    _statusEffectPanel.GetComponent<StatusEffectPanel>().SetStatusEffects(statusEffects);
+    if (ActiveStatusEffects.Count == 0)
+    {
+      _statusEffectPanel.GetComponent<StatusEffectPanel>().SetStatusEffects(new ());
+      return;
+    }
+
+    var effects = ActiveStatusEffects.Select(e => e.Type).ToList();
+    _statusEffectPanel.GetComponent<StatusEffectPanel>().SetStatusEffects(effects);
+  }
+
+  
+  private void UpdateStatusEffects()
+  {
+    float now = Time.time;
+
+    for (int i = ActiveStatusEffects.Count - 1; i >= 0; i--)
+    {
+      var effect = ActiveStatusEffects[i];
+
+      switch (effect.Type)
+      {
+        case Constants.StatusEffects.Bleeding:
+          //
+          break;
+        case Constants.StatusEffects.ArmorBroken:
+          def = 0;
+          break;
+      }
+
+      if (effect.ExpireTime <= now)
+      {
+        ActiveStatusEffects.RemoveAt(i);
+      }
+    }
   }
 
   private void Update()
   {
+    UpdateStatusEffects();
     DisplayStatusEffects();
   }
 
+  private void ApplyStatusEffect(Constants.StatusEffects effect)
+  {
+    float duration = 5f;
+
+    var existing = ActiveStatusEffects.FirstOrDefault(e => e.Type == effect);
+
+    if (existing != null)
+    {
+      // Refresh duration instead of stacking duplicates
+      existing.ExpireTime = Time.time + duration;
+    }
+    else
+    {
+      ActiveStatusEffects.Add(new ActiveStatusEffect(effect, duration));
+    }
+  }
+  
+  private float CalculateDamageAfterDefense(float incomingDamage)
+  {
+    if (incomingDamage <= 0) return 0;
+
+    float reducedByDef = incomingDamage - def;
+    float minAllowedDamage = incomingDamage * 0.1f; // 10% always goes through
+
+    return Mathf.Max(reducedByDef, minAllowedDamage);
+  }
+  
   private void ReceiveDamage(DamageModel payload)
   {
-    if (hitSound)
+    if (hitSound) AudioManager.Singleton.PlaySound(hitSound);
+
+    foreach (var effect in payload.StatusEffects)
     {
-      AudioManager.Singleton.PlaySound(hitSound);
+      ApplyStatusEffect(effect);
     }
-    
+
+    if (invincible) return;
+
+    float finalDamage = CalculateDamageAfterDefense(payload.Value);
+
+    hp -= finalDamage;
+
     var angle = Random.Range(-40f, 40f);
     var radians = angle * Mathf.Deg2Rad;
     var randomDirection = new Vector3(Mathf.Sin(radians), Mathf.Cos(radians), 0f);
-
     var randomRotation = Random.Range(-15f, 15f);
 
     var minDamage = 1f;
@@ -149,12 +222,12 @@ public class BaseNPCBehaviour : MonoBehaviour
     var minFontSize = 200f;
     var maxFontSize = 280f;
 
-    var t = Mathf.InverseLerp(minDamage, maxDamage, payload.Value);
+    var t = Mathf.InverseLerp(minDamage, maxDamage, finalDamage);
     var fontSize = Mathf.Lerp(minFontSize, maxFontSize, t);
     var randomScale = Random.Range(0.9f, 1.2f);
 
     var textObj = GameManager.Singleton.ShowText(
-      $"-{payload.Value}",
+      $"-{Mathf.RoundToInt(finalDamage)}",
       (int)fontSize,
       Color.red,
       new Vector3(transform.position.x, transform.position.y + 0.8f, 0),
@@ -167,10 +240,6 @@ public class BaseNPCBehaviour : MonoBehaviour
       textObj.obj.transform.rotation = Quaternion.Euler(0, 0, randomRotation);
       textObj.obj.transform.localScale *= randomScale;
     }
-
-    if (!(Time.time - _lastImmune > ImmuneTime) || invincible) return;
-
-    hp -= payload.Value;
 
     if (hp <= 0)
     {

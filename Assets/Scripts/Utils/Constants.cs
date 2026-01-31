@@ -48,6 +48,7 @@ namespace HeroesOfCrimson.Utils
        Bleeding = 8,
        Armored = 9,
        Invincible = 10,
+       Weak = 11
     }
 
     public enum ItemTag

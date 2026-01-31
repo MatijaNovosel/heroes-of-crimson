@@ -15,18 +15,16 @@ public class Projectile : MonoBehaviour
   
   private Vector3 _direction;
   private float _angle;
-  private bool _piercing;
   private float _damage = 50;
   private Color _particleColor = Color.white;
   private float _scale = 1;
   private float _rotation = 45;
   private float _moveSpeed = 10f;
   private const float _timeToLive = 2f;
-  private const float _frequency = 20.0f;
-  private const float _amplitude = 0.5f;
   
   private List<Constants.CollisionGroups> _willDamage = new();
   private List<Constants.CollisionGroups> _willPenetrate = new();
+  private List<Constants.StatusEffects> _statusEffects = new();
 
   public void Setup(ProjectileSetupModel payload)
   {
@@ -34,43 +32,16 @@ public class Projectile : MonoBehaviour
     
     _direction = payload.Direction;
 
-    if (payload.Speed != null)
-    {
-      _moveSpeed = (float)payload.Speed;
-    }
-
-    if (payload.Sprite)
-    {
-      spriteRenderer.sprite = payload.Sprite;
-    }
-
-    if (payload.Rotation != null)
-    {
-      _rotation = (float)payload.Rotation;
-    }
-
-    if (payload.WillDamage.Count != 0)
-    {
-      _willDamage = payload.WillDamage;
-    }
-    
-    if (payload.WillPenetrate.Count != 0)
-    {
-      _willPenetrate = payload.WillPenetrate;
-    }
-    
-    if (payload.Scale != null)
-    {
-      _scale = (float)payload.Scale;
-    }
-    
-    if (payload.Damage != null)
-    {
-      _damage = (float)payload.Damage;
-    }
+    if (payload.Speed != null) _moveSpeed = (float)payload.Speed;
+    if (payload.Sprite) spriteRenderer.sprite = payload.Sprite;
+    if (payload.Rotation != null) _rotation = (float)payload.Rotation;
+    if (payload.WillDamage.Count != 0) _willDamage = payload.WillDamage;
+    if (payload.WillPenetrate.Count != 0) _willPenetrate = payload.WillPenetrate;
+    if (payload.Scale != null) _scale = (float)payload.Scale;
+    if (payload.Damage != null) _damage = (float)payload.Damage;
+    if (payload.StatusEffects.Count != 0) _statusEffects = payload.StatusEffects;
     
     _particleColor = payload.ParticleColor ?? Color.white;
-
     _angle = Utils.GetAngleFromShootDirection(payload.Direction);
 
     gameObject.transform.localScale = new Vector3(_scale, _scale, 0);
@@ -109,7 +80,10 @@ public class Projectile : MonoBehaviour
     
     if (collidableComponent.collisionGroups.Any(x => _willDamage.Contains(x)))
     {
-      collider.SendMessage("ReceiveDamage", new DamageModel(_damage));
+      collider.SendMessage(
+        "ReceiveDamage", 
+        new DamageModel(_damage, this._statusEffects)
+      );
     }
     
     if (collidableComponent.collisionGroups.Any(x => _willPenetrate.Contains(x)))

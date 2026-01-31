@@ -234,11 +234,12 @@ public class BrawlerAI : MonoBehaviour
             0,
             null,
             null,
-            10,
+            25,
             ResourceCacher.Singleton.ProjectileSprites[17],
             new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
             new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
-            null
+            null,
+            new ()
         ));
 
         _lastFired = Time.time;
