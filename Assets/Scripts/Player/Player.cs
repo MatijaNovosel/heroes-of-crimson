@@ -77,8 +77,7 @@ public class Player : MonoBehaviour
 
   private bool CanFire()
   {
-    // Current game time in seconds - last time fired in game seconds
-    return Time.time - _lastFired > FiringDelay;
+    return Time.time - _lastFired > GetFireDelay();
   }
   
   public float CalculateWeaponDamage(int minDamage, int maxDamage)
@@ -87,16 +86,10 @@ public class Player : MonoBehaviour
 
     float multiplier;
 
-    if (_baseNpcBehaviour.ActiveStatusEffects.Any(e => e.Type == Constants.StatusEffects.Weak))
-    {
-      multiplier = 0.5f;
-    }
-    else
-    {
-      multiplier = 0.5f + (_baseNpcBehaviour.att / 50f);
-    }
+    if (_hasStatusEffect(Constants.StatusEffects.Weak)) multiplier = 0.5f;
+    else multiplier = 0.5f + (_baseNpcBehaviour.att / 50f);
 
-    bool hasDamaging = _baseNpcBehaviour.ActiveStatusEffects.Any(e => e.Type == Constants.StatusEffects.Damaging);
+    bool hasDamaging = _hasStatusEffect(Constants.StatusEffects.Damaging);
     if (hasDamaging) multiplier *= 1.25f;
 
     return rolledBaseDamage * multiplier;
@@ -264,6 +257,8 @@ public class Player : MonoBehaviour
     LayerMask mask = LayerMask.GetMask("Actor", "Blocking", "NPC");
 
     var moveY = new Vector2(0, _moveDelta.y);
+
+    if (_hasStatusEffect(Constants.StatusEffects.Paralyzed)) return;
     
     if (!Physics2D.BoxCast(
       transform.position,
@@ -294,7 +289,12 @@ public class Player : MonoBehaviour
     var pointerOverUI = EventSystem.current && EventSystem.current.IsPointerOverGameObject();
     var weaponSlot = Hotbar.GetHotbarSlot(0);
 
-    if (pointerOverUI || HoldingItem || weaponSlot.CurrentInventoryItem is null)
+    if (
+      pointerOverUI || 
+      HoldingItem || 
+      weaponSlot.CurrentInventoryItem is null || 
+      _hasStatusEffect(Constants.StatusEffects.Stunned)
+    )
     {
       if (_isShooting)
       {
@@ -320,8 +320,33 @@ public class Player : MonoBehaviour
     }
   }
 
+  private bool _hasStatusEffect(Constants.StatusEffects statusEffect)
+  {
+    return _baseNpcBehaviour.ActiveStatusEffects.Any(x => x.Type == statusEffect);
+  }
+
+  public void RestoreHp(int amount)
+  {
+    _baseNpcBehaviour.hp += amount;
+    _baseNpcBehaviour.hp = Mathf.Min(
+      _baseNpcBehaviour.hp,
+      _baseNpcBehaviour.maxHp
+    );
+  }
+  
+  public void RestoreMp(int amount)
+  {
+    _baseNpcBehaviour.mp += amount;
+    _baseNpcBehaviour.mp = Mathf.Min(
+      _baseNpcBehaviour.mp,
+      _baseNpcBehaviour.maxMp
+    );
+  }
+
   private void HandleAbility()
   {
+    if (_hasStatusEffect(Constants.StatusEffects.Silenced)) return;
+    
     HandleAbilityCooldowns();
 
     for (int i = 0; i < abilities.Length; i++)
@@ -399,6 +424,20 @@ public class Player : MonoBehaviour
     );
   }
   
+  private float GetAttacksPerSecond()
+  {
+    float aps = 1.5f + (6.5f * (actualDex / 75f));
+    if (_hasStatusEffect(Constants.StatusEffects.Berserk)) aps *= 1.25f;
+    return aps;
+  }
+
+  private float GetFireDelay()
+  {
+    float aps = GetAttacksPerSecond();
+    return 1f / aps;
+  }
+
+  
   private void AddItemStats(InventoryItem item, int[] totals)
   {
     if (item == null || item.ItemInSlot == null) return;
@@ -416,11 +455,11 @@ public class Player : MonoBehaviour
     AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Accessory)?.CurrentInventoryItem, totalStats);
 
     actualAtt = _baseNpcBehaviour.att + totalStats[(int)Constants.Stats.ATT];
-    actualSpd = _baseNpcBehaviour.spd + totalStats[(int)Constants.Stats.DEF];
-    actualDex = _baseNpcBehaviour.dex + totalStats[(int)Constants.Stats.WIS];
-    actualDef = _baseNpcBehaviour.def + totalStats[(int)Constants.Stats.VIT];
-    actualVit = _baseNpcBehaviour.vit + totalStats[(int)Constants.Stats.DEX];
-    actualWis = _baseNpcBehaviour.wis + totalStats[(int)Constants.Stats.SPD];
+    actualSpd = _baseNpcBehaviour.spd + totalStats[(int)Constants.Stats.SPD];
+    actualDex = _baseNpcBehaviour.dex + totalStats[(int)Constants.Stats.DEX];
+    actualDef = _baseNpcBehaviour.def + totalStats[(int)Constants.Stats.DEF];
+    actualVit = _baseNpcBehaviour.vit + totalStats[(int)Constants.Stats.VIT];
+    actualWis = _baseNpcBehaviour.wis + totalStats[(int)Constants.Stats.WIS];
   }
 
   private void HandleUIKeys()
@@ -435,24 +474,37 @@ public class Player : MonoBehaviour
   private void Start()
   {
     animator = GetComponent<Animator>();
-
-    print(GameManager.Singleton.GetSelectedCharacter());
+    _baseNpcBehaviour = GetComponent<BaseNPCBehaviour>();
+    var playerSpritePath = "Animations/Player/Mage/PlayerMage";
     
     switch (GameManager.Singleton.GetSelectedCharacter())
     {
       case (int)Constants.Character.Mage:
-        animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/Player/Mage/PlayerMage");
+        playerSpritePath = "Animations/Player/Mage/PlayerMage";
+        _baseNpcBehaviour.mp = 200f;
+        _baseNpcBehaviour.maxMp = 200f;
+        _baseNpcBehaviour.hp = 75f;
+        _baseNpcBehaviour.maxHp = 75f;
         break;
       case (int)Constants.Character.Knight:
-        animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/Player/Knight/PlayerKnight");
+        playerSpritePath = "Animations/Player/Knight/PlayerKnight";
+        _baseNpcBehaviour.mp = 100f;
+        _baseNpcBehaviour.maxMp = 100f;
+        _baseNpcBehaviour.hp = 125f;
+        _baseNpcBehaviour.maxHp = 125f;
         break;
       case (int)Constants.Character.Ranger:
-        animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>("Animations/Player/Ranger/PlayerRanger");
+        playerSpritePath = "Animations/Player/Ranger/PlayerRanger";
+        _baseNpcBehaviour.mp = 100f;
+        _baseNpcBehaviour.maxMp = 100f;
+        _baseNpcBehaviour.hp = 100f;
+        _baseNpcBehaviour.maxHp = 100f;
         break;
     }
     
+    animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>(playerSpritePath);
+    
     _boxCollider = GetComponent<BoxCollider2D>();
-    _baseNpcBehaviour = GetComponent<BaseNPCBehaviour>();
     _animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
     animator.runtimeAnimatorController = _animatorOverrideController;
   }

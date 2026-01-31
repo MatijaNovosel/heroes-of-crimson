@@ -332,6 +332,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: consumables_10
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d148a850aa03c7449c40590e02f36e1
+      internalID: -1356886374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -350,6 +372,7 @@ TextureImporter:
     nameFileIdTable:
       consumables_0: -4957692420197968765
       consumables_1: -882968858
+      consumables_10: -1356886374
       consumables_2: 1613396016
       consumables_3: -1793033751
       consumables_4: 1808354303

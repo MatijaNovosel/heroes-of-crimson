@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace UI.Inventory
 {
-    public class InventorySlot : MonoBehaviour, IDropHandler
+    public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     {
         public InventoryItem CurrentInventoryItem { get; set; }
         public bool IsHotbar;
@@ -22,13 +22,50 @@ namespace UI.Inventory
 
         private void SetImage(Sprite sprite) => _image.sprite = sprite;
         
+        public void OnPointerClick(PointerEventData data)
+        {
+            var playerObj = GameObject.FindGameObjectWithTag("Player");
+            var player = playerObj.GetComponent<Player>();
+            
+            if (data.clickCount == 2)
+            {
+                if (CurrentInventoryItem != null && CurrentInventoryItem.ItemInSlot != null)
+                {
+                    var item = CurrentInventoryItem.ItemInSlot;
+
+                    if (item.tag == Constants.ItemTag.Consumable)
+                    {
+                        switch (item.id)
+                        {
+                            case (int)Constants.ConsumableItem.HpPot:
+                            {
+                                player.RestoreHp(50);
+                                AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);
+                                break;
+                            }
+                            case (int)Constants.ConsumableItem.ManaPot:
+                            {
+                                player.RestoreMp(30);
+                                AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);
+                                break;
+                            }
+                        }
+                        
+                        var itemUI = CurrentInventoryItem;
+                        CurrentInventoryItem = null;
+                        Destroy(itemUI.gameObject);
+                        RefreshVisual();
+                        TooltipManager.Singleton.Hide();
+                    }
+                }
+            }
+        }
+        
         public void RefreshVisual()
         {
             if (CurrentInventoryItem != null)
             {
-                SetImage(ResourceCacher.Singleton.InventorySprites[
-                    Constants.InventorySlotEnum.Empty
-                ]);
+                SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotEnum.Empty]);
                 return;
             }
 
@@ -78,16 +115,8 @@ namespace UI.Inventory
             // MOVE (empty target)
             if (toSlot.CurrentInventoryItem is null)
             {
-                if (fromLoot && !toLoot)
-                {
-                    fromInventory.GetCurrentLootBag()?.RemoveItem(droppedItem.ItemInSlot);
-                }
-
-                if (!fromLoot && toLoot)
-                {
-                    toInventory.GetCurrentLootBag()?.AddItem(droppedItem.ItemInSlot);
-                }
-
+                if (fromLoot && !toLoot) fromInventory.GetCurrentLootBag()?.RemoveItem(droppedItem.ItemInSlot);
+                if (!fromLoot && toLoot) toInventory.GetCurrentLootBag()?.AddItem(droppedItem.ItemInSlot);
                 MoveItem(droppedItem, toSlot);
                 return;
             }

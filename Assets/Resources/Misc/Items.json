@@ -6,7 +6,7 @@
       "description": "A basic white staff.",
       "tag": 2,
       "shootSound": 1004,
-      "spritePath": "armorAndWeapons_7",
+      "spritePath": "armorAndWeapons_8",
       "projectilePath": "projectiles_16",
       "projectileDegree": 0,
       "minDamage": 10,
@@ -35,7 +35,7 @@
       "name": "Broadsword",
       "description": "A sword with a huge, broad blade. You can barely hold it upright.",
       "tag": 2,
-      "spritePath": "armorAndWeapons_63",
+      "spritePath": "armorAndWeapons_17",
       "projectilePath": "projectiles_23",
       "shootSound": 1008,
       "projectileDegree": 0,
@@ -66,7 +66,7 @@
       "name": "Flaming sword",
       "description": "The blade of the sword burns bright, it seems the flames won't die down no matter how hard anyone tries to put them out.",
       "tag": 2,
-      "spritePath": "armorAndWeapons_65",
+      "spritePath": "armorAndWeapons_18",
       "projectilePath": "projectiles_17",
       "shootSound": 1008,
       "projectileDegree": 0,
@@ -82,7 +82,7 @@
       "name": "Iron sword",
       "description": "A basic iron sword, probably given to new recruits considering how worn it is.",
       "tag": 2,
-      "spritePath": "armorAndWeapons_66",
+      "spritePath": "armorAndWeapons_58",
       "projectilePath": "projectiles_23",
       "shootSound": 1008,
       "projectileDegree": 0,
@@ -97,7 +97,7 @@
       "name": "Golden sword",
       "description": "Quite a heavy blade, it is engraved from hilt to tip with intricate details. Don't you think you're better off selling this?",
       "tag": 2,
-      "spritePath": "armorAndWeapons_67",
+      "spritePath": "armorAndWeapons_61",
       "projectilePath": "projectiles_23",
       "shootSound": 1008,
       "projectileDegree": 0,
@@ -113,7 +113,7 @@
       "name": "Fireball scroll",
       "description": "A scroll that describes the methods of casting a fireball spell. Watch your fingers.\n\n<color=#F1C40F> Allows the user to cast a fireball. Does a lot of damage. </color>",
       "tag": 3,
-      "spritePath": "armorAndWeapons_56",
+      "spritePath": "armorAndWeapons_51",
       "rarity": 1,
       "stats": [0, 0, 0, 0, 0, 0]
     },
@@ -122,7 +122,7 @@
       "name": "Iron ring of attack",
       "description": "A basic ring made of iron that makes you feel more feisty, an amethyst is embedded into it.",
       "tag": 5,
-      "spritePath": "armorAndWeapons_24",
+      "spritePath": "armorAndWeapons_19",
       "rarity": 1,
       "stats": [1, 0, 0, 0, 0, 0]
     },
@@ -131,7 +131,7 @@
       "name": "Silver ring of attack",
       "description": "A fancy ring made of silver that makes you feel more feisty, an amethyst is embedded into it.",
       "tag": 5,
-      "spritePath": "armorAndWeapons_32",
+      "spritePath": "armorAndWeapons_27",
       "rarity": 2,
       "stats": [2, 0, 0, 0, 0, 0]
     },
@@ -140,7 +140,7 @@
       "name": "Sapphire ring of attack",
       "description": "An extravagant ring made of sapphire that makes you feel more feisty, an amethyst is embedded into it.",
       "tag": 5,
-      "spritePath": "armorAndWeapons_40",
+      "spritePath": "armorAndWeapons_35",
       "rarity": 3,
       "stats": [3, 0, 0, 0, 0, 0]
     },
@@ -149,7 +149,7 @@
       "name": "Golden ring of attack",
       "description": "An opulent ring made of sapphire that makes you feel more feisty, an amethyst is embedded into it.",
       "tag": 5,
-      "spritePath": "armorAndWeapons_48",
+      "spritePath": "armorAndWeapons_43",
       "rarity": 4,
       "stats": [4, 0, 0, 0, 0, 0]
     },
@@ -158,36 +158,36 @@
       "name": "Iron ring of dexterity",
       "description": "A basic ring made of iron that makes you feel more feisty, an amber is embedded into it.",
       "tag": 5,
-      "spritePath": "armorAndWeapons_29",
+      "spritePath": "armorAndWeapons_24",
       "rarity": 1,
-      "stats": [0, 0, 0, 0, 0, 0]
+      "stats": [0, 0, 0, 0, 1, 0]
     },
     {
       "id": 5005,
       "name": "Silver ring of dexterity",
       "description": "A fancy ring made of silver that makes you feel more feisty, an amber is embedded into it.",
       "tag": 5,
-      "spritePath": "armorAndWeapons_37",
+      "spritePath": "armorAndWeapons_32",
       "rarity": 2,
-      "stats": [0, 0, 0, 0, 0, 0]
+      "stats": [0, 0, 0, 0, 2, 0]
     },
     {
       "id": 5006,
       "name": "Sapphire ring of dexterity",
       "description": "An extravagant ring made of sapphire that makes you feel more feisty, an amber is embedded into it.",
       "tag": 5,
-      "spritePath": "armorAndWeapons_45",
+      "spritePath": "armorAndWeapons_40",
       "rarity": 3,
-      "stats": [0, 0, 0, 0, 0, 0]
+      "stats": [0, 0, 0, 0, 3, 0]
     },
     {
       "id": 5007,
       "name": "Golden ring of dexterity",
       "description": "An opulent ring made of sapphire that makes you feel more feisty, an amber is embedded into it.",
       "tag": 5,
-      "spritePath": "armorAndWeapons_53",
+      "spritePath": "armorAndWeapons_48",
       "rarity": 4,
-      "stats": [0, 0, 0, 0, 0, 0]
+      "stats": [0, 0, 0, 0, 4, 0]
     },
     {
       "id": 6000,
@@ -195,17 +195,31 @@
       "description": "Hauled in a mighty fine catch this time. Seven women and ten men, each healthy and strong. Top-quality goods. Captain doesn't know yet where we'll sell them, but for merchandise like this, we're sure to get a good price anywhere. Perhaps we'll sail to Sarokos.\n\nThere's this one we've got who's damned pretty - but a damned pain the arse, too. If not for that, I'd keep her for myself. But when she's not bawling her eyes out, she's yelling threats at us. Demands we let her go or drop her off at Brava's temple. And that if we don't, her brother will sail after her and slaughter us all. \n\nFirst three days at sea were quiet, but now a storm's blowing in. Blasted weather. \n\n<color=#F1C40F> The rest of the text is unrecognizable. </color>",
       "tag": 6,
       "spritePath": "misc_1",
-      "rarity": 1,
-      "stats": [0, 0, 0, 0, 0, 0]
+      "rarity": 1
     },
     {
       "id": 6001,
       "name": "Pearl necklace",
-      "description": "A pretty necklace. Might fetch a fair price. \n\nMarket value: <color=#F1C40F> 5 Doubloons. </color>",
+      "description": "A pretty necklace. Might fetch a fair price. \n\nMarket value: <color=#F1C40F> 5 Doubloons </color>",
       "tag": 6,
       "spritePath": "misc_2",
-      "rarity": 3,
-      "stats": [0, 0, 0, 0, 0, 0]
+      "rarity": 3
+    },
+    {
+      "id": 7000,
+      "name": "Health potion",
+      "description": "A foul smelling liquid, it shimmers in a peculiar red color. \n\n<color=#EF5350> Restores 50 HP </color>",
+      "tag": 7,
+      "spritePath": "consumables_0",
+      "rarity": 1
+    },
+    {
+      "id": 7001,
+      "name": "Mana potion",
+      "description": "A sweet smelling liquid, it is a muddy blue color. \n\n<color=#3498DB> Restores 30 MP </color>",
+      "tag": 7,
+      "spritePath": "consumables_10",
+      "rarity": 1
     }
   ]
 }

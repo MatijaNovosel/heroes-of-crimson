@@ -384,8 +384,8 @@ TextureImporter:
       name: armorAndWeapons_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 104
+        x: 16
+        y: 112
         width: 8
         height: 8
       alignment: 0
@@ -406,7 +406,7 @@ TextureImporter:
       name: armorAndWeapons_8
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 104
         width: 8
         height: 8
@@ -428,7 +428,7 @@ TextureImporter:
       name: armorAndWeapons_9
       rect:
         serializedVersion: 2
-        x: 16
+        x: 8
         y: 104
         width: 8
         height: 8
@@ -450,7 +450,7 @@ TextureImporter:
       name: armorAndWeapons_10
       rect:
         serializedVersion: 2
-        x: 24
+        x: 16
         y: 104
         width: 8
         height: 8
@@ -472,7 +472,7 @@ TextureImporter:
       name: armorAndWeapons_11
       rect:
         serializedVersion: 2
-        x: 32
+        x: 24
         y: 104
         width: 8
         height: 8
@@ -494,7 +494,7 @@ TextureImporter:
       name: armorAndWeapons_12
       rect:
         serializedVersion: 2
-        x: 40
+        x: 32
         y: 104
         width: 8
         height: 8
@@ -516,7 +516,7 @@ TextureImporter:
       name: armorAndWeapons_13
       rect:
         serializedVersion: 2
-        x: 48
+        x: 40
         y: 104
         width: 8
         height: 8
@@ -538,7 +538,7 @@ TextureImporter:
       name: armorAndWeapons_14
       rect:
         serializedVersion: 2
-        x: 56
+        x: 48
         y: 104
         width: 8
         height: 8
@@ -560,8 +560,8 @@ TextureImporter:
       name: armorAndWeapons_15
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 56
+        y: 104
         width: 8
         height: 8
       alignment: 0
@@ -582,8 +582,8 @@ TextureImporter:
       name: armorAndWeapons_16
       rect:
         serializedVersion: 2
-        x: 8
-        y: 96
+        x: 0
+        y: 88
         width: 8
         height: 8
       alignment: 0
@@ -604,8 +604,8 @@ TextureImporter:
       name: armorAndWeapons_17
       rect:
         serializedVersion: 2
-        x: 16
-        y: 96
+        x: 8
+        y: 88
         width: 8
         height: 8
       alignment: 0
@@ -626,8 +626,8 @@ TextureImporter:
       name: armorAndWeapons_18
       rect:
         serializedVersion: 2
-        x: 24
-        y: 96
+        x: 16
+        y: 88
         width: 8
         height: 8
       alignment: 0
@@ -648,8 +648,8 @@ TextureImporter:
       name: armorAndWeapons_19
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
+        x: 0
+        y: 80
         width: 8
         height: 8
       alignment: 0
@@ -670,8 +670,8 @@ TextureImporter:
       name: armorAndWeapons_20
       rect:
         serializedVersion: 2
-        x: 40
-        y: 96
+        x: 8
+        y: 80
         width: 8
         height: 8
       alignment: 0
@@ -692,8 +692,8 @@ TextureImporter:
       name: armorAndWeapons_21
       rect:
         serializedVersion: 2
-        x: 48
-        y: 96
+        x: 16
+        y: 80
         width: 8
         height: 8
       alignment: 0
@@ -714,8 +714,8 @@ TextureImporter:
       name: armorAndWeapons_22
       rect:
         serializedVersion: 2
-        x: 56
-        y: 96
+        x: 24
+        y: 80
         width: 8
         height: 8
       alignment: 0
@@ -736,8 +736,8 @@ TextureImporter:
       name: armorAndWeapons_23
       rect:
         serializedVersion: 2
-        x: 0
-        y: 88
+        x: 32
+        y: 80
         width: 8
         height: 8
       alignment: 0
@@ -758,7 +758,7 @@ TextureImporter:
       name: armorAndWeapons_24
       rect:
         serializedVersion: 2
-        x: 0
+        x: 40
         y: 80
         width: 8
         height: 8
@@ -780,7 +780,7 @@ TextureImporter:
       name: armorAndWeapons_25
       rect:
         serializedVersion: 2
-        x: 8
+        x: 48
         y: 80
         width: 8
         height: 8
@@ -802,7 +802,7 @@ TextureImporter:
       name: armorAndWeapons_26
       rect:
         serializedVersion: 2
-        x: 16
+        x: 56
         y: 80
         width: 8
         height: 8
@@ -824,8 +824,8 @@ TextureImporter:
       name: armorAndWeapons_27
       rect:
         serializedVersion: 2
-        x: 24
-        y: 80
+        x: 0
+        y: 72
         width: 8
         height: 8
       alignment: 0
@@ -846,8 +846,8 @@ TextureImporter:
       name: armorAndWeapons_28
       rect:
         serializedVersion: 2
-        x: 32
-        y: 80
+        x: 8
+        y: 72
         width: 8
         height: 8
       alignment: 0
@@ -868,8 +868,8 @@ TextureImporter:
       name: armorAndWeapons_29
       rect:
         serializedVersion: 2
-        x: 40
-        y: 80
+        x: 16
+        y: 72
         width: 8
         height: 8
       alignment: 0
@@ -890,8 +890,8 @@ TextureImporter:
       name: armorAndWeapons_30
       rect:
         serializedVersion: 2
-        x: 48
-        y: 80
+        x: 24
+        y: 72
         width: 8
         height: 8
       alignment: 0
@@ -912,8 +912,8 @@ TextureImporter:
       name: armorAndWeapons_31
       rect:
         serializedVersion: 2
-        x: 56
-        y: 80
+        x: 32
+        y: 72
         width: 8
         height: 8
       alignment: 0
@@ -934,7 +934,7 @@ TextureImporter:
       name: armorAndWeapons_32
       rect:
         serializedVersion: 2
-        x: 0
+        x: 40
         y: 72
         width: 8
         height: 8
@@ -956,7 +956,7 @@ TextureImporter:
       name: armorAndWeapons_33
       rect:
         serializedVersion: 2
-        x: 8
+        x: 48
         y: 72
         width: 8
         height: 8
@@ -978,7 +978,7 @@ TextureImporter:
       name: armorAndWeapons_34
       rect:
         serializedVersion: 2
-        x: 16
+        x: 56
         y: 72
         width: 8
         height: 8
@@ -1000,8 +1000,8 @@ TextureImporter:
       name: armorAndWeapons_35
       rect:
         serializedVersion: 2
-        x: 24
-        y: 72
+        x: 0
+        y: 64
         width: 8
         height: 8
       alignment: 0
@@ -1022,8 +1022,8 @@ TextureImporter:
       name: armorAndWeapons_36
       rect:
         serializedVersion: 2
-        x: 32
-        y: 72
+        x: 8
+        y: 64
         width: 8
         height: 8
       alignment: 0
@@ -1044,8 +1044,8 @@ TextureImporter:
       name: armorAndWeapons_37
       rect:
         serializedVersion: 2
-        x: 40
-        y: 72
+        x: 16
+        y: 64
         width: 8
         height: 8
       alignment: 0
@@ -1066,8 +1066,8 @@ TextureImporter:
       name: armorAndWeapons_38
       rect:
         serializedVersion: 2
-        x: 48
-        y: 72
+        x: 24
+        y: 64
         width: 8
         height: 8
       alignment: 0
@@ -1088,8 +1088,8 @@ TextureImporter:
       name: armorAndWeapons_39
       rect:
         serializedVersion: 2
-        x: 56
-        y: 72
+        x: 32
+        y: 64
         width: 8
         height: 8
       alignment: 0
@@ -1110,7 +1110,7 @@ TextureImporter:
       name: armorAndWeapons_40
       rect:
         serializedVersion: 2
-        x: 0
+        x: 40
         y: 64
         width: 8
         height: 8
@@ -1132,7 +1132,7 @@ TextureImporter:
       name: armorAndWeapons_41
       rect:
         serializedVersion: 2
-        x: 8
+        x: 48
         y: 64
         width: 8
         height: 8
@@ -1154,7 +1154,7 @@ TextureImporter:
       name: armorAndWeapons_42
       rect:
         serializedVersion: 2
-        x: 16
+        x: 56
         y: 64
         width: 8
         height: 8
@@ -1176,8 +1176,8 @@ TextureImporter:
       name: armorAndWeapons_43
       rect:
         serializedVersion: 2
-        x: 24
-        y: 64
+        x: 0
+        y: 56
         width: 8
         height: 8
       alignment: 0
@@ -1198,8 +1198,8 @@ TextureImporter:
       name: armorAndWeapons_44
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
+        x: 8
+        y: 56
         width: 8
         height: 8
       alignment: 0
@@ -1220,8 +1220,8 @@ TextureImporter:
       name: armorAndWeapons_45
       rect:
         serializedVersion: 2
-        x: 40
-        y: 64
+        x: 16
+        y: 56
         width: 8
         height: 8
       alignment: 0
@@ -1242,8 +1242,8 @@ TextureImporter:
       name: armorAndWeapons_46
       rect:
         serializedVersion: 2
-        x: 48
-        y: 64
+        x: 24
+        y: 56
         width: 8
         height: 8
       alignment: 0
@@ -1264,8 +1264,8 @@ TextureImporter:
       name: armorAndWeapons_47
       rect:
         serializedVersion: 2
-        x: 56
-        y: 64
+        x: 32
+        y: 56
         width: 8
         height: 8
       alignment: 0
@@ -1286,7 +1286,7 @@ TextureImporter:
       name: armorAndWeapons_48
       rect:
         serializedVersion: 2
-        x: 0
+        x: 40
         y: 56
         width: 8
         height: 8
@@ -1308,7 +1308,7 @@ TextureImporter:
       name: armorAndWeapons_49
       rect:
         serializedVersion: 2
-        x: 8
+        x: 48
         y: 56
         width: 8
         height: 8
@@ -1330,7 +1330,7 @@ TextureImporter:
       name: armorAndWeapons_50
       rect:
         serializedVersion: 2
-        x: 16
+        x: 56
         y: 56
         width: 8
         height: 8
@@ -1352,8 +1352,8 @@ TextureImporter:
       name: armorAndWeapons_51
       rect:
         serializedVersion: 2
-        x: 24
-        y: 56
+        x: 0
+        y: 48
         width: 8
         height: 8
       alignment: 0
@@ -1374,8 +1374,8 @@ TextureImporter:
       name: armorAndWeapons_52
       rect:
         serializedVersion: 2
-        x: 32
-        y: 56
+        x: 8
+        y: 48
         width: 8
         height: 8
       alignment: 0
@@ -1396,8 +1396,8 @@ TextureImporter:
       name: armorAndWeapons_53
       rect:
         serializedVersion: 2
-        x: 40
-        y: 56
+        x: 16
+        y: 48
         width: 8
         height: 8
       alignment: 0
@@ -1418,8 +1418,8 @@ TextureImporter:
       name: armorAndWeapons_54
       rect:
         serializedVersion: 2
-        x: 48
-        y: 56
+        x: 24
+        y: 48
         width: 8
         height: 8
       alignment: 0
@@ -1440,8 +1440,8 @@ TextureImporter:
       name: armorAndWeapons_55
       rect:
         serializedVersion: 2
-        x: 56
-        y: 56
+        x: 32
+        y: 48
         width: 8
         height: 8
       alignment: 0
@@ -1462,7 +1462,7 @@ TextureImporter:
       name: armorAndWeapons_56
       rect:
         serializedVersion: 2
-        x: 0
+        x: 40
         y: 48
         width: 8
         height: 8
@@ -1484,8 +1484,8 @@ TextureImporter:
       name: armorAndWeapons_57
       rect:
         serializedVersion: 2
-        x: 8
-        y: 48
+        x: 0
+        y: 40
         width: 8
         height: 8
       alignment: 0
@@ -1506,8 +1506,8 @@ TextureImporter:
       name: armorAndWeapons_58
       rect:
         serializedVersion: 2
-        x: 16
-        y: 48
+        x: 0
+        y: 32
         width: 8
         height: 8
       alignment: 0
@@ -1528,8 +1528,8 @@ TextureImporter:
       name: armorAndWeapons_59
       rect:
         serializedVersion: 2
-        x: 24
-        y: 48
+        x: 8
+        y: 32
         width: 8
         height: 8
       alignment: 0
@@ -1550,8 +1550,8 @@ TextureImporter:
       name: armorAndWeapons_60
       rect:
         serializedVersion: 2
-        x: 32
-        y: 48
+        x: 16
+        y: 32
         width: 8
         height: 8
       alignment: 0
@@ -1572,8 +1572,8 @@ TextureImporter:
       name: armorAndWeapons_61
       rect:
         serializedVersion: 2
-        x: 40
-        y: 48
+        x: 24
+        y: 32
         width: 8
         height: 8
       alignment: 0
@@ -1594,8 +1594,8 @@ TextureImporter:
       name: armorAndWeapons_62
       rect:
         serializedVersion: 2
-        x: 16
-        y: 112
+        x: 0
+        y: 24
         width: 8
         height: 8
       alignment: 0
@@ -1617,7 +1617,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8
-        y: 88
+        y: 24
         width: 8
         height: 8
       alignment: 0
@@ -1638,8 +1638,8 @@ TextureImporter:
       name: armorAndWeapons_64
       rect:
         serializedVersion: 2
-        x: 0
-        y: 40
+        x: 16
+        y: 24
         width: 8
         height: 8
       alignment: 0
@@ -1660,8 +1660,8 @@ TextureImporter:
       name: armorAndWeapons_65
       rect:
         serializedVersion: 2
-        x: 16
-        y: 88
+        x: 24
+        y: 24
         width: 8
         height: 8
       alignment: 0
@@ -1683,11 +1683,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
+        y: 16
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1705,11 +1705,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8
-        y: 32
+        y: 16
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1718,6 +1718,138 @@ TextureImporter:
       bones: []
       spriteID: 929fa9b8e6f68e64cae941bec993d717
       internalID: 745495659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armorAndWeapons_68
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 404d7dc949e51a244bb563cbebdbc6a9
+      internalID: -695739078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armorAndWeapons_69
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 384291e91056c454787f8faea90ec43a
+      internalID: -2071043761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armorAndWeapons_70
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41d537640423c5043b3c8c8f637b538d
+      internalID: 1875454893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armorAndWeapons_71
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7f8889bb07a0b748b0953332f2ec553
+      internalID: -370090165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armorAndWeapons_72
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a40bbb527870304abc409f5043cc944
+      internalID: -1376624368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armorAndWeapons_73
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b84924901ef0794e8eef139a7950288
+      internalID: -1441906344
       vertices: []
       indices: 
       edges: []
@@ -1803,7 +1935,13 @@ TextureImporter:
       armorAndWeapons_65: 1341613374
       armorAndWeapons_66: -1618723902
       armorAndWeapons_67: 745495659
+      armorAndWeapons_68: -695739078
+      armorAndWeapons_69: -2071043761
       armorAndWeapons_7: 1486844973
+      armorAndWeapons_70: 1875454893
+      armorAndWeapons_71: -370090165
+      armorAndWeapons_72: -1376624368
+      armorAndWeapons_73: -1441906344
       armorAndWeapons_8: 1839526622
       armorAndWeapons_9: -1832299110
   mipmapLimitGroupName: 

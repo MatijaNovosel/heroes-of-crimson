@@ -48,7 +48,16 @@ namespace HeroesOfCrimson.Utils
        Bleeding = 8,
        Armored = 9,
        Invincible = 10,
-       Weak = 11
+       Weak = 11,
+       Stunned = 12,
+       Berserk = 13,
+       Paralyzed = 14
+    }
+
+    public enum ConsumableItem
+    {
+      HpPot = 7000,
+      ManaPot = 7001,
     }
 
     public enum ItemTag
@@ -97,6 +106,7 @@ namespace HeroesOfCrimson.Utils
       NoMana = 1006,
       LootDrop = 1007,
       BladeSwing = 1008,
+      UsePotion = 1009,
       // Eenemy sounds
       SkeletonHit = 2000,
       SkeletonDeath = 2001,

@@ -39,12 +39,8 @@ namespace UI.Inventory
             }
             else if (name == "Inventory")
             {
-                SpawnItem(Database.Singleton.GetItem(2000));
-                SpawnItem(Database.Singleton.GetItem(3000));
-                SpawnItem(Database.Singleton.GetItem(5000));
-                SpawnItem(Database.Singleton.GetItem(5001));
-                SpawnItem(Database.Singleton.GetItem(5005));
-                SpawnItem(Database.Singleton.GetItem(5006));
+                SpawnItem(Database.Singleton.GetItem(7000));
+                SpawnItem(Database.Singleton.GetItem(7001));
                 SpawnItem(Database.Singleton.GetItem(6000));
             }
         }

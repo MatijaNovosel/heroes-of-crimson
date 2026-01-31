@@ -34,6 +34,7 @@ namespace GameManagement
             Sounds.Add(Constants.Sounds.NoMana, Resources.Load<AudioClip>("Sounds/General/noMana"));
             Sounds.Add(Constants.Sounds.LootDrop, Resources.Load<AudioClip>("Sounds/General/lootDrop"));
             Sounds.Add(Constants.Sounds.BladeSwing, Resources.Load<AudioClip>("Sounds/General/bladeSwing"));
+            Sounds.Add(Constants.Sounds.UsePotion, Resources.Load<AudioClip>("Sounds/General/usePotion"));
             
             // Enemy sounds
             Sounds.Add(Constants.Sounds.SkeletonDeath, Resources.Load<AudioClip>("Sounds/Enemies/skeletonDeath"));
