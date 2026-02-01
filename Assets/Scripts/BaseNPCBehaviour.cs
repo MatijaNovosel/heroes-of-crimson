@@ -137,7 +137,6 @@ public class BaseNPCBehaviour : MonoBehaviour
     var effects = ActiveStatusEffects.Select(e => e.Type).ToList();
     _statusEffectPanel.GetComponent<StatusEffectPanel>().SetStatusEffects(effects);
   }
-
   
   private void UpdateStatusEffects()
   {
@@ -182,6 +181,16 @@ public class BaseNPCBehaviour : MonoBehaviour
     else
     {
       ActiveStatusEffects.Add(new ActiveStatusEffect(effect, duration));
+      var data = Utils.GetStatusEffectData(effect);
+      
+      GameManager.Singleton.ShowText(
+        data.Name,
+        250,
+        data.IsNegative ? Color.red: Color.green,
+        new Vector3(transform.position.x, transform.position.y + 0.8f, 0),
+        Vector3.up,
+        2.0f
+      );
     }
   }
   

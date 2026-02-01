@@ -40,8 +40,12 @@ namespace UI.Inventory
         {
             if (!ItemInSlot) return;
             TooltipManager.Singleton.SetInfo(
-                ItemInSlot.name, ItemInSlot.description, ItemInSlot.tag,
-                ItemInSlot.rarity, ItemInSlot.minDamage, ItemInSlot.maxDamage,
+                ItemInSlot.name,
+                ItemInSlot.description,
+                ItemInSlot.tag,
+                ItemInSlot.rarity, 
+                ItemInSlot.minDamage, 
+                ItemInSlot.maxDamage,
                 ItemInSlot.stats
             );
             TooltipManager.Singleton.Show();

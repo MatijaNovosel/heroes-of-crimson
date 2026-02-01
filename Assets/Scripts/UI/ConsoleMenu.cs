@@ -1,5 +1,7 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace UI
@@ -99,6 +101,15 @@ namespace UI
                 ConsoleMenuOpen = !ConsoleMenuOpen;
                 Time.timeScale = ConsoleMenuOpen ? 0f : 1f;
                 this.transform.localPosition = new Vector3(ConsoleMenuOpen ? 0 : 9999, ConsoleMenuOpen ? 0 : 9999, 0);
+
+                if (ConsoleMenuOpen)
+                {
+                    InputField.Select();
+                } 
+                else
+                {
+                    EventSystem.current.SetSelectedGameObject(null);
+                }
             }
             
             if (Input.GetKeyDown(KeyCode.Return) && ConsoleMenuOpen)

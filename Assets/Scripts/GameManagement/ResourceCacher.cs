@@ -11,6 +11,7 @@ namespace GameManagement
         public Sprite[] ProjectileSprites;
         public Sprite[] ConsumableSprites;
         public Sprite[] MiscSprites;
+        public Sprite[] StatusEffectSprites;
 
         public Dictionary<Constants.Sounds, AudioClip> Sounds = new ();
         public Dictionary<Constants.InventorySlotEnum, Sprite> InventorySprites = new ();
@@ -23,6 +24,7 @@ namespace GameManagement
             ProjectileSprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/projectiles");
             MiscSprites = Resources.LoadAll<Sprite>("Sprites/Items/misc");
             ConsumableSprites = Resources.LoadAll<Sprite>("Sprites/Items/consumables");
+            StatusEffectSprites = Resources.LoadAll<Sprite>("Sprites/Misc/statusEffects");
             
             // General sounds
             Sounds.Add(Constants.Sounds.Error, Resources.Load<AudioClip>("Sounds/General/error"));

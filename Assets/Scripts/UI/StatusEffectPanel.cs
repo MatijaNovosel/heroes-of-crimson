@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using GameManagement;
 using HeroesOfCrimson.Utils;
 using Models;
 using UnityEngine;
@@ -10,7 +11,6 @@ public class StatusEffectPanel : MonoBehaviour
     private readonly float _iconSpacing = 0.6f;
 
     private readonly List<StatusEffectUIModel> _activeIcons = new();
-    private Sprite[] _sprites;
     private HashSet<Constants.StatusEffects> _currentEffects = new();
 
     private GameObject Obj;
@@ -18,7 +18,6 @@ public class StatusEffectPanel : MonoBehaviour
     void Awake()
     {
         _statusEffectIconPrefab = Resources.Load<GameObject>("Prefabs/StatusEffectIcon");
-        _sprites = Resources.LoadAll<Sprite>("Sprites/Misc/statusEffects");
     }
 
     public void Setup(List<Constants.StatusEffects> setupValues, GameObject obj)
@@ -47,7 +46,7 @@ public class StatusEffectPanel : MonoBehaviour
         {
             if (_activeIcons.Any(x => x.StatusEffect == effect)) continue;
             var icon = Instantiate(_statusEffectIconPrefab, transform);
-            icon.GetComponent<SpriteRenderer>().sprite = _sprites[(int)effect - 1];
+            icon.GetComponent<SpriteRenderer>().sprite = ResourceCacher.Singleton.StatusEffectSprites[(int)effect - 1];
             _activeIcons.Add(new StatusEffectUIModel(icon, effect));
         }
 
