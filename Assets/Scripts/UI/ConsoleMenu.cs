@@ -11,6 +11,7 @@ namespace UI
         public static ConsoleMenu Singleton;
         public Inventory.Inventory inventory;
         public TMP_InputField InputField;
+        public Player player;
         
         private void HandleGiveCommand(string[] args)
         {
@@ -33,6 +34,7 @@ namespace UI
             }
 
             var item = Database.Singleton.GetItem(itemId);
+            
             if (item == null)
             {
                 Debug.LogWarning($"Item with ID {itemId} not found.");
@@ -42,6 +44,29 @@ namespace UI
             inventory.SpawnItem(item);
             
             Debug.Log($"Gave {amount}x {item.name} (ID: {itemId})");
+        }
+        
+        private void HandleStatusEffectCommand(string[] args)
+        {
+            if (args.Length < 3)
+            {
+                Debug.LogWarning("Usage: statuseffect <id> <duration(s)>");
+                return;
+            }
+
+            if (!int.TryParse(args[1], out int statusEffectId))
+            {
+                Debug.LogWarning("Invalid status effect ID.");
+                return;
+            }
+
+            if (!float.TryParse(args[2], out float duration))
+            {
+                Debug.LogWarning("Invalid amount.");
+                return;
+            }
+
+            player.SetStatusEffects(statusEffectId, duration);
         }
     
         private void ProcessCommand(string commandLine)
@@ -57,6 +82,9 @@ namespace UI
             {
                 case "give":
                     HandleGiveCommand(args);
+                    break; 
+                case "statuseffect":
+                    HandleStatusEffectCommand(args);
                     break;
                 default:
                     Debug.LogWarning($"Unknown command: {command}");

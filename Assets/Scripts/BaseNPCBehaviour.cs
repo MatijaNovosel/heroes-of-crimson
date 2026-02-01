@@ -170,10 +170,8 @@ public class BaseNPCBehaviour : MonoBehaviour
     DisplayStatusEffects();
   }
 
-  private void ApplyStatusEffect(Constants.StatusEffects effect)
+  public void ApplyStatusEffect(Constants.StatusEffects effect, float duration = 5f)
   {
-    float duration = 5f;
-
     var existing = ActiveStatusEffects.FirstOrDefault(e => e.Type == effect);
 
     if (existing != null)

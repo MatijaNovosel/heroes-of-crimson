@@ -451,6 +451,10 @@ public class Player : MonoBehaviour
     return 1f / aps;
   }
 
+  public void SetStatusEffects(int statusEffectId, float duration)
+  {
+    _baseNpcBehaviour.ApplyStatusEffect((Constants.StatusEffects)statusEffectId, duration);
+  }
   
   private void AddItemStats(InventoryItem item, int[] totals)
   {
