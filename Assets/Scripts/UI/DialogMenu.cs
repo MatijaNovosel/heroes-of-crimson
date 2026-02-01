@@ -1,3 +1,4 @@
+using UI;
 using UnityEngine;
 
 public class DialogMenu : MonoBehaviour
@@ -6,7 +7,7 @@ public class DialogMenu : MonoBehaviour
     
     private void HandleUIKeys()
     {
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.V) && !ConsoleMenu.Singleton.ConsoleMenuOpen)
         {
             DialogMenuOpen = !DialogMenuOpen;
             Time.timeScale = DialogMenuOpen ? 0f : 1f;

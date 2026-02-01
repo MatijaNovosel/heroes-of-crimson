@@ -17,7 +17,7 @@ public class BaseNPCBehaviour : MonoBehaviour
   public float spd = 30;
   public float att = 30;
   public float def = 0;
-  public float vit = 30;
+  public float str = 30;
   public float wis = 30;
   public float dex = 30;
   

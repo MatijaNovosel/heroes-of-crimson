@@ -4,6 +4,7 @@ using GameManagement;
 using UnityEngine;
 using HeroesOfCrimson.Utils;
 using Models;
+using UI;
 using UI.Inventory;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
@@ -51,7 +52,7 @@ public class Player : MonoBehaviour
   public float actualSpd = 0;
   public float actualAtt = 0;
   public float actualDef = 0;
-  public float actualVit = 0;
+  public float actualStr = 0;
   public float actualWis = 0;
   public float actualDex = 0;
   
@@ -325,6 +326,16 @@ public class Player : MonoBehaviour
     return _baseNpcBehaviour.ActiveStatusEffects.Any(x => x.Type == statusEffect);
   }
 
+  public void IncreaseMaxHp(int amount)
+  {
+    _baseNpcBehaviour.maxHp += amount;
+    _baseNpcBehaviour.hp += amount;
+    _baseNpcBehaviour.hp = Mathf.Min(
+      _baseNpcBehaviour.hp,
+      _baseNpcBehaviour.maxHp
+    );
+  }
+  
   public void RestoreHp(int amount)
   {
     _baseNpcBehaviour.hp += amount;
@@ -345,7 +356,10 @@ public class Player : MonoBehaviour
 
   private void HandleAbility()
   {
-    if (_hasStatusEffect(Constants.StatusEffects.Silenced)) return;
+    if (_hasStatusEffect(Constants.StatusEffects.Silenced) || ConsoleMenu.Singleton.ConsoleMenuOpen)
+    {
+      return;
+    }
     
     HandleAbilityCooldowns();
 
@@ -399,8 +413,8 @@ public class Player : MonoBehaviour
 
   private void HandleRegen()
   {
-    // HP per second = 2 + 0.2407 * VIT
-    var regenPerSecond = 2f + (0.2407f * actualVit);
+    // HP per second = 2 + 0.2407 * STR
+    var regenPerSecond = 2f + (0.2407f * actualStr);
     regenPerSecond = Mathf.Max(0f, regenPerSecond);
     
     HealthBar.UpdateRegenText(regenPerSecond);
@@ -458,7 +472,7 @@ public class Player : MonoBehaviour
     actualSpd = _baseNpcBehaviour.spd + totalStats[(int)Constants.Stats.SPD];
     actualDex = _baseNpcBehaviour.dex + totalStats[(int)Constants.Stats.DEX];
     actualDef = _baseNpcBehaviour.def + totalStats[(int)Constants.Stats.DEF];
-    actualVit = _baseNpcBehaviour.vit + totalStats[(int)Constants.Stats.VIT];
+    actualStr = _baseNpcBehaviour.str + totalStats[(int)Constants.Stats.STR];
     actualWis = _baseNpcBehaviour.wis + totalStats[(int)Constants.Stats.WIS];
   }
 

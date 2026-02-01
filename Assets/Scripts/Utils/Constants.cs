@@ -31,7 +31,7 @@ namespace HeroesOfCrimson.Utils
       ATT = 0,
       DEF = 1,
       WIS = 2,
-      VIT = 3,
+      STR = 3,
       DEX = 4,
       SPD = 5
     }
@@ -58,6 +58,7 @@ namespace HeroesOfCrimson.Utils
     {
       HpPot = 7000,
       ManaPot = 7001,
+      LifePot = 7002,
     }
 
     public enum ItemTag

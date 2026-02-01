@@ -41,6 +41,7 @@ namespace UI.Inventory
             {
                 SpawnItem(Database.Singleton.GetItem(7000));
                 SpawnItem(Database.Singleton.GetItem(7001));
+                SpawnItem(Database.Singleton.GetItem(7002));
                 SpawnItem(Database.Singleton.GetItem(6000));
             }
         }
@@ -70,7 +71,7 @@ namespace UI.Inventory
             return name == "Hotbar" ? inventorySlots[idx] : null;
         }
 
-        private void SpawnItem(Item item = null, int? index = null)
+        public void SpawnItem(Item item = null, int? index = null)
         {
             if (index != null)
             {

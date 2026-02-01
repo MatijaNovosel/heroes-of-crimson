@@ -49,6 +49,12 @@ namespace UI.Inventory
                                 AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);
                                 break;
                             }
+                            case (int)Constants.ConsumableItem.LifePot:
+                            {
+                                player.IncreaseMaxHp(5);
+                                AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);
+                                break;
+                            }
                         }
                         
                         var itemUI = CurrentInventoryItem;

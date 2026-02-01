@@ -109,6 +109,36 @@
       "stats": [0, 0, 0, 0, 0, 0]
     },
     {
+      "id": 2007,
+      "name": "Iron mace",
+      "description": "A heavy hunk of steel on a stick, it'll probably crack a few skulls.",
+      "tag": 2,
+      "spritePath": "armorAndWeapons_62",
+      "projectilePath": "projectiles_23",
+      "shootSound": 1008,
+      "projectileDegree": 0,
+      "minDamage": 10,
+      "maxDamage": 40,
+      "projectileCount": 1,
+      "rarity": 1,
+      "stats": [0, 0, 0, 0, 0, 0]
+    },
+    {
+      "id": 2008,
+      "name": "Iron sabre",
+      "description": "A light sword with a handguard, feels like it came from a foreign land.",
+      "tag": 2,
+      "spritePath": "armorAndWeapons_66",
+      "projectilePath": "projectiles_23",
+      "shootSound": 1008,
+      "projectileDegree": 0,
+      "minDamage": 10,
+      "maxDamage": 40,
+      "projectileCount": 1,
+      "rarity": 1,
+      "stats": [0, 0, 0, 0, 0, 0]
+    },
+    {
       "id": 3000,
       "name": "Fireball scroll",
       "description": "A scroll that describes the methods of casting a fireball spell. Watch your fingers.\n\n<color=#F1C40F> Allows the user to cast a fireball. Does a lot of damage. </color>",
@@ -220,6 +250,14 @@
       "tag": 7,
       "spritePath": "consumables_10",
       "rarity": 1
+    },
+    {
+      "id": 7002,
+      "name": "Potion of life",
+      "description": "An extraordinary nectar that seeped in from the heavens. \n\n<color=#EF5350> Increases max HP by 5 </color>",
+      "tag": 7,
+      "spritePath": "consumables_8",
+      "rarity": 5
     }
   ]
 }

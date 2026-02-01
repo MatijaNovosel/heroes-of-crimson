@@ -35,7 +35,7 @@ public class TooltipManager : MonoBehaviour
     public Image TooltipSpd;
     public Image TooltipDex;
     public Image TooltipDef;
-    public Image TooltipVit;
+    public Image TooltipStr;
     public Image TooltipWis;
     
     void Start()
@@ -105,14 +105,14 @@ public class TooltipManager : MonoBehaviour
                 TooltipWis.gameObject.SetActive(false);
             }
             
-            if (stats[(int)Constants.Stats.VIT] != 0)
+            if (stats[(int)Constants.Stats.STR] != 0)
             {
-                TooltipVit.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.VIT].ToString();
-                TooltipVit.gameObject.SetActive(true);
+                TooltipStr.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.STR].ToString();
+                TooltipStr.gameObject.SetActive(true);
             }
             else
             {
-                TooltipVit.gameObject.SetActive(false);
+                TooltipStr.gameObject.SetActive(false);
             }
             
             if (stats[(int)Constants.Stats.DEX] != 0)
@@ -176,15 +176,8 @@ public class TooltipManager : MonoBehaviour
         var outOfBoundsTop = corners[1].y > Screen.height;
         var outOfBoundsRight = corners[2].x > Screen.width;
 
-        if (outOfBoundsTop)
-        {
-            offset.y = -(tooltipHeight / 2 + padding);
-        }
-
-        if (outOfBoundsRight)
-        {
-            offset.x = -(tooltipWidth + padding);
-        }
+        if (outOfBoundsTop) offset.y = -(tooltipHeight / 2 + padding);
+        if (outOfBoundsRight) offset.x = -(tooltipWidth + padding);
 
         worldPoint = ParentCanvas.transform.TransformPoint(mousePosition + offset);
         TooltipTransform.position = worldPoint;

@@ -23,7 +23,7 @@ public class StatLine : MonoBehaviour
             Constants.Stats.ATT => player.actualAtt.ToString(),
             Constants.Stats.DEF => player.actualDef.ToString(),
             Constants.Stats.WIS => player.actualWis.ToString(),
-            Constants.Stats.VIT => player.actualVit.ToString(),
+            Constants.Stats.STR => player.actualStr.ToString(),
             Constants.Stats.DEX => player.actualDex.ToString(),
             Constants.Stats.SPD => player.actualSpd.ToString(),
             _ => throw new ArgumentOutOfRangeException()
