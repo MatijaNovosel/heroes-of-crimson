@@ -5,13 +5,9 @@ using UnityEngine.UI;
 public class LevelBar : MonoBehaviour
 {
     public Player player;
-    private Image _image;
+    public Image image;
     public TMP_Text text;
-
-    void Start()
-    {
-        _image = GetComponent<Image>();
-    }
+    int xpNeeded = 100;
     
     void Update()
     {
@@ -22,16 +18,15 @@ public class LevelBar : MonoBehaviour
     {
         if (!player)
         {
-            if (_image) _image.fillAmount = 0f;
+            if (image) image.fillAmount = 0f;
             if (text) text.text = "1";
             return;
         }
 
-        var xp = player.Experience;
-        var xpNeeded = 100;
-        var fill = Mathf.Clamp01(xp / xpNeeded);
+        var xp = player.experience;
+        float fill = Mathf.Clamp01((float)xp / xpNeeded);
 
-        if (_image) _image.fillAmount = fill;
-        if (text) text.text = player.Level.ToString();
+        if (image) image.fillAmount = fill;
+        if (text) text.text = player.level.ToString();
     }
 }

@@ -13,13 +13,15 @@ public class BaseNPCBehaviour : MonoBehaviour
   public float mp = 100;
   public float maxMp = 100;
   public float maxHp = 100;
+
+  public int xpValue = 15;
   
-  public float spd = 30;
-  public float att = 30;
-  public float def = 0;
+  public float swf = 30;
+  public float mgt = 30;
+  public float arm = 0;
   public float str = 30;
   public float wis = 30;
-  public float dex = 30;
+  public float agi = 30;
   
   public bool invincible = false;
   public List<ActiveStatusEffect> ActiveStatusEffects = new();
@@ -64,8 +66,8 @@ public class BaseNPCBehaviour : MonoBehaviour
     );
 
     lootBag.GetComponent<LootBag>().GenerateLoot(lootIds, true);
-    
     AudioManager.Singleton.PlaySoundCached(Constants.Sounds.LootDrop);
+    Player.Singleton.GiveXp(xpValue);
 
     Destroy(gameObject);
   }
@@ -76,7 +78,7 @@ public class BaseNPCBehaviour : MonoBehaviour
 
     direction = direction.normalized;
 
-    var speed = Utils.CalculatePlayerMovementSpeed(spd);
+    var speed = Utils.CalculatePlayerMovementSpeed(swf);
     LayerMask mask = LayerMask.GetMask("Actor", "Blocking", "NPC");
 
     var moveY = new Vector2(0, direction.y);
@@ -118,7 +120,7 @@ public class BaseNPCBehaviour : MonoBehaviour
     float multiplier;
 
     if (ActiveStatusEffects.Any(e => e.Type == Constants.StatusEffects.Weak)) multiplier = 0.5f;
-    else multiplier = 0.5f + (att / 50f);
+    else multiplier = 0.5f + (mgt / 50f);
 
     bool hasDamaging = ActiveStatusEffects.Any(e => e.Type == Constants.StatusEffects.Damaging);
     if (hasDamaging) multiplier *= 1.25f;
@@ -152,7 +154,7 @@ public class BaseNPCBehaviour : MonoBehaviour
           //
           break;
         case Constants.StatusEffects.ArmorBroken:
-          def = 0;
+          arm = 0;
           break;
       }
 
@@ -198,7 +200,7 @@ public class BaseNPCBehaviour : MonoBehaviour
   {
     if (incomingDamage <= 0) return 0;
 
-    float reducedByDef = incomingDamage - def;
+    float reducedByDef = incomingDamage - arm;
     float minAllowedDamage = incomingDamage * 0.1f; // 10% always goes through
 
     return Mathf.Max(reducedByDef, minAllowedDamage);

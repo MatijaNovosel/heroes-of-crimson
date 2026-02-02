@@ -71,6 +71,23 @@ namespace UI
 
             player.SetStatusEffects(statusEffectId, duration);
         }
+        
+        private void HandleExperienceCommand(string[] args)
+        {
+            if (args.Length < 2)
+            {
+                Debug.LogWarning("Usage: xp <amount>");
+                return;
+            }
+
+            if (!int.TryParse(args[1], out int amount))
+            {
+                Debug.LogWarning("Invalid amount.");
+                return;
+            }
+
+            player.GiveXp(amount);
+        }
     
         private void ProcessCommand(string commandLine)
         {
@@ -88,6 +105,9 @@ namespace UI
                     break; 
                 case "statuseffect":
                     HandleStatusEffectCommand(args);
+                    break;
+                case "xp":
+                    HandleExperienceCommand(args);
                     break;
                 default:
                     Debug.LogWarning($"Unknown command: {command}");

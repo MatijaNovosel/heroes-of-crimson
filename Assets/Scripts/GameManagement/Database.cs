@@ -50,7 +50,6 @@ public class Database : MonoBehaviour
         break;
       }
     }
-    
 
     var projectileSprite = ResourceCacher.Singleton.ProjectileSprites.FirstOrDefault(x => x.name == databaseItem.projectilePath);
     

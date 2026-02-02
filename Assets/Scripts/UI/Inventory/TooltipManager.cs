@@ -31,10 +31,10 @@ public class TooltipManager : MonoBehaviour
     // Stats
     public Divider DividerStats;
     public RectTransform TooltipStats;
-    public Image TooltipAtt;
-    public Image TooltipSpd;
-    public Image TooltipDex;
-    public Image TooltipDef;
+    public Image TooltipMgt;
+    public Image TooltipSwf;
+    public Image TooltipAgi;
+    public Image TooltipArm;
     public Image TooltipStr;
     public Image TooltipWis;
     
@@ -75,24 +75,24 @@ public class TooltipManager : MonoBehaviour
             DividerStats.gameObject.SetActive(true);
             TooltipStats.gameObject.SetActive(true);
             
-            if (stats[(int)Constants.Stats.ATT] != 0)
+            if (stats[(int)Constants.Stats.MGT] != 0)
             {
-                TooltipAtt.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.ATT].ToString();
-                TooltipAtt.gameObject.SetActive(true);
+                TooltipMgt.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.MGT].ToString();
+                TooltipMgt.gameObject.SetActive(true);
             }
             else
             {
-                TooltipAtt.gameObject.SetActive(false);
+                TooltipMgt.gameObject.SetActive(false);
             }
             
-            if (stats[(int)Constants.Stats.DEF] != 0)
+            if (stats[(int)Constants.Stats.ARM] != 0)
             {
-                TooltipDef.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.DEF].ToString();
-                TooltipDef.gameObject.SetActive(true);
+                TooltipArm.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.ARM].ToString();
+                TooltipArm.gameObject.SetActive(true);
             }
             else
             {
-                TooltipDef.gameObject.SetActive(false);
+                TooltipArm.gameObject.SetActive(false);
             }
             
             if (stats[(int)Constants.Stats.WIS] != 0)
@@ -115,24 +115,24 @@ public class TooltipManager : MonoBehaviour
                 TooltipStr.gameObject.SetActive(false);
             }
             
-            if (stats[(int)Constants.Stats.DEX] != 0)
+            if (stats[(int)Constants.Stats.AGI] != 0)
             {
-                TooltipDex.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.DEX].ToString();
-                TooltipDex.gameObject.SetActive(true);
+                TooltipAgi.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.AGI].ToString();
+                TooltipAgi.gameObject.SetActive(true);
             }
             else
             {
-                TooltipDex.gameObject.SetActive(false);
+                TooltipAgi.gameObject.SetActive(false);
             }
             
-            if (stats[(int)Constants.Stats.SPD] != 0)
+            if (stats[(int)Constants.Stats.SWF] != 0)
             {
-                TooltipSpd.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.SPD].ToString();
-                TooltipSpd.gameObject.SetActive(true);
+                TooltipSwf.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.SWF].ToString();
+                TooltipSwf.gameObject.SetActive(true);
             }
             else
             {
-                TooltipSpd.gameObject.SetActive(false);
+                TooltipSwf.gameObject.SetActive(false);
             }
         }
         else

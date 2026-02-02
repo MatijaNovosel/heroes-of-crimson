@@ -1057,7 +1057,7 @@ GameObject:
   - component: {fileID: 73756542}
   - component: {fileID: 73756541}
   m_Layer: 5
-  m_Name: DexLabel
+  m_Name: AgiLabel
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1442,7 +1442,7 @@ GameObject:
   - component: {fileID: 105258562}
   - component: {fileID: 105258561}
   m_Layer: 5
-  m_Name: DefLabel
+  m_Name: ArmLabel
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -2120,7 +2120,7 @@ GameObject:
   - component: {fileID: 121160807}
   - component: {fileID: 121160808}
   m_Layer: 5
-  m_Name: Dex
+  m_Name: Agi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3345,12 +3345,13 @@ MonoBehaviour:
   mp: 100
   maxMp: 100
   maxHp: 100
-  spd: 50
-  att: 30
-  def: 10
+  xpValue: 15
+  swf: 30
+  mgt: 30
+  arm: 0
   str: 30
   wis: 30
-  dex: 30
+  agi: 30
   invincible: 0
   lootIds: 
   deathSound: {fileID: 0}
@@ -3634,8 +3635,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cd0cfa374908b4e97de9762f7010af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: 1
-  Experience: 44
+  level: 1
+  experience: 0
+  xpNeeded: 100
   abilities:
   - key: 49
     cooldownImage: {fileID: 1193286956}
@@ -3677,12 +3679,12 @@ MonoBehaviour:
   - {fileID: 914398653}
   - {fileID: 681165206}
   - {fileID: 909961758}
-  actualSpd: 0
-  actualAtt: 0
-  actualDef: 0
+  actualSwf: 0
+  actualMgt: 0
+  actualArm: 0
   actualStr: 0
   actualWis: 0
-  actualDex: 0
+  actualAgi: 0
 --- !u!1 &231060999
 GameObject:
   m_ObjectHideFlags: 0
@@ -7140,10 +7142,10 @@ MonoBehaviour:
   DividerWeapons: {fileID: 1140566447}
   DividerStats: {fileID: 1473452289}
   TooltipStats: {fileID: 832343473}
-  TooltipAtt: {fileID: 917299831}
-  TooltipSpd: {fileID: 1786554938}
-  TooltipDex: {fileID: 873633752}
-  TooltipDef: {fileID: 515627096}
+  TooltipMgt: {fileID: 917299831}
+  TooltipSwf: {fileID: 1786554938}
+  TooltipAgi: {fileID: 873633752}
+  TooltipArm: {fileID: 515627096}
   TooltipStr: {fileID: 1766987756}
   TooltipWis: {fileID: 2128693785}
 --- !u!1 &444804192
@@ -7301,7 +7303,7 @@ GameObject:
   - component: {fileID: 459950986}
   - component: {fileID: 459950985}
   m_Layer: 5
-  m_Name: AttLabel
+  m_Name: MgtLabel
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -8475,7 +8477,7 @@ GameObject:
   - component: {fileID: 515627097}
   - component: {fileID: 515627096}
   m_Layer: 5
-  m_Name: TooltipDef
+  m_Name: TooltipArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9498,7 +9500,7 @@ GameObject:
   - component: {fileID: 607470199}
   - component: {fileID: 607470198}
   m_Layer: 5
-  m_Name: SpdLabel
+  m_Name: SwfLabel
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -9750,12 +9752,13 @@ MonoBehaviour:
   mp: 100
   maxMp: 100
   maxHp: 100
-  spd: 5
-  att: 30
-  def: 0
+  xpValue: 15
+  swf: 30
+  mgt: 30
+  arm: 0
   str: 30
   wis: 30
-  dex: 30
+  agi: 30
   invincible: 0
   lootIds: d107000088130000891300008d1300008e130000
   deathSound: {fileID: 8300000, guid: cd9f2fd01f6ce8f459abc045ca50316e, type: 3}
@@ -9904,12 +9907,13 @@ MonoBehaviour:
   mp: 100
   maxMp: 100
   maxHp: 100
-  spd: 50
-  att: 30
-  def: 10
+  xpValue: 15
+  swf: 30
+  mgt: 30
+  arm: 0
   str: 30
   wis: 30
-  dex: 30
+  agi: 30
   invincible: 0
   lootIds: 
   deathSound: {fileID: 0}
@@ -10585,7 +10589,7 @@ GameObject:
   - component: {fileID: 672303836}
   - component: {fileID: 672303835}
   m_Layer: 5
-  m_Name: TooltipAttText
+  m_Name: TooltipMgtText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12785,7 +12789,7 @@ GameObject:
   - component: {fileID: 717602401}
   - component: {fileID: 717602400}
   m_Layer: 5
-  m_Name: TooltipSpdText
+  m_Name: TooltipSwfText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26090,7 +26094,7 @@ GameObject:
   - component: {fileID: 761995254}
   - component: {fileID: 761995253}
   m_Layer: 5
-  m_Name: AttValue
+  m_Name: MgtValue
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -31365,7 +31369,7 @@ GameObject:
   - component: {fileID: 873633753}
   - component: {fileID: 873633752}
   m_Layer: 5
-  m_Name: TooltipDex
+  m_Name: TooltipAgi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42764,7 +42768,7 @@ GameObject:
   - component: {fileID: 917299832}
   - component: {fileID: 917299831}
   m_Layer: 5
-  m_Name: TooltipAtt
+  m_Name: TooltipMgt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43925,12 +43929,13 @@ MonoBehaviour:
   mp: 100
   maxMp: 100
   maxHp: 1000
-  spd: 50
-  att: 30
-  def: 10
+  xpValue: 15
+  swf: 30
+  mgt: 30
+  arm: 0
   str: 30
   wis: 30
-  dex: 30
+  agi: 30
   invincible: 0
   lootIds: 
   deathSound: {fileID: 0}
@@ -44516,7 +44521,7 @@ GameObject:
   - component: {fileID: 1084735761}
   - component: {fileID: 1084735760}
   m_Layer: 5
-  m_Name: SpdValue
+  m_Name: SwfValue
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -46817,7 +46822,7 @@ GameObject:
   - component: {fileID: 1292248286}
   - component: {fileID: 1292248285}
   m_Layer: 5
-  m_Name: TooltipDexText
+  m_Name: TooltipAgiText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48347,6 +48352,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1461806074}
+  - component: {fileID: 1461806075}
   m_Layer: 5
   m_Name: Level
   m_TagString: Untagged
@@ -48376,6 +48382,21 @@ RectTransform:
   m_AnchoredPosition: {x: -118.7, y: 9.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1461806075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461806073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e61d665b95260e4baa294f1864d7968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  player: {fileID: 225077527}
+  image: {fileID: 1628456044}
+  text: {fileID: 591702716}
 --- !u!1 &1467123960
 GameObject:
   m_ObjectHideFlags: 0
@@ -48519,12 +48540,13 @@ MonoBehaviour:
   mp: 100
   maxMp: 100
   maxHp: 300
-  spd: 30
-  att: 30
-  def: 10
+  xpValue: 15
+  swf: 30
+  mgt: 30
+  arm: 0
   str: 30
   wis: 30
-  dex: 30
+  agi: 30
   invincible: 0
   lootIds: 
   deathSound: {fileID: 8300000, guid: 19f46137f9bc2ec47b7a101bd71854a8, type: 3}
@@ -49302,12 +49324,13 @@ MonoBehaviour:
   mp: 100
   maxMp: 100
   maxHp: 100
-  spd: 50
-  att: 30
-  def: 10
+  xpValue: 15
+  swf: 30
+  mgt: 30
+  arm: 0
   str: 30
   wis: 30
-  dex: 30
+  agi: 30
   invincible: 0
   lootIds: 
   deathSound: {fileID: 0}
@@ -49552,7 +49575,7 @@ GameObject:
   - component: {fileID: 1530895860}
   - component: {fileID: 1530895861}
   m_Layer: 5
-  m_Name: Att
+  m_Name: Mgt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68597,7 +68620,6 @@ GameObject:
   - component: {fileID: 1628456043}
   - component: {fileID: 1628456045}
   - component: {fileID: 1628456044}
-  - component: {fileID: 1628456046}
   m_Layer: 5
   m_Name: LevelBar
   m_TagString: Untagged
@@ -68649,7 +68671,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.611
+  m_FillAmount: 0.15
   m_FillClockwise: 1
   m_FillOrigin: 3
   m_UseSpriteMesh: 0
@@ -68662,20 +68684,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1628456042}
   m_CullTransparentMesh: 1
---- !u!114 &1628456046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1628456042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e61d665b95260e4baa294f1864d7968, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  player: {fileID: 225077527}
-  text: {fileID: 591702716}
 --- !u!1 &1632597863
 GameObject:
   m_ObjectHideFlags: 0
@@ -72898,7 +72906,7 @@ GameObject:
   - component: {fileID: 1734073878}
   - component: {fileID: 1734073877}
   m_Layer: 5
-  m_Name: DexValue
+  m_Name: AgiValue
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -73447,7 +73455,7 @@ GameObject:
   - component: {fileID: 1786554939}
   - component: {fileID: 1786554938}
   m_Layer: 5
-  m_Name: TooltipSpd
+  m_Name: TooltipSwf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73598,7 +73606,7 @@ GameObject:
   - component: {fileID: 1795065583}
   - component: {fileID: 1795065582}
   m_Layer: 5
-  m_Name: TooltipDefText
+  m_Name: TooltipArmText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74111,7 +74119,7 @@ GameObject:
   - component: {fileID: 1852222767}
   - component: {fileID: 1852222768}
   m_Layer: 5
-  m_Name: Spd
+  m_Name: Swf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75882,7 +75890,7 @@ GameObject:
   - component: {fileID: 1983896542}
   - component: {fileID: 1983896543}
   m_Layer: 5
-  m_Name: Def
+  m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76866,7 +76874,7 @@ GameObject:
   - component: {fileID: 2014777419}
   - component: {fileID: 2014777418}
   m_Layer: 5
-  m_Name: DefValue
+  m_Name: ArmValue
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -77145,12 +77153,13 @@ MonoBehaviour:
   mp: 100
   maxMp: 100
   maxHp: 100
-  spd: 50
-  att: 30
-  def: 10
+  xpValue: 15
+  swf: 30
+  mgt: 30
+  arm: 0
   str: 30
   wis: 30
-  dex: 30
+  agi: 30
   invincible: 0
   lootIds: 
   deathSound: {fileID: 8300000, guid: adca1c47177be8044800f5a92027b175, type: 3}
@@ -77427,14 +77436,14 @@ RectTransform:
   - {fileID: 1241448907}
   - {fileID: 491178157}
   - {fileID: 1967071324}
-  - {fileID: 1817504961}
-  - {fileID: 437235865}
   - {fileID: 288538644}
   - {fileID: 2065380916}
   - {fileID: 1655340475}
   - {fileID: 157884121}
   - {fileID: 1670549410}
   - {fileID: 1585581503}
+  - {fileID: 1817504961}
+  - {fileID: 437235865}
   - {fileID: 519308859}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -33.893}

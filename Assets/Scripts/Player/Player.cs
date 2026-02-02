@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using GameManagement;
@@ -8,11 +9,14 @@ using UI;
 using UI.Inventory;
 using UnityEngine.EventSystems;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(BaseNPCBehaviour))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class Player : MonoBehaviour
 {
+  public static Player Singleton;
+  
   private static readonly int AnimationShootingKey = Animator.StringToHash("Shooting");
   private static readonly int AnimationShootKey = Animator.StringToHash("Shoot");
   private static readonly int AnimationIdleStateKey = Animator.StringToHash("IdleState");
@@ -23,9 +27,10 @@ public class Player : MonoBehaviour
   private const float FiringDelay = 0.3f;
   
   // Experience
-  public float Level = 1;
-  public float Experience = 0;
-
+  public float level = 1;
+  public int experience = 0;
+  public int xpNeeded = 100;
+  
   [Header("Abilities")]
   public AbilitySlot[] abilities = new AbilitySlot[4];
   
@@ -49,12 +54,12 @@ public class Player : MonoBehaviour
   public List<Tilemap> forbiddenAbilityTilemaps;
   
   // Stats
-  public float actualSpd = 0;
-  public float actualAtt = 0;
-  public float actualDef = 0;
+  public float actualSwf = 0;
+  public float actualMgt = 0;
+  public float actualArm = 0;
   public float actualStr = 0;
   public float actualWis = 0;
-  public float actualDex = 0;
+  public float actualAgi = 0;
   
   private void HandleAbilityCooldowns()
   {
@@ -88,7 +93,7 @@ public class Player : MonoBehaviour
     float multiplier;
 
     if (_hasStatusEffect(Constants.StatusEffects.Weak)) multiplier = 0.5f;
-    else multiplier = 0.5f + (_baseNpcBehaviour.att / 50f);
+    else multiplier = 0.5f + (_baseNpcBehaviour.mgt / 50f);
 
     bool hasDamaging = _hasStatusEffect(Constants.StatusEffects.Damaging);
     if (hasDamaging) multiplier *= 1.25f;
@@ -254,7 +259,7 @@ public class Player : MonoBehaviour
       }
     }
 
-    var speed = Utils.CalculatePlayerMovementSpeed(_baseNpcBehaviour.spd);
+    var speed = Utils.CalculatePlayerMovementSpeed(_baseNpcBehaviour.swf);
     LayerMask mask = LayerMask.GetMask("Actor", "Blocking", "NPC");
 
     var moveY = new Vector2(0, _moveDelta.y);
@@ -440,7 +445,7 @@ public class Player : MonoBehaviour
   
   private float GetAttacksPerSecond()
   {
-    float aps = 1.5f + (6.5f * (actualDex / 75f));
+    float aps = 1.5f + (6.5f * (actualAgi / 75f));
     if (_hasStatusEffect(Constants.StatusEffects.Berserk)) aps *= 1.25f;
     return aps;
   }
@@ -472,10 +477,10 @@ public class Player : MonoBehaviour
     AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Armor)?.CurrentInventoryItem, totalStats);
     AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Accessory)?.CurrentInventoryItem, totalStats);
 
-    actualAtt = _baseNpcBehaviour.att + totalStats[(int)Constants.Stats.ATT];
-    actualSpd = _baseNpcBehaviour.spd + totalStats[(int)Constants.Stats.SPD];
-    actualDex = _baseNpcBehaviour.dex + totalStats[(int)Constants.Stats.DEX];
-    actualDef = _baseNpcBehaviour.def + totalStats[(int)Constants.Stats.DEF];
+    actualMgt = _baseNpcBehaviour.mgt + totalStats[(int)Constants.Stats.MGT];
+    actualSwf = _baseNpcBehaviour.swf + totalStats[(int)Constants.Stats.SWF];
+    actualAgi = _baseNpcBehaviour.agi + totalStats[(int)Constants.Stats.AGI];
+    actualArm = _baseNpcBehaviour.arm + totalStats[(int)Constants.Stats.ARM];
     actualStr = _baseNpcBehaviour.str + totalStats[(int)Constants.Stats.STR];
     actualWis = _baseNpcBehaviour.wis + totalStats[(int)Constants.Stats.WIS];
   }
@@ -486,6 +491,30 @@ public class Player : MonoBehaviour
     {
       InventoryOpen = !InventoryOpen;
       TopLeftGroup.transform.localScale = InventoryOpen ? Vector3.one : Vector3.zero;
+    }
+  }
+  
+  private void LevelUp()
+  {
+    level++;
+    ParticleManager.Singleton.SpawnParticles(
+      transform,
+      Color.yellow,
+      20, 
+      "particles_28"
+    );
+    PlayerLog.Singleton.AddItem($"<color=#F1C40F>Level up!</color> You are now level {level}!");
+  }
+
+  public void GiveXp(int amount)
+  {
+    experience += amount;
+    PlayerLog.Singleton.AddItem($"You got {amount} xp!");
+
+    while (experience >= xpNeeded)
+    {
+      experience -= xpNeeded;
+      LevelUp();
     }
   }
 
@@ -531,6 +560,11 @@ public class Player : MonoBehaviour
   {
     HandleMoving();
     UpdateStats();
+  }
+
+  private void Awake()
+  {
+    Singleton = this;
   }
 
   private void Update()

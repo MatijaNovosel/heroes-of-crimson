@@ -20,12 +20,12 @@ public class StatLine : MonoBehaviour
     {
         _statText.text = stat switch
         {
-            Constants.Stats.ATT => player.actualAtt.ToString(),
-            Constants.Stats.DEF => player.actualDef.ToString(),
+            Constants.Stats.MGT => player.actualMgt.ToString(),
+            Constants.Stats.ARM => player.actualArm.ToString(),
             Constants.Stats.WIS => player.actualWis.ToString(),
             Constants.Stats.STR => player.actualStr.ToString(),
-            Constants.Stats.DEX => player.actualDex.ToString(),
-            Constants.Stats.SPD => player.actualSpd.ToString(),
+            Constants.Stats.AGI => player.actualAgi.ToString(),
+            Constants.Stats.SWF => player.actualSwf.ToString(),
             _ => throw new ArgumentOutOfRangeException()
         };
     }

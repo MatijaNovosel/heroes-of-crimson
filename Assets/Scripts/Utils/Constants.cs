@@ -28,12 +28,12 @@ namespace HeroesOfCrimson.Utils
     
     public enum Stats
     {
-      ATT = 0,
-      DEF = 1,
+      MGT = 0,
+      ARM = 1,
       WIS = 2,
       STR = 3,
-      DEX = 4,
-      SPD = 5
+      AGI = 4,
+      SWF = 5
     }
     
     public enum StatusEffects

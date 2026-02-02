@@ -21,16 +21,15 @@ public class PlayerLog : MonoBehaviour
     {
         var obj = Instantiate(playerLogItemPrefab, playerLogItemContainer.transform);
         var item = obj.GetComponent<PlayerLogItem>();
-        var id = Utils.RandInt(1, 99999);
-        item.Initialize(value, id);
-        _items.Add(id, item);
+        item.Initialize(value, ++i);
+        _items.Add(i, item);
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F2))
         {
-            AddItem($"{i++} Hey look over here! <i> A man shouts at you from the distance </i>");
+            AddItem("Hey look over here! <i> A man shouts at you from the distance </i>");
         }
     }
 }
