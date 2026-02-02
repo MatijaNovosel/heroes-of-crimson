@@ -98,6 +98,7 @@ namespace HeroesOfCrimson.Utils
         Constants.StatusEffects.Poisoned,
         Constants.StatusEffects.Stunned,
         Constants.StatusEffects.Weak,
+        Constants.StatusEffects.Burning,
       }.Contains(statusEffect);
     }
 
@@ -178,6 +179,11 @@ namespace HeroesOfCrimson.Utils
         case Constants.StatusEffects.Paralyzed:
             data.Name = "Paralyzed";
             data.Description = "Cannot move but can still act.";
+            break;
+        
+        case Constants.StatusEffects.Burning:
+            data.Name = "Burning";
+            data.Description = "Losing health over time.";
             break;
 
         default:
