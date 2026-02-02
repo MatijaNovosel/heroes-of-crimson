@@ -20,6 +20,7 @@ namespace UI
             if (args.Length < 3)
             {
                 Debug.LogWarning("Usage: give <itemId> <amount>");
+                PlayerLog.Singleton.AddItem("Usage: give <itemId> <amount>");
                 return;
             }
 
