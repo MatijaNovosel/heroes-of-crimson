@@ -1,3 +1,4 @@
+using HeroesOfCrimson.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,11 @@ public class MainMenu : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene((int)Constants.Screens.NewGame);
+    }
+    
+    public void Continue()
+    {
+        SceneManager.LoadScene((int)Constants.Screens.Continue);
     }
 }

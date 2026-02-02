@@ -35,6 +35,14 @@ namespace HeroesOfCrimson.Utils
       AGI = 4,
       SWF = 5
     }
+
+    public enum Screens
+    {
+      MainMenu = 0,
+      NewGame = 1,
+      Continue = 2,
+      Game = 3
+    }
     
     public enum StatusEffects
     {

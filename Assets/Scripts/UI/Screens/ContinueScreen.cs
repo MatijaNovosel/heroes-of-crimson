@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class NewGame : MonoBehaviour
+public class ContinueScreen : MonoBehaviour
 {
     public int selectedCharacter = (int)Constants.Character.Mage;
     public Image knightCharacterImage;
