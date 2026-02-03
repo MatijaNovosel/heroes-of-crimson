@@ -13,6 +13,7 @@ public class LootBag : MonoBehaviour
     private bool isUIActive = false;
 
     private LineRenderer _rangeCircle;
+    private RectTransform _inventoryUIRect;
     
     private List<Item> _seededItems = new List<Item>();
     private bool _lootGenerated = false;
@@ -31,6 +32,8 @@ public class LootBag : MonoBehaviour
             new Color(0.8f, 0f, 0f, 0.4f)
         );
 
+        _inventoryUIRect = _lootBagUI.GetComponent<RectTransform>();
+
         if (initialItemIds.Length > 0)
         {
             GenerateLoot(initialItemIds);
@@ -43,19 +46,17 @@ public class LootBag : MonoBehaviour
 
         float distance = Vector3.Distance(_player.transform.position, transform.position);
         bool isNear = distance <= InteractionRange;
-
-        RectTransform inventoryUIRect = _lootBagUI.GetComponent<RectTransform>();
         var lootInventory = _lootContainerInventory.GetComponent<Inventory>();
 
         if (isNear && !isUIActive)
         {
-            inventoryUIRect.localScale = Vector3.one;
+            _inventoryUIRect.localScale = Vector3.one;
             isUIActive = true;
             lootInventory.ShowLoot(this);
         }
         else if (!isNear && isUIActive)
         {
-            inventoryUIRect.localScale = Vector3.zero;
+            _inventoryUIRect.localScale = Vector3.zero;
             isUIActive = false;
         }
     }
@@ -92,7 +93,16 @@ public class LootBag : MonoBehaviour
     }
 
     public List<Item> GetLootItems() => _seededItems;
+    
+    public void TryDestroyIfEmpty()
+    {
+        if (_seededItems.Count > 0) return;
 
+        _inventoryUIRect.localScale = Vector3.zero;
+        isUIActive = false;
+        Destroy(gameObject);
+    }
+    
     public void RemoveItem(Item item)
     {
         _seededItems.Remove(item);

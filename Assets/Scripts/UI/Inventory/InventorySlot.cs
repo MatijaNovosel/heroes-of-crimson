@@ -121,9 +121,19 @@ namespace UI.Inventory
             // MOVE (empty target)
             if (toSlot.CurrentInventoryItem is null)
             {
-                if (fromLoot && !toLoot) fromInventory.GetCurrentLootBag()?.RemoveItem(droppedItem.ItemInSlot);
-                if (!fromLoot && toLoot) toInventory.GetCurrentLootBag()?.AddItem(droppedItem.ItemInSlot);
+                if (fromLoot && !toLoot)
+                {
+                    fromInventory.GetCurrentLootBag()?.RemoveItem(droppedItem.ItemInSlot);
+                }
+
+                if (!fromLoot && toLoot)
+                {
+                    toInventory.GetCurrentLootBag()?.AddItem(droppedItem.ItemInSlot);
+                }
+
                 MoveItem(droppedItem, toSlot);
+
+                fromInventory.GetCurrentLootBag()?.TryDestroyIfEmpty();
                 return;
             }
 
@@ -144,6 +154,9 @@ namespace UI.Inventory
             }
 
             SwapItems(fromSlot, toSlot);
+
+            fromInventory.GetCurrentLootBag()?.TryDestroyIfEmpty();
+            toInventory.GetCurrentLootBag()?.TryDestroyIfEmpty();
         }
         
         private static void MoveItem(InventoryItem item, InventorySlot targetSlot)
