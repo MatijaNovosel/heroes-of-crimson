@@ -16,6 +16,7 @@ namespace Models
         public Constants.Sounds shootSound;
         public Sprite sprite;
         public List<int> stats;
+        public float range;
     
         // Projectile info
         public int minDamage;
@@ -23,5 +24,6 @@ namespace Models
         public int projectileCount;
         public int projectileDegree;
         public Sprite projectileSprite;
+        public float projectileScale;
     }
 }

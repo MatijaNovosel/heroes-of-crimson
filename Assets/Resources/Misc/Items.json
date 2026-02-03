@@ -13,6 +13,8 @@
       "maxDamage": 40,
       "projectileCount": 1,
       "rarity": 1,
+      "range": 10.0,
+      "projectileScale": 0.6,
       "stats": [0, 0, 0, 0, 0, 0]
     },
     {
@@ -28,6 +30,8 @@
       "maxDamage": 80,
       "projectileCount": 1,
       "rarity": 2,
+      "range": 8.0,
+      "projectileScale": 1.0,
       "stats": [0, 0, 4, 0, 0, 0]
     },
     {
@@ -44,6 +48,8 @@
       "maxDamage": 80,
       "projectileCount": 1,
       "rarity": 3,
+      "range": 3.0,
+      "projectileScale": 1.0,
       "stats": [0, 0, 0, 0, 0, 0]
     },
     {
@@ -59,6 +65,8 @@
       "maxDamage": 80,
       "projectileCount": 1,
       "rarity": 1,
+      "range": 8.0,
+      "projectileScale": 0.6,
       "stats": [0, 0, 0, 0, 0, 0]
     },
     {
@@ -75,6 +83,8 @@
       "projectileCount": 1,
       "impactColor": "E74C3C",
       "rarity": 4,
+      "range": 3.0,
+      "projectileScale": 1.0,
       "stats": [0, 0, 0, 0, 0, 0]
     },
     {
@@ -90,6 +100,8 @@
       "maxDamage": 80,
       "projectileCount": 1,
       "rarity": 1,
+      "range": 3.0,
+      "projectileScale": 1.0,
       "stats": [0, 0, 0, 0, 0, 0]
     },
     {
@@ -106,6 +118,8 @@
       "maxDamage": 80,
       "projectileCount": 1,
       "rarity": 3,
+      "range": 3.0,
+      "projectileScale": 1.0,
       "stats": [0, 0, 0, 0, 0, 0]
     },
     {
@@ -121,6 +135,8 @@
       "maxDamage": 40,
       "projectileCount": 1,
       "rarity": 1,
+      "range": 3.5,
+      "projectileScale": 1.0,
       "stats": [0, 0, 0, 0, 0, 0]
     },
     {
@@ -136,6 +152,8 @@
       "maxDamage": 40,
       "projectileCount": 1,
       "rarity": 1,
+      "range": 4.0,
+      "projectileScale": 1.0,
       "stats": [0, 0, 0, 0, 0, 0]
     },
     {

@@ -21,6 +21,8 @@ public class Projectile : MonoBehaviour
   private float _rotation = 45;
   private float _moveSpeed = 10f;
   private const float _timeToLive = 2f;
+  private float _range = 10f;
+  private Vector3 _startPosition;
   
   private List<Constants.CollisionGroups> _willDamage = new();
   private List<Constants.CollisionGroups> _willPenetrate = new();
@@ -29,10 +31,12 @@ public class Projectile : MonoBehaviour
   public void Setup(ProjectileSetupModel payload)
   {
     var spriteRenderer = GetComponent<SpriteRenderer>();
-    
-    _direction = payload.Direction;
+
+    _direction = payload.Direction.normalized;
+    _startPosition = transform.position;
 
     if (payload.Speed != null) _moveSpeed = (float)payload.Speed;
+    if (payload.Range != null) _range = (float)payload.Range;
     if (payload.Sprite) spriteRenderer.sprite = payload.Sprite;
     if (payload.Rotation != null) _rotation = (float)payload.Rotation;
     if (payload.WillDamage.Count != 0) _willDamage = payload.WillDamage;
@@ -40,34 +44,25 @@ public class Projectile : MonoBehaviour
     if (payload.Scale != null) _scale = (float)payload.Scale;
     if (payload.Damage != null) _damage = (float)payload.Damage;
     if (payload.StatusEffects.Count != 0) _statusEffects = payload.StatusEffects;
-    
+
     _particleColor = payload.ParticleColor ?? Color.white;
     _angle = Utils.GetAngleFromShootDirection(payload.Direction);
 
-    gameObject.transform.localScale = new Vector3(_scale, _scale, 0);
-
-    Destroy(gameObject, _timeToLive);
+    transform.localScale = new Vector3(_scale, _scale, 0);
   }
 
   void Update()
   {
     transform.position += _direction * (_moveSpeed * Time.deltaTime);
-    /*
+    float traveled = Vector3.Distance(_startPosition, transform.position);
+    
+    if (traveled >= _range)
+    {
+      Destroy(gameObject);
+      return;
+    }
 
-      Projectiles must be rotated according to the sprite
-      
-        DIR - Normal angle
-        DIA - Minus 45 degrees
-        RAN - Random
-
-      For sine movement:
-
-        Vector3 pos = transform.position;
-        pos += direction * moveSpeed * Time.deltaTime;
-        transform.position = pos + transform.right * Mathf.Sin(Time.time * frequency) * amplitude;
-
-    */
-    transform.eulerAngles = new Vector3(0, 0, this._angle - this._rotation);
+    transform.eulerAngles = new Vector3(0, 0, _angle - _rotation);
   }
 
   private void OnTriggerEnter2D(Collider2D collider)

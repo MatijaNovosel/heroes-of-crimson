@@ -177,6 +177,8 @@ public class Player : MonoBehaviour
     
     Sprite weaponProjectile = null;
     int weaponProjectileDegree = 0;
+    float weaponRange = 8.0f;
+    float projectileScale = 0.6f;
     var weaponInventorySlot = Hotbar.GetHotbarSlot(0);
     Color impactColor = Color.white;
     var damage = 0.0;
@@ -188,6 +190,8 @@ public class Player : MonoBehaviour
       weaponProjectile = item.projectileSprite;
       shootSound = ResourceCacher.Singleton.Sounds[item.shootSound];
       impactColor = item.impactColor;
+      weaponRange = item.range;
+      projectileScale = item.projectileScale;
       damage = CalculateWeaponDamage(item.minDamage, item.maxDamage);
     }
     
@@ -197,13 +201,14 @@ public class Player : MonoBehaviour
       shootDirection,
       weaponProjectileDegree,
       null,
-      0.6f,
+      projectileScale,
       (float)damage,
       weaponProjectile,
       new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
       new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
       impactColor,
-      new ()
+      new (),
+      weaponRange
     ));
     
     _lastFired = Time.time;

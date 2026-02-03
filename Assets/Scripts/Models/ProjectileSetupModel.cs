@@ -13,6 +13,7 @@ namespace Models
         public readonly float? Speed;
         public readonly float? Scale;
         public readonly float? Damage;
+        public readonly float? Range;
         public readonly List<Constants.CollisionGroups> WillDamage;
         public readonly List<Constants.CollisionGroups> WillPenetrate;
         public readonly List<Constants.StatusEffects> StatusEffects;
@@ -28,7 +29,8 @@ namespace Models
             List<Constants.CollisionGroups> willDamage,
             List<Constants.CollisionGroups> willPenetrate,
             Color? particleColor,
-            List<Constants.StatusEffects> statusEffects
+            List<Constants.StatusEffects> statusEffects,
+            float? range
         )
         {
             this.Direction = direction;
@@ -41,6 +43,7 @@ namespace Models
             this.WillPenetrate = willPenetrate;
             this.ParticleColor = particleColor;
             this.StatusEffects = statusEffects;
+            this.Range = range;
         }
     }
 }

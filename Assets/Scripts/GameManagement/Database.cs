@@ -58,10 +58,13 @@ public class Database : MonoBehaviour
     item.minDamage = databaseItem.minDamage;
     item.maxDamage = databaseItem.maxDamage;
     item.rarity = (Constants.ItemRarity)databaseItem.rarity;
-    item.projectileCount = databaseItem.projectileCount;
     item.stats = databaseItem.stats;
-    item.projectileDegree = databaseItem.projectileDegree;
     item.impactColor = Color.white;
+    
+    item.projectileCount = databaseItem.projectileCount;
+    item.projectileDegree = databaseItem.projectileDegree;
+    item.range = databaseItem.range;
+    item.projectileScale = databaseItem.projectileScale;
 
     if (databaseItem.impactColor != null)
     {
