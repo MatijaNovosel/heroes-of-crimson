@@ -737,7 +737,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -746,6 +746,28 @@ TextureImporter:
       bones: []
       spriteID: 0d8dd39f8f9d148438f61e95715dc7f8
       internalID: 1750466776
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_29
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 32
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0219d8a41dfee844aaea0317703545e1
+      internalID: 1286547244
       vertices: []
       indices: 
       edges: []
@@ -788,6 +810,7 @@ TextureImporter:
       projectiles_26: 1596937871
       projectiles_27: 399237267
       projectiles_28: 1750466776
+      projectiles_29: 1286547244
       projectiles_3: -123116942
       projectiles_4: -1830236131
       projectiles_5: -1818829827

@@ -171,5 +171,20 @@ namespace HeroesOfCrimson.Utils
       FireSphere = 2,
       Teleport = 3
     }
+
+    public enum Talents
+    {
+      // Mage
+      ArcaneSupremacyOne = 1,
+      ArcaneSupremacyTwo = 2,
+      ArcaneSupremacyThree = 3,
+      FireSchoolOne = 4,
+      FireSchoolTwo = 5,
+      FireSchoolThree = 6,
+      FireSchoolFour = 7,
+      IceSchoolOne = 8,
+      IceSchoolTwo = 9,
+      IceSchoolThree = 10,
+    }
   }
 }

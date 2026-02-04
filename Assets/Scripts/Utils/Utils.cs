@@ -102,98 +102,153 @@ namespace HeroesOfCrimson.Utils
       }.Contains(statusEffect);
     }
 
-    public static StatusEffectData GetStatusEffectData(Constants.StatusEffects statusEffect)
-{
-    var data = new StatusEffectData
+    public static TalentTreeItemModel GetTalentTreeItemData(Constants.Talents talent)
     {
-        IsNegative = IsNegativeStatusEffect(statusEffect)
-    };
+        var data = new TalentTreeItemModel();
 
-    switch (statusEffect)
-    {
-        case Constants.StatusEffects.Speedy:
-            data.Name = "Speedy";
-            data.Description = "Movement speed is increased.";
-            break;
+        switch (talent)
+        {
+            case Constants.Talents.ArcaneSupremacyOne:
+                data.Name = "Arcane Supremacy 1";
+                data.Description = "Increases mana by 20";
+                break;
+            case Constants.Talents.ArcaneSupremacyTwo:
+                data.Name = "Arcane Supremacy 2";
+                data.Description = "Increases mana by 40";
+                break;
+            case Constants.Talents.ArcaneSupremacyThree:
+                data.Name = "Arcane Supremacy 3";
+                data.Description = "Increases mana by 60";
+                break;
+            case Constants.Talents.FireSchoolOne:
+                data.Name = "Fire Adept 1";
+                data.Description = "All fire spells gain 1 more projectile";
+                break;
+            case Constants.Talents.FireSchoolTwo:
+                data.Name = "Fire Adept 2";
+                data.Description = "All fire spells gain 1 more projectile (2 more)";
+                break;
+            case Constants.Talents.FireSchoolThree:
+                data.Name = "Fire Adept 3";
+                data.Description = "All fire spells gain 1 more projectile (3 more)";
+                break;
+            case Constants.Talents.FireSchoolFour:
+                data.Name = "Fire Adept 4";
+                data.Description = "All fire spells gain 1 more projectile (4 more)";
+                break;
+            case Constants.Talents.IceSchoolOne:
+                data.Name = "Ice Adept 1";
+                data.Description = "Increase WIS by 1";
+                break;
+            case Constants.Talents.IceSchoolTwo:
+                data.Name = "Ice Adept 2";
+                data.Description = "Increase WIS by 2";
+                break;
+            case Constants.Talents.IceSchoolThree:
+                data.Name = "Ice Adept 3";
+                data.Description = "Increase WIS by 3";
+                break;
+            default:
+                data.Name = "Unknown";
+                data.Description = "Unknown talent";
+                break;
+        }
 
-        case Constants.StatusEffects.Slowed:
-            data.Name = "Slowed";
-            data.Description = "Movement speed is reduced.";
-            break;
-
-        case Constants.StatusEffects.Silenced:
-            data.Name = "Silenced";
-            data.Description = "Cannot use abilities.";
-            break;
-
-        case Constants.StatusEffects.Damaging:
-            data.Name = "Damaging";
-            data.Description = "Deals increased damage.";
-            break;
-
-        case Constants.StatusEffects.ArmorBroken:
-            data.Name = "Armor Broken";
-            data.Description = "Defense is greatly reduced.";
-            break;
-
-        case Constants.StatusEffects.Healing:
-            data.Name = "Healing";
-            data.Description = "Gradually restores health over time.";
-            break;
-
-        case Constants.StatusEffects.Poisoned:
-            data.Name = "Poisoned";
-            data.Description = "Takes damage over time.";
-            break;
-
-        case Constants.StatusEffects.Bleeding:
-            data.Name = "Bleeding";
-            data.Description = "Loses health over time when moving.";
-            break;
-
-        case Constants.StatusEffects.Armored:
-            data.Name = "Armored";
-            data.Description = "Defense is increased.";
-            break;
-
-        case Constants.StatusEffects.Invincible:
-            data.Name = "Invincible";
-            data.Description = "Cannot take damage.";
-            break;
-
-        case Constants.StatusEffects.Weak:
-            data.Name = "Weak";
-            data.Description = "Deals reduced damage.";
-            break;
-
-        case Constants.StatusEffects.Stunned:
-            data.Name = "Stunned";
-            data.Description = "Cannot move or act.";
-            break;
-
-        case Constants.StatusEffects.Berserk:
-            data.Name = "Berserk";
-            data.Description = "Greatly increased attack speed and damage taken.";
-            break;
-
-        case Constants.StatusEffects.Paralyzed:
-            data.Name = "Paralyzed";
-            data.Description = "Cannot move but can still act.";
-            break;
-        
-        case Constants.StatusEffects.Burning:
-            data.Name = "Burning";
-            data.Description = "Losing health over time.";
-            break;
-
-        default:
-            data.Name = "Unknown";
-            data.Description = "No description available.";
-            break;
+        return data;
     }
 
-    return data;
-}
+    public static StatusEffectData GetStatusEffectData(Constants.StatusEffects statusEffect)
+    {
+        var data = new StatusEffectData
+        {
+            IsNegative = IsNegativeStatusEffect(statusEffect)
+        };
+
+        switch (statusEffect)
+        {
+            case Constants.StatusEffects.Speedy:
+                data.Name = "Speedy";
+                data.Description = "Movement speed is increased.";
+                break;
+
+            case Constants.StatusEffects.Slowed:
+                data.Name = "Slowed";
+                data.Description = "Movement speed is reduced.";
+                break;
+
+            case Constants.StatusEffects.Silenced:
+                data.Name = "Silenced";
+                data.Description = "Cannot use abilities.";
+                break;
+
+            case Constants.StatusEffects.Damaging:
+                data.Name = "Damaging";
+                data.Description = "Deals increased damage.";
+                break;
+
+            case Constants.StatusEffects.ArmorBroken:
+                data.Name = "Armor Broken";
+                data.Description = "Defense is greatly reduced.";
+                break;
+
+            case Constants.StatusEffects.Healing:
+                data.Name = "Healing";
+                data.Description = "Gradually restores health over time.";
+                break;
+
+            case Constants.StatusEffects.Poisoned:
+                data.Name = "Poisoned";
+                data.Description = "Takes damage over time.";
+                break;
+
+            case Constants.StatusEffects.Bleeding:
+                data.Name = "Bleeding";
+                data.Description = "Loses health over time when moving.";
+                break;
+
+            case Constants.StatusEffects.Armored:
+                data.Name = "Armored";
+                data.Description = "Defense is increased.";
+                break;
+
+            case Constants.StatusEffects.Invincible:
+                data.Name = "Invincible";
+                data.Description = "Cannot take damage.";
+                break;
+
+            case Constants.StatusEffects.Weak:
+                data.Name = "Weak";
+                data.Description = "Deals reduced damage.";
+                break;
+
+            case Constants.StatusEffects.Stunned:
+                data.Name = "Stunned";
+                data.Description = "Cannot move or act.";
+                break;
+
+            case Constants.StatusEffects.Berserk:
+                data.Name = "Berserk";
+                data.Description = "Greatly increased attack speed and damage taken.";
+                break;
+
+            case Constants.StatusEffects.Paralyzed:
+                data.Name = "Paralyzed";
+                data.Description = "Cannot move but can still act.";
+                break;
+            
+            case Constants.StatusEffects.Burning:
+                data.Name = "Burning";
+                data.Description = "Losing health over time.";
+                break;
+
+            default:
+                data.Name = "Unknown";
+                data.Description = "No description available.";
+                break;
+        }
+
+        return data;
+    }
 
     
     public static LineRenderer CreateCircle(

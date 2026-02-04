@@ -40,6 +40,9 @@ public class Player : MonoBehaviour
   public bool HoldingItem;
   public bool InventoryOpen;
 
+  // Talents
+  public List<int> learnedTalents = new ();
+  
   // Components
   public GameObject Projectile;
   public Animator animator;
@@ -446,6 +449,21 @@ public class Player : MonoBehaviour
       _baseNpcBehaviour.mp,
       _baseNpcBehaviour.maxMp
     );
+  }
+
+  public void LearnTalent(Constants.Talents talent)
+  {
+    if (learnedTalents.Contains((int)talent)) return;
+    learnedTalents.Add((int)talent);
+    if (talent == Constants.Talents.ArcaneSupremacyOne)
+    {
+      _baseNpcBehaviour.maxMp += 20;
+      _baseNpcBehaviour.mp += 20;
+      _baseNpcBehaviour.mp = Mathf.Min(
+        _baseNpcBehaviour.mp,
+        _baseNpcBehaviour.maxMp
+      );
+    }
   }
   
   private float GetAttacksPerSecond()

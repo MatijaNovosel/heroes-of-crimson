@@ -39,15 +39,7 @@ namespace UI.Inventory
         public void OnPointerEnter(PointerEventData eventData)
         {
             if (!ItemInSlot) return;
-            TooltipManager.Singleton.SetInfo(
-                ItemInSlot.name,
-                ItemInSlot.description,
-                ItemInSlot.tag,
-                ItemInSlot.rarity, 
-                ItemInSlot.minDamage, 
-                ItemInSlot.maxDamage,
-                ItemInSlot.stats
-            );
+            TooltipManager.Singleton.SetInfo(ItemInSlot);
             TooltipManager.Singleton.Show();
         }
 

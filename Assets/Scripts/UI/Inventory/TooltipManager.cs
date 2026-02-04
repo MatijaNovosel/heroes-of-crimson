@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using HeroesOfCrimson.Utils;
+using Models;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Diagnostics;
@@ -28,6 +29,9 @@ public class TooltipManager : MonoBehaviour
     public TMP_Text TooltipDamage;
     public Divider DividerWeapons;
     
+    // Range
+    public TMP_Text TooltipRange;
+    
     // Stats
     public Divider DividerStats;
     public RectTransform TooltipStats;
@@ -42,113 +46,60 @@ public class TooltipManager : MonoBehaviour
     {
         Singleton = this;
     }
-
-    public void SetInfo(
-        string title,
-        string description,
-        Constants.ItemTag tag,
-        Constants.ItemRarity rarity,
-        int minDamage,
-        int maxDamage,
-        List<int> stats
-    )
+    
+    private void SetActive(GameObject go, bool state)
     {
-        TitleText.text = title;
-        DescriptionText.text = description;
-        TypeText.text = tag.ToString();
-        
-        TooltipDamage.text = $"Damage: {minDamage} - {maxDamage}";
+        if (go.activeSelf != state) go.SetActive(state);
+    }
 
-        if (tag == Constants.ItemTag.Weapon)
+    private void SetStat(Image image, int value)
+    {
+        bool active = value != 0;
+        SetActive(image.gameObject, active);
+        if (active) image.GetComponentInChildren<TMP_Text>().text = value.ToString();
+    }
+
+    public void SetInfo(Item item)
+    {
+        TitleText.text = item.name;
+        DescriptionText.text = item.description;
+        TypeText.text = item.tag.ToString();
+
+        bool isWeapon = item.tag == Constants.ItemTag.Weapon;
+
+        SetActive(TooltipDamage.gameObject, isWeapon);
+        SetActive(TooltipRange.gameObject, isWeapon);
+        SetActive(DividerWeapons.gameObject, isWeapon);
+
+        if (isWeapon)
         {
-            TooltipDamage.gameObject.SetActive(true);
-            DividerWeapons.gameObject.SetActive(true);
-        }
-        else
-        {
-            TooltipDamage.gameObject.SetActive(false);
-            DividerWeapons.gameObject.SetActive(false);
+            TooltipDamage.text = $"Damage: {item.minDamage} - {item.maxDamage}";
+            TooltipRange.text = $"Range: {item.range}";
         }
 
-        if (!stats.TrueForAll(x => x == 0))
+        bool hasAnyStats = item.stats.Exists(x => x != 0);
+
+        SetActive(DividerStats.gameObject, hasAnyStats);
+        SetActive(TooltipStats.gameObject, hasAnyStats);
+
+        if (hasAnyStats)
         {
-            DividerStats.gameObject.SetActive(true);
-            TooltipStats.gameObject.SetActive(true);
-            
-            if (stats[(int)Constants.Stats.MGT] != 0)
-            {
-                TooltipMgt.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.MGT].ToString();
-                TooltipMgt.gameObject.SetActive(true);
-            }
-            else
-            {
-                TooltipMgt.gameObject.SetActive(false);
-            }
-            
-            if (stats[(int)Constants.Stats.ARM] != 0)
-            {
-                TooltipArm.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.ARM].ToString();
-                TooltipArm.gameObject.SetActive(true);
-            }
-            else
-            {
-                TooltipArm.gameObject.SetActive(false);
-            }
-            
-            if (stats[(int)Constants.Stats.WIS] != 0)
-            {
-                TooltipWis.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.WIS].ToString();
-                TooltipWis.gameObject.SetActive(true);
-            }
-            else
-            {
-                TooltipWis.gameObject.SetActive(false);
-            }
-            
-            if (stats[(int)Constants.Stats.STR] != 0)
-            {
-                TooltipStr.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.STR].ToString();
-                TooltipStr.gameObject.SetActive(true);
-            }
-            else
-            {
-                TooltipStr.gameObject.SetActive(false);
-            }
-            
-            if (stats[(int)Constants.Stats.AGI] != 0)
-            {
-                TooltipAgi.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.AGI].ToString();
-                TooltipAgi.gameObject.SetActive(true);
-            }
-            else
-            {
-                TooltipAgi.gameObject.SetActive(false);
-            }
-            
-            if (stats[(int)Constants.Stats.SWF] != 0)
-            {
-                TooltipSwf.GetComponentInChildren<TMP_Text>().text = stats[(int)Constants.Stats.SWF].ToString();
-                TooltipSwf.gameObject.SetActive(true);
-            }
-            else
-            {
-                TooltipSwf.gameObject.SetActive(false);
-            }
+            SetStat(TooltipMgt, item.stats[(int)Constants.Stats.MGT]);
+            SetStat(TooltipArm, item.stats[(int)Constants.Stats.ARM]);
+            SetStat(TooltipWis, item.stats[(int)Constants.Stats.WIS]);
+            SetStat(TooltipStr, item.stats[(int)Constants.Stats.STR]);
+            SetStat(TooltipAgi, item.stats[(int)Constants.Stats.AGI]);
+            SetStat(TooltipSwf, item.stats[(int)Constants.Stats.SWF]);
         }
-        else
+
+        TooltipRarityImg.color = item.rarity switch
         {
-            DividerStats.gameObject.SetActive(false);
-            TooltipStats.gameObject.SetActive(false);
-        }
-            
-        TooltipRarityImg.color = rarity switch
-        {
-            Constants.ItemRarity.Common => Color.white,
-            Constants.ItemRarity.Uncommon => Color.limeGreen,
-            Constants.ItemRarity.Rare => Color.dodgerBlue,
-            Constants.ItemRarity.Epic => Color.purple,
+            Constants.ItemRarity.Common    => Color.white,
+            Constants.ItemRarity.Uncommon  => Color.limeGreen,
+            Constants.ItemRarity.Rare      => Color.dodgerBlue,
+            Constants.ItemRarity.Epic      => Color.purple,
             Constants.ItemRarity.Legendary => Color.darkOrange,
-            _ => throw new ArgumentOutOfRangeException(nameof(rarity), rarity, null)
+            _ => Color.white
         };
     }
 
