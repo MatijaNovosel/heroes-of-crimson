@@ -6,15 +6,7 @@ public class WaterController : MonoBehaviour
     public Tilemap waterTilemap;
     public Player player;
     public PlayerWaterMask waterMask;
-    private SpriteRenderer playerRenderer;
-
-    void Start()
-    {
-        if (player)
-        {
-            playerRenderer = player.GetComponent<SpriteRenderer>();
-        }
-    }
+    public SpriteRenderer playerShadow;
 
     void Update()
     {
@@ -25,6 +17,7 @@ public class WaterController : MonoBehaviour
 
         if (onWater)
         {
+            playerShadow.enabled = false;
             waterMask.gameObject.SetActive(true);
             Vector3 playerPos = player.gameObject.transform.position;
             playerPos.y -= 0.5f;
@@ -32,6 +25,7 @@ public class WaterController : MonoBehaviour
         }
         else
         {
+            playerShadow.enabled = true;
             waterMask.gameObject.SetActive(false);
         }
     }
