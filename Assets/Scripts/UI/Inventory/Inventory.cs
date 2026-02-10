@@ -15,7 +15,7 @@ namespace UI.Inventory
         private LootBag _currentLootBag;
         public bool IsLootInventory => _currentLootBag != null;
 
-        public void SetLootSource(LootBag bag)
+        private void _setLootSource(LootBag bag)
         {
             _currentLootBag = bag;
         }
@@ -43,13 +43,14 @@ namespace UI.Inventory
                 SpawnItem(Database.Singleton.GetItem(7001));
                 SpawnItem(Database.Singleton.GetItem(7002));
                 SpawnItem(Database.Singleton.GetItem(6000));
+                SpawnItem(Database.Singleton.GetItem(2009));
             }
         }
         
         public void ShowLoot(LootBag bag)
         {
             ClearInventory();
-            SetLootSource(bag);
+            _setLootSource(bag);
             var items = bag.GetLootItems();
             for (int i = 0; i < items.Count && i < inventorySlots.Length; i++) SpawnItem(items[i], i);
         }

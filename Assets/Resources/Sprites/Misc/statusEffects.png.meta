@@ -477,7 +477,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -486,6 +486,28 @@ TextureImporter:
       bones: []
       spriteID: 9701ca5c25551e944869d1ba4e906981
       internalID: -1015571161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: statusEffects_15
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 120
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65027f061fec1d840839aada28597a5a
+      internalID: 1601207429
       vertices: []
       indices: 
       edges: []
@@ -513,6 +535,7 @@ TextureImporter:
       statusEffects_12: 1274955148
       statusEffects_13: 731921815
       statusEffects_14: -1015571161
+      statusEffects_15: 1601207429
       statusEffects_2: 5961046714670147108
       statusEffects_3: -2606277680237257118
       statusEffects_4: 487058810857674891

@@ -373,6 +373,11 @@ public class Player : MonoBehaviour
       _baseNpcBehaviour.maxHp
     );
   }
+
+  public void OnItemEquip(Item item)
+  {
+    print(item);
+  }
   
   public void RestoreHp(int amount)
   {
@@ -560,6 +565,25 @@ public class Player : MonoBehaviour
       LevelUp();
     }
   }
+  
+  private void OnWeaponEquipped(Item item)
+  {
+    Debug.Log($"Equipped weapon: {item.name}");
+    if (item.id == 2009)
+    {
+      _baseNpcBehaviour.ApplyStatusEffect(Constants.StatusEffects.Radiance);
+    }
+  }
+
+  private void OnWeaponUnequipped(Item item)
+  {
+    Debug.Log($"Unequipped weapon: {item.name}");
+    _lastWeaponItem = null;
+    if (item.id == 2009)
+    {
+      _baseNpcBehaviour.RemoveStatusEffect(Constants.StatusEffects.Radiance);
+    }
+  }
 
   private void Start()
   {
@@ -597,6 +621,11 @@ public class Player : MonoBehaviour
     _boxCollider = GetComponent<BoxCollider2D>();
     _animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
     animator.runtimeAnimatorController = _animatorOverrideController;
+    
+    var weaponSlot = Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Weapon);
+
+    weaponSlot.OnItemEquipped += OnWeaponEquipped;
+    weaponSlot.OnItemUnequipped += OnWeaponUnequipped;
   }
 
   private void FixedUpdate()

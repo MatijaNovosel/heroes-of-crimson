@@ -1,5 +1,7 @@
+using System;
 using GameManagement;
 using HeroesOfCrimson.Utils;
+using Models;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,6 +13,9 @@ namespace UI.Inventory
         public InventoryItem CurrentInventoryItem { get; set; }
         public bool IsHotbar;
         public Constants.ItemTag Tag;
+        
+        public event Action<Item> OnItemEquipped;
+        public event Action<Item> OnItemUnequipped;
 
         private Image _image;
 
@@ -21,6 +26,15 @@ namespace UI.Inventory
         }
 
         private void SetImage(Sprite sprite) => _image.sprite = sprite;
+        
+        public void SetItem(InventoryItem newItem)
+        {
+            var oldItem = CurrentInventoryItem?.ItemInSlot;
+            CurrentInventoryItem = newItem;
+            if (oldItem != null) OnItemUnequipped?.Invoke(oldItem);
+            if (newItem != null) OnItemEquipped?.Invoke(newItem.ItemInSlot);
+            RefreshVisual();
+        }
         
         public void OnPointerClick(PointerEventData data)
         {
@@ -121,18 +135,9 @@ namespace UI.Inventory
             // MOVE (empty target)
             if (toSlot.CurrentInventoryItem is null)
             {
-                if (fromLoot && !toLoot)
-                {
-                    fromInventory.GetCurrentLootBag()?.RemoveItem(droppedItem.ItemInSlot);
-                }
-
-                if (!fromLoot && toLoot)
-                {
-                    toInventory.GetCurrentLootBag()?.AddItem(droppedItem.ItemInSlot);
-                }
-
+                if (fromLoot && !toLoot) fromInventory.GetCurrentLootBag()?.RemoveItem(droppedItem.ItemInSlot);
+                if (!fromLoot && toLoot) toInventory.GetCurrentLootBag()?.AddItem(droppedItem.ItemInSlot);
                 MoveItem(droppedItem, toSlot);
-
                 fromInventory.GetCurrentLootBag()?.TryDestroyIfEmpty();
                 return;
             }
@@ -162,37 +167,20 @@ namespace UI.Inventory
         private static void MoveItem(InventoryItem item, InventorySlot targetSlot)
         {
             var previousSlot = item.ActiveSlot;
-
-            if (previousSlot)
-            {
-                previousSlot.CurrentInventoryItem = null;
-                previousSlot.RefreshVisual();
-            }
-
+            previousSlot?.SetItem(null);
             item.ActiveSlot = targetSlot;
-            targetSlot.CurrentInventoryItem = item;
-
+            targetSlot.SetItem(item);
             item.transform.SetParent(targetSlot.transform, false);
             ((RectTransform)item.transform).anchoredPosition = Vector2.zero;
-
-            targetSlot.RefreshVisual();
         }
-
         
         private static void SwapItems(InventorySlot slotA, InventorySlot slotB)
         {
             var itemA = slotA.CurrentInventoryItem;
             var itemB = slotB.CurrentInventoryItem;
 
-            slotA.CurrentInventoryItem = itemB;
-            slotB.CurrentInventoryItem = itemA;
-
-            if (itemB != null)
-            {
-                itemB.ActiveSlot = slotA;
-                itemB.transform.SetParent(slotA.transform, false);
-                ((RectTransform)itemB.transform).anchoredPosition = Vector2.zero;
-            }
+            slotA.SetItem(itemB);
+            slotB.SetItem(itemA);
 
             if (itemA != null)
             {
@@ -201,9 +189,12 @@ namespace UI.Inventory
                 ((RectTransform)itemA.transform).anchoredPosition = Vector2.zero;
             }
 
-            slotA.RefreshVisual();
-            slotB.RefreshVisual();
+            if (itemB != null)
+            {
+                itemB.ActiveSlot = slotA;
+                itemB.transform.SetParent(slotA.transform, false);
+                ((RectTransform)itemB.transform).anchoredPosition = Vector2.zero;
+            }
         }
-
     }
 }

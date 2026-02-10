@@ -8,12 +8,18 @@ namespace Models
         public Constants.StatusEffects Type;
         public float Duration;
         public float ExpireTime;
+        public bool Permanent;
 
-        public ActiveStatusEffect(Constants.StatusEffects type, float duration)
+        public ActiveStatusEffect(
+            Constants.StatusEffects type,
+            float duration,
+            bool permanent = false
+        )
         {
             Type = type;
             ExpireTime = Time.time + duration;
             Duration = duration;
+            Permanent = permanent;
         }
         
         public float RemainingTime => Mathf.Max(0, ExpireTime - Time.time);

@@ -240,6 +240,11 @@ namespace HeroesOfCrimson.Utils
                 data.Name = "Burning";
                 data.Description = "Losing health over time.";
                 break;
+            
+            case Constants.StatusEffects.Radiance:
+                data.Name = "Radiance";
+                data.Description = "Burning enemies around you.";
+                break;
 
             default:
                 data.Name = "Unknown";

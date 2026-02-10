@@ -155,6 +155,24 @@
       "range": 5.0,
       "projectileScale": 0.6,
       "stats": [0, 0, 0, 0, 0, 0]
+    },
+    {
+      "id": 2009,
+      "name": "Radiance",
+      "description": "A divine weapon that causes damage and a bright burning effect that lays waste to nearby enemies.\n\n<color=#F1C40F>Burns enemies around you in an AoE.</color>",
+      "tag": 2,
+      "spritePath": "weapons_27",
+      "projectilePath": "projectiles_28",
+      "shootSound": 1008,
+      "projectileDegree": 45,
+      "minDamage": 100,
+      "maxDamage": 120,
+      "projectileCount": 1,
+      "impactColor": "F1C40F",
+      "rarity": 5,
+      "range": 4.0,
+      "projectileScale": 0.6,
+      "stats": [5, 0, 0, 0, 3, 3]
     }
   ]
 }

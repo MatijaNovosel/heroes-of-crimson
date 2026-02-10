@@ -142,10 +142,17 @@ public class BaseNPCBehaviour : MonoBehaviour
           break;
       }
 
-      if (effect.ExpireTime <= now)
-      {
-        ActiveStatusEffects.RemoveAt(i);
-      }
+      if (effect.Permanent) return;
+      if (effect.ExpireTime <= now) ActiveStatusEffects.RemoveAt(i);
+    }
+  }
+
+  public void RemoveStatusEffect(Constants.StatusEffects effect)
+  {
+    var existing = ActiveStatusEffects.FirstOrDefault(e => e.Type == effect);
+    if (existing != null) 
+    {
+      ActiveStatusEffects.Remove(existing);
     }
   }
 
@@ -166,7 +173,12 @@ public class BaseNPCBehaviour : MonoBehaviour
     }
     else
     {
-      ActiveStatusEffects.Add(new ActiveStatusEffect(effect, duration));
+      var shouldBePermanent = effect == Constants.StatusEffects.Radiance;
+      ActiveStatusEffects.Add(new ActiveStatusEffect(
+        effect,
+        duration,
+        shouldBePermanent
+      ));
       var data = Utils.GetStatusEffectData(effect);
       
       GameManager.Singleton.ShowText(

@@ -26,7 +26,6 @@ public class StatusEffectBar : MonoBehaviour
         foreach (var effect in activeEffects)
         {
             if (_items.ContainsKey(effect.Type)) continue;
-
             var go = Instantiate(statusEffectBarItemPrefab, transform);
             var item = go.GetComponent<StatusEffectBarItem>();
             item.Initialize(effect);
@@ -37,13 +36,13 @@ public class StatusEffectBar : MonoBehaviour
         {
             if (_items.TryGetValue(effect.Type, out var item))
             {
-                item.UpdateFill(effect.NormalizedTime);
+                if (!effect.Permanent) item.UpdateFill(effect.NormalizedTime);
             }
         }
 
         var activeTypes = activeEffects.Select(e => e.Type).ToHashSet();
-
         var toRemove = _items.Keys.Where(t => !activeTypes.Contains(t)).ToList();
+        
         foreach (var type in toRemove)
         {
             Destroy(_items[type].gameObject);
