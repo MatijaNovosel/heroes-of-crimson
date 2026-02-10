@@ -1,0 +1,28 @@
+﻿{
+  "items": [
+    {
+      "id": 7000,
+      "name": "Health potion",
+      "description": "A foul smelling liquid, it shimmers in a peculiar red color. \n\n<color=#EF5350> Restores 50 HP </color>",
+      "tag": 7,
+      "spritePath": "consumables_0",
+      "rarity": 1
+    },
+    {
+      "id": 7001,
+      "name": "Mana potion",
+      "description": "A sweet smelling liquid, it is a muddy blue color. \n\n<color=#3498DB> Restores 30 MP </color>",
+      "tag": 7,
+      "spritePath": "consumables_10",
+      "rarity": 1
+    },
+    {
+      "id": 7002,
+      "name": "Potion of life",
+      "description": "An extraordinary nectar that seeped in from the heavens. \n\n<color=#EF5350> Increases max HP by 5 </color>",
+      "tag": 7,
+      "spritePath": "consumables_8",
+      "rarity": 5
+    }
+  ]
+}

@@ -7,10 +7,16 @@ namespace GameManagement
     public class ResourceCacher : MonoBehaviour
     {
         public static ResourceCacher Singleton;
-        public Sprite[] ArmorAndWeaponSprites;
-        public Sprite[] ProjectileSprites;
-        public Sprite[] ConsumableSprites;
+        
+        // Item sprites
+        public Sprite[] WeaponSprites;
         public Sprite[] MiscSprites;
+        public Sprite[] ConsumableSprites;
+        public Sprite[] AbilitySprites;
+        public Sprite[] AccessorySprites;
+        public Sprite[] ArmorSprites;
+        
+        public Sprite[] ProjectileSprites;
         public Sprite[] StatusEffectSprites;
 
         public Dictionary<Constants.Sounds, AudioClip> Sounds = new ();
@@ -20,10 +26,16 @@ namespace GameManagement
         {
             Singleton = this;
             
-            ArmorAndWeaponSprites = Resources.LoadAll<Sprite>("Sprites/Items/armorAndWeapons");
-            ProjectileSprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/projectiles");
+            // Item sprites
+            WeaponSprites = Resources.LoadAll<Sprite>("Sprites/Items/weapons");
             MiscSprites = Resources.LoadAll<Sprite>("Sprites/Items/misc");
             ConsumableSprites = Resources.LoadAll<Sprite>("Sprites/Items/consumables");
+            ArmorSprites = Resources.LoadAll<Sprite>("Sprites/Items/armor");
+            AbilitySprites = Resources.LoadAll<Sprite>("Sprites/Items/abilities");
+            AccessorySprites = Resources.LoadAll<Sprite>("Sprites/Items/accessories");
+            
+            // Other sprites
+            ProjectileSprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/projectiles");
             StatusEffectSprites = Resources.LoadAll<Sprite>("Sprites/Misc/statusEffects");
             
             // General sounds

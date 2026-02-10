@@ -16,7 +16,6 @@ namespace UI.Inventory
         public Item ItemInSlot { get; private set; }
         public InventorySlot ActiveSlot { get; set; }
         private Inventory _owner;
-        private Player _player;
 
         private void Awake()
         {
@@ -24,7 +23,6 @@ namespace UI.Inventory
             _itemIcon = GetComponent<Image>();
             _rectTransform = GetComponent<RectTransform>();
             _itemIcon.raycastTarget = true;
-            _player = GameObject.Find("Player").GetComponent<Player>();
             _owner = GetComponentInParent<Inventory>();
         }
 
@@ -53,7 +51,7 @@ namespace UI.Inventory
             transform.SetParent(_owner.draggablesTransform);
             _canvasGroup.blocksRaycasts = false;
             _itemIcon.raycastTarget = false;
-            _player.HoldingItem = true;
+            Player.Singleton.HoldingItem = true;
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -69,7 +67,7 @@ namespace UI.Inventory
         {
             _canvasGroup.blocksRaycasts = true;
             _itemIcon.raycastTarget = true;
-            _player.HoldingItem = false;
+            Player.Singleton.HoldingItem = false;
             transform.SetParent(ActiveSlot.transform, false);
             ((RectTransform)transform).anchoredPosition = Vector2.zero;
         }

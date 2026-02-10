@@ -111,22 +111,6 @@ public class BaseNPCBehaviour : MonoBehaviour
       transform.Translate(moveX.x * speed, 0, 0);
     }
   }
-
-  public float CalculateWeaponDamage(int minDamage, int maxDamage)
-  {
-    // Roll weapon base damage (max is automatically exclusive for ints)
-    int rolledBaseDamage = Random.Range(minDamage, maxDamage);
-
-    float multiplier;
-
-    if (ActiveStatusEffects.Any(e => e.Type == Constants.StatusEffects.Weak)) multiplier = 0.5f;
-    else multiplier = 0.5f + (mgt / 50f);
-
-    bool hasDamaging = ActiveStatusEffects.Any(e => e.Type == Constants.StatusEffects.Damaging);
-    if (hasDamaging) multiplier *= 1.25f;
-
-    return rolledBaseDamage * multiplier;
-  }
   
   private void DisplayStatusEffects()
   {

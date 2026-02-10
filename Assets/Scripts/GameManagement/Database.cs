@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using GameManagement;
 using HeroesOfCrimson.Utils;
@@ -8,10 +9,27 @@ public class Database : MonoBehaviour
 {
   public static Database Singleton;
   private DatabaseItemList _databaseItemList;
+  private Dictionary<Constants.ItemTag, Dictionary<string, Sprite>> _spriteLookup;
 
+  private Dictionary<string, Sprite> ToDict(IEnumerable<Sprite> sprites)
+  {
+    return sprites.ToDictionary(s => s.name, s => s);
+  }
+  
   private void Awake()
   {
     Singleton = this;
+
+    _spriteLookup = new()
+    {
+      { Constants.ItemTag.Misc, ToDict(ResourceCacher.Singleton.MiscSprites) },
+      { Constants.ItemTag.Weapon, ToDict(ResourceCacher.Singleton.WeaponSprites) },
+      { Constants.ItemTag.Ability, ToDict(ResourceCacher.Singleton.AbilitySprites) },
+      { Constants.ItemTag.Armor, ToDict(ResourceCacher.Singleton.ArmorSprites) },
+      { Constants.ItemTag.Accessory, ToDict(ResourceCacher.Singleton.AccessorySprites) },
+      { Constants.ItemTag.Consumable, ToDict(ResourceCacher.Singleton.ConsumableSprites) }
+    };
+
     _loadItems();
   }
 
@@ -29,27 +47,8 @@ public class Database : MonoBehaviour
     item.description = databaseItem.description;
     item.tag = (Constants.ItemTag)databaseItem.tag;
 
-    switch (item.tag)
-    {
-      case Constants.ItemTag.Misc:
-      {
-        item.sprite = ResourceCacher.Singleton.MiscSprites.First(x => x.name == databaseItem.spritePath);
-        break;
-      }
-      case Constants.ItemTag.Weapon:
-      case Constants.ItemTag.Ability:
-      case Constants.ItemTag.Armor:
-      case Constants.ItemTag.Accessory:
-      {
-        item.sprite = ResourceCacher.Singleton.ArmorAndWeaponSprites.First(x => x.name == databaseItem.spritePath);
-        break;
-      }
-      case Constants.ItemTag.Consumable:
-      {
-        item.sprite = ResourceCacher.Singleton.ConsumableSprites.First(x => x.name == databaseItem.spritePath);
-        break;
-      }
-    }
+    item.sprite = _spriteLookup[item.tag]
+      .FirstOrDefault(s => s.Value.name == databaseItem.spritePath).Value;
 
     var projectileSprite = ResourceCacher.Singleton.ProjectileSprites.FirstOrDefault(x => x.name == databaseItem.projectilePath);
     
@@ -75,17 +74,34 @@ public class Database : MonoBehaviour
     
     return item;
   }
-
-  private void _loadItems()
+  
+  private void LoadAndAdd(string path)
   {
-    var jsonFile = Resources.Load<TextAsset>("Misc/Items");
-    
-    if (!jsonFile)
+    var file = Resources.Load<TextAsset>(path);
+    if (file == null)
     {
-      Debug.LogError("Item JSON not found!");
+      Debug.LogError($"Item database file not found at {path}");
       return;
     }
-    
-    _databaseItemList = JsonUtility.FromJson<DatabaseItemList>(jsonFile.text);
+
+    var list = JsonUtility.FromJson<DatabaseItemList>(file.text);
+    if (list?.items == null) return;
+
+    _databaseItemList.items.AddRange(list.items);
+  }
+  
+  private void _loadItems()
+  {
+    _databaseItemList = new DatabaseItemList
+    {
+      items = new List<DatabaseItem>()
+    };
+
+    LoadAndAdd("Misc/Items/Weapons");
+    LoadAndAdd("Misc/Items/Accessories");
+    LoadAndAdd("Misc/Items/Misc");
+    LoadAndAdd("Misc/Items/Abilities");
+    LoadAndAdd("Misc/Items/Armor");
+    LoadAndAdd("Misc/Items/Consumables");
   }
 }

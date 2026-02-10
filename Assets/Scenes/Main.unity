@@ -3526,7 +3526,7 @@ Transform:
   m_GameObject: {fileID: 1469857299}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -39.85, y: -61.949, z: 0}
+  m_LocalPosition: {x: -38.75, y: -39.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6714,10 +6714,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4afa853dadd64379972c6efd0283aa4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManagement.SpriteCacher
-  ArmorAndWeaponSprites: []
-  ProjectileSprites: []
-  ConsumableSprites: []
+  WeaponSprites: []
   MiscSprites: []
+  ConsumableSprites: []
+  AbilitySprites: []
+  AccessorySprites: []
+  ArmorSprites: []
+  ProjectileSprites: []
   StatusEffectSprites: []
 --- !u!1 &426986399
 GameObject:
@@ -7261,7 +7264,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2013632277, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  m_Sprite: {fileID: -1821125796, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -68603,8 +68606,8 @@ Transform:
   m_GameObject: {fileID: 1689346550}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.525, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.58, z: 1}
+  m_LocalPosition: {x: 0, y: -0.52, z: 0}
+  m_LocalScale: {x: 0.87, y: 0.86, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 225077525}
@@ -68657,7 +68660,7 @@ SpriteRenderer:
   m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -4756028443593143600, guid: 30f90e1fd385f6c4f911ab4a87ab8096, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.41960785}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.49019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -77506,7 +77509,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -2013632277, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  m_Sprite: {fileID: -2091024376, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -77893,11 +77896,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7860581793131152276, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -39.85
+      value: -38.75
       objectReference: {fileID: 0}
     - target: {fileID: 7860581793131152276, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -61.949
+      value: -39.17
       objectReference: {fileID: 0}
     - target: {fileID: 7860581793131152276, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: m_LocalPosition.z

@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace Models
 {
-    public readonly struct ProjectileSetupModel
+    public struct ProjectileSetupModel
     {
-        public readonly Vector3 Direction;
+        public Vector3 Direction;
         [CanBeNull] public readonly Sprite Sprite;
         public readonly float? Rotation;
         public readonly float? Speed;
         public readonly float? Scale;
-        public readonly float? Damage;
+        public float? Damage;
         public readonly float? Range;
         public readonly List<Constants.CollisionGroups> WillDamage;
         public readonly List<Constants.CollisionGroups> WillPenetrate;

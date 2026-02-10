@@ -4,7 +4,9 @@ using System.Linq;
 using GameManagement;
 using UnityEngine;
 using HeroesOfCrimson.Utils;
+using JetBrains.Annotations;
 using Models;
+using Models.Player;
 using UI;
 using UI.Inventory;
 using UnityEngine.EventSystems;
@@ -24,7 +26,6 @@ public class Player : MonoBehaviour
 
   private Vector3 _moveDelta;
   private RaycastHit2D _hit;
-  private const float FiringDelay = 0.3f;
   
   // Experience
   public float level = 1;
@@ -63,6 +64,57 @@ public class Player : MonoBehaviour
   public float actualStr = 0;
   public float actualWis = 0;
   public float actualAgi = 0;
+  
+  private CachedWeaponFireData _cachedWeapon;
+  [CanBeNull] private Item _lastWeaponItem;
+  private ProjectileSetupModel _cachedProjectileSetup;
+  
+  private void UpdateWeaponCache()
+  {
+    var weaponSlot = Hotbar.GetHotbarSlot(0);
+    var weaponItem = weaponSlot?.CurrentInventoryItem?.ItemInSlot;
+
+    if (weaponItem?.id == _lastWeaponItem?.id) return;
+    _lastWeaponItem = weaponItem;
+
+    _cachedWeapon = new CachedWeaponFireData
+    {
+      projectileSprite = null,
+      projectileDegree = 0,
+      projectileScale = 0.6f,
+      range = 8f,
+      impactColor = Color.white,
+      shootSound = ResourceCacher.Singleton.Sounds[Constants.Sounds.MagicShoot],
+      minDamage = 0,
+      maxDamage = 0
+    };
+
+    if (weaponItem)
+    {
+      _cachedWeapon.projectileSprite = weaponItem.projectileSprite;
+      _cachedWeapon.projectileDegree = weaponItem.projectileDegree;
+      _cachedWeapon.projectileScale = weaponItem.projectileScale;
+      _cachedWeapon.range = weaponItem.range;
+      _cachedWeapon.impactColor = weaponItem.impactColor;
+      _cachedWeapon.shootSound = ResourceCacher.Singleton.Sounds[weaponItem.shootSound];
+      _cachedWeapon.minDamage = weaponItem.minDamage;
+      _cachedWeapon.maxDamage = weaponItem.maxDamage;
+    }
+
+    _cachedProjectileSetup = new ProjectileSetupModel(
+      Vector2.zero,
+      _cachedWeapon.projectileDegree,
+      null,
+      _cachedWeapon.projectileScale,
+      0f,
+      _cachedWeapon.projectileSprite,
+      new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
+      new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
+      _cachedWeapon.impactColor,
+      new(),
+      _cachedWeapon.range
+    );
+  }
   
   private void HandleAbilityCooldowns()
   {
@@ -169,50 +221,23 @@ public class Player : MonoBehaviour
         break;
     }
     
-    
     var proj = Instantiate(
       Projectile,
       new Vector3(projectilePosX, projectilePosY, 0),
       Quaternion.identity
     );
 
-    AudioClip shootSound = ResourceCacher.Singleton.Sounds[Constants.Sounds.MagicShoot];
+    AudioManager.Singleton.PlaySound(_cachedWeapon.shootSound);
     
-    Sprite weaponProjectile = null;
-    int weaponProjectileDegree = 0;
-    float weaponRange = 8.0f;
-    float projectileScale = 0.6f;
-    var weaponInventorySlot = Hotbar.GetHotbarSlot(0);
-    Color impactColor = Color.white;
-    var damage = 0.0;
+    _cachedProjectileSetup.Direction = shootDirection;
+    _cachedProjectileSetup.Damage = CalculateWeaponDamage(
+      _cachedWeapon.minDamage,
+      _cachedWeapon.maxDamage
+    );
 
-    if (weaponInventorySlot.CurrentInventoryItem.ItemInSlot)
-    {
-      var item = weaponInventorySlot.CurrentInventoryItem.ItemInSlot;
-      weaponProjectileDegree = item.projectileDegree;
-      weaponProjectile = item.projectileSprite;
-      shootSound = ResourceCacher.Singleton.Sounds[item.shootSound];
-      impactColor = item.impactColor;
-      weaponRange = item.range;
-      projectileScale = item.projectileScale;
-      damage = CalculateWeaponDamage(item.minDamage, item.maxDamage);
-    }
-    
-    AudioManager.Singleton.PlaySound(shootSound);
-    
-    proj.GetComponent<Projectile>().Setup(new ProjectileSetupModel(
-      shootDirection,
-      weaponProjectileDegree,
-      null,
-      projectileScale,
-      (float)damage,
-      weaponProjectile,
-      new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
-      new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
-      impactColor,
-      new (),
-      weaponRange
-    ));
+    AudioManager.Singleton.PlaySound(_cachedWeapon.shootSound);
+
+    proj.GetComponent<Projectile>().Setup(_cachedProjectileSetup);
     
     _lastFired = Time.time;
   }
@@ -369,17 +394,12 @@ public class Player : MonoBehaviour
 
   private void HandleAbility()
   {
-    if (_hasStatusEffect(Constants.StatusEffects.Silenced) || ConsoleMenu.Singleton.ConsoleMenuOpen)
-    {
-      return;
-    }
+    if (_hasStatusEffect(Constants.StatusEffects.Silenced) || ConsoleMenu.Singleton.ConsoleMenuOpen) return;
     
     HandleAbilityCooldowns();
 
-    for (int i = 0; i < abilities.Length; i++)
+    foreach (var ability in abilities)
     {
-      var ability = abilities[i];
-
       if (!Input.GetKeyDown(ability.key) || !ability.IsReady) continue;
 
       if (IsCursorOverForbiddenAbilityTile() || _baseNpcBehaviour.mp < ability.manaCost)
@@ -592,6 +612,7 @@ public class Player : MonoBehaviour
 
   private void Update()
   {
+    UpdateWeaponCache();
     HandleAbility();
     HandleShooting();
     HandleUIKeys();
