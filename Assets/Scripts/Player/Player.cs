@@ -55,13 +55,9 @@ public class Player : MonoBehaviour
   public PlayerHealthBar HealthBar;
   public PlayerManaBar ManaBar;
   
-  private static readonly List<Constants.CollisionGroups> RadianceWillDamage =
-    new() { Constants.CollisionGroups.Enemy };
-  
   public List<Tilemap> forbiddenAbilityTilemaps;
   
   private float _radianceLastTick;
-  private const float RadianceInterval = 2f;
   
   // Stats
   public float actualSwf = 0;
@@ -594,7 +590,7 @@ public class Player : MonoBehaviour
   private void _handleRadiance()
   {
     if (!_hasStatusEffect(Constants.StatusEffects.Radiance)) return;
-    if (Time.time - _radianceLastTick < RadianceInterval) return;
+    if (Time.time - _radianceLastTick < 2f) return;
     _radianceLastTick = Time.time;
 
     var hits = Physics2D.OverlapCircleAll(
@@ -606,7 +602,7 @@ public class Player : MonoBehaviour
     {
       if (!col) continue;
       var collidable = col.GetComponent<Collidable>();
-      if (!collidable.collisionGroups.Any(x => RadianceWillDamage.Contains(x))) continue;
+      if (collidable.collisionGroups.All(x => x != Constants.CollisionGroups.Enemy)) continue;
       
       col.SendMessage(
         "ReceiveDamage",

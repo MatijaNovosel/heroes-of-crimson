@@ -77955,6 +77955,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7860581793131152277, guid: fc920363a5cee564e95302175fa8e339, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860581793131152277, guid: fc920363a5cee564e95302175fa8e339, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860581793131152277, guid: fc920363a5cee564e95302175fa8e339, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860581793131152277, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: m_DrawMode
       value: 0
       objectReference: {fileID: 0}
