@@ -610,14 +610,14 @@ public class Player : MonoBehaviour
       var collidable = col.GetComponent<Collidable>();
       if (!collidable) continue;
 
-      if (!collidable.collisionGroups.Any(x => RadianceWillDamage.Contains(x)))
-      {
-        continue;
-      }
+      if (!collidable.collisionGroups.Any(x => RadianceWillDamage.Contains(x))) continue;
       
       col.SendMessage(
         "ReceiveDamage",
-        new DamageModel(20f, new List<Constants.StatusEffects>())
+        new DamageModel(
+          0f, 
+          new List<Constants.StatusEffects>() { Constants.StatusEffects.Burning }
+        )
       );
     }
   }

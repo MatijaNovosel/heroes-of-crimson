@@ -134,26 +134,36 @@ public class BaseNPCBehaviour : MonoBehaviour
 
       switch (effect.Type)
       {
+        case Constants.StatusEffects.Burning:
+          if (now >= effect.NextTickTime)
+          {
+            ReceiveDamage(new DamageModel(20f, new List<Constants.StatusEffects>()));
+            effect.NextTickTime = now + 2f;
+          }
+          break;
         case Constants.StatusEffects.Bleeding:
-          //
+          if (now >= effect.NextTickTime)
+          {
+            ReceiveDamage(new DamageModel(10f, new List<Constants.StatusEffects>()));
+            effect.NextTickTime = now + 1f;
+          }
           break;
         case Constants.StatusEffects.ArmorBroken:
           arm = 0;
           break;
       }
 
-      if (effect.Permanent) return;
-      if (effect.ExpireTime <= now) ActiveStatusEffects.RemoveAt(i);
+      if (!effect.Permanent && effect.ExpireTime <= now)
+      {
+        ActiveStatusEffects.RemoveAt(i);
+      }
     }
   }
 
   public void RemoveStatusEffect(Constants.StatusEffects effect)
   {
     var existing = ActiveStatusEffects.FirstOrDefault(e => e.Type == effect);
-    if (existing != null) 
-    {
-      ActiveStatusEffects.Remove(existing);
-    }
+    if (existing != null) ActiveStatusEffects.Remove(existing);
   }
 
   private void Update()
@@ -201,22 +211,9 @@ public class BaseNPCBehaviour : MonoBehaviour
 
     return Mathf.Max(reducedByDef, minAllowedDamage);
   }
-  
-  private void ReceiveDamage(DamageModel payload)
+
+  private void _showDamageText(float damage)
   {
-    if (hitSound) AudioManager.Singleton.PlaySound(hitSound);
-
-    foreach (var effect in payload.StatusEffects)
-    {
-      ApplyStatusEffect(effect);
-    }
-
-    if (invincible) return;
-
-    float finalDamage = CalculateDamageAfterDefense(payload.Value);
-
-    hp -= finalDamage;
-
     var angle = Random.Range(-40f, 40f);
     var radians = angle * Mathf.Deg2Rad;
     var randomDirection = new Vector3(Mathf.Sin(radians), Mathf.Cos(radians), 0f);
@@ -227,12 +224,12 @@ public class BaseNPCBehaviour : MonoBehaviour
     var minFontSize = 200f;
     var maxFontSize = 280f;
 
-    var t = Mathf.InverseLerp(minDamage, maxDamage, finalDamage);
+    var t = Mathf.InverseLerp(minDamage, maxDamage, damage);
     var fontSize = Mathf.Lerp(minFontSize, maxFontSize, t);
     var randomScale = Random.Range(0.9f, 1.2f);
 
     var textObj = GameManager.Singleton.ShowText(
-      $"-{Mathf.RoundToInt(finalDamage)}",
+      $"-{Mathf.RoundToInt(damage)}",
       (int)fontSize,
       Color.red,
       new Vector3(transform.position.x, transform.position.y + 0.8f, 0),
@@ -245,6 +242,17 @@ public class BaseNPCBehaviour : MonoBehaviour
       textObj.obj.transform.rotation = Quaternion.Euler(0, 0, randomRotation);
       textObj.obj.transform.localScale *= randomScale;
     }
+  }
+  
+  private void ReceiveDamage(DamageModel payload)
+  {
+    if (hitSound) AudioManager.Singleton.PlaySound(hitSound);
+    foreach (var effect in payload.StatusEffects) ApplyStatusEffect(effect);
+    if (invincible) return;
+
+    float finalDamage = CalculateDamageAfterDefense(payload.Value);
+    hp -= finalDamage;
+    if (finalDamage > 0) _showDamageText(finalDamage);
 
     if (hp <= 0)
     {
