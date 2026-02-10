@@ -594,7 +594,6 @@ public class Player : MonoBehaviour
   private void _handleRadiance()
   {
     if (!_hasStatusEffect(Constants.StatusEffects.Radiance)) return;
-
     if (Time.time - _radianceLastTick < RadianceInterval) return;
     _radianceLastTick = Time.time;
 
@@ -606,10 +605,7 @@ public class Player : MonoBehaviour
     foreach (var col in hits)
     {
       if (!col) continue;
-
       var collidable = col.GetComponent<Collidable>();
-      if (!collidable) continue;
-
       if (!collidable.collisionGroups.Any(x => RadianceWillDamage.Contains(x))) continue;
       
       col.SendMessage(
