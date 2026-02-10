@@ -55,7 +55,13 @@ public class Player : MonoBehaviour
   public PlayerHealthBar HealthBar;
   public PlayerManaBar ManaBar;
   
+  private static readonly List<Constants.CollisionGroups> RadianceWillDamage =
+    new() { Constants.CollisionGroups.Enemy };
+  
   public List<Tilemap> forbiddenAbilityTilemaps;
+  
+  private float _radianceLastTick;
+  private const float RadianceInterval = 2f;
   
   // Stats
   public float actualSwf = 0;
@@ -584,6 +590,37 @@ public class Player : MonoBehaviour
       _baseNpcBehaviour.RemoveStatusEffect(Constants.StatusEffects.Radiance);
     }
   }
+  
+  private void _handleRadiance()
+  {
+    if (!_hasStatusEffect(Constants.StatusEffects.Radiance)) return;
+
+    if (Time.time - _radianceLastTick < RadianceInterval) return;
+    _radianceLastTick = Time.time;
+
+    var hits = Physics2D.OverlapCircleAll(
+      transform.position,
+      4f
+    );
+
+    foreach (var col in hits)
+    {
+      if (!col) continue;
+
+      var collidable = col.GetComponent<Collidable>();
+      if (!collidable) continue;
+
+      if (!collidable.collisionGroups.Any(x => RadianceWillDamage.Contains(x)))
+      {
+        continue;
+      }
+      
+      col.SendMessage(
+        "ReceiveDamage",
+        new DamageModel(20f, new List<Constants.StatusEffects>())
+      );
+    }
+  }
 
   private void Start()
   {
@@ -642,6 +679,7 @@ public class Player : MonoBehaviour
   private void Update()
   {
     UpdateWeaponCache();
+    _handleRadiance();
     HandleAbility();
     HandleShooting();
     HandleUIKeys();
