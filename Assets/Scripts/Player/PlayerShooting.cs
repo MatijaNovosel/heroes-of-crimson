@@ -13,7 +13,6 @@ public class PlayerShooting : MonoBehaviour
     private Player _player;
     private Animator _animator;
     private Vector3 _moveDelta;
-    private BoxCollider2D _boxCollider;
     private float _lastFired;
     public Inventory hotbar;
     public GameObject projectilePrefab;
@@ -238,7 +237,6 @@ public class PlayerShooting : MonoBehaviour
     {
         _player = GetComponent<Player>();
         _animator = GetComponent<Animator>();
-        _boxCollider = GetComponent<BoxCollider2D>();
     }
 
     void Update()

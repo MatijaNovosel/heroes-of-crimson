@@ -18,28 +18,25 @@ using Random = UnityEngine.Random;
 public class Player : MonoBehaviour
 {
   public static Player Singleton;
-
-  private Vector3 _moveDelta;
-  private RaycastHit2D _hit;
   
   // Experience
   public float level = 1;
   public int experience = 0;
   public int xpNeeded = 100;
   
-  [Header("Abilities")]
-  public AbilitySlot[] abilities = new AbilitySlot[4];
-  
-  private float _lastFired;
+  // Flags
+  [HideInInspector]
   public bool isShooting;
-  
+  [HideInInspector]
   public bool HoldingItem;
+  [HideInInspector]
   public bool InventoryOpen;
 
   // Talents
   public List<int> learnedTalents = new ();
   
   // Components
+  [HideInInspector]
   public Animator animator;
   private AnimatorOverrideController _animatorOverrideController;
   private BaseNPCBehaviour _baseNpcBehaviour;
@@ -47,9 +44,8 @@ public class Player : MonoBehaviour
   public RectTransform TopLeftGroup;
   public PlayerHealthBar HealthBar;
   public PlayerManaBar ManaBar;
-  private PlayerShooting _playerShooting;
   
-  public List<Tilemap> forbiddenAbilityTilemaps;
+  private PlayerShooting _playerShootingComponent;
   
   private float _radianceLastTick;
   
@@ -61,38 +57,10 @@ public class Player : MonoBehaviour
   public float actualWis = 0;
   public float actualAgi = 0;
   
-  private void HandleAbilityCooldowns()
+  public float CurrentMana
   {
-    foreach (var ability in abilities)
-    {
-      if (ability.cooldownImage is null) continue;
-      if (ability.IsReady) ability.cooldownImage.fillAmount = 1f;
-      else ability.cooldownImage.fillAmount = ability.CooldownRemaining / ability.cooldown;
-    }
-  }
-  
-  private GameObject GetAbilityPrefab(Constants.AbilityType abilityType)
-  {
-    return abilityType switch
-    {
-      Constants.AbilityType.Meteor => Resources.Load<GameObject>("Prefabs/Abilities/Meteor"),
-      Constants.AbilityType.FireSphere => Resources.Load<GameObject>("Prefabs/Abilities/FireSphere"),
-      _ => null
-    };
-  }
-  
-  private bool IsCursorOverForbiddenAbilityTile()
-  {
-    Vector3 mouseWorldPos = Utils.GetMousePosition();
-
-    foreach (var tilemap in forbiddenAbilityTilemaps)
-    {
-      if (!tilemap) continue;
-      Vector3Int cellPos = tilemap.WorldToCell(mouseWorldPos);
-      if (tilemap.HasTile(cellPos)) return true;
-    }
-
-    return false;
+    get => _baseNpcBehaviour.mp;
+    set => _baseNpcBehaviour.mp = value;
   }
 
   public bool HasStatusEffect(Constants.StatusEffects statusEffect)
@@ -126,58 +94,6 @@ public class Player : MonoBehaviour
       _baseNpcBehaviour.mp,
       _baseNpcBehaviour.maxMp
     );
-  }
-
-  private void HandleAbility()
-  {
-    if (HasStatusEffect(Constants.StatusEffects.Silenced) || ConsoleMenu.Singleton.ConsoleMenuOpen) return;
-    
-    HandleAbilityCooldowns();
-
-    foreach (var ability in abilities)
-    {
-      if (!Input.GetKeyDown(ability.key) || !ability.IsReady) continue;
-
-      if (IsCursorOverForbiddenAbilityTile() || _baseNpcBehaviour.mp < ability.manaCost)
-      {
-        AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Error);
-        continue;
-      }
-
-      var prefab = GetAbilityPrefab(ability.abilityType);
-
-      _baseNpcBehaviour.mp -= ability.manaCost;
-      ability.lastUsedTime = Time.time;
-
-      var cursorPosition = Utils.GetMousePosition();
-
-      switch (ability.abilityType)
-      {
-        case Constants.AbilityType.Meteor:
-        case Constants.AbilityType.FireSphere:
-          var abilityObj = Instantiate(
-            prefab,
-            new Vector3(cursorPosition.x, cursorPosition.y + 0.8f, 0),
-            Quaternion.identity
-          );
-
-          if (abilityObj.TryGetComponent<Meteor>(out var meteor))
-          {
-            meteor.Init(cursorPosition);
-          }
-          else if (abilityObj.TryGetComponent<FireSphere>(out var fireSphere))
-          {
-            fireSphere.Init();
-          }
-          
-          break;
-        case Constants.AbilityType.Teleport:
-          transform.position = cursorPosition;
-          AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Teleport);
-          ParticleManager.Singleton.SpawnParticles(transform, Color.white, 50);
-          break;
-      }
-    }
   }
 
   private void HandleRegen()
@@ -286,17 +202,16 @@ public class Player : MonoBehaviour
   
   private void OnWeaponEquipped(Item item)
   {
-    Debug.Log($"Equipped weapon: {item.name}");
     if (item.id == 2009)
     {
       _baseNpcBehaviour.ApplyStatusEffect(Constants.StatusEffects.Radiance);
+      PlayerLog.Singleton.AddItem("<color=#F1C40F>You feel a great warmth around you.</color>");
     }
   }
 
   private void OnWeaponUnequipped(Item item)
   {
-    Debug.Log($"Unequipped weapon: {item.name}");
-    _playerShooting.SetLastWeapon(null);
+    _playerShootingComponent.SetLastWeapon(null);
     if (item.id == 2009)
     {
       _baseNpcBehaviour.RemoveStatusEffect(Constants.StatusEffects.Radiance);
@@ -381,13 +296,12 @@ public class Player : MonoBehaviour
   private void Awake()
   {
     Singleton = this;
-    _playerShooting = GetComponent<PlayerShooting>();
+    _playerShootingComponent = GetComponent<PlayerShooting>();
   }
 
   private void Update()
   {
     _handleItemEffects();
-    HandleAbility();
     HandleUIKeys();
     HandleRegen();
     HandleManaRegen();

@@ -3548,35 +3548,6 @@ MonoBehaviour:
   level: 1
   experience: 0
   xpNeeded: 100
-  abilities:
-  - key: 49
-    cooldownImage: {fileID: 1193286956}
-    cooldown: 1
-    manaCost: 30
-    ignoreForbiddenTiles: 0
-    abilityType: 1
-    lastUsedTime: -999
-  - key: 50
-    cooldownImage: {fileID: 1618175027}
-    cooldown: 1
-    manaCost: 30
-    ignoreForbiddenTiles: 0
-    abilityType: 2
-    lastUsedTime: -999
-  - key: 51
-    cooldownImage: {fileID: 941271637}
-    cooldown: 1
-    manaCost: 30
-    ignoreForbiddenTiles: 0
-    abilityType: 3
-    lastUsedTime: -999
-  - key: 52
-    cooldownImage: {fileID: 231357626}
-    cooldown: 1
-    manaCost: 30
-    ignoreForbiddenTiles: 0
-    abilityType: 3
-    lastUsedTime: -999
   isShooting: 0
   HoldingItem: 0
   InventoryOpen: 1
@@ -3586,10 +3557,6 @@ MonoBehaviour:
   TopLeftGroup: {fileID: 1967071324}
   HealthBar: {fileID: 809111553}
   ManaBar: {fileID: 415278812}
-  forbiddenAbilityTilemaps:
-  - {fileID: 914398653}
-  - {fileID: 681165206}
-  - {fileID: 909961758}
   actualSwf: 0
   actualMgt: 0
   actualArm: 0
@@ -47910,6 +47877,7 @@ GameObject:
   - component: {fileID: 1469857306}
   - component: {fileID: 1469857307}
   - component: {fileID: 1469857308}
+  - component: {fileID: 1469857309}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -48136,6 +48104,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
   hotbar: {fileID: 1001678528}
   projectilePrefab: {fileID: 5144726427392865407, guid: 4e01153d9ce6d134ba19d3164d6be11d, type: 3}
+--- !u!114 &1469857309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469857299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad161c3d6cf18104287c6d1be90e40f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAbility
+  abilities:
+  - key: 49
+    cooldownImage: {fileID: 1193286956}
+    cooldown: 1
+    manaCost: 30
+    ignoreForbiddenTiles: 0
+    abilityType: 1
+    lastUsedTime: -999
+  - key: 50
+    cooldownImage: {fileID: 1618175027}
+    cooldown: 1
+    manaCost: 30
+    ignoreForbiddenTiles: 0
+    abilityType: 2
+    lastUsedTime: -999
+  - key: 51
+    cooldownImage: {fileID: 941271637}
+    cooldown: 1
+    manaCost: 30
+    ignoreForbiddenTiles: 0
+    abilityType: 3
+    lastUsedTime: -999
+  - key: 52
+    cooldownImage: {fileID: 231357626}
+    cooldown: 1
+    manaCost: 30
+    ignoreForbiddenTiles: 0
+    abilityType: 3
+    lastUsedTime: -999
+  forbiddenAbilityTilemaps:
+  - {fileID: 681165206}
+  - {fileID: 914398653}
 --- !u!1 &1473452287
 GameObject:
   m_ObjectHideFlags: 0
