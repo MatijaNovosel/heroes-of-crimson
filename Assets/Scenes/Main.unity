@@ -3577,6 +3577,7 @@ MonoBehaviour:
     ignoreForbiddenTiles: 0
     abilityType: 3
     lastUsedTime: -999
+  isShooting: 0
   HoldingItem: 0
   InventoryOpen: 1
   learnedTalents: 
@@ -47908,6 +47909,7 @@ GameObject:
   - component: {fileID: 1469857303}
   - component: {fileID: 1469857302}
   - component: {fileID: 1469857306}
+  - component: {fileID: 1469857307}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -48108,6 +48110,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4dd43ecff7a5134c92328e89a4d7cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::YSort
+--- !u!114 &1469857307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469857299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d7f4923f1f510a43a59c714b2017c48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  player: {fileID: 225077527}
 --- !u!1 &1473452287
 GameObject:
   m_ObjectHideFlags: 0

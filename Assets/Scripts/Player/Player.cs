@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
   public AbilitySlot[] abilities = new AbilitySlot[4];
   
   private float _lastFired;
-  private bool _isShooting;
+  public bool isShooting;
   
   public bool HoldingItem;
   public bool InventoryOpen;
@@ -47,7 +47,6 @@ public class Player : MonoBehaviour
   // Components
   public GameObject Projectile;
   public Animator animator;
-  private BoxCollider2D _boxCollider;
   private AnimatorOverrideController _animatorOverrideController;
   private BaseNPCBehaviour _baseNpcBehaviour;
   public Inventory Hotbar;
@@ -149,10 +148,10 @@ public class Player : MonoBehaviour
 
     float multiplier;
 
-    if (_hasStatusEffect(Constants.StatusEffects.Weak)) multiplier = 0.5f;
+    if (HasStatusEffect(Constants.StatusEffects.Weak)) multiplier = 0.5f;
     else multiplier = 0.5f + (_baseNpcBehaviour.mgt / 50f);
 
-    bool hasDamaging = _hasStatusEffect(Constants.StatusEffects.Damaging);
+    bool hasDamaging = HasStatusEffect(Constants.StatusEffects.Damaging);
     if (hasDamaging) multiplier *= 1.25f;
 
     return rolledBaseDamage * multiplier;
@@ -257,74 +256,7 @@ public class Player : MonoBehaviour
 
     return false;
   }
-
-
-  private void HandleMoving()
-  {
-    var x = Input.GetAxisRaw("Horizontal");
-    var y = Input.GetAxisRaw("Vertical");
-    _moveDelta = new Vector3(x, y, 0);
-
-    animator.SetFloat("Horizontal", x);
-    animator.SetFloat("Vertical", y);
-    animator.SetFloat("Speed", _moveDelta.sqrMagnitude);
-
-    if (!_isShooting)
-    {
-      if (Input.GetKey(KeyCode.W))
-      {
-        animator.SetFloat(AnimationIdleStateKey, (int)Constants.AnimationIdleState.Up);
-      }
-
-      if (Input.GetKey(KeyCode.S))
-      {
-        animator.SetFloat(AnimationIdleStateKey, (int)Constants.AnimationIdleState.Down);
-      }
-
-      if (Input.GetKey(KeyCode.A))
-      {
-        animator.SetFloat(AnimationIdleStateKey, (int)Constants.AnimationIdleState.Horizonal);
-        transform.localScale = new Vector3(-1, 1, 1);
-      }
-
-      if (Input.GetKey(KeyCode.D))
-      {
-        animator.SetFloat(AnimationIdleStateKey, (int)Constants.AnimationIdleState.Horizonal);
-        transform.localScale = Vector3.one;
-      }
-    }
-
-    var speed = Utils.CalculatePlayerMovementSpeed(_baseNpcBehaviour.swf);
-    LayerMask mask = LayerMask.GetMask("Actor", "Blocking", "NPC");
-
-    var moveY = new Vector2(0, _moveDelta.y);
-
-    if (_hasStatusEffect(Constants.StatusEffects.Paralyzed)) return;
-    
-    if (!Physics2D.BoxCast(
-      transform.position,
-      _boxCollider.size, 
-      0, 
-      moveY, 
-      Mathf.Abs(moveY.y * speed), mask)
-    )
-    {
-      transform.Translate(0, moveY.y * speed, 0);
-    }
-
-    var moveX = new Vector2(_moveDelta.x, 0);
-    
-    if (!Physics2D.BoxCast(
-      transform.position,
-      _boxCollider.size, 
-      0, 
-      moveX, 
-      Mathf.Abs(moveX.x * speed), mask)
-    )
-    {
-      transform.Translate(moveX.x * speed, 0, 0);
-    }
-  }
+  
   private void HandleShooting()
   {
     var pointerOverUI = EventSystem.current && EventSystem.current.IsPointerOverGameObject();
@@ -334,12 +266,12 @@ public class Player : MonoBehaviour
       pointerOverUI || 
       HoldingItem || 
       weaponSlot.CurrentInventoryItem is null || 
-      _hasStatusEffect(Constants.StatusEffects.Stunned)
+      HasStatusEffect(Constants.StatusEffects.Stunned)
     )
     {
-      if (_isShooting)
+      if (isShooting)
       {
-        _isShooting = false;
+        isShooting = false;
         animator.SetBool(AnimationShootingKey, false);
       }
       return;
@@ -347,21 +279,21 @@ public class Player : MonoBehaviour
 
     if (Input.GetMouseButtonUp(0))
     {
-      _isShooting = false;
+      isShooting = false;
       animator.SetBool(AnimationShootingKey, false);
       return;
     }
 
     if (Input.GetMouseButton(0) && CanFire())
     {
-      _isShooting = true;
+      isShooting = true;
       animator.SetBool(AnimationShootingKey, true);
       animator.SetTrigger(AnimationShootKey);
       Fire();
     }
   }
 
-  private bool _hasStatusEffect(Constants.StatusEffects statusEffect)
+  public bool HasStatusEffect(Constants.StatusEffects statusEffect)
   {
     return _baseNpcBehaviour.ActiveStatusEffects.Any(x => x.Type == statusEffect);
   }
@@ -401,7 +333,7 @@ public class Player : MonoBehaviour
 
   private void HandleAbility()
   {
-    if (_hasStatusEffect(Constants.StatusEffects.Silenced) || ConsoleMenu.Singleton.ConsoleMenuOpen) return;
+    if (HasStatusEffect(Constants.StatusEffects.Silenced) || ConsoleMenu.Singleton.ConsoleMenuOpen) return;
     
     HandleAbilityCooldowns();
 
@@ -496,7 +428,7 @@ public class Player : MonoBehaviour
   private float GetAttacksPerSecond()
   {
     float aps = 1.5f + (6.5f * (actualAgi / 75f));
-    if (_hasStatusEffect(Constants.StatusEffects.Berserk)) aps *= 1.25f;
+    if (HasStatusEffect(Constants.StatusEffects.Berserk)) aps *= 1.25f;
     return aps;
   }
 
@@ -587,30 +519,31 @@ public class Player : MonoBehaviour
     }
   }
   
-  private void _handleRadiance()
+  private void _handleItemEffects()
   {
-    if (!_hasStatusEffect(Constants.StatusEffects.Radiance)) return;
-    if (Time.time - _radianceLastTick < 2f) return;
-    _radianceLastTick = Time.time;
-
-    var hits = Physics2D.OverlapCircleAll(
-      transform.position,
-      4f
-    );
-
-    foreach (var col in hits)
+    if (HasStatusEffect(Constants.StatusEffects.Radiance) && Time.time - _radianceLastTick > 2f)
     {
-      if (!col) continue;
-      var collidable = col.GetComponent<Collidable>();
-      if (collidable.collisionGroups.All(x => x != Constants.CollisionGroups.Enemy)) continue;
-      
-      col.SendMessage(
-        "ReceiveDamage",
-        new DamageModel(
-          0f, 
-          new List<Constants.StatusEffects>() { Constants.StatusEffects.Burning }
-        )
+      _radianceLastTick = Time.time;
+
+      var hits = Physics2D.OverlapCircleAll(
+        transform.position,
+        4f
       );
+
+      foreach (var col in hits)
+      {
+        if (!col) continue;
+        var collidable = col.GetComponent<Collidable>();
+        if (collidable.collisionGroups.All(x => x != Constants.CollisionGroups.Enemy)) continue;
+      
+        col.SendMessage(
+          "ReceiveDamage",
+          new DamageModel(
+            0f, 
+            new List<Constants.StatusEffects>() { Constants.StatusEffects.Burning }
+          )
+        );
+      } 
     }
   }
 
@@ -646,8 +579,6 @@ public class Player : MonoBehaviour
     }
     
     animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController>(playerSpritePath);
-    
-    _boxCollider = GetComponent<BoxCollider2D>();
     _animatorOverrideController = new AnimatorOverrideController(animator.runtimeAnimatorController);
     animator.runtimeAnimatorController = _animatorOverrideController;
     
@@ -659,7 +590,6 @@ public class Player : MonoBehaviour
 
   private void FixedUpdate()
   {
-    HandleMoving();
     UpdateStats();
   }
 
@@ -671,7 +601,7 @@ public class Player : MonoBehaviour
   private void Update()
   {
     UpdateWeaponCache();
-    _handleRadiance();
+    _handleItemEffects();
     HandleAbility();
     HandleShooting();
     HandleUIKeys();
