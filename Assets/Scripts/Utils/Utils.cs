@@ -13,9 +13,7 @@ namespace HeroesOfCrimson.Utils
     public static Vector3 GetMousePosition()
     {
       var screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-
       if (Camera.main is null) return Vector3.zero;
-      
       var worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
       return new Vector3(worldPosition.x, worldPosition.y, 0);
     }
@@ -86,7 +84,7 @@ namespace HeroesOfCrimson.Utils
       return Math.Floor(random.NextDouble() * (maximum - minimum) + minimum);
     }
 
-    public static bool IsNegativeStatusEffect(Constants.StatusEffects statusEffect)
+    private static bool _isNegativeStatusEffect(Constants.StatusEffects statusEffect)
     {
       return new List<Constants.StatusEffects>()
       {
@@ -99,6 +97,7 @@ namespace HeroesOfCrimson.Utils
         Constants.StatusEffects.Stunned,
         Constants.StatusEffects.Weak,
         Constants.StatusEffects.Burning,
+        Constants.StatusEffects.Sick,
       }.Contains(statusEffect);
     }
 
@@ -161,7 +160,7 @@ namespace HeroesOfCrimson.Utils
     {
         var data = new StatusEffectData
         {
-            IsNegative = IsNegativeStatusEffect(statusEffect)
+            IsNegative = _isNegativeStatusEffect(statusEffect)
         };
 
         switch (statusEffect)
@@ -244,6 +243,11 @@ namespace HeroesOfCrimson.Utils
             case Constants.StatusEffects.Radiance:
                 data.Name = "Radiance";
                 data.Description = "Burning enemies around you.";
+                break;
+            
+            case Constants.StatusEffects.Sick:
+                data.Name = "Sick";
+                data.Description = "Unable to heal.";
                 break;
 
             default:

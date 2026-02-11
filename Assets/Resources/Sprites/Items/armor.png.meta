@@ -340,8 +340,8 @@ TextureImporter:
       name: armor_5
       rect:
         serializedVersion: 2
-        x: 40
-        y: 120
+        x: 0
+        y: 104
         width: 8
         height: 8
       alignment: 0
@@ -354,6 +354,94 @@ TextureImporter:
       bones: []
       spriteID: 64711a8638e4f4646968164811e1e929
       internalID: 673883426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armor_6
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 104
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2debd5f61c17ec04bbc07c122a579052
+      internalID: -1613744922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armor_7
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 104
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f3a6e4844df0ba439f13c0593389353
+      internalID: 306019762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armor_8
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 104
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ea668cd35bf42e429d62de82376d289
+      internalID: 2040100246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armor_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 104
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5476c3e0d734a7544b7f6588018fd5ac
+      internalID: -890313080
       vertices: []
       indices: 
       edges: []
@@ -380,6 +468,10 @@ TextureImporter:
       armor_3: -777277512
       armor_4: 1508687868
       armor_5: 673883426
+      armor_6: -1613744922
+      armor_7: 306019762
+      armor_8: 2040100246
+      armor_9: -890313080
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

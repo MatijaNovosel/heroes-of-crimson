@@ -2,7 +2,7 @@
   "items": [
     {
       "id": 5000,
-      "name": "Iron ring of attack",
+      "name": "Iron ring of might",
       "description": "A basic ring made of iron that makes you feel more feisty, an amethyst is embedded into it.",
       "tag": 5,
       "spritePath": "accessories_0",
@@ -11,7 +11,7 @@
     },
     {
       "id": 5001,
-      "name": "Silver ring of attack",
+      "name": "Silver ring of might",
       "description": "A fancy ring made of silver that makes you feel more feisty, an amethyst is embedded into it.",
       "tag": 5,
       "spritePath": "accessories_8",
@@ -20,7 +20,7 @@
     },
     {
       "id": 5002,
-      "name": "Sapphire ring of attack",
+      "name": "Sapphire ring of might",
       "description": "An extravagant ring made of sapphire that makes you feel more feisty, an amethyst is embedded into it.",
       "tag": 5,
       "spritePath": "accessories_16",
@@ -29,7 +29,7 @@
     },
     {
       "id": 5003,
-      "name": "Golden ring of attack",
+      "name": "Golden ring of might",
       "description": "An opulent ring made of sapphire that makes you feel more feisty, an amethyst is embedded into it.",
       "tag": 5,
       "spritePath": "accessories_24",
@@ -38,7 +38,7 @@
     },
     {
       "id": 5004,
-      "name": "Iron ring of dexterity",
+      "name": "Iron ring of agility",
       "description": "A basic ring made of iron that makes you feel more feisty, an amber is embedded into it.",
       "tag": 5,
       "spritePath": "accessories_5",
@@ -47,7 +47,7 @@
     },
     {
       "id": 5005,
-      "name": "Silver ring of dexterity",
+      "name": "Silver ring of agility",
       "description": "A fancy ring made of silver that makes you feel more feisty, an amber is embedded into it.",
       "tag": 5,
       "spritePath": "accessories_13",
@@ -56,7 +56,7 @@
     },
     {
       "id": 5006,
-      "name": "Sapphire ring of dexterity",
+      "name": "Sapphire ring of agility",
       "description": "An extravagant ring made of sapphire that makes you feel more feisty, an amber is embedded into it.",
       "tag": 5,
       "spritePath": "accessories_21",
@@ -65,7 +65,7 @@
     },
     {
       "id": 5007,
-      "name": "Golden ring of dexterity",
+      "name": "Golden ring of agility",
       "description": "An opulent ring made of sapphire that makes you feel more feisty, an amber is embedded into it.",
       "tag": 5,
       "spritePath": "accessories_29",

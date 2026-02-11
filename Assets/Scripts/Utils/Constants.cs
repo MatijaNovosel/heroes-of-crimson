@@ -61,7 +61,8 @@ namespace HeroesOfCrimson.Utils
        Berserk = 13,
        Paralyzed = 14,
        Burning = 15,
-       Radiance = 16
+       Radiance = 16,
+       Sick = 17
     }
 
     public enum ConsumableItem

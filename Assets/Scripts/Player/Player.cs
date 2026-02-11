@@ -18,11 +18,6 @@ using Random = UnityEngine.Random;
 public class Player : MonoBehaviour
 {
   public static Player Singleton;
-  
-  private static readonly int AnimationShootingKey = Animator.StringToHash("Shooting");
-  private static readonly int AnimationShootKey = Animator.StringToHash("Shoot");
-  private static readonly int AnimationIdleStateKey = Animator.StringToHash("IdleState");
-  private static readonly int AnimationMouseDirKey = Animator.StringToHash("MouseDir");
 
   private Vector3 _moveDelta;
   private RaycastHit2D _hit;
@@ -45,7 +40,6 @@ public class Player : MonoBehaviour
   public List<int> learnedTalents = new ();
   
   // Components
-  public GameObject Projectile;
   public Animator animator;
   private AnimatorOverrideController _animatorOverrideController;
   private BaseNPCBehaviour _baseNpcBehaviour;
@@ -53,6 +47,7 @@ public class Player : MonoBehaviour
   public RectTransform TopLeftGroup;
   public PlayerHealthBar HealthBar;
   public PlayerManaBar ManaBar;
+  private PlayerShooting _playerShooting;
   
   public List<Tilemap> forbiddenAbilityTilemaps;
   
@@ -65,57 +60,6 @@ public class Player : MonoBehaviour
   public float actualStr = 0;
   public float actualWis = 0;
   public float actualAgi = 0;
-  
-  private CachedWeaponFireData _cachedWeapon;
-  [CanBeNull] private Item _lastWeaponItem;
-  private ProjectileSetupModel _cachedProjectileSetup;
-  
-  private void UpdateWeaponCache()
-  {
-    var weaponSlot = Hotbar.GetHotbarSlot(0);
-    var weaponItem = weaponSlot?.CurrentInventoryItem?.ItemInSlot;
-
-    if (weaponItem?.id == _lastWeaponItem?.id) return;
-    _lastWeaponItem = weaponItem;
-
-    _cachedWeapon = new CachedWeaponFireData
-    {
-      projectileSprite = null,
-      projectileDegree = 0,
-      projectileScale = 0.6f,
-      range = 8f,
-      impactColor = Color.white,
-      shootSound = ResourceCacher.Singleton.Sounds[Constants.Sounds.MagicShoot],
-      minDamage = 0,
-      maxDamage = 0
-    };
-
-    if (weaponItem)
-    {
-      _cachedWeapon.projectileSprite = weaponItem.projectileSprite;
-      _cachedWeapon.projectileDegree = weaponItem.projectileDegree;
-      _cachedWeapon.projectileScale = weaponItem.projectileScale;
-      _cachedWeapon.range = weaponItem.range;
-      _cachedWeapon.impactColor = weaponItem.impactColor;
-      _cachedWeapon.shootSound = ResourceCacher.Singleton.Sounds[weaponItem.shootSound];
-      _cachedWeapon.minDamage = weaponItem.minDamage;
-      _cachedWeapon.maxDamage = weaponItem.maxDamage;
-    }
-
-    _cachedProjectileSetup = new ProjectileSetupModel(
-      Vector2.zero,
-      _cachedWeapon.projectileDegree,
-      null,
-      _cachedWeapon.projectileScale,
-      0f,
-      _cachedWeapon.projectileSprite,
-      new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
-      new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
-      _cachedWeapon.impactColor,
-      new(),
-      _cachedWeapon.range
-    );
-  }
   
   private void HandleAbilityCooldowns()
   {
@@ -136,112 +80,6 @@ public class Player : MonoBehaviour
       _ => null
     };
   }
-
-  private bool CanFire()
-  {
-    return Time.time - _lastFired > GetFireDelay();
-  }
-  
-  public float CalculateWeaponDamage(int minDamage, int maxDamage)
-  {
-    int rolledBaseDamage = Random.Range(minDamage, maxDamage);
-
-    float multiplier;
-
-    if (HasStatusEffect(Constants.StatusEffects.Weak)) multiplier = 0.5f;
-    else multiplier = 0.5f + (_baseNpcBehaviour.mgt / 50f);
-
-    bool hasDamaging = HasStatusEffect(Constants.StatusEffects.Damaging);
-    if (hasDamaging) multiplier *= 1.25f;
-
-    return rolledBaseDamage * multiplier;
-  }
-
-  private void Fire()
-  {
-    var shootDirection = (Utils.GetMousePosition() - gameObject.transform.position).normalized;
-    var angle = Utils.GetAngleFromShootDirection(shootDirection);
-    var shootingDirection = Constants.ShootingDirections.UP;
-
-    /*
-
-          ┌─────(90)────┐
-          │      │      │
-          │      │      │
-       (+-180)───╀─────(0)
-          │      │      │
-          │      │      │
-          └────(-90)────┘
-
-    */
-    switch (angle)
-    {
-      case < 135 and > 45:
-        // Up
-        animator.SetFloat(AnimationMouseDirKey, (int)Constants.ShootingMouseDirs.UP);
-        animator.SetFloat(AnimationIdleStateKey, 1);
-        break;
-      case > -45 and < 45:
-        // Right
-        shootingDirection =  Constants.ShootingDirections.RIGHT;
-        animator.SetFloat(AnimationIdleStateKey, 0);
-        transform.localScale = Vector3.one;
-        animator.SetFloat(AnimationMouseDirKey, (int)Constants.ShootingMouseDirs.HORIZONTAL);
-        break;
-      case > 135 and < 180 or > -180 and < -135:
-        // Left
-        shootingDirection =  Constants.ShootingDirections.LEFT;
-        animator.SetFloat(AnimationIdleStateKey, 0);
-        transform.localScale = new Vector3(-1, 1, 1);
-        animator.SetFloat(AnimationMouseDirKey, (int)Constants.ShootingMouseDirs.HORIZONTAL);
-        break;
-      default:
-        // Down
-        shootingDirection =  Constants.ShootingDirections.DOWN;
-        animator.SetFloat(AnimationIdleStateKey, 2);
-        animator.SetFloat(AnimationMouseDirKey, (int)Constants.ShootingMouseDirs.DOWN);
-        break;
-    }
-
-    var projectilePosX = gameObject.transform.position.x;
-    var projectilePosY = gameObject.transform.position.y;
-
-    switch (shootingDirection)
-    {
-      case Constants.ShootingDirections.DOWN:
-        projectilePosY -= 0.6f;
-        break;
-      case Constants.ShootingDirections.RIGHT:
-        projectilePosX += 0.6f;
-        break;
-      case Constants.ShootingDirections.LEFT:
-        projectilePosX -= 0.6f;
-        break;
-      case Constants.ShootingDirections.UP:
-        projectilePosY += 0.6f;
-        break;
-    }
-    
-    var proj = Instantiate(
-      Projectile,
-      new Vector3(projectilePosX, projectilePosY, 0),
-      Quaternion.identity
-    );
-
-    AudioManager.Singleton.PlaySound(_cachedWeapon.shootSound);
-    
-    _cachedProjectileSetup.Direction = shootDirection;
-    _cachedProjectileSetup.Damage = CalculateWeaponDamage(
-      _cachedWeapon.minDamage,
-      _cachedWeapon.maxDamage
-    );
-
-    AudioManager.Singleton.PlaySound(_cachedWeapon.shootSound);
-
-    proj.GetComponent<Projectile>().Setup(_cachedProjectileSetup);
-    
-    _lastFired = Time.time;
-  }
   
   private bool IsCursorOverForbiddenAbilityTile()
   {
@@ -255,42 +93,6 @@ public class Player : MonoBehaviour
     }
 
     return false;
-  }
-  
-  private void HandleShooting()
-  {
-    var pointerOverUI = EventSystem.current && EventSystem.current.IsPointerOverGameObject();
-    var weaponSlot = Hotbar.GetHotbarSlot(0);
-
-    if (
-      pointerOverUI || 
-      HoldingItem || 
-      weaponSlot.CurrentInventoryItem is null || 
-      HasStatusEffect(Constants.StatusEffects.Stunned)
-    )
-    {
-      if (isShooting)
-      {
-        isShooting = false;
-        animator.SetBool(AnimationShootingKey, false);
-      }
-      return;
-    }
-
-    if (Input.GetMouseButtonUp(0))
-    {
-      isShooting = false;
-      animator.SetBool(AnimationShootingKey, false);
-      return;
-    }
-
-    if (Input.GetMouseButton(0) && CanFire())
-    {
-      isShooting = true;
-      animator.SetBool(AnimationShootingKey, true);
-      animator.SetTrigger(AnimationShootKey);
-      Fire();
-    }
   }
 
   public bool HasStatusEffect(Constants.StatusEffects statusEffect)
@@ -306,11 +108,6 @@ public class Player : MonoBehaviour
       _baseNpcBehaviour.hp,
       _baseNpcBehaviour.maxHp
     );
-  }
-
-  public void OnItemEquip(Item item)
-  {
-    print(item);
   }
   
   public void RestoreHp(int amount)
@@ -424,19 +221,6 @@ public class Player : MonoBehaviour
       );
     }
   }
-  
-  private float GetAttacksPerSecond()
-  {
-    float aps = 1.5f + (6.5f * (actualAgi / 75f));
-    if (HasStatusEffect(Constants.StatusEffects.Berserk)) aps *= 1.25f;
-    return aps;
-  }
-
-  private float GetFireDelay()
-  {
-    float aps = GetAttacksPerSecond();
-    return 1f / aps;
-  }
 
   public void SetStatusEffects(int statusEffectId, float duration)
   {
@@ -512,7 +296,7 @@ public class Player : MonoBehaviour
   private void OnWeaponUnequipped(Item item)
   {
     Debug.Log($"Unequipped weapon: {item.name}");
-    _lastWeaponItem = null;
+    _playerShooting.SetLastWeapon(null);
     if (item.id == 2009)
     {
       _baseNpcBehaviour.RemoveStatusEffect(Constants.StatusEffects.Radiance);
@@ -534,6 +318,7 @@ public class Player : MonoBehaviour
       {
         if (!col) continue;
         var collidable = col.GetComponent<Collidable>();
+        if (!collidable) continue;
         if (collidable.collisionGroups.All(x => x != Constants.CollisionGroups.Enemy)) continue;
       
         col.SendMessage(
@@ -596,14 +381,13 @@ public class Player : MonoBehaviour
   private void Awake()
   {
     Singleton = this;
+    _playerShooting = GetComponent<PlayerShooting>();
   }
 
   private void Update()
   {
-    UpdateWeaponCache();
     _handleItemEffects();
     HandleAbility();
-    HandleShooting();
     HandleUIKeys();
     HandleRegen();
     HandleManaRegen();

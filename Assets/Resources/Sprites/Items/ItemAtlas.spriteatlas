@@ -60,7 +60,13 @@ SpriteAtlas:
     - 840bde13537cf1d46bf2ac00299df595: -522934422
     - 840bde13537cf1d46bf2ac00299df595: 673883426
     - 840bde13537cf1d46bf2ac00299df595: 1508687868
+    - 840bde13537cf1d46bf2ac00299df595: 306019762
+    - 840bde13537cf1d46bf2ac00299df595: -1613744922
+    - 840bde13537cf1d46bf2ac00299df595: -890313080
+    - 840bde13537cf1d46bf2ac00299df595: 2040100246
     - fc237ac3410d8ae4bab70d6b3dabd86d: -1458471860
+    - fc237ac3410d8ae4bab70d6b3dabd86d: 1646780479
+    - fc237ac3410d8ae4bab70d6b3dabd86d: -492573064
     - fc237ac3410d8ae4bab70d6b3dabd86d: -1356886374
     - fc237ac3410d8ae4bab70d6b3dabd86d: 1808354303
     - fc237ac3410d8ae4bab70d6b3dabd86d: -1502877817
@@ -94,6 +100,7 @@ SpriteAtlas:
     - ba6e0ecaae29e4745bba15b45bb14f66: -7290088
     - ba6e0ecaae29e4745bba15b45bb14f66: 1510862836
     - ba6e0ecaae29e4745bba15b45bb14f66: 312865410
+    - ba6e0ecaae29e4745bba15b45bb14f66: 1233402572
     - ba6e0ecaae29e4745bba15b45bb14f66: 715116585
     - ba6e0ecaae29e4745bba15b45bb14f66: 1907694832
     - ba6e0ecaae29e4745bba15b45bb14f66: 85109455
@@ -102,12 +109,23 @@ SpriteAtlas:
     - ba6e0ecaae29e4745bba15b45bb14f66: -1924733331
     - ba6e0ecaae29e4745bba15b45bb14f66: 322503252
     - ba6e0ecaae29e4745bba15b45bb14f66: -1085987459
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 1671932041
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -1810719014
     - 9ea06e6d48b3bd945abdafad9ec15e24: -2066835043
     - 9ea06e6d48b3bd945abdafad9ec15e24: -1771021077
     - 9ea06e6d48b3bd945abdafad9ec15e24: 630102146
     - 9ea06e6d48b3bd945abdafad9ec15e24: -1821125796
     - 9ea06e6d48b3bd945abdafad9ec15e24: -2091024376
     - 9ea06e6d48b3bd945abdafad9ec15e24: -509111003
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 158341979
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 602564423
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 137437517
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 193163330
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -1780443067
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -658898141
+    - 9ea06e6d48b3bd945abdafad9ec15e24: 6617857
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -261582629
+    - 9ea06e6d48b3bd945abdafad9ec15e24: -942990725
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 149821097, guid: 840bde13537cf1d46bf2ac00299df595, type: 3}
@@ -116,7 +134,13 @@ SpriteAtlas:
   - {fileID: -522934422, guid: 840bde13537cf1d46bf2ac00299df595, type: 3}
   - {fileID: 673883426, guid: 840bde13537cf1d46bf2ac00299df595, type: 3}
   - {fileID: 1508687868, guid: 840bde13537cf1d46bf2ac00299df595, type: 3}
+  - {fileID: 306019762, guid: 840bde13537cf1d46bf2ac00299df595, type: 3}
+  - {fileID: -1613744922, guid: 840bde13537cf1d46bf2ac00299df595, type: 3}
+  - {fileID: -890313080, guid: 840bde13537cf1d46bf2ac00299df595, type: 3}
+  - {fileID: 2040100246, guid: 840bde13537cf1d46bf2ac00299df595, type: 3}
   - {fileID: -1458471860, guid: fc237ac3410d8ae4bab70d6b3dabd86d, type: 3}
+  - {fileID: 1646780479, guid: fc237ac3410d8ae4bab70d6b3dabd86d, type: 3}
+  - {fileID: -492573064, guid: fc237ac3410d8ae4bab70d6b3dabd86d, type: 3}
   - {fileID: -1356886374, guid: fc237ac3410d8ae4bab70d6b3dabd86d, type: 3}
   - {fileID: 1808354303, guid: fc237ac3410d8ae4bab70d6b3dabd86d, type: 3}
   - {fileID: -1502877817, guid: fc237ac3410d8ae4bab70d6b3dabd86d, type: 3}
@@ -150,6 +174,7 @@ SpriteAtlas:
   - {fileID: -7290088, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 1510862836, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 312865410, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: 1233402572, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 715116585, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 1907694832, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 85109455, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
@@ -158,12 +183,23 @@ SpriteAtlas:
   - {fileID: -1924733331, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 322503252, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: -1085987459, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: 1671932041, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -1810719014, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
   - {fileID: -2066835043, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
   - {fileID: -1771021077, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
   - {fileID: 630102146, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
   - {fileID: -1821125796, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
   - {fileID: -2091024376, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
   - {fileID: -509111003, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 158341979, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 602564423, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 137437517, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 193163330, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -1780443067, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -658898141, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: 6617857, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -261582629, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
+  - {fileID: -942990725, guid: 9ea06e6d48b3bd945abdafad9ec15e24, type: 3}
   m_PackedSpriteNamesToIndex:
   - armor_1
   - armor_0
@@ -171,7 +207,13 @@ SpriteAtlas:
   - armor_2
   - armor_5
   - armor_4
+  - armor_7
+  - armor_6
+  - armor_9
+  - armor_8
   - consumables_9
+  - consumables_12
+  - consumables_11
   - consumables_10
   - consumables_4
   - consumables_5
@@ -205,6 +247,7 @@ SpriteAtlas:
   - weapons_6
   - weapons_5
   - weapons_4
+  - weapons_28
   - weapons_23
   - weapons_22
   - weapons_21
@@ -213,12 +256,23 @@ SpriteAtlas:
   - weapons_26
   - weapons_25
   - weapons_24
+  - abilities_6
+  - abilities_7
   - abilities_4
   - abilities_5
   - abilities_2
   - abilities_3
   - abilities_0
   - abilities_1
+  - abilities_8
+  - abilities_9
+  - abilities_15
+  - abilities_14
+  - abilities_16
+  - abilities_11
+  - abilities_10
+  - abilities_13
+  - abilities_12
   m_RenderDataMap: {}
   m_Tag: ItemAtlas
   m_IsVariant: 0

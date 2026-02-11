@@ -3581,7 +3581,6 @@ MonoBehaviour:
   HoldingItem: 0
   InventoryOpen: 1
   learnedTalents: 
-  Projectile: {fileID: 5144726427392865407, guid: 4e01153d9ce6d134ba19d3164d6be11d, type: 3}
   animator: {fileID: 0}
   Hotbar: {fileID: 1001678528}
   TopLeftGroup: {fileID: 1967071324}
@@ -47910,6 +47909,7 @@ GameObject:
   - component: {fileID: 1469857302}
   - component: {fileID: 1469857306}
   - component: {fileID: 1469857307}
+  - component: {fileID: 1469857308}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -48122,7 +48122,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d7f4923f1f510a43a59c714b2017c48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  player: {fileID: 225077527}
+--- !u!114 &1469857308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1469857299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c605563d738946ecade0481c3037f194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
+  hotbar: {fileID: 1001678528}
+  projectilePrefab: {fileID: 5144726427392865407, guid: 4e01153d9ce6d134ba19d3164d6be11d, type: 3}
 --- !u!1 &1473452287
 GameObject:
   m_ObjectHideFlags: 0
