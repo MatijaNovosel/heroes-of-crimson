@@ -12,7 +12,6 @@ public class PlayerShooting : MonoBehaviour
 {
     private Player _player;
     private Animator _animator;
-    private Vector3 _moveDelta;
     private float _lastFired;
     public Inventory hotbar;
     public GameObject projectilePrefab;

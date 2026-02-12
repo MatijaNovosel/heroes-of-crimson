@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
   
   public void RestoreHp(int amount)
   {
+    if (HasStatusEffect(Constants.StatusEffects.Sick)) return;
     _baseNpcBehaviour.hp += amount;
     _baseNpcBehaviour.hp = Mathf.Min(
       _baseNpcBehaviour.hp,
@@ -98,6 +99,8 @@ public class Player : MonoBehaviour
 
   private void HandleRegen()
   {
+    if (HasStatusEffect(Constants.StatusEffects.Sick)) return;
+    
     // HP per second = 2 + 0.2407 * STR
     var regenPerSecond = 2f + (0.2407f * actualStr);
     regenPerSecond = Mathf.Max(0f, regenPerSecond);
@@ -183,7 +186,7 @@ public class Player : MonoBehaviour
       transform,
       Color.yellow,
       20, 
-      "particles_28"
+      "projectiles_28"
     );
     PlayerLog.Singleton.AddItem($"<color=#F1C40F>Level up!</color> You are now level {level}!");
   }

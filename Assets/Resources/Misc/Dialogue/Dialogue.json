@@ -1,0 +1,20 @@
+﻿{
+  "dialogues": [
+    {
+      "id": 1,
+      "startStepId": "1:1",
+      "steps": [{
+        "id": "1:1",
+        "nextStepId": -1,
+        "text": "Hello traveller, would you like to enter Agartha?",
+        "choices": [{
+          "id": "1:1:1",
+          "text": "Of course!"
+        }, {
+          "id": "1:1:2",
+          "text": "I have to go back to the cobalt mines"
+        }]
+      }]
+    }
+  ]
+}
