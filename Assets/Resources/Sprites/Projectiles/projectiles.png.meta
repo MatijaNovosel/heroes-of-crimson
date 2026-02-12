@@ -600,8 +600,8 @@ TextureImporter:
       name: projectiles_22
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 48
+        y: 40
         width: 8
         height: 8
       alignment: 0
@@ -622,7 +622,7 @@ TextureImporter:
       name: projectiles_23
       rect:
         serializedVersion: 2
-        x: 48
+        x: 56
         y: 40
         width: 8
         height: 8
@@ -644,8 +644,8 @@ TextureImporter:
       name: projectiles_24
       rect:
         serializedVersion: 2
-        x: 56
-        y: 40
+        x: 0
+        y: 32
         width: 8
         height: 8
       alignment: 0
@@ -666,8 +666,8 @@ TextureImporter:
       name: projectiles_25
       rect:
         serializedVersion: 2
-        x: 0
-        y: 24
+        x: 8
+        y: 32
         width: 8
         height: 8
       alignment: 0
@@ -688,8 +688,8 @@ TextureImporter:
       name: projectiles_26
       rect:
         serializedVersion: 2
-        x: 8
-        y: 24
+        x: 16
+        y: 32
         width: 8
         height: 8
       alignment: 0
@@ -710,7 +710,7 @@ TextureImporter:
       name: projectiles_27
       rect:
         serializedVersion: 2
-        x: 16
+        x: 0
         y: 24
         width: 8
         height: 8
@@ -733,7 +733,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8
-        y: 32
+        y: 24
         width: 8
         height: 8
       alignment: 0
@@ -755,11 +755,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 16
-        y: 32
+        y: 24
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
