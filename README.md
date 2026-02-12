@@ -3,7 +3,7 @@
 <p align=center>⚠️ Currently a work in progress. ⚠️</p>
 
 <p align=center>
-  <img src="https://github.com/user-attachments/assets/f3260b1b-2c84-40b5-a308-f3276b2b7cae" />
+  <img src="https://github.com/user-attachments/assets/e74d0657-8254-4545-b818-7196f36d4b8c" />
 </p>
 
 ## 🔨 Built With
