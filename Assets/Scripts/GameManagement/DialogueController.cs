@@ -1,39 +1,221 @@
+// DialogueController.cs
+using System.Collections.Generic;
+using System.Linq;
 using Models.Dialogue;
+using UI.Inventory;
 using UnityEngine;
 
-public class DialogueController: MonoBehaviour
+public class DialogueController : MonoBehaviour
 {
+    public static DialogueController Singleton;
+    public Inventory playerInventory;
+
     private DialogueModel _activeDialogue;
     private DialogueStepModel _currentStep;
+    
+    public DialogueOptions dialogueOptions;
 
-    public void StartDialogue(DialogueModel dialogue)
+    public TalkableNPC CurrentNPC;
+
+    public Dictionary<int, List<DialogueModel>> dialoguesByNpc = new();
+    public Dictionary<string, DialogueModel> dialoguesById = new();
+
+    private const string DialogueResourcesFolder = "Misc/Dialogue";
+
+    private void Awake()
     {
-        _activeDialogue = dialogue;
-        GoToStep(dialogue.StartStepId);
+        Singleton = this;
+        LoadDialogues();
     }
 
-    public void ChooseOption(int choiceIndex)
+    public void LoadDialogues()
     {
-        var choice = _currentStep.Choices[choiceIndex];
+        dialoguesByNpc = new Dictionary<int, List<DialogueModel>>();
+        dialoguesById = new Dictionary<string, DialogueModel>();
+
+        var files = Resources.LoadAll<TextAsset>(DialogueResourcesFolder);
+
+        if (files == null || files.Length == 0)
+        {
+            Debug.LogError($"No dialogue json files found in Resources/{DialogueResourcesFolder}");
+            return;
+        }
+
+        foreach (var file in files)
+        {
+            if (file == null || string.IsNullOrWhiteSpace(file.text)) continue;
+
+            DialogueFileDto parsed;
+            
+            try
+            {
+                parsed = JsonUtility.FromJson<DialogueFileDto>(file.text);
+            }
+            catch
+            {
+                Debug.LogError($"Failed to parse dialogue file: {file.name}");
+                continue;
+            }
+
+            if (parsed?.dialogues == null) continue;
+
+            foreach (var dto in parsed.dialogues)
+            {
+                var model = ToModel(dto);
+                if (model == null) continue;
+
+                if (!string.IsNullOrEmpty(model.Id))
+                {
+                    if (dialoguesById.ContainsKey(model.Id))
+                    {
+                        Debug.LogWarning($"Duplicate dialogue id '{model.Id}' in file '{file.name}'. Overwriting.");
+                    }
+                    dialoguesById[model.Id] = model;
+                }
+
+                if (!dialoguesByNpc.TryGetValue(model.NpcId, out var list))
+                {
+                    list = new List<DialogueModel>();
+                    dialoguesByNpc.Add(model.NpcId, list);
+                }
+                list.Add(model);
+            }
+        }
+
+        Debug.Log($"Loaded {dialoguesById.Count} dialogue(s) for {dialoguesByNpc.Count} NPC(s).");
+    }
+
+    private static DialogueModel ToModel(DialogueDto dto)
+    {
+        if (dto == null) return null;
+        var stepsDict = new Dictionary<string, DialogueStepModel>();
+
+        if (dto.steps != null)
+        {
+            foreach (var s in dto.steps)
+            {
+                if (s == null || string.IsNullOrEmpty(s.id)) continue;
+
+                var step = new DialogueStepModel
+                {
+                    Id = s.id,
+                    Text = s.text,
+                    NextStepId = s.nextStepId,
+                    Choices = new List<DialogueChoiceModel>()
+                };
+
+                if (s.choices != null)
+                {
+                    foreach (var c in s.choices.Where(c => c != null))
+                    {
+                        print(c.rewardId);
+                        print(c.id);
+                        step.Choices.Add(new DialogueChoiceModel
+                        {
+                            Id = c.id,
+                            Text = c.text,
+                            NextStepId = c.nextStepId,
+                            RewardId = c.rewardId
+                        });
+                    }
+                }
+
+                stepsDict[step.Id] = step;
+            }
+        }
+
+        return new DialogueModel
+        {
+            Id = dto.id,
+            NpcId = dto.npcId,
+            StartStepId = dto.startStepId,
+            Steps = stepsDict
+        };
+    }
+
+    public DialogueModel GetDefaultDialogueForNpc(int npcId)
+    {
+        if (!dialoguesByNpc.TryGetValue(npcId, out var list) || list == null || list.Count == 0)
+        {
+            return null;
+        }
+        return list[0];
+    }
+
+    public void StartDialogue(TalkableNPC npc)
+    {
+        if (npc == null)
+        {
+            Debug.LogError("StartDialogue called with null npc.");
+            return;
+        }
+
+        CurrentNPC = npc;
+        npc.EnsureDialogueStateInitialized();
+
+        if (!dialoguesById.TryGetValue(npc.dialogueState.DialogueId, out _activeDialogue) || _activeDialogue == null)
+        {
+            Debug.LogError($"DialogueId '{npc.dialogueState.DialogueId}' not found for NPC {npc.id}.");
+            return;
+        }
+
+        GoToStep(npc.dialogueState.StepId);
+        dialogueOptions.Init(_currentStep.Choices);
+    }
+
+    public void ChooseOption(string choiceId)
+    {
+        print($"chose option {choiceId}");
+        if (_currentStep == null) return;
+        if (_currentStep.Choices == null) return;
+
+        var choice = _currentStep.Choices.Find(x => x.Id == choiceId);
+        
+        if (choice == null) return;
+
+        if (choice.RewardId != 0)
+        {
+            _handleChoiceRewards(choice);
+        }
+        
+        if (string.IsNullOrEmpty(choice.NextStepId))
+        {
+            DialogMenu.Singleton.CloseDialog();
+            return;
+        }
+
         GoToStep(choice.NextStepId);
     }
 
-    public void Continue()
+    private void GoToStep(string stepId)
     {
-        if (_currentStep.NextStepId.HasValue)
+        if (string.IsNullOrEmpty(stepId)) return;
+
+        if (_activeDialogue == null || _activeDialogue.Steps == null ||
+            !_activeDialogue.Steps.TryGetValue(stepId, out var step))
         {
-            GoToStep(_currentStep.NextStepId.Value);
+            Debug.LogError($"Dialogue step not found: {stepId} (Dialogue {_activeDialogue?.Id})");
+            return;
         }
-        else
+
+        _currentStep = step;
+
+        if (CurrentNPC != null && CurrentNPC.dialogueState != null)
         {
-            // EndDialogue();
+            CurrentNPC.dialogueState.StepId = stepId;
         }
+
+        DialogMenu.Singleton.UpdateText(_currentStep.Text);
+        dialogueOptions.Init(_currentStep.Choices);
     }
 
-    private void GoToStep(int? stepId)
+    private void _handleChoiceRewards(DialogueChoiceModel choice)
     {
-        if (stepId is null) return;
-        _currentStep = _activeDialogue.Steps[(int)stepId];
-        // Notify UI
+        var item = Database.Singleton.GetItem((int)choice.RewardId);
+        playerInventory.SpawnItem(item);
+        PlayerLog.Singleton.AddItem("You received <color=#F1C40F>White Monster Energy</color>!.");
+        PlayerLog.Singleton.AddItem("You feel very conflicted about your choices.");
     }
+
+    public DialogueStepModel GetCurrentStep() => _currentStep;
 }

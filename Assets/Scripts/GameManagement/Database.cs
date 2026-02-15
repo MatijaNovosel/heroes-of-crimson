@@ -96,7 +96,7 @@ public class Database : MonoBehaviour
     {
       items = new List<DatabaseItem>()
     };
-
+    
     LoadAndAdd("Misc/Items/Weapons");
     LoadAndAdd("Misc/Items/Accessories");
     LoadAndAdd("Misc/Items/Misc");

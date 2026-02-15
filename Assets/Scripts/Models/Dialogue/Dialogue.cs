@@ -4,23 +4,25 @@ namespace Models.Dialogue
 {
     public class DialogueModel
     {
-        public int Id;
-        public int StartStepId;
-        public Dictionary<int, DialogueStepModel> Steps;
+        public string Id;
+        public int NpcId;
+        public string StartStepId;
+        public Dictionary<string, DialogueStepModel> Steps;
     }
 
     public class DialogueStepModel
     {
-        public int Id;
+        public string Id;
         public string Text;
         public List<DialogueChoiceModel> Choices;
-        public int? NextStepId;
+        public string NextStepId;
     }
 
     public class DialogueChoiceModel
     {
-        public int Id;
+        public string Id;
         public string Text;
-        public int? NextStepId;
+        public string NextStepId;
+        public int RewardId;
     }
 }
