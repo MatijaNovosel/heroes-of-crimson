@@ -1,6 +1,7 @@
 // DialogueController.cs
 using System.Collections.Generic;
 using System.Linq;
+using HeroesOfCrimson.Utils;
 using Models.Dialogue;
 using UI.Inventory;
 using UnityEngine;
@@ -108,18 +109,30 @@ public class DialogueController : MonoBehaviour
                 {
                     foreach (var c in s.choices.Where(c => c != null))
                     {
-                        print(c.rewardId);
-                        print(c.id);
+                        var triggers = new List<DialogueTriggerModel>();
+
+                        if (c.triggers != null)
+                        {
+                            foreach (var t in c.triggers)
+                            {
+                                if (t == null) continue;
+                                triggers.Add(new DialogueTriggerModel
+                                {
+                                    Id = t.id,
+                                    Value = t.value
+                                });
+                            }
+                        }
+
                         step.Choices.Add(new DialogueChoiceModel
                         {
                             Id = c.id,
                             Text = c.text,
                             NextStepId = c.nextStepId,
-                            RewardId = c.rewardId
+                            Triggers = triggers
                         });
                     }
                 }
-
                 stepsDict[step.Id] = step;
             }
         }
@@ -162,22 +175,39 @@ public class DialogueController : MonoBehaviour
         GoToStep(npc.dialogueState.StepId);
         dialogueOptions.Init(_currentStep.Choices);
     }
+    
+    private void _handleChoiceTriggers(List<DialogueTriggerModel> triggers)
+    {
+        foreach (var t in triggers)
+        {
+            switch (t.Id)
+            {
+                // 1 - Give item
+                case (int)Constants.DialogueChoiceTriggers.GiveItem:
+                    var item = Database.Singleton.GetItem(t.Value);
+                    playerInventory.SpawnItem(item);
+                    PlayerLog.Singleton.AddItem("You received <color=#F1C40F>White Monster Energy</color>!.");
+                    PlayerLog.Singleton.AddItem("You feel very conflicted about your choices.");
+                    break;
+                default:
+                    Debug.LogWarning($"Unknown trigger id={t.Id} value={t.Value}");
+                    break;
+            }
+        }
+    }
 
     public void ChooseOption(string choiceId)
     {
-        print($"chose option {choiceId}");
-        if (_currentStep == null) return;
-        if (_currentStep.Choices == null) return;
+        if (_currentStep?.Choices == null) return;
 
         var choice = _currentStep.Choices.Find(x => x.Id == choiceId);
-        
         if (choice == null) return;
 
-        if (choice.RewardId != 0)
+        if (choice.Triggers != null && choice.Triggers.Count > 0)
         {
-            _handleChoiceRewards(choice);
+            _handleChoiceTriggers(choice.Triggers);
         }
-        
+
         if (string.IsNullOrEmpty(choice.NextStepId))
         {
             DialogMenu.Singleton.CloseDialog();
@@ -207,14 +237,6 @@ public class DialogueController : MonoBehaviour
 
         DialogMenu.Singleton.UpdateText(_currentStep.Text);
         dialogueOptions.Init(_currentStep.Choices);
-    }
-
-    private void _handleChoiceRewards(DialogueChoiceModel choice)
-    {
-        var item = Database.Singleton.GetItem((int)choice.RewardId);
-        playerInventory.SpawnItem(item);
-        PlayerLog.Singleton.AddItem("You received <color=#F1C40F>White Monster Energy</color>!.");
-        PlayerLog.Singleton.AddItem("You feel very conflicted about your choices.");
     }
 
     public DialogueStepModel GetCurrentStep() => _currentStep;

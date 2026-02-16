@@ -12,7 +12,10 @@
           "id": "1:1:1",
           "text": "<color=#9B59B6>[MGT 20] Of course!</color>",
           "nextStepId": "1:2",
-          "rewardId": 7003
+          "triggers": [{
+            "id": 1,
+            "value": 7003
+          }]
         }, {
           "id": "1:1:2",
           "text": "I have to go back to the cobalt mines.",

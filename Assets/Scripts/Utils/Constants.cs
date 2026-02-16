@@ -188,5 +188,10 @@ namespace HeroesOfCrimson.Utils
       IceSchoolTwo = 9,
       IceSchoolThree = 10,
     }
+
+    public enum DialogueChoiceTriggers
+    {
+      GiveItem = 1
+    }
   }
 }

@@ -26,10 +26,17 @@ public class DialogueStepDto
 }
 
 [Serializable]
+public class DialogueTriggerDto
+{
+    public int id;
+    public int value;
+}
+
+[Serializable]
 public class DialogueChoiceDto
 {
     public string id;
     public string text;
     public string nextStepId;
-    public int rewardId;
+    public List<DialogueTriggerDto> triggers;
 }

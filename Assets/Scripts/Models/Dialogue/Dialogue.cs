@@ -18,11 +18,17 @@ namespace Models.Dialogue
         public string NextStepId;
     }
 
+    public class DialogueTriggerModel
+    {
+        public int Id;
+        public int Value;
+    }
+
     public class DialogueChoiceModel
     {
         public string Id;
         public string Text;
         public string NextStepId;
-        public int RewardId;
+        public List<DialogueTriggerModel> Triggers;
     }
 }
