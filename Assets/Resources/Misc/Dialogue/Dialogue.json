@@ -4,41 +4,100 @@
       "id": "1",
       "npcId": 1,
       "startStepId": "1:1",
-      "steps": [{
-        "id": "1:1",
-        "nextStepId": null,
-        "text": "Hello traveller, would you like to enter Agartha?",
-        "choices": [{
-          "id": "1:1:1",
-          "text": "<color=#9B59B6>[MGT 20] Of course!</color>",
-          "nextStepId": "1:2",
-          "triggers": [{
-            "id": 1,
-            "value": 7003
-          }]
-        }, {
-          "id": "1:1:2",
-          "text": "I have to go back to the cobalt mines.",
-          "nextStepId": null
-        }, {
-          "id": "1:1:3",
-          "text": "No, goodbye.",
-          "nextStepId": null
-        }]
-      }, {
-        "id": "1:2",
-        "nextStepId": null,
-        "text": "Excellent, here's your white monster!",
-        "choices": [{
-          "id": "1:2:1",
-          "text": "Awesome, thanks!",
-          "nextStepId": null
-        }, {
-          "id": "1:2:2",
-          "text": "Where is Jeffrey?",
-          "nextStepId": null
-        }]
-      }]
+      "startPoint": [
+        {
+          "conditions": [{ "type": "flag", "key": "hasWhiteMonster", "op": "==", "value": true }],
+          "startStepId": "1:4"
+        }
+      ],
+      "steps": [
+        {
+          "id": "1:1",
+          "nextStepId": null,
+          "text": "Hello traveller, would you like to enter Agartha?",
+          "choices": [
+            {
+              "id": "1:1:1",
+              "text": "<color=#9B59B6>[MGT 20] Of course!</color>",
+              "nextStepId": "1:2",
+              "onFailStepId": "1:3",
+              "conditions": [{ "type": "stat", "stat": 0, "op": ">=", "value": 20 }],
+              "triggers": [
+                {
+                  "type": "giveItem",
+                  "value": 7003
+                },
+                {
+                  "type": "setFlag",
+                  "key": "hasWhiteMonster",
+                  "value": true
+                }
+              ]
+            },
+            {
+              "id": "1:1:2",
+              "text": "I have to go back to the cobalt mines.",
+              "nextStepId": null
+            },
+            {
+              "id": "1:1:3",
+              "text": "No, goodbye.",
+              "nextStepId": null
+            }
+          ]
+        },
+        {
+          "id": "1:2",
+          "nextStepId": null,
+          "text": "Excellent, here's your white monster!",
+          "choices": [
+            {
+              "id": "1:2:1",
+              "text": "Awesome, thanks!",
+              "nextStepId": null
+            },
+            {
+              "id": "1:2:2",
+              "text": "Where is Jeffrey?",
+              "nextStepId": null
+            }
+          ]
+        },
+        {
+          "id": "1:3",
+          "nextStepId": null,
+          "text": "Sorry, you're not welcome here!",
+          "choices": [
+            {
+              "id": "1:3:1",
+              "text": "Ok..",
+              "nextStepId": null
+            },
+            {
+              "id": "1:3:2",
+              "text": "What a bummer.",
+              "nextStepId": null
+            }
+          ]
+        },
+        {
+          "id": "1:4",
+          "nextStepId": null,
+          "text": "Hey, welcome back! Enjoying your white monster?",
+          "choices": [
+            {
+              "id": "1:4:1",
+              "text": "Yeah!",
+              "nextStepId": null
+            },
+            {
+              "id": "1:4:2",
+              "text": "Not really.",
+              "nextStepId": null
+            }
+          ]
+        }
+      ]
     }
   ]
 }
