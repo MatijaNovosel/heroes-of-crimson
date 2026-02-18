@@ -63,12 +63,32 @@ namespace HeroesOfCrimson.Utils
       return new System.Random(seed).Next(min, max);
     }
 
-    public static float CalculatePlayerMovementSpeed(float SPD)
+    public static float CalculatePlayerMovementSpeed(
+        float swf,
+        bool slowed,
+        bool energized
+    )
     {
-      var spd = Mathf.Clamp(SPD, 1f, 100f);
-      const float minSpeed = 0.05f;
-      const float maxSpeed = 0.25f;
-      return Mathf.Lerp(minSpeed, maxSpeed, (spd - 1f) / 99f);
+        if (slowed)
+        {
+            swf = 0f;
+            energized = false;
+        }
+
+        float tilesPerSecond = 4f + 5.6f * (swf / 75f);
+        if (energized) tilesPerSecond *= 1.5f;
+        return tilesPerSecond * 1f;
+    }
+    
+    public static float CalculateMoveStepDistance(
+        float swf,
+        bool slowed,
+        bool energized,
+        float deltaTime
+    )
+    {
+        float unitsPerSecond = CalculatePlayerMovementSpeed(swf, slowed, energized);
+        return unitsPerSecond * deltaTime;
     }
     
     public static float GetDistanceToPlayer(Vector3 from)
@@ -165,8 +185,8 @@ namespace HeroesOfCrimson.Utils
 
         switch (statusEffect)
         {
-            case Constants.StatusEffects.Speedy:
-                data.Name = "Speedy";
+            case Constants.StatusEffects.Energized:
+                data.Name = "Energized";
                 data.Description = "Movement speed is increased.";
                 break;
 

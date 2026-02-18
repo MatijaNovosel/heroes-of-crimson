@@ -46,7 +46,7 @@ namespace HeroesOfCrimson.Utils
     
     public enum StatusEffects
     {
-       Speedy = 1,
+        Energized = 1,
        Slowed = 2,
        Silenced = 3,
        Damaging = 4,
@@ -62,7 +62,8 @@ namespace HeroesOfCrimson.Utils
        Paralyzed = 14,
        Burning = 15,
        Radiance = 16,
-       Sick = 17
+       Sick = 17,
+       Frostbite = 18
     }
 
     public enum ConsumableItem
@@ -189,9 +190,12 @@ namespace HeroesOfCrimson.Utils
       IceSchoolThree = 10,
     }
 
-    public enum DialogueChoiceTriggers
+    public static class DialogueTriggers
     {
-      GiveItem = 1
+      public const string GiveItem = "giveItem";
+      public const string SetFlag = "setFlag";
+      public const string RemoveFlag = "removeFlag";
+      public const string GiveXp = "giveXp";
     }
   }
 }

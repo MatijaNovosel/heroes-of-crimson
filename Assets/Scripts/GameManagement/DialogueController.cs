@@ -252,7 +252,7 @@ public class DialogueController : MonoBehaviour
 
             switch (t.Type)
             {
-                case "giveItem":
+                case Constants.DialogueTriggers.GiveItem:
                 {
                     int itemId = t.Value is int i ? i : 0;
                     var item = Database.Singleton.GetItem(itemId);
@@ -262,11 +262,18 @@ public class DialogueController : MonoBehaviour
                     break;
                 }
 
-                case "setFlag":
+                case Constants.DialogueTriggers.SetFlag:
                 {
                     if (_gameState == null) break;
                     bool v = t.Value is bool b && b;
                     _gameState.SetFlag(t.Key, v);
+                    break;
+                }
+                
+                case Constants.DialogueTriggers.GiveXp:
+                {
+                    var xp = t.Value is int i ? i : 0;
+                    player.GiveXp(xp);
                     break;
                 }
 

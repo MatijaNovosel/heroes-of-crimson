@@ -75,40 +75,45 @@ public class BaseNPCBehaviour : MonoBehaviour
   public void Move(Vector2 direction)
   {
     if (_boxCollider == null) return;
+    if (direction.sqrMagnitude <= 0.0001f) return;
 
     direction = direction.normalized;
 
-    var speed = Utils.CalculatePlayerMovementSpeed(swf);
+    if (HasStatusEffect(Constants.StatusEffects.Paralyzed)) return;
+
+    bool slowed = HasStatusEffect(Constants.StatusEffects.Slowed);
+    bool energized = HasStatusEffect(Constants.StatusEffects.Energized);
+
+    float step = Utils.CalculateMoveStepDistance(swf, slowed, energized, Time.fixedDeltaTime);
+
     LayerMask mask = LayerMask.GetMask("Actor", "Blocking", "NPC");
 
-    var moveY = new Vector2(0, direction.y);
-
-    if (moveY.y != 0 &&
+    var moveY = new Vector2(0f, direction.y);
+    if (moveY.y != 0f &&
         !Physics2D.BoxCast(
           transform.position,
           _boxCollider.size,
           0,
           moveY,
-          Mathf.Abs(moveY.y * speed),
-          mask)
-        )
+          step,
+          mask
+    ))
     {
-      transform.Translate(0, moveY.y * speed, 0);
+      transform.Translate(0f, moveY.y * step, 0f);
     }
 
-    var moveX = new Vector2(direction.x, 0);
-
-    if (moveX.x != 0 &&
+    var moveX = new Vector2(direction.x, 0f);
+    if (moveX.x != 0f &&
         !Physics2D.BoxCast(
           transform.position,
           _boxCollider.size,
           0,
           moveX,
-          Mathf.Abs(moveX.x * speed),
-          mask)
-        )
+          step,
+          mask
+    ))
     {
-      transform.Translate(moveX.x * speed, 0, 0);
+      transform.Translate(moveX.x * step, 0f, 0f);
     }
   }
   
@@ -164,6 +169,12 @@ public class BaseNPCBehaviour : MonoBehaviour
   {
     var existing = ActiveStatusEffects.FirstOrDefault(e => e.Type == effect);
     if (existing != null) ActiveStatusEffects.Remove(existing);
+  }
+  
+  public bool HasStatusEffect(Constants.StatusEffects effect)
+  {
+    var existing = ActiveStatusEffects.Any(e => e.Type == effect);
+    return existing;
   }
 
   private void Update()

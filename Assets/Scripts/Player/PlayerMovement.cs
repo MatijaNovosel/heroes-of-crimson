@@ -14,12 +14,16 @@ public class PlayerMovement : MonoBehaviour
     {
         var x = Input.GetAxisRaw("Horizontal");
         var y = Input.GetAxisRaw("Vertical");
-        _moveDelta = new Vector3(x, y, 0);
 
-        _player.animator.SetFloat("Horizontal", x);
-        _player.animator.SetFloat("Vertical", y);
-        _player.animator.SetFloat("Speed", _moveDelta.sqrMagnitude);
+        var input = new Vector2(x, y);
+        if (input.sqrMagnitude > 1f) input = input.normalized;
 
+        _moveDelta = new Vector3(input.x, input.y, 0);
+
+        _player.animator.SetFloat("Horizontal", input.x);
+        _player.animator.SetFloat("Vertical", input.y);
+        _player.animator.SetFloat("Speed", input.sqrMagnitude);
+        
         if (!_player.isShooting)
         {
             if (Input.GetKey(KeyCode.W))
@@ -45,34 +49,45 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        var speed = Utils.CalculatePlayerMovementSpeed(_player.actualSwf);
-        LayerMask mask = LayerMask.GetMask("Actor", "Blocking", "NPC");
-        var moveY = new Vector2(0, _moveDelta.y);
-
         if (_player.HasStatusEffect(Constants.StatusEffects.Paralyzed)) return;
-    
-        if (!Physics2D.BoxCast(
+
+        bool slowed = _player.HasStatusEffect(Constants.StatusEffects.Slowed);
+        bool energized = _player.HasStatusEffect(Constants.StatusEffects.Energized);
+
+        float unitsPerSecond = Utils.CalculatePlayerMovementSpeed(
+            _player.actualSwf,
+            slowed,
+            energized
+        );
+
+        float step = unitsPerSecond * Time.fixedDeltaTime;
+
+        LayerMask mask = LayerMask.GetMask("Actor", "Blocking", "NPC");
+
+        var moveY = new Vector2(0f, input.y);
+        if (moveY.y != 0f && !Physics2D.BoxCast(
             transform.position,
-            _boxCollider.size, 
-            0, 
-            moveY, 
-            Mathf.Abs(moveY.y * speed), mask)
-           )
+            _boxCollider.size,
+            0,
+            moveY,
+            step,
+            mask 
+        ))
         {
-            transform.Translate(0, moveY.y * speed, 0);
+            transform.Translate(0, moveY.y * step, 0);
         }
 
-        var moveX = new Vector2(_moveDelta.x, 0);
-    
-        if (!Physics2D.BoxCast(
+        var moveX = new Vector2(input.x, 0f);
+        if (moveX.x != 0f && !Physics2D.BoxCast(
             transform.position,
-            _boxCollider.size, 
-            0, 
-            moveX, 
-            Mathf.Abs(moveX.x * speed), mask)
-           )
+            _boxCollider.size,
+            0,
+            moveX,
+            step,
+            mask
+        ))
         {
-            transform.Translate(moveX.x * speed, 0, 0);
+            transform.Translate(moveX.x * step, 0, 0);
         }
     }
     
