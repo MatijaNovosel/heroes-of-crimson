@@ -2,7 +2,6 @@ using System.Linq;
 using GameManagement;
 using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class ParticleManager : MonoBehaviour
 {
@@ -39,11 +38,7 @@ public class ParticleManager : MonoBehaviour
                 Quaternion.Euler(0, 0, Random.Range(0f, 360f))
             );
 
-            if (sprite != null)
-            {
-                p.GetComponent<Image>().sprite = sprite;
-            }
-      
+            if (sprite != null) p.GetComponent<SpriteRenderer>().sprite = sprite;
             p.transform.localScale = Vector3.one * Random.Range(0.1f, 0.6f);
             p.GetComponent<ImpactParticle>().Init(color);
         }

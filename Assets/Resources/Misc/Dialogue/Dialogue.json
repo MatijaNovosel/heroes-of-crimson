@@ -31,6 +31,10 @@
                   "type": "setFlag",
                   "key": "hasWhiteMonster",
                   "value": true
+                },
+                {
+                  "type": "giveXp",
+                  "value": 100
                 }
               ]
             },

@@ -186,7 +186,7 @@ public class Player : MonoBehaviour
       transform,
       Color.yellow,
       20, 
-      "projectiles_28"
+      "projectiles_25"
     );
     PlayerLog.Singleton.AddItem($"<color=#F1C40F>Level up!</color> You are now level {level}!");
   }
