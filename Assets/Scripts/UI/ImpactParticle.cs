@@ -21,8 +21,7 @@ public class ImpactParticle : MonoBehaviour
 
     void Update()
     {
-        _velocity += Vector2.down * 10f * Time.deltaTime;
-
+        _velocity += Vector2.down * (10f * Time.deltaTime);
         transform.position += (Vector3)(_velocity * Time.deltaTime);
 
         Color c = _sr.color;
@@ -30,10 +29,6 @@ public class ImpactParticle : MonoBehaviour
         _sr.color = c;
 
         _life -= Time.deltaTime;
-        
-        if (_life <= 0f)
-        {
-            Destroy(gameObject);
-        }
+        if (_life <= 0f) Destroy(gameObject);
     }
 }

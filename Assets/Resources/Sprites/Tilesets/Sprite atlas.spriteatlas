@@ -40,7 +40,7 @@ SpriteAtlas:
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
-      enableTightPacking: 1
+      enableTightPacking: 0
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
@@ -232,8 +232,10 @@ SpriteAtlas:
     - 5cbf85727fab9604dad030585a680ce4: -203102786
     - 5cbf85727fab9604dad030585a680ce4: -1974720981
     - 5cbf85727fab9604dad030585a680ce4: -873066789
+    - 5cbf85727fab9604dad030585a680ce4: -1577911202
     - 5cbf85727fab9604dad030585a680ce4: 996421194
     - 5cbf85727fab9604dad030585a680ce4: -1268124757
+    - 5cbf85727fab9604dad030585a680ce4: 1801780077
     - 5cbf85727fab9604dad030585a680ce4: -2077656400
     - 5cbf85727fab9604dad030585a680ce4: -181619974
     - 5cbf85727fab9604dad030585a680ce4: 512466106
@@ -483,8 +485,10 @@ SpriteAtlas:
   - {fileID: -203102786, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -1974720981, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -873066789, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
+  - {fileID: -1577911202, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: 996421194, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -1268124757, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
+  - {fileID: 1801780077, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -2077656400, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -181619974, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: 512466106, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
@@ -733,8 +737,10 @@ SpriteAtlas:
   - tileset_215
   - tileset_87
   - tileset_97
+  - tileset_246
   - tileset_214
   - tileset_96
+  - tileset_247
   - tileset_217
   - tileset_95
   - tileset_244

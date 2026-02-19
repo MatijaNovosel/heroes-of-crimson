@@ -186,7 +186,7 @@ public class Player : MonoBehaviour
       transform,
       Color.yellow,
       20, 
-      "projectiles_28"
+      "projectiles_25"
     );
     PlayerLog.Singleton.AddItem($"<color=#F1C40F>Level up!</color> You are now level {level}!");
   }
@@ -205,6 +205,7 @@ public class Player : MonoBehaviour
   
   private void OnWeaponEquipped(Item item)
   {
+    // TODO: Fix magic numbers later
     if (item.id == 2009)
     {
       _baseNpcBehaviour.ApplyStatusEffect(Constants.StatusEffects.Radiance);
@@ -215,6 +216,7 @@ public class Player : MonoBehaviour
   private void OnWeaponUnequipped(Item item)
   {
     _playerShootingComponent.SetLastWeapon(null);
+    // TODO: Fix magic numbers later
     if (item.id == 2009)
     {
       _baseNpcBehaviour.RemoveStatusEffect(Constants.StatusEffects.Radiance);
@@ -239,6 +241,7 @@ public class Player : MonoBehaviour
         if (!collidable) continue;
         if (collidable.collisionGroups.All(x => x != Constants.CollisionGroups.Enemy)) continue;
       
+        // TODO: Fix magic numbers later
         col.SendMessage(
           "ReceiveDamage",
           new DamageModel(

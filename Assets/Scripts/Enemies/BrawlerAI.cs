@@ -173,7 +173,6 @@ public class BrawlerAI : MonoBehaviour
             MoveTowards(playerPos);
         }
     }
-
     
     private void MoveTowards(Vector3 target)
     {
