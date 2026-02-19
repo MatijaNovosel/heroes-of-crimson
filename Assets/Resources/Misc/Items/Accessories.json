@@ -71,6 +71,150 @@
       "spritePath": "accessories_29",
       "rarity": 4,
       "stats": [0, 0, 0, 0, 4, 0]
+    },
+    {
+      "id": 5008,
+      "name": "Iron ring of protection",
+      "description": "A sturdy iron ring set with a shard of black obsidian that fortifies your defenses.",
+      "tag": 5,
+      "spritePath": "accessories_1",
+      "rarity": 1,
+      "stats": [0, 1, 0, 0, 0, 0]
+    },
+    {
+      "id": 5009,
+      "name": "Silver ring of protection",
+      "description": "A polished silver ring set with refined obsidian that hardens your skin like stone.",
+      "tag": 5,
+      "spritePath": "accessories_9",
+      "rarity": 2,
+      "stats": [0, 2, 0, 0, 0, 0]
+    },
+    {
+      "id": 5010,
+      "name": "Sapphire ring of protection",
+      "description": "An extravagant ring reinforced with a dense obsidian core that absorbs incoming blows.",
+      "tag": 5,
+      "spritePath": "accessories_17",
+      "rarity": 3,
+      "stats": [0, 3, 0, 0, 0, 0]
+    },
+    {
+      "id": 5011,
+      "name": "Golden ring of protection",
+      "description": "An opulent golden ring housing a flawless obsidian gem that turns aside heavy strikes.",
+      "tag": 5,
+      "spritePath": "accessories_25",
+      "rarity": 4,
+      "stats": [0, 4, 0, 0, 0, 0]
+    },
+    {
+      "id": 5012,
+      "name": "Iron ring of wisdom",
+      "description": "A simple iron band holding a small sapphire that sharpens your perception.",
+      "tag": 5,
+      "spritePath": "accessories_4",
+      "rarity": 1,
+      "stats": [0, 0, 1, 0, 0, 0]
+    },
+    {
+      "id": 5013,
+      "name": "Silver ring of wisdom",
+      "description": "A refined silver ring set with a polished sapphire that enhances mental clarity.",
+      "tag": 5,
+      "spritePath": "accessories_12",
+      "rarity": 2,
+      "stats": [0, 0, 2, 0, 0, 0]
+    },
+    {
+      "id": 5014,
+      "name": "Sapphire ring of wisdom",
+      "description": "An extravagant sapphire band radiating arcane insight and calm focus.",
+      "tag": 5,
+      "spritePath": "accessories_20",
+      "rarity": 3,
+      "stats": [0, 0, 3, 0, 0, 0]
+    },
+    {
+      "id": 5015,
+      "name": "Golden ring of wisdom",
+      "description": "An opulent golden ring crowned with a radiant sapphire that illuminates hidden truths.",
+      "tag": 5,
+      "spritePath": "accessories_28",
+      "rarity": 4,
+      "stats": [0, 0, 4, 0, 0, 0]
+    },
+    {
+      "id": 5016,
+      "name": "Iron ring of strength",
+      "description": "A heavy iron ring set with a small ruby that ignites raw physical power.",
+      "tag": 5,
+      "spritePath": "accessories_3",
+      "rarity": 1,
+      "stats": [0, 0, 0, 1, 0, 0]
+    },
+    {
+      "id": 5017,
+      "name": "Silver ring of strength",
+      "description": "A polished silver band holding a bright ruby that fuels your muscles.",
+      "tag": 5,
+      "spritePath": "accessories_11",
+      "rarity": 2,
+      "stats": [0, 0, 0, 2, 0, 0]
+    },
+    {
+      "id": 5018,
+      "name": "Sapphire ring of strength",
+      "description": "An extravagant ring with a blazing ruby core that surges with battle energy.",
+      "tag": 5,
+      "spritePath": "accessories_19",
+      "rarity": 3,
+      "stats": [0, 0, 0, 3, 0, 0]
+    },
+    {
+      "id": 5019,
+      "name": "Golden ring of strength",
+      "description": "An opulent golden ring embedding a flawless ruby that radiates overwhelming might.",
+      "tag": 5,
+      "spritePath": "accessories_27",
+      "rarity": 4,
+      "stats": [0, 0, 0, 4, 0, 0]
+    },
+    {
+      "id": 5020,
+      "name": "Iron ring of swiftness",
+      "description": "A light iron ring set with a small emerald that quickens your movements.",
+      "tag": 5,
+      "spritePath": "accessories_2",
+      "rarity": 1,
+      "stats": [0, 0, 0, 0, 0, 1]
+    },
+    {
+      "id": 5021,
+      "name": "Silver ring of swiftness",
+      "description": "A refined silver ring holding a polished emerald that sharpens your reflexes.",
+      "tag": 5,
+      "spritePath": "accessories_10",
+      "rarity": 2,
+      "stats": [0, 0, 0, 0, 0, 2]
+    },
+    {
+      "id": 5022,
+      "name": "Sapphire ring of swiftness",
+      "description": "An extravagant band set with a vibrant emerald that enhances your reaction speed.",
+      "tag": 5,
+      "spritePath": "accessories_18",
+      "rarity": 3,
+      "stats": [0, 0, 0, 0, 0, 3]
+    },
+    {
+      "id": 5023,
+      "name": "Golden ring of swiftness",
+      "description": "An opulent golden ring crowned with a brilliant emerald that grants near-supernatural agility.",
+      "tag": 5,
+      "spritePath": "accessories_26",
+      "rarity": 4,
+      "stats": [0, 0, 0, 0, 0, 4]
     }
   ]
 }
