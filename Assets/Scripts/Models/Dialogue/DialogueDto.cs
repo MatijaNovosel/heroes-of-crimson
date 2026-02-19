@@ -69,6 +69,9 @@ public class DialogueChoiceDto
 
     [JsonProperty("onFailStepId")]
     public string onFailStepId;
+    
+    [JsonProperty("showIf")]
+    public List<DialogueConditionDto> showIf;
 
     [JsonProperty("conditions")]
     public List<DialogueConditionDto> conditions;

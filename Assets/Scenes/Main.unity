@@ -48622,7 +48622,7 @@ MonoBehaviour:
   mgt: 30
   arm: 0
   str: 30
-  wis: 30
+  wis: 15
   agi: 30
   invincible: 0
   lootIds: 
@@ -113040,6 +113040,10 @@ PrefabInstance:
     - target: {fileID: 7860581793131152283, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: spd
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860581793131152283, guid: fc920363a5cee564e95302175fa8e339, type: 3}
+      propertyPath: wis
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7860581793131152283, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: maxHp

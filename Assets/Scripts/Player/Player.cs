@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
   public static Player Singleton;
   
   // Experience
-  public float level = 1;
+  public int level = 1;
   public int experience = 0;
   public int xpNeeded = 100;
   

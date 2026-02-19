@@ -9,7 +9,6 @@ namespace Models.Dialogue
         public int NpcId;
         public string StartStepId;
         public List<DialogueStartPointModel> StartPoints;
-
         public Dictionary<string, DialogueStepModel> Steps;
     }
 
@@ -32,10 +31,10 @@ namespace Models.Dialogue
         public string Id;
         public string Text;
         public string NextStepId;
-
         public string OnFailStepId;
+        
         public List<DialogueConditionModel> Conditions;
-
+        public List<DialogueConditionModel> ShowIf;
         public List<DialogueTriggerModel> Triggers;
     }
 

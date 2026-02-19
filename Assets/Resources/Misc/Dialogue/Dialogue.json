@@ -40,11 +40,17 @@
             },
             {
               "id": "1:1:2",
-              "text": "I have to go back to the cobalt mines.",
+              "text": "I have my own.",
+              "showIf": [{ "type": "stat", "stat": 2, "op": ">=", "value": 20 }],
               "nextStepId": null
             },
             {
               "id": "1:1:3",
+              "text": "I have to go back to the cobalt mines.",
+              "nextStepId": null
+            },
+            {
+              "id": "1:1:4",
               "text": "No, goodbye.",
               "nextStepId": null
             }

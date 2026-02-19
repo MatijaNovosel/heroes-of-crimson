@@ -36,10 +36,10 @@ public class DialogueController : MonoBehaviour
         {
             Debug.LogError("DialogueController: gameStateSource must implement IDialogueGameState");
         }
-        LoadDialogues();
+        _loadDialogues();
     }
 
-    public void LoadDialogues()
+    private void _loadDialogues()
     {
         _dialoguesByNpc = new Dictionary<int, List<DialogueModel>>();
         _dialoguesById = new Dictionary<string, DialogueModel>();
@@ -74,11 +74,7 @@ public class DialogueController : MonoBehaviour
             {
                 var model = ToModel(dto);
                 if (model == null) continue;
-
-                if (!string.IsNullOrEmpty(model.Id))
-                {
-                    _dialoguesById[model.Id] = model;
-                }
+                if (!string.IsNullOrEmpty(model.Id)) _dialoguesById[model.Id] = model;
 
                 if (!_dialoguesByNpc.TryGetValue(model.NpcId, out var list))
                 {
@@ -146,12 +142,31 @@ public class DialogueController : MonoBehaviour
                         }
 
                         var conditions = new List<DialogueConditionModel>();
+                        
                         if (c.conditions != null)
                         {
                             foreach (var cond in c.conditions)
                             {
                                 if (cond == null) continue;
                                 conditions.Add(new DialogueConditionModel
+                                {
+                                    Type = cond.type,
+                                    Key = cond.key,
+                                    Stat = cond.stat,
+                                    Op = cond.op,
+                                    Value = JTokenToClr(cond.value)
+                                });
+                            }
+                        }
+                        
+                        var showIfConditions = new List<DialogueConditionModel>();
+                        
+                        if (c.showIf != null)
+                        {
+                            foreach (var cond in c.showIf)
+                            {
+                                if (cond == null) continue;
+                                showIfConditions.Add(new DialogueConditionModel
                                 {
                                     Type = cond.type,
                                     Key = cond.key,
@@ -168,6 +183,7 @@ public class DialogueController : MonoBehaviour
                             Text = c.text,
                             NextStepId = c.nextStepId,
                             OnFailStepId = c.onFailStepId,
+                            ShowIf = showIfConditions,
                             Conditions = conditions,
                             Triggers = triggers
                         });
@@ -224,6 +240,14 @@ public class DialogueController : MonoBehaviour
         }
         return list[0];
     }
+    
+    private List<DialogueChoiceModel> _getVisibleChoices(List<DialogueChoiceModel> choices)
+    {
+        if (choices == null || choices.Count == 0) return new List<DialogueChoiceModel>();
+        return choices
+            .Where(c => c != null && AreConditionsMet(c.ShowIf))
+            .ToList();
+    }
 
     public void StartDialogue(TalkableNPC npc)
     {
@@ -241,7 +265,7 @@ public class DialogueController : MonoBehaviour
         var entryStepId = ResolveStartStepId(_activeDialogue);
 
         GoToStep(entryStepId);
-        dialogueOptions.Init(_currentStep.Choices);
+        dialogueOptions.Init(_getVisibleChoices(_currentStep.Choices));
     }
     
     private void HandleChoiceTriggers(List<DialogueTriggerModel> triggers)
@@ -291,18 +315,14 @@ public class DialogueController : MonoBehaviour
         var choice = _currentStep.Choices.Find(x => x.Id == choiceId);
         if (choice == null) return;
 
+        if (!AreConditionsMet(choice.ShowIf)) return;
+
         bool ok = AreConditionsMet(choice.Conditions);
 
         if (!ok)
         {
-            if (!string.IsNullOrEmpty(choice.OnFailStepId))
-            {
-                GoToStep(choice.OnFailStepId);
-            }
-            else
-            {
-                DialogMenu.Singleton.CloseDialog();
-            }
+            if (!string.IsNullOrEmpty(choice.OnFailStepId)) GoToStep(choice.OnFailStepId);
+            else DialogMenu.Singleton.CloseDialog();
             return;
         }
 
@@ -335,13 +355,10 @@ public class DialogueController : MonoBehaviour
 
         _currentStep = step;
 
-        if (CurrentNPC != null && CurrentNPC.dialogueState != null)
-        {
-            CurrentNPC.dialogueState.StepId = stepId;
-        }
+        if (CurrentNPC != null && CurrentNPC.dialogueState != null) CurrentNPC.dialogueState.StepId = stepId;
 
         DialogMenu.Singleton.UpdateText(_currentStep.Text);
-        dialogueOptions.Init(_currentStep.Choices);
+        dialogueOptions.Init(_getVisibleChoices(_currentStep.Choices));
     }
     
     private bool AreConditionsMet(List<DialogueConditionModel> conditions)
@@ -396,6 +413,12 @@ public class DialogueController : MonoBehaviour
                 
                 var expected = c.Value is int i ? i : 0;
                 return CompareInt(actualStat, c.Op, expected);
+            }
+            case "level":
+            {
+                var level = player.level;
+                var expected = c.Value is int i ? i : 0;
+                return CompareInt(level, c.Op, expected);
             }
             default:
                 Debug.LogWarning($"Unknown condition type '{c.Type}'");
