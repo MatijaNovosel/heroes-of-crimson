@@ -46,24 +46,24 @@ namespace HeroesOfCrimson.Utils
     
     public enum StatusEffects
     {
-        Energized = 1,
-       Slowed = 2,
-       Silenced = 3,
-       Damaging = 4,
-       ArmorBroken = 5,
-       Healing = 6,
-       Poisoned = 7,
-       Bleeding = 8,
-       Armored = 9,
-       Invincible = 10,
-       Weak = 11,
-       Stunned = 12,
-       Berserk = 13,
-       Paralyzed = 14,
-       Burning = 15,
-       Radiance = 16,
-       Sick = 17,
-       Frostbite = 18
+      Energized = 1,
+      Slowed = 2,
+      Silenced = 3,
+      Damaging = 4,
+      ArmorBroken = 5,
+      Healing = 6,
+      Poisoned = 7,
+      Bleeding = 8,
+      Armored = 9,
+      Invincible = 10,
+      Weak = 11,
+      Stunned = 12,
+      Berserk = 13,
+      Paralyzed = 14,
+      Burning = 15,
+      Radiance = 16,
+      Sick = 17,
+      Frostbite = 18
     }
 
     public enum ConsumableItem
@@ -196,6 +196,7 @@ namespace HeroesOfCrimson.Utils
       public const string SetFlag = "setFlag";
       public const string RemoveFlag = "removeFlag";
       public const string GiveXp = "giveXp";
+      public const string ApplyStatusEffect = "applyStatusEffect";
     }
   }
 }

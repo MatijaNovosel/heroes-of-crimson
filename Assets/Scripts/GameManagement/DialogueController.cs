@@ -300,6 +300,13 @@ public class DialogueController : MonoBehaviour
                     player.GiveXp(xp);
                     break;
                 }
+                
+                case Constants.DialogueTriggers.ApplyStatusEffect:
+                {
+                    var statusEffect = t.Value is int i ? i : 0;
+                    player.SetStatusEffect(statusEffect, 10);
+                    break;
+                }
 
                 default:
                     Debug.LogWarning($"Unknown trigger type='{t.Type}' key='{t.Key}' value='{t.Value}'");

@@ -141,7 +141,7 @@ public class Player : MonoBehaviour
     }
   }
 
-  public void SetStatusEffects(int statusEffectId, float duration)
+  public void SetStatusEffect(int statusEffectId, float duration)
   {
     _baseNpcBehaviour.ApplyStatusEffect((Constants.StatusEffects)statusEffectId, duration);
   }

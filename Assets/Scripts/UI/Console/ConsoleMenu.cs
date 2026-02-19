@@ -69,7 +69,7 @@ namespace UI
                 return;
             }
 
-            player.SetStatusEffects(statusEffectId, duration);
+            player.SetStatusEffect(statusEffectId, duration);
         }
         
         private void HandleExperienceCommand(string[] args)

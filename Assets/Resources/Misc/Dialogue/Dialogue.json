@@ -35,6 +35,10 @@
                 {
                   "type": "giveXp",
                   "value": 100
+                },
+                {
+                  "type": "applyStatusEffect",
+                  "value": 1
                 }
               ]
             },
