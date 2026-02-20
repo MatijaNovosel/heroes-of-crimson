@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using HeroesOfCrimson.Utils;
 using Models;
 using Unity.Burst.CompilerServices;
@@ -14,6 +15,10 @@ namespace UI.Inventory
         
         private LootBag _currentLootBag;
         public bool IsLootInventory => _currentLootBag != null;
+        public List<int> ItemIds => inventorySlots
+            .Where(x => x.CurrentInventoryItem != null && x.CurrentInventoryItem.ItemInSlot != null)
+            .Select(x => x.CurrentInventoryItem.ItemInSlot.id)
+            .ToList();
 
         private void _setLootSource(LootBag bag)
         {

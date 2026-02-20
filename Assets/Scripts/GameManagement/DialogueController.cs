@@ -11,6 +11,7 @@ public class DialogueController : MonoBehaviour
 {
     public static DialogueController Singleton;
     public Inventory playerInventory;
+    public Inventory playerHotbar;
     public Player player;
 
     private DialogueModel _activeDialogue;
@@ -281,7 +282,7 @@ public class DialogueController : MonoBehaviour
                     int itemId = t.Value is int i ? i : 0;
                     var item = Database.Singleton.GetItem(itemId);
                     playerInventory.SpawnItem(item);
-                    PlayerLog.Singleton.AddItem("You received <color=#F1C40F>White Monster Energy</color>!");
+                    PlayerLog.Singleton.AddItem($"You received <color=#F1C40F>{item.name}</color>!");
                     PlayerLog.Singleton.AddItem("You feel very conflicted about your choices.");
                     break;
                 }
@@ -377,6 +378,7 @@ public class DialogueController : MonoBehaviour
             if (c == null) continue;
             if (!IsConditionMet(c)) return false;
         }
+        
         return true;
     }
 
@@ -426,6 +428,11 @@ public class DialogueController : MonoBehaviour
                 var level = player.level;
                 var expected = c.Value is int i ? i : 0;
                 return CompareInt(level, c.Op, expected);
+            }
+            case "hasItem":
+            {
+                var expected = c.Value is int i ? i : 0;
+                return playerInventory.ItemIds.Contains(expected) || playerHotbar.ItemIds.Contains(expected);
             }
             default:
                 Debug.LogWarning($"Unknown condition type '{c.Type}'");
