@@ -772,6 +772,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: projectiles_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb1595b60fe498e40a36723b062336a5
+      internalID: 1446315623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -812,6 +834,7 @@ TextureImporter:
       projectiles_28: 1750466776
       projectiles_29: 1286547244
       projectiles_3: -123116942
+      projectiles_30: 1446315623
       projectiles_4: -1830236131
       projectiles_5: -1818829827
       projectiles_6: 766426545
