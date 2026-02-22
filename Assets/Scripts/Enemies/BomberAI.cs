@@ -243,11 +243,11 @@ public class BomberAI : MonoBehaviour
         var indicator = CreateLandingIndicator(targetPoint, explosionRadius);
         if (indicator) _activeIndicators.Add(indicator);
 
-        var projGo = CreateVisualProjectile((Vector2)transform.position, projectileSprite, projectileScale);
+        var projGo = CreateVisualProjectile(transform.position, projectileSprite, projectileScale);
         if (projGo != null)
         {
             _activeProjectiles.Add(projGo);
-            StartCoroutine(ArcMove(projGo.transform, (Vector2)transform.position, targetPoint, flightTime));
+            StartCoroutine(ArcMove(projGo.transform, transform.position, targetPoint, flightTime));
         }
 
         StartCoroutine(DelayedExplosion(targetPoint, flightTime, explosionRadius, indicator));
@@ -318,10 +318,8 @@ public class BomberAI : MonoBehaviour
         if (!tr) yield break;
 
         float elapsed = 0f;
-
         float dist = Vector2.Distance(start, end);
         float height = Mathf.Clamp(dist * arcHeightMultiplier, minArcHeight, maxArcHeight);
-
         float z = projectileZ;
 
         Vector3 startScale = tr.localScale;
@@ -330,10 +328,8 @@ public class BomberAI : MonoBehaviour
         while (elapsed < time)
         {
             if (!tr) yield break;
-
             elapsed += Time.deltaTime;
             float u = Mathf.Clamp01(elapsed / time);
-
             var pos = Vector2.Lerp(start, end, u);
             float arc = 4f * height * u * (1f - u);
 
