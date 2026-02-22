@@ -16,38 +16,74 @@ public class BomberAI : MonoBehaviour
     [SerializeField] private float projectileZ = -0.2f;
     [SerializeField] private float spinDegreesPerSecond = 720f;
     [SerializeField] private float endScaleMultiplier = 0.25f;
+
+    [Header("Impact Particles")]
     [SerializeField] private Color particleColor = Color.green;
     [SerializeField] private int particleCount = 18;
 
+    [Header("Arc Visual")]
     [SerializeField] private float arcHeightMultiplier = 0.35f;
     [SerializeField] private float minArcHeight = 0.4f;
     [SerializeField] private float maxArcHeight = 2.5f;
 
+    [Header("Ranges")]
+    [SerializeField] private float SearchRadius = 7f;
     [SerializeField] private float AttackEnterRange = 5f;
     [SerializeField] private float AttackExitRangePadding = 1f;
-    [SerializeField] private float bombCooldown = 2.4f;
 
+    [Header("Combat Movement (in range)")]
+    [Tooltip("Bomber tries to stay at least this far from player while in range.")]
+    [SerializeField] private float preferredMinDistance = 3.25f;
+
+    [Tooltip("Bomber tries not to exceed this distance while in range (otherwise it moves in).")]
+    [SerializeField] private float preferredMaxDistance = 4.75f;
+
+    [Tooltip("How often to pick a new combat movement direction/target (seconds).")]
+    [SerializeField] private float combatMoveRepathTime = 0.9f;
+
+    [Tooltip("How strong the random component is when moving in range.")]
+    [Range(0f, 1f)]
+    [SerializeField] private float combatRandomness = 0.55f;
+
+    [Tooltip("Movement speed multiplier while in combat movement.")]
+    [SerializeField] private float combatSpeedMultiplier = 0.55f;
+
+    [Tooltip("Steering smoothing; higher = snappier, lower = smoother.")]
+    [SerializeField] private float combatSteerSpeed = 8f;
+
+    [Tooltip("Prevents micro jitter when desired dir is tiny.")]
+    [SerializeField] private float combatDirectionDeadzone = 0.05f;
+
+    [Header("Bomb")]
+    [SerializeField] private float bombCooldown = 2.4f;
     [SerializeField] private float flightTime = 0.9f;
     [SerializeField] private float explosionRadius = 2f;
     [SerializeField] private bool predictPlayer = true;
     [SerializeField] private float predictionLeadSeconds = 0.35f;
+
+    [Header("Debug Visuals")]
     [SerializeField] private bool showRanges = true;
 
     private LineRenderer _searchRangeCircle;
     private LineRenderer _attackRangeCircle;
 
-    [SerializeField] private float SearchRadius = 7f;
-
+    // Wander
     private float wanderDuration = 0.2f;
     private float wanderPause = 2f;
     private Vector2 _wanderDirection;
     private float _wanderTimer;
     private float _wanderPauseTimer;
 
+    // Combat movement
+    private float _combatMoveTimer;
+    private Vector2 _combatMoveDir;
+    private Vector2 _moveDirSmoothed;
+
     private bool _inAttackRange;
     private bool _isAttacking;
     private float _lastBombTime;
 
+    // Player tracking (prediction)
     private Vector2 _lastPlayerPos;
     private Vector2 _playerVelEstimate;
     private bool _hasLastPlayerPos;
@@ -86,6 +122,7 @@ public class BomberAI : MonoBehaviour
 
         PickNewWanderDirection();
         UpdatePlayerTracking();
+        PickNewCombatMoveDir();
     }
 
     void FixedUpdate()
@@ -135,6 +172,8 @@ public class BomberAI : MonoBehaviour
         if (distance > SearchRadius)
         {
             _animator.SetBool(Attacking, false);
+            _inAttackRange = false;
+            _moveDirSmoothed = Vector2.zero;
             Wander();
             return;
         }
@@ -147,10 +186,13 @@ public class BomberAI : MonoBehaviour
         if (!_inAttackRange && distance <= AttackEnterRange)
         {
             _inAttackRange = true;
+            _combatMoveTimer = 0f;
+            _moveDirSmoothed = Vector2.zero;
         }
         else if (_inAttackRange && distance >= exitRange)
         {
             _inAttackRange = false;
+            _moveDirSmoothed = Vector2.zero;
         }
 
         if (_inAttackRange)
@@ -159,19 +201,7 @@ public class BomberAI : MonoBehaviour
 
             if (!_isAttacking)
             {
-                if (distance < AttackEnterRange * 0.55f)
-                {
-                    var away = ((Vector2)transform.position - (Vector2)playerPos).normalized;
-                    _npcBehaviour.Move(away * 0.35f);
-                    _animSpeed = 0.35f;
-                }
-                else
-                {
-                    var toPlayer = ((Vector2)playerPos - (Vector2)transform.position).normalized;
-                    var strafe = new Vector2(-toPlayer.y, toPlayer.x);
-                    _npcBehaviour.Move(strafe * 0.25f);
-                    _animSpeed = 0.25f;
-                }
+                CombatMove(playerPos, distance);
             }
 
             TryBomb(playerPos);
@@ -181,6 +211,65 @@ public class BomberAI : MonoBehaviour
             _animator.SetBool(Attacking, false);
             MoveTowards(playerPos);
         }
+    }
+
+    private void CombatMove(Vector2 playerPos, float distance)
+    {
+        _combatMoveTimer -= Time.deltaTime;
+        if (_combatMoveTimer <= 0f)
+        {
+            PickNewCombatMoveDir();
+        }
+
+        Vector2 away = ((Vector2)transform.position - playerPos);
+        if (away.sqrMagnitude < 0.0001f) away = Random.insideUnitCircle;
+        away = away.normalized;
+
+        Vector2 toPlayer = -away;
+
+        Vector2 desired;
+        if (distance < preferredMinDistance)
+        {
+            desired = away;
+        }
+        else if (distance > preferredMaxDistance)
+        {
+            desired = toPlayer;
+        }
+        else
+        {
+            desired = Vector2.Lerp(away, _combatMoveDir, combatRandomness);
+            if (desired.sqrMagnitude < 0.0001f) desired = away;
+            desired = desired.normalized;
+        }
+
+        if (desired.sqrMagnitude < combatDirectionDeadzone * combatDirectionDeadzone)
+        {
+            desired = _moveDirSmoothed.sqrMagnitude > 0.0001f ? _moveDirSmoothed : away;
+        }
+
+        if (_moveDirSmoothed.sqrMagnitude < 0.0001f) _moveDirSmoothed = desired;
+
+        float t = 1f - Mathf.Exp(-combatSteerSpeed * Time.deltaTime);
+        _moveDirSmoothed = Vector2.Lerp(_moveDirSmoothed, desired, t).normalized;
+
+        _npcBehaviour.Move(_moveDirSmoothed * combatSpeedMultiplier);
+        _animSpeed = combatSpeedMultiplier;
+    }
+
+    private void PickNewCombatMoveDir()
+    {
+        var playerPos = (Vector2)Utils.GetPlayerPosition();
+        var away = ((Vector2)transform.position - playerPos);
+        if (away.sqrMagnitude < 0.0001f) away = Vector2.up;
+        away = away.normalized;
+
+        var rand = Random.insideUnitCircle.normalized;
+
+        float awayBias = 0.35f;
+        _combatMoveDir = Vector2.Lerp(rand, away, awayBias).normalized;
+
+        _combatMoveTimer = combatMoveRepathTime;
     }
 
     private void MoveTowards(Vector3 target)
@@ -251,14 +340,17 @@ public class BomberAI : MonoBehaviour
         }
 
         StartCoroutine(DelayedExplosion(targetPoint, flightTime, explosionRadius, indicator));
+
         _lastBombTime = Time.time;
         Invoke(nameof(EndAttackPause), 0.18f);
+
         AudioManager.Singleton.PlaySoundCached(Constants.Sounds.SpiderShoot);
     }
 
     private void EndAttackPause()
     {
         _isAttacking = false;
+        _combatMoveTimer = 0f;
     }
 
     private System.Collections.IEnumerator DelayedExplosion(Vector2 worldPos, float delay, float radius, GameObject indicator)
@@ -328,8 +420,10 @@ public class BomberAI : MonoBehaviour
         while (elapsed < time)
         {
             if (!tr) yield break;
+
             elapsed += Time.deltaTime;
             float u = Mathf.Clamp01(elapsed / time);
+
             var pos = Vector2.Lerp(start, end, u);
             float arc = 4f * height * u * (1f - u);
 
@@ -340,7 +434,7 @@ public class BomberAI : MonoBehaviour
             yield return null;
         }
 
-        if (tr) tr.position = new Vector3(end.x, end.y, z); 
+        if (tr) tr.position = new Vector3(end.x, end.y, z);
         ParticleManager.Singleton.SpawnParticles(tr, particleColor, particleCount);
 
         if (tr)

@@ -13,7 +13,7 @@ public class BrawlerAI : MonoBehaviour
     [Header("Projectile data")]
     public float projectileScale = 1f;
     public Sprite projectileSprite;
-    public Constants.StatusEffects StatusEffectToApply;
+    public Constants.StatusEffects? StatusEffectToApply;
     
     [Header("Debug Visuals")]
     [SerializeField] private bool showRanges = true;
