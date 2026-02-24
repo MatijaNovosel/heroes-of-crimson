@@ -9,12 +9,16 @@ public class BrawlerAI : MonoBehaviour
     private BaseNPCBehaviour _npcBehaviour;
     private SpriteRenderer _spriteRenderer;
     private GameObject _projectile;
+
+    [Header("Projectile data")]
+    public float projectileScale = 1f;
+    public Sprite projectileSprite;
+    public Constants.StatusEffects? StatusEffectToApply;
     
     [Header("Debug Visuals")]
     [SerializeField] private bool showRanges = true;
 
     private LineRenderer _searchRangeCircle;
-    private LineRenderer _attackEnterRangeCircle;
     private LineRenderer _attackExitRangeCircle;
 
     [Header("Ranges")]
@@ -61,13 +65,6 @@ public class BrawlerAI : MonoBehaviour
                 "SearchRange",
                 SearchRadius,
                 new Color(1f, 0f, 0f, 0.25f)
-            );
-
-            _attackEnterRangeCircle = Utils.CreateCircle(
-                transform,
-                "AttackEnterRange",
-                AttackEnterRange,
-                new Color(1f, 1f, 0f, 0.4f)
             );
             
             _attackExitRangeCircle = Utils.CreateCircle(
@@ -228,17 +225,24 @@ public class BrawlerAI : MonoBehaviour
             Quaternion.identity
         );
 
+        var statusEffects = new List<Constants.StatusEffects>();
+
+        if (StatusEffectToApply != null)
+        {
+            statusEffects.Add((Constants.StatusEffects)StatusEffectToApply);
+        }
+
         proj.GetComponent<Projectile>().Setup(new ProjectileSetupModel(
             shootDirection,
             0,
             null,
-            null,
-            25,
-            ResourceCacher.Singleton.ProjectileSprites[17],
+            projectileScale,
+            10,
+            projectileSprite,
             new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
             new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
             null,
-            new (),
+            statusEffects,
             5.0f
         ));
 

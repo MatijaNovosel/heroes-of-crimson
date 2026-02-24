@@ -123,6 +123,7 @@ namespace HeroesOfCrimson.Utils
       // Eenemy sounds
       SkeletonHit = 2000,
       SkeletonDeath = 2001,
+      SpiderShoot = 2002,
       // Player sounds
       MageHit = 3000,
       // Ability sounds

@@ -249,7 +249,7 @@ public class Player : MonoBehaviour
             new List<Constants.StatusEffects>() { Constants.StatusEffects.Burning }
           )
         );
-      } 
+      }
     }
   }
 

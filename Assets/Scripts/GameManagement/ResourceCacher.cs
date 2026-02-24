@@ -53,6 +53,7 @@ namespace GameManagement
             // Enemy sounds
             Sounds.Add(Constants.Sounds.SkeletonDeath, Resources.Load<AudioClip>("Sounds/Enemies/skeletonDeath"));
             Sounds.Add(Constants.Sounds.SkeletonHit, Resources.Load<AudioClip>("Sounds/Enemies/skeletonHit"));
+            Sounds.Add(Constants.Sounds.SpiderShoot, Resources.Load<AudioClip>("Sounds/Enemies/spiderShoot"));
             
             // Player sounds
             Sounds.Add(Constants.Sounds.MageHit, Resources.Load<AudioClip>("Sounds/Player/mageHit"));
