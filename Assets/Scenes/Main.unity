@@ -2742,7 +2742,7 @@ MonoBehaviour:
   wis: 30
   agi: 30
   invincible: 0
-  lootIds: 
+  lootTableId: 0
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}
   lootBagPrefab: {fileID: 1391078489379675557, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
@@ -9200,7 +9200,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   projectileScale: 1
   projectileSprite: {fileID: -1919876751, guid: 59f9b76b0706c364897c71ad2b43371b, type: 3}
-  StatusEffectToApply: 0
   showRanges: 1
   SearchRadius: 10
   AttackEnterRange: 5
@@ -9228,7 +9227,7 @@ MonoBehaviour:
   wis: 30
   agi: 30
   invincible: 0
-  lootIds: d107000088130000891300008d1300008e130000
+  lootTableId: 1
   deathSound: {fileID: 8300000, guid: cd9f2fd01f6ce8f459abc045ca50316e, type: 3}
   hitSound: {fileID: 8300000, guid: adca1c47177be8044800f5a92027b175, type: 3}
   lootBagPrefab: {fileID: 1391078489379675557, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
@@ -9383,7 +9382,7 @@ MonoBehaviour:
   wis: 30
   agi: 30
   invincible: 0
-  lootIds: 
+  lootTableId: 0
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}
   lootBagPrefab: {fileID: 1391078489379675557, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
@@ -26907,7 +26906,7 @@ MonoBehaviour:
   wis: 30
   agi: 30
   invincible: 0
-  lootIds: 
+  lootTableId: 0
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}
   lootBagPrefab: {fileID: 1391078489379675557, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
@@ -29324,7 +29323,7 @@ MonoBehaviour:
   wis: 30
   agi: 30
   invincible: 0
-  lootIds: d107000088130000891300008d1300008e130000
+  lootTableId: 1
   deathSound: {fileID: 8300000, guid: cd9f2fd01f6ce8f459abc045ca50316e, type: 3}
   hitSound: {fileID: 8300000, guid: adca1c47177be8044800f5a92027b175, type: 3}
   lootBagPrefab: {fileID: 1391078489379675557, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
@@ -29409,15 +29408,22 @@ MonoBehaviour:
   arcHeightMultiplier: 0.35
   minArcHeight: 0.4
   maxArcHeight: 2.5
+  SearchRadius: 8
   AttackEnterRange: 8
   AttackExitRangePadding: 2
+  preferredMinDistance: 3.25
+  preferredMaxDistance: 4.75
+  combatMoveRepathTime: 0.9
+  combatRandomness: 0.55
+  combatSpeedMultiplier: 0.55
+  combatSteerSpeed: 8
+  combatDirectionDeadzone: 0.05
   bombCooldown: 1.4
   flightTime: 0.9
   explosionRadius: 1.5
   predictPlayer: 1
   predictionLeadSeconds: 0.35
   showRanges: 1
-  SearchRadius: 7
   playerVelSmoothing: 0.25
 --- !u!1 &1292248283
 GameObject:
@@ -31397,7 +31403,7 @@ MonoBehaviour:
   wis: 15
   agi: 30
   invincible: 0
-  lootIds: 
+  lootTableId: 1
   deathSound: {fileID: 8300000, guid: 19f46137f9bc2ec47b7a101bd71854a8, type: 3}
   hitSound: {fileID: 8300000, guid: 8bbf2a77b5ddac54babd19f638e8f816, type: 3}
   lootBagPrefab: {fileID: 1391078489379675557, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
@@ -32088,7 +32094,7 @@ MonoBehaviour:
   wis: 30
   agi: 30
   invincible: 0
-  lootIds: 
+  lootTableId: 0
   deathSound: {fileID: 0}
   hitSound: {fileID: 0}
   lootBagPrefab: {fileID: 1391078489379675557, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
@@ -111293,7 +111299,7 @@ MonoBehaviour:
   wis: 30
   agi: 30
   invincible: 0
-  lootIds: 
+  lootTableId: 0
   deathSound: {fileID: 8300000, guid: adca1c47177be8044800f5a92027b175, type: 3}
   hitSound: {fileID: 0}
   lootBagPrefab: {fileID: 1391078489379675557, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
@@ -113066,6 +113072,10 @@ PrefabInstance:
     - target: {fileID: 7860581793131152283, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: maxHp
       value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860581793131152283, guid: fc920363a5cee564e95302175fa8e339, type: 3}
+      propertyPath: lootTableId
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7860581793131152283, guid: fc920363a5cee564e95302175fa8e339, type: 3}
       propertyPath: statusEffects.Array.size

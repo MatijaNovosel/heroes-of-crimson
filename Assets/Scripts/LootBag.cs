@@ -61,29 +61,25 @@ public class LootBag : MonoBehaviour
         }
     }
 
-    public void GenerateLoot(int[] itemIds, bool? randomize = false)
+    public void GenerateLoot(int[] itemIds)
     {
         if (_lootGenerated || itemIds.Length == 0) return;
         _lootGenerated = true;
-
-        if (randomize == true)
+        foreach (var id in itemIds)
         {
-            int seed = GetInstanceID();
-            Random.InitState(seed);
-            int itemCount = Random.Range(1, 4);
-
-            for (int i = 0; i < itemCount; i++)
-            {
-                int id = itemIds[Random.Range(0, itemIds.Length)];
-                _seededItems.Add(Database.Singleton.GetItem(id));
-            }   
+            _seededItems.Add(Database.Singleton.GetItem(id));
         }
-        else
+    }
+    
+    public void GenerateLoot(LootTableModel lootTable, int guaranteedCount)
+    {
+        if (_lootGenerated) return;
+        if (lootTable.Items == null || lootTable.Items.Count == 0) return;
+        _lootGenerated = true;
+        int[] rolledIds = LootRoller.RollGuaranteed(lootTable, guaranteedCount);
+        for (int i = 0; i < rolledIds.Length; i++)
         {
-            foreach (var id in itemIds)
-            {
-                _seededItems.Add(Database.Singleton.GetItem(id));
-            }
+            _seededItems.Add(Database.Singleton.GetItem(rolledIds[i]));
         }
     }
     

@@ -27,14 +27,13 @@ public class BaseNPCBehaviour : MonoBehaviour
   public List<ActiveStatusEffect> ActiveStatusEffects = new();
   private BoxCollider2D _boxCollider;
   
-  public int[] lootIds;
+  public Constants.LootTableEnum lootTableId = Constants.LootTableEnum.Basic;
+  private LootTableModel _lootTable;
 
-  // Other
   public AudioClip deathSound;
   public AudioClip hitSound;
   public GameObject lootBagPrefab;
   
-  // UI stuff
   private GameObject _statusEffectPanel;
 
   private void Awake()
@@ -50,6 +49,7 @@ public class BaseNPCBehaviour : MonoBehaviour
       gameObject
     );
     _boxCollider = GetComponent<BoxCollider2D>();
+    _lootTable = Constants.LootTables[lootTableId];
   }
 
   private void Die()
@@ -64,8 +64,8 @@ public class BaseNPCBehaviour : MonoBehaviour
       transform.position,
       Quaternion.identity
     );
-
-    lootBag.GetComponent<LootBag>().GenerateLoot(lootIds, true);
+    
+    lootBag.GetComponent<LootBag>().GenerateLoot(_lootTable, 3);
     AudioManager.Singleton.PlaySoundCached(Constants.Sounds.LootDrop);
     Player.Singleton.GiveXp(xpValue);
 
@@ -147,6 +147,13 @@ public class BaseNPCBehaviour : MonoBehaviour
           }
           break;
         case Constants.StatusEffects.Bleeding:
+          if (now >= effect.NextTickTime)
+          {
+            ReceiveDamage(new DamageModel(10f, new List<Constants.StatusEffects>()));
+            effect.NextTickTime = now + 1f;
+          }
+          break;
+        case Constants.StatusEffects.Poisoned:
           if (now >= effect.NextTickTime)
           {
             ReceiveDamage(new DamageModel(10f, new List<Constants.StatusEffects>()));

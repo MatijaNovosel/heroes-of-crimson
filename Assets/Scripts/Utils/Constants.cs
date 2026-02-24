@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using Models;
+
 namespace HeroesOfCrimson.Utils
 {
   public static class Constants
@@ -8,7 +11,7 @@ namespace HeroesOfCrimson.Utils
       HORIZONTAL = 2,
       UP = 4
     }
-    
+
     public enum ShootingDirections
     {
       DOWN = 1,
@@ -25,7 +28,7 @@ namespace HeroesOfCrimson.Utils
       Collision = 4,
       BulletCollision = 5,
     }
-    
+
     public enum Stats
     {
       MGT = 0,
@@ -43,7 +46,7 @@ namespace HeroesOfCrimson.Utils
       Continue = 2,
       Game = 3
     }
-    
+
     public enum StatusEffects
     {
       Energized = 1,
@@ -75,10 +78,10 @@ namespace HeroesOfCrimson.Utils
 
     public enum ItemTag
     {
-      None = 1, 
-      Weapon = 2, 
-      Ability = 3, 
-      Armor = 4, 
+      None = 1,
+      Weapon = 2,
+      Ability = 3,
+      Armor = 4,
       Accessory = 5,
       Misc = 6,
       Consumable = 7
@@ -86,17 +89,17 @@ namespace HeroesOfCrimson.Utils
 
     public enum ItemRarity
     {
-      Common = 1, 
-      Uncommon = 2, 
-      Rare = 3, 
-      Epic = 4, 
+      Common = 1,
+      Uncommon = 2,
+      Rare = 3,
+      Epic = 4,
       Legendary = 5
     }
 
     public enum ProjectilePattern
     {
-      Circular = 1, 
-      Star = 2, 
+      Circular = 1,
+      Star = 2,
       Wave = 3
     }
 
@@ -120,17 +123,20 @@ namespace HeroesOfCrimson.Utils
       LootDrop = 1007,
       BladeSwing = 1008,
       UsePotion = 1009,
+
       // Eenemy sounds
       SkeletonHit = 2000,
       SkeletonDeath = 2001,
       SpiderShoot = 2002,
+
       // Player sounds
       MageHit = 3000,
+
       // Ability sounds
       FireSphere = 4000,
       Teleport = 4001
     }
-    
+
     public enum InventorySlotEnum
     {
       Weapon = 0,
@@ -139,7 +145,7 @@ namespace HeroesOfCrimson.Utils
       Accessory = 3,
       Empty = 4,
     }
-    
+
     public enum RoomType
     {
       Start,
@@ -153,7 +159,7 @@ namespace HeroesOfCrimson.Utils
       Treasure,
       Boss
     }
-    
+
     public enum Direction
     {
       Up,
@@ -199,5 +205,32 @@ namespace HeroesOfCrimson.Utils
       public const string GiveXp = "giveXp";
       public const string ApplyStatusEffect = "applyStatusEffect";
     }
+
+    public enum LootTableEnum
+    {
+      Basic = 1
+    }
+
+    public static readonly Dictionary<LootTableEnum, LootTableModel> LootTables = new()
+    {
+      {
+        LootTableEnum.Basic,
+        new LootTableModel(
+          id: LootTableEnum.Basic,
+          new()
+        )
+        {
+          Items =
+          {
+            new ItemDropModel(7000, 20, true),
+            new ItemDropModel(5004, 20),
+            new ItemDropModel(5008, 20),
+            new ItemDropModel(5012, 20),
+            new ItemDropModel(5016, 20),
+            new ItemDropModel(5020, 20),
+          }
+        }
+      }
+    };
   }
 }
