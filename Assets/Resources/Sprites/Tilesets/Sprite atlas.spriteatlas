@@ -46,14 +46,10 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
-    - {fileID: 2800000, guid: 2fd4fb2011f40c749968f0842a399197, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
-    - 2fd4fb2011f40c749968f0842a399197: 473854263
-    - 2fd4fb2011f40c749968f0842a399197: 8509550459451208454
-    - 2fd4fb2011f40c749968f0842a399197: 136226053
     - 5cbf85727fab9604dad030585a680ce4: -347503139
     - 5cbf85727fab9604dad030585a680ce4: 1670095298
     - 5cbf85727fab9604dad030585a680ce4: -1319531109
@@ -184,9 +180,6 @@ SpriteAtlas:
     - 5cbf85727fab9604dad030585a680ce4: -132802915
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 473854263, guid: 2fd4fb2011f40c749968f0842a399197, type: 3}
-  - {fileID: 8509550459451208454, guid: 2fd4fb2011f40c749968f0842a399197, type: 3}
-  - {fileID: 136226053, guid: 2fd4fb2011f40c749968f0842a399197, type: 3}
   - {fileID: -347503139, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: 1670095298, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -1319531109, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
@@ -316,9 +309,6 @@ SpriteAtlas:
   - {fileID: 2007474918, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -132802915, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   m_PackedSpriteNamesToIndex:
-  - water_1
-  - water_0
-  - water_2
   - tileset_39
   - tileset_38
   - tileset_48

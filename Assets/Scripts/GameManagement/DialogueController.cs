@@ -6,12 +6,16 @@ using Newtonsoft.Json;
 using UI.Inventory;
 using UnityEngine;
 using Newtonsoft.Json.Linq;
+using TMPro;
+using UnityEngine.UI;
 
 public class DialogueController : MonoBehaviour
 {
     public static DialogueController Singleton;
     public Inventory playerInventory;
     public Inventory playerHotbar;
+    public TMP_Text npcNameText;
+    public Image npcPortraitImg;
     public Player player;
 
     private DialogueModel _activeDialogue;
@@ -255,6 +259,10 @@ public class DialogueController : MonoBehaviour
         if (npc == null) return;
 
         CurrentNPC = npc;
+        
+        npcNameText.text = npc.npcName;
+        npcPortraitImg.sprite = npc.portraitImg;
+        
         npc.EnsureDialogueStateInitialized();
 
         if (!_dialoguesById.TryGetValue(npc.dialogueState.DialogueId, out _activeDialogue) || _activeDialogue == null)

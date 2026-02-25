@@ -112,6 +112,30 @@
           ]
         }
       ]
+    },
+    {
+      "id": "2",
+      "npcId": 2,
+      "startStepId": "2:1",
+      "steps": [
+        {
+          "id": "2:1",
+          "nextStepId": null,
+          "text": "You gaze upon the black structure, what purpose does this object serve?",
+          "choices": [
+            {
+              "id": "2:1:1",
+              "text": "Kick it",
+              "nextStepId": null
+            },
+            {
+              "id": "2:1:2",
+              "text": "Leave",
+              "nextStepId": null
+            }
+          ]
+        }
+      ]
     }
   ]
 }

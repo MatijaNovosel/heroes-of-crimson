@@ -14,14 +14,15 @@ public class DialogMenu : MonoBehaviour
     {
         if (CanBeOpened && Input.GetKeyDown(KeyCode.V) && !ConsoleMenu.Singleton.ConsoleMenuOpen)
         {
-            DialogMenuOpen = !DialogMenuOpen;
-            Time.timeScale = DialogMenuOpen ? 0f : 1f;
-            this.transform.localPosition = new Vector3(DialogMenuOpen ? 0 : 9999, DialogMenuOpen ? 0 : 9999, 0);
-            StartDialog();
+            if (DialogueController.Singleton.CurrentNPC == null) return;
+            DialogMenuOpen = true;
+            Time.timeScale = 0f;
+            transform.localPosition = Vector3.zero;
+            _startDialog();
         }
     }
 
-    public void StartDialog()
+    private void _startDialog()
     {
         DialogueController.Singleton.StartDialogue(DialogueController.Singleton.CurrentNPC);
         dialogText.text = DialogueController.Singleton.GetCurrentStep().Text;
@@ -40,8 +41,8 @@ public class DialogMenu : MonoBehaviour
     public void CloseDialog()
     {
         DialogMenuOpen = false;
-        Time.timeScale = DialogMenuOpen ? 0f : 1f;
-        this.transform.localPosition = new Vector3(DialogMenuOpen ? 0 : 9999, DialogMenuOpen ? 0 : 9999, 0);
+        Time.timeScale = 1f;
+        this.transform.localPosition = new Vector3(9999, 9999, 0);
     }
 
     private void Awake()

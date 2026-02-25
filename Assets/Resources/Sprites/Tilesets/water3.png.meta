@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0f517cf8f26c8b947be1a65af73f9939
+guid: 37a2c0df30ed8e24ba94a118e1398e4d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1393230401795262163
-    second: palmTree_0
+      213: -2670581200746741910
+    second: water3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: palmTree_0
+      name: water3_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
-        height: 16
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,20 +115,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d29f7bac4504aace0800000000000000
-      internalID: -1393230401795262163
+      spriteID: a6f77a91c8030fad0800000000000000
+      internalID: -2670581200746741910
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: palmTree_1
+      name: water3_1
       rect:
         serializedVersion: 2
-        x: 16
+        x: 8
         y: 0
-        width: 16
-        height: 16
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,8 +137,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f63a3bbfa9530704aad3429453d41727
-      internalID: -567076170
+      spriteID: 83e752e0ec810a34c8a0eed736a1adc4
+      internalID: 414659593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: water3_2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61169ae806e0fb540a36801377d189aa
+      internalID: -2003642503
       vertices: []
       indices: 
       edges: []
@@ -160,7 +169,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 3390379f3baeb6d41ae0be6d1af8bc5d
+    spriteID: 201e1228c63d1b140a7afc3e2e771627
     internalID: 0
     vertices: []
     indices: 
@@ -170,10 +179,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":8.0,"y":8.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      palmTree_0: -1393230401795262163
-      palmTree_1: -567076170
+      water3_0: -2670581200746741910
+      water3_1: 414659593
+      water3_2: -2003642503
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

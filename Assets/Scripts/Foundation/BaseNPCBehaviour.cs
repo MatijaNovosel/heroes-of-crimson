@@ -86,7 +86,16 @@ public class BaseNPCBehaviour : MonoBehaviour
 
     float step = Utils.CalculateMoveStepDistance(swf, slowed, energized, Time.fixedDeltaTime);
 
-    LayerMask mask = LayerMask.GetMask("Actor", "Blocking", "NPC");
+    LayerMask mask;
+
+    if (gameObject.layer == LayerMask.NameToLayer("Critter"))
+    {
+      mask = LayerMask.GetMask("Blocking", "NPC", "Critter");
+    }
+    else
+    {
+      mask = LayerMask.GetMask("Actor", "Blocking", "NPC"); 
+    }
 
     var moveY = new Vector2(0f, direction.y);
     if (moveY.y != 0f &&
