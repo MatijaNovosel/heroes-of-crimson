@@ -26631,7 +26631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TalkableNPC
   interactionImg: {fileID: 32496184}
   interactionPrompt: {fileID: 48025719}
-  npcName: 
+  npcName: Obelisk
   portraitImg: {fileID: 21300000, guid: c6ad570778e95d248813a3d048b4a66c, type: 3}
   id: 2
   dialogueState:
