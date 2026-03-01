@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
   public FloatingTextManager floatingTextManager;
   public static GameManager Singleton;
   private GameObject _projectilePrefab;
+  
+  public Dictionary<int, TeleportMarker> teleportMarkersDict = new Dictionary<int, TeleportMarker>();
+  public List<TeleportMarker> teleportMarkers = new ();
 
   public static int selectedCharacter = (int)Constants.Character.Knight;
 
@@ -25,6 +28,10 @@ public class GameManager : MonoBehaviour
     Singleton = this;
     _projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectile");
     DontDestroyOnLoad(gameObject);
+    teleportMarkers.ForEach(tm =>
+    {
+      teleportMarkersDict.Add(tm.id, tm);
+    });
   }
   
   private IEnumerator SpawnProjectilesCoroutine(Vector3 position, float time, Constants.ProjectilePattern pattern)

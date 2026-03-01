@@ -316,6 +316,13 @@ public class DialogueController : MonoBehaviour
                     player.SetStatusEffect(statusEffect, 10);
                     break;
                 }
+                
+                case Constants.DialogueTriggers.TeleportToMarker:
+                {
+                    var markerId = t.Value is int i ? i : 0;
+                    player.TeleportToMarker(markerId);
+                    break;
+                }
 
                 default:
                     Debug.LogWarning($"Unknown trigger type='{t.Type}' key='{t.Key}' value='{t.Value}'");

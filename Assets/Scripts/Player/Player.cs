@@ -222,6 +222,12 @@ public class Player : MonoBehaviour
       _baseNpcBehaviour.RemoveStatusEffect(Constants.StatusEffects.Radiance);
     }
   }
+
+  public void TeleportToMarker(int markerId)
+  {
+    var marker = GameManager.Singleton.teleportMarkersDict[1];
+    this.transform.position = marker.transform.position;
+  }
   
   private void _handleItemEffects()
   {

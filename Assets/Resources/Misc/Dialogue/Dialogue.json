@@ -149,8 +149,9 @@
           "choices": [
             {
               "id": "3:1:1",
-              "text": "Try to open the trap door",
-              "nextStepId": null
+              "text": "Jump in",
+              "nextStepId": null,
+              "triggers": [{ "type": "teleportToMarker", "value": 1 }]
             },
             {
               "id": "3:1:2",

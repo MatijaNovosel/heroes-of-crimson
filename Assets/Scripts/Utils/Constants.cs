@@ -204,6 +204,7 @@ namespace HeroesOfCrimson.Utils
       public const string RemoveFlag = "removeFlag";
       public const string GiveXp = "giveXp";
       public const string ApplyStatusEffect = "applyStatusEffect";
+      public const string TeleportToMarker = "teleportToMarker";
     }
 
     public enum LootTableEnum
