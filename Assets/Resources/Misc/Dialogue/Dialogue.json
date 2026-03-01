@@ -136,6 +136,30 @@
           ]
         }
       ]
+    },
+    {
+      "id": "3",
+      "npcId": 3,
+      "startStepId": "3:1",
+      "steps": [
+        {
+          "id": "3:1",
+          "nextStepId": null,
+          "text": "A hatch stands firm on the floor, who knows what lies underneath?",
+          "choices": [
+            {
+              "id": "3:1:1",
+              "text": "Try to open the trap door",
+              "nextStepId": null
+            },
+            {
+              "id": "3:1:2",
+              "text": "Leave",
+              "nextStepId": null
+            }
+          ]
+        }
+      ]
     }
   ]
 }
