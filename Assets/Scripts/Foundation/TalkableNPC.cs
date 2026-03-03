@@ -1,13 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-
-[Serializable]
-public class DialogueState
-{
-    public string DialogueId;
-    public string StepId;
-}
+using Models.Dialogue;
 
 public class TalkableNPC : MonoBehaviour
 {

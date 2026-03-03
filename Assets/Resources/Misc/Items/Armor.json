@@ -1,3 +1,13 @@
 ﻿{
-  "items": []
+  "items": [
+    {
+      "id": 4000,
+      "name": "Blood plate",
+      "description": "A heavy set of plate mail, it is colored in a red tint.",
+      "tag": 4,
+      "spritePath": "armor_9",
+      "rarity": 3,
+      "stats": [0, 5, 0, 0, 0, 0]
+    }
+  ]
 }

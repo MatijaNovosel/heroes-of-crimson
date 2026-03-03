@@ -33,6 +33,11 @@ public class DialogueController : MonoBehaviour
     public MonoBehaviour gameStateSource;
     private IDialogueGameState _gameState;
 
+    public bool HasStateFlag(string value)
+    {
+        return _gameState.GetFlag(value);
+    }
+
     private void Awake()
     {
         Singleton = this;
