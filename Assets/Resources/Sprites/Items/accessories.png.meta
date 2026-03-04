@@ -1132,8 +1132,8 @@ TextureImporter:
       name: accessories_41
       rect:
         serializedVersion: 2
-        x: 0
-        y: 72
+        x: 48
+        y: 80
         width: 8
         height: 8
       alignment: 0
@@ -1154,7 +1154,7 @@ TextureImporter:
       name: accessories_42
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 72
         width: 8
         height: 8
@@ -1176,8 +1176,8 @@ TextureImporter:
       name: accessories_43
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 8
+        y: 72
         width: 8
         height: 8
       alignment: 0
@@ -1198,7 +1198,7 @@ TextureImporter:
       name: accessories_44
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 64
         width: 8
         height: 8
@@ -1212,6 +1212,28 @@ TextureImporter:
       bones: []
       spriteID: 1e1bedb87aa1e814b9cff199ce17186e
       internalID: 1686543081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: accessories_45
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c8a2c04df76c7542aadbd0ced1ba02d
+      internalID: -349329982
       vertices: []
       indices: 
       edges: []
@@ -1272,6 +1294,7 @@ TextureImporter:
       accessories_42: -720732091
       accessories_43: -523681068
       accessories_44: 1686543081
+      accessories_45: -349329982
       accessories_5: 992804126
       accessories_6: -1455558151
       accessories_7: -1105525875

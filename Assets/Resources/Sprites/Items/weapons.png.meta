@@ -296,8 +296,8 @@ TextureImporter:
       name: weapons_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 112
+        x: 24
+        y: 120
         width: 8
         height: 8
       alignment: 0
@@ -318,8 +318,8 @@ TextureImporter:
       name: weapons_4
       rect:
         serializedVersion: 2
-        x: 8
-        y: 112
+        x: 32
+        y: 120
         width: 8
         height: 8
       alignment: 0
@@ -340,8 +340,8 @@ TextureImporter:
       name: weapons_5
       rect:
         serializedVersion: 2
-        x: 16
-        y: 112
+        x: 40
+        y: 120
         width: 8
         height: 8
       alignment: 0
@@ -362,7 +362,7 @@ TextureImporter:
       name: weapons_6
       rect:
         serializedVersion: 2
-        x: 24
+        x: 0
         y: 112
         width: 8
         height: 8
@@ -384,7 +384,7 @@ TextureImporter:
       name: weapons_7
       rect:
         serializedVersion: 2
-        x: 32
+        x: 8
         y: 112
         width: 8
         height: 8
@@ -406,7 +406,7 @@ TextureImporter:
       name: weapons_8
       rect:
         serializedVersion: 2
-        x: 40
+        x: 16
         y: 112
         width: 8
         height: 8
@@ -428,8 +428,8 @@ TextureImporter:
       name: weapons_9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 104
+        x: 24
+        y: 112
         width: 8
         height: 8
       alignment: 0
@@ -450,8 +450,8 @@ TextureImporter:
       name: weapons_10
       rect:
         serializedVersion: 2
-        x: 8
-        y: 104
+        x: 32
+        y: 112
         width: 8
         height: 8
       alignment: 0
@@ -472,8 +472,8 @@ TextureImporter:
       name: weapons_11
       rect:
         serializedVersion: 2
-        x: 16
-        y: 104
+        x: 40
+        y: 112
         width: 8
         height: 8
       alignment: 0
@@ -494,7 +494,7 @@ TextureImporter:
       name: weapons_12
       rect:
         serializedVersion: 2
-        x: 24
+        x: 0
         y: 104
         width: 8
         height: 8
@@ -516,8 +516,8 @@ TextureImporter:
       name: weapons_13
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 8
+        y: 104
         width: 8
         height: 8
       alignment: 0
@@ -538,8 +538,8 @@ TextureImporter:
       name: weapons_14
       rect:
         serializedVersion: 2
-        x: 8
-        y: 96
+        x: 16
+        y: 104
         width: 8
         height: 8
       alignment: 0
@@ -560,8 +560,8 @@ TextureImporter:
       name: weapons_15
       rect:
         serializedVersion: 2
-        x: 16
-        y: 96
+        x: 24
+        y: 104
         width: 8
         height: 8
       alignment: 0
@@ -582,8 +582,8 @@ TextureImporter:
       name: weapons_16
       rect:
         serializedVersion: 2
-        x: 0
-        y: 88
+        x: 32
+        y: 104
         width: 8
         height: 8
       alignment: 0
@@ -604,8 +604,8 @@ TextureImporter:
       name: weapons_17
       rect:
         serializedVersion: 2
-        x: 8
-        y: 88
+        x: 40
+        y: 104
         width: 8
         height: 8
       alignment: 0
@@ -626,8 +626,8 @@ TextureImporter:
       name: weapons_18
       rect:
         serializedVersion: 2
-        x: 16
-        y: 88
+        x: 0
+        y: 96
         width: 8
         height: 8
       alignment: 0
@@ -648,8 +648,8 @@ TextureImporter:
       name: weapons_19
       rect:
         serializedVersion: 2
-        x: 24
-        y: 88
+        x: 8
+        y: 96
         width: 8
         height: 8
       alignment: 0
@@ -670,8 +670,8 @@ TextureImporter:
       name: weapons_20
       rect:
         serializedVersion: 2
-        x: 0
-        y: 80
+        x: 16
+        y: 96
         width: 8
         height: 8
       alignment: 0
@@ -692,8 +692,8 @@ TextureImporter:
       name: weapons_21
       rect:
         serializedVersion: 2
-        x: 8
-        y: 80
+        x: 0
+        y: 88
         width: 8
         height: 8
       alignment: 0
@@ -714,8 +714,8 @@ TextureImporter:
       name: weapons_22
       rect:
         serializedVersion: 2
-        x: 16
-        y: 80
+        x: 8
+        y: 88
         width: 8
         height: 8
       alignment: 0
@@ -736,8 +736,8 @@ TextureImporter:
       name: weapons_23
       rect:
         serializedVersion: 2
-        x: 24
-        y: 80
+        x: 16
+        y: 88
         width: 8
         height: 8
       alignment: 0
@@ -758,8 +758,8 @@ TextureImporter:
       name: weapons_24
       rect:
         serializedVersion: 2
-        x: 0
-        y: 72
+        x: 24
+        y: 88
         width: 8
         height: 8
       alignment: 0
@@ -780,8 +780,8 @@ TextureImporter:
       name: weapons_25
       rect:
         serializedVersion: 2
-        x: 8
-        y: 72
+        x: 0
+        y: 80
         width: 8
         height: 8
       alignment: 0
@@ -802,8 +802,8 @@ TextureImporter:
       name: weapons_26
       rect:
         serializedVersion: 2
-        x: 16
-        y: 72
+        x: 8
+        y: 80
         width: 8
         height: 8
       alignment: 0
@@ -824,8 +824,8 @@ TextureImporter:
       name: weapons_27
       rect:
         serializedVersion: 2
-        x: 24
-        y: 72
+        x: 16
+        y: 80
         width: 8
         height: 8
       alignment: 0
@@ -846,8 +846,8 @@ TextureImporter:
       name: weapons_28
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
+        x: 24
+        y: 80
         width: 8
         height: 8
       alignment: 0
@@ -860,6 +860,314 @@ TextureImporter:
       bones: []
       spriteID: 668a76b3195b4954793fabef890c1ed1
       internalID: 1233402572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_29
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e508dffe97c008b4b91ba8e2def3dd9c
+      internalID: 1611230053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_30
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1c322b85f05a9d478c3306f4eb0e45d
+      internalID: 260172200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_31
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7278d131ed5fe1a43a5ba33fd9baee78
+      internalID: -582293049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_32
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 72
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ec1f66b90624fe489559c3863b58ae3
+      internalID: 1567808309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d4899014d59b14392c53692db0800c
+      internalID: -1012384838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_34
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3c73aea973f35e449946cf8ee125dc0
+      internalID: 592619516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_35
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43643289fc6fba746ad851815e86f965
+      internalID: 86407632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_36
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 64
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf329e9d9d91d984eb6f2587817ad74f
+      internalID: -933587461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_37
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02b0b032a0f93ef448766bb950508e29
+      internalID: 341333739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_38
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 56
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a0d0868b62d3c4cafbcd460f9ef1f8
+      internalID: -902892088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd805253b6a877a499a5be18847cf273
+      internalID: 842143698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_40
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a2e3bb6b36bb764e813939bbd33cf0e
+      internalID: -799262084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_41
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b1c26f8f9d488d43b7424c41763eb31
+      internalID: 420474350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: weapons_42
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 48
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c773810d7b192a144ae88b5224b0f301
+      internalID: 317357597
       vertices: []
       indices: 
       edges: []
@@ -878,7 +1186,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":8.0,"y":8.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":true,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":8.0,"y":8.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+      - key: SpriteEditor.SliceOnImport
+        value: True
     nameFileIdTable:
       weapons_0: -1523174560
       weapons_1: 43287700
@@ -902,8 +1212,22 @@ TextureImporter:
       weapons_26: -1924733331
       weapons_27: 1788214404
       weapons_28: 1233402572
+      weapons_29: 1611230053
       weapons_3: 1182465518
+      weapons_30: 260172200
+      weapons_31: -582293049
+      weapons_32: 1567808309
+      weapons_33: -1012384838
+      weapons_34: 592619516
+      weapons_35: 86407632
+      weapons_36: -933587461
+      weapons_37: 341333739
+      weapons_38: -902892088
+      weapons_39: 842143698
       weapons_4: 312865410
+      weapons_40: -799262084
+      weapons_41: 420474350
+      weapons_42: 317357597
       weapons_5: 1510862836
       weapons_6: -7290088
       weapons_7: -1321348430

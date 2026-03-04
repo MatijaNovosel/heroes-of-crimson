@@ -7564,7 +7564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6559301374437243440, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
       propertyPath: initialItemIds.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6559301374437243440, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
       propertyPath: 'initialItemIds.Array.data[0]'
@@ -7592,7 +7592,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6559301374437243440, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
       propertyPath: 'initialItemIds.Array.data[6]'
-      value: 2006
+      value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559301374437243440, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
+      propertyPath: 'initialItemIds.Array.data[7]'
+      value: 4001
       objectReference: {fileID: 0}
     - target: {fileID: 6989085116998507714, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
       propertyPath: m_Sprite
@@ -43438,8 +43442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef181b95f8db04241a0708b49a7c8b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  wanderDuration: 0.1
-  wanderPause: 1.5
+  wanderDuration: 0.15
+  wanderPause: 1
   wanderSpeedMultiplier: 0.1
 --- !u!95 &1000431404
 Animator:
@@ -127833,8 +127837,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef181b95f8db04241a0708b49a7c8b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  wanderDuration: 0.1
-  wanderPause: 1.5
+  wanderDuration: 0.2
+  wanderPause: 0.5
   wanderSpeedMultiplier: 0.1
 --- !u!114 &1930507225
 MonoBehaviour:
