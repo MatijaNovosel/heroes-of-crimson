@@ -52,7 +52,7 @@ public class BaseNPCBehaviour : MonoBehaviour
     _lootTable = Constants.LootTables[lootTableId];
   }
 
-  private void Die()
+  public void Die()
   {
     if (deathSound)
     {

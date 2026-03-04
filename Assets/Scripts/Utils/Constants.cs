@@ -225,8 +225,16 @@ namespace HeroesOfCrimson.Utils
           {
             new ItemDropModel(7000, 20, true),
             new ItemDropModel(5004, 20),
+            new ItemDropModel(5005, 20),
+            new ItemDropModel(5006, 20),
+            new ItemDropModel(5007, 20),
             new ItemDropModel(5008, 20),
+            new ItemDropModel(5009, 20),
+            new ItemDropModel(5010, 20),
+            new ItemDropModel(5011, 20),
             new ItemDropModel(5012, 20),
+            new ItemDropModel(5013, 20),
+            new ItemDropModel(5014, 20),
             new ItemDropModel(5016, 20),
             new ItemDropModel(5020, 20),
           }

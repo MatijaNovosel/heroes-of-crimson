@@ -228,6 +228,11 @@ public class Player : MonoBehaviour
     var marker = GameManager.Singleton.teleportMarkersDict[1];
     this.transform.position = marker.transform.position;
   }
+
+  public void Kill()
+  {
+    _baseNpcBehaviour.Die();
+  }
   
   private void _handleItemEffects()
   {

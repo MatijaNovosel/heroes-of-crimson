@@ -341,7 +341,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 104
+        y: 112
         width: 8
         height: 8
       alignment: 0
@@ -363,7 +363,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 8
-        y: 104
+        y: 112
         width: 8
         height: 8
       alignment: 0
@@ -384,7 +384,7 @@ TextureImporter:
       name: armor_7
       rect:
         serializedVersion: 2
-        x: 16
+        x: 0
         y: 104
         width: 8
         height: 8
@@ -406,7 +406,7 @@ TextureImporter:
       name: armor_8
       rect:
         serializedVersion: 2
-        x: 24
+        x: 8
         y: 104
         width: 8
         height: 8
@@ -428,7 +428,7 @@ TextureImporter:
       name: armor_9
       rect:
         serializedVersion: 2
-        x: 32
+        x: 16
         y: 104
         width: 8
         height: 8
@@ -442,6 +442,50 @@ TextureImporter:
       bones: []
       spriteID: 5476c3e0d734a7544b7f6588018fd5ac
       internalID: -890313080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armor_10
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 104
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7fda1291fbc04641b73429195659a99
+      internalID: -525184702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: armor_11
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 104
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9370088eebfb5347a64910853659bd2
+      internalID: 89349146
       vertices: []
       indices: 
       edges: []
@@ -464,6 +508,8 @@ TextureImporter:
     nameFileIdTable:
       armor_0: -558576597
       armor_1: 149821097
+      armor_10: -525184702
+      armor_11: 89349146
       armor_2: -522934422
       armor_3: -777277512
       armor_4: 1508687868
