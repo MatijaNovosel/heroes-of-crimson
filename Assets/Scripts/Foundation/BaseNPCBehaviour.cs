@@ -54,20 +54,20 @@ public class BaseNPCBehaviour : MonoBehaviour
 
   public void Die()
   {
-    if (deathSound)
+    if (deathSound) AudioSource.PlayClipAtPoint(deathSound, transform.position, 1.5f);
+    
+    if (this.name != "Player")
     {
-      AudioSource.PlayClipAtPoint(deathSound, transform.position, 1.5f);
+        var lootBag = Instantiate(
+          lootBagPrefab,
+          transform.position,
+          Quaternion.identity
+        );
+        
+        lootBag.GetComponent<LootBag>().GenerateLoot(_lootTable, 3);
+        AudioManager.Singleton.PlaySoundCached(Constants.Sounds.LootDrop);
+        Player.Singleton.GiveXp(xpValue);
     }
-    
-    var lootBag = Instantiate(
-      lootBagPrefab,
-      transform.position,
-      Quaternion.identity
-    );
-    
-    lootBag.GetComponent<LootBag>().GenerateLoot(_lootTable, 3);
-    AudioManager.Singleton.PlaySoundCached(Constants.Sounds.LootDrop);
-    Player.Singleton.GiveXp(xpValue);
 
     Destroy(gameObject);
   }
