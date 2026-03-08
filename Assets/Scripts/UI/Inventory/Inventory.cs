@@ -33,10 +33,10 @@ namespace UI.Inventory
             {
                 int itemId = GameManager.Singleton.GetSelectedCharacter() switch
                 {
-                    (int)Constants.Character.Mage => 2000,
-                    (int)Constants.Character.Knight => 2005,
-                    (int)Constants.Character.Ranger => 2003,
-                    _ => 2000
+                    (int)Constants.Character.Mage => (int)WeaponItemEnum.WhiteStaff,
+                    (int)Constants.Character.Knight => (int)WeaponItemEnum.IronSword,
+                    (int)Constants.Character.Ranger => (int)WeaponItemEnum.WoodenBow,
+                    _ => (int)WeaponItemEnum.WhiteStaff
                 };
 
                 SpawnItem(Database.Singleton.GetItem(itemId), (int)Constants.InventorySlotEnum.Weapon);
@@ -44,11 +44,10 @@ namespace UI.Inventory
             }
             else if (name == "Inventory")
             {
-                SpawnItem(Database.Singleton.GetItem(7000));
-                SpawnItem(Database.Singleton.GetItem(7001));
-                SpawnItem(Database.Singleton.GetItem(7002));
-                SpawnItem(Database.Singleton.GetItem(6000));
-                SpawnItem(Database.Singleton.GetItem(2009));
+                SpawnItem(Database.Singleton.GetItem((int)ConsumableItemEnum.HealthPotion));
+                SpawnItem(Database.Singleton.GetItem((int)ConsumableItemEnum.ManaPotion));
+                SpawnItem(Database.Singleton.GetItem((int)ConsumableItemEnum.PotionOfLife));
+                SpawnItem(Database.Singleton.GetItem((int)WeaponItemEnum.Radiance));
             }
         }
         

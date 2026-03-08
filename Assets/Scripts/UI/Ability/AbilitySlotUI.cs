@@ -3,12 +3,12 @@ using UnityEngine.EventSystems;
 
 public class AbilitySlotUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public string name;
+    public string abilityName;
     public string description;
     
     public void OnPointerEnter(PointerEventData eventData)
     {
-        AbilityTooltipManager.Singleton.SetInfo(name, description);
+        AbilityTooltipManager.Singleton.SetInfo(abilityName, description);
         AbilityTooltipManager.Singleton.Show();
     }
 

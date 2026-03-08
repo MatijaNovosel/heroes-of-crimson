@@ -42,10 +42,6 @@ public class DialogueController : MonoBehaviour
     {
         Singleton = this;
         _gameState = gameStateSource as IDialogueGameState;
-        if (_gameState == null)
-        {
-            Debug.LogError("DialogueController: gameStateSource must implement IDialogueGameState");
-        }
         _loadDialogues();
     }
 
@@ -296,7 +292,6 @@ public class DialogueController : MonoBehaviour
                     var item = Database.Singleton.GetItem(itemId);
                     playerInventory.SpawnItem(item);
                     PlayerLog.Singleton.AddItem($"You received <color=#F1C40F>{item.name}</color>!");
-                    PlayerLog.Singleton.AddItem("You feel very conflicted about your choices.");
                     break;
                 }
 
@@ -408,13 +403,13 @@ public class DialogueController : MonoBehaviour
 
         switch (c.Type)
         {
-            case "flag":
+            case Constants.DialogueConditions.Flag:
             {
                 var actual = _gameState.GetFlag(c.Key);
                 var expected = c.Value is bool b ? b : false;
                 return CompareBool(actual, c.Op, expected);
             }
-            case "stat":
+            case Constants.DialogueConditions.Stat:
             {
                 var actualStat = 0;
 
@@ -443,13 +438,13 @@ public class DialogueController : MonoBehaviour
                 var expected = c.Value is int i ? i : 0;
                 return CompareInt(actualStat, c.Op, expected);
             }
-            case "level":
+            case Constants.DialogueConditions.Level:
             {
                 var level = player.level;
                 var expected = c.Value is int i ? i : 0;
                 return CompareInt(level, c.Op, expected);
             }
-            case "hasItem":
+            case Constants.DialogueConditions.HasItem:
             {
                 var expected = c.Value is int i ? i : 0;
                 return playerInventory.ItemIds.Contains(expected) || playerHotbar.ItemIds.Contains(expected);

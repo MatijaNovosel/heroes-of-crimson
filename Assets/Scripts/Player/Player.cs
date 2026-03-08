@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
     );
   }
 
-  private void HandleRegen()
+  private void _handleRegen()
   {
     if (HasStatusEffect(Constants.StatusEffects.Sick)) return;
     
@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
     );
   }
 
-  private void HandleManaRegen()
+  private void _handleManaRegen()
   {
     var regenPerSecond = 0.5f + (0.12f * actualWis);
     var manaRegenPerSecond = Mathf.Max(0f, regenPerSecond);
@@ -146,21 +146,21 @@ public class Player : MonoBehaviour
     _baseNpcBehaviour.ApplyStatusEffect((Constants.StatusEffects)statusEffectId, duration);
   }
   
-  private void AddItemStats(InventoryItem item, int[] totals)
+  private void _addItemStats(InventoryItem item, int[] totals)
   {
     if (item == null || item.ItemInSlot == null) return;
     var stats = item.ItemInSlot.stats;
     for (int i = 0; i < 6; i++) totals[i] += stats[i];
   }
 
-  private void UpdateStats()
+  private void _updateStats()
   {
     int[] totalStats = new int[6];
 
-    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Weapon)?.CurrentInventoryItem, totalStats);
-    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Ability)?.CurrentInventoryItem, totalStats);
-    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Armor)?.CurrentInventoryItem, totalStats);
-    AddItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Accessory)?.CurrentInventoryItem, totalStats);
+    _addItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Weapon)?.CurrentInventoryItem, totalStats);
+    _addItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Ability)?.CurrentInventoryItem, totalStats);
+    _addItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Armor)?.CurrentInventoryItem, totalStats);
+    _addItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Accessory)?.CurrentInventoryItem, totalStats);
 
     actualMgt = _baseNpcBehaviour.mgt + totalStats[(int)Constants.Stats.MGT];
     actualSwf = _baseNpcBehaviour.swf + totalStats[(int)Constants.Stats.SWF];
@@ -170,7 +170,7 @@ public class Player : MonoBehaviour
     actualWis = _baseNpcBehaviour.wis + totalStats[(int)Constants.Stats.WIS];
   }
 
-  private void HandleUIKeys()
+  private void _handleUIKeys()
   {
     if (Input.GetKeyDown(KeyCode.Tab))
     {
@@ -179,7 +179,7 @@ public class Player : MonoBehaviour
     }
   }
   
-  private void LevelUp()
+  private void _levelUp()
   {
     level++;
     ParticleManager.Singleton.SpawnParticles(
@@ -199,25 +199,23 @@ public class Player : MonoBehaviour
     while (experience >= xpNeeded)
     {
       experience -= xpNeeded;
-      LevelUp();
+      _levelUp();
     }
   }
   
-  private void OnWeaponEquipped(Item item)
+  private void _onWeaponEquipped(Item item)
   {
-    // TODO: Fix magic numbers later
-    if (item.id == 2009)
+    if (item.id == (int)WeaponItemEnum.Radiance)
     {
       _baseNpcBehaviour.ApplyStatusEffect(Constants.StatusEffects.Radiance);
       PlayerLog.Singleton.AddItem("<color=#F1C40F>You feel a great warmth around you.</color>");
     }
   }
 
-  private void OnWeaponUnequipped(Item item)
+  private void _onWeaponUnequipped(Item item)
   {
     _playerShootingComponent.SetLastWeapon(null);
-    // TODO: Fix magic numbers later
-    if (item.id == 2009)
+    if (item.id == (int)WeaponItemEnum.Radiance)
     {
       _baseNpcBehaviour.RemoveStatusEffect(Constants.StatusEffects.Radiance);
     }
@@ -254,7 +252,7 @@ public class Player : MonoBehaviour
       
         // TODO: Fix magic numbers later
         col.SendMessage(
-          "ReceiveDamage",
+          Constants.NPCMessages.ReceiveDamage,
           new DamageModel(
             0f, 
             new List<Constants.StatusEffects>() { Constants.StatusEffects.Burning }
@@ -301,13 +299,13 @@ public class Player : MonoBehaviour
     
     var weaponSlot = Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Weapon);
 
-    weaponSlot.OnItemEquipped += OnWeaponEquipped;
-    weaponSlot.OnItemUnequipped += OnWeaponUnequipped;
+    weaponSlot.OnItemEquipped += _onWeaponEquipped;
+    weaponSlot.OnItemUnequipped += _onWeaponUnequipped;
   }
 
   private void FixedUpdate()
   {
-    UpdateStats();
+    _updateStats();
   }
 
   private void Awake()
@@ -319,8 +317,8 @@ public class Player : MonoBehaviour
   private void Update()
   {
     _handleItemEffects();
-    HandleUIKeys();
-    HandleRegen();
-    HandleManaRegen();
+    _handleUIKeys();
+    _handleRegen();
+    _handleManaRegen();
   }
 }
