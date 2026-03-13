@@ -68,6 +68,10 @@ public class BaseNPCBehaviour : MonoBehaviour
         AudioManager.Singleton.PlaySoundCached(Constants.Sounds.LootDrop);
         Player.Singleton.GiveXp(xpValue);
     }
+    else
+    {
+      Player.Singleton.OnDeath();
+    }
 
     Destroy(gameObject);
   }

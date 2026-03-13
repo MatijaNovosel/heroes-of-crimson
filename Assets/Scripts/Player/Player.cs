@@ -62,6 +62,8 @@ public class Player : MonoBehaviour
     get => _baseNpcBehaviour.mp;
     set => _baseNpcBehaviour.mp = value;
   }
+  
+  public bool IsDead => _baseNpcBehaviour.hp <= 0;
 
   public bool HasStatusEffect(Constants.StatusEffects statusEffect)
   {
@@ -210,6 +212,11 @@ public class Player : MonoBehaviour
       _baseNpcBehaviour.ApplyStatusEffect(Constants.StatusEffects.Radiance);
       PlayerLog.Singleton.AddItem("<color=#F1C40F>You feel a great warmth around you.</color>");
     }
+  }
+
+  public void OnDeath()
+  {
+    DeathOverlay.Singleton.Show();
   }
 
   private void _onWeaponUnequipped(Item item)
