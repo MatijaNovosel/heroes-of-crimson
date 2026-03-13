@@ -53,13 +53,13 @@ namespace UI.Inventory
         
         public void ShowLoot(LootBag bag)
         {
-            ClearInventory();
+            _clearInventory();
             _setLootSource(bag);
             var items = bag.GetLootItems();
             for (int i = 0; i < items.Count && i < inventorySlots.Length; i++) SpawnItem(items[i], i);
         }
         
-        public void ClearInventory()
+        private void _clearInventory()
         {
             foreach (var slot in inventorySlots)
             {

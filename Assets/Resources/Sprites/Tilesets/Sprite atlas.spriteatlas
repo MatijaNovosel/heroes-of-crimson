@@ -168,6 +168,7 @@ SpriteAtlas:
     - 5cbf85727fab9604dad030585a680ce4: 1493153744
     - 5cbf85727fab9604dad030585a680ce4: 847754407
     - 5cbf85727fab9604dad030585a680ce4: -314068487
+    - 5cbf85727fab9604dad030585a680ce4: -1738086891
     - 5cbf85727fab9604dad030585a680ce4: 771508974
     - 5cbf85727fab9604dad030585a680ce4: -194396941
     - 5cbf85727fab9604dad030585a680ce4: 1577423751
@@ -298,6 +299,7 @@ SpriteAtlas:
   - {fileID: 1493153744, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: 847754407, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -314068487, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
+  - {fileID: -1738086891, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: 771508974, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -194396941, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: 1577423751, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
@@ -427,6 +429,7 @@ SpriteAtlas:
   - tileset_113
   - tileset_110
   - tileset_111
+  - tileset_128
   - tileset_101
   - tileset_100
   - tileset_103

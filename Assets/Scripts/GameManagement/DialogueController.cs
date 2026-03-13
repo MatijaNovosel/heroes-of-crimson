@@ -319,7 +319,7 @@ public class DialogueController : MonoBehaviour
                 
                 case Constants.DialogueTriggers.TeleportToMarker:
                 {
-                    var markerId = t.Value is int i ? i : 0;
+                    var markerId = (Constants.TeleportMarkers)(t.Value is int i ? i : 0);
                     player.TeleportToMarker(markerId);
                     break;
                 }

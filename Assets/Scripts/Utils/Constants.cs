@@ -182,6 +182,13 @@ namespace HeroesOfCrimson.Utils
       Teleport = 3
     }
 
+    public enum TeleportMarkers
+    {
+      Basement = 1,
+      Attic = 2,
+      Cabin = 3
+    }
+
     public enum Talents
     {
       // Mage

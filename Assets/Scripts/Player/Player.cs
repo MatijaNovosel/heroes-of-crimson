@@ -221,9 +221,9 @@ public class Player : MonoBehaviour
     }
   }
 
-  public void TeleportToMarker(int markerId)
+  public void TeleportToMarker(Constants.TeleportMarkers markerId)
   {
-    var marker = GameManager.Singleton.teleportMarkersDict[1];
+    var marker = GameManager.Singleton.teleportMarkersDict[markerId];
     this.transform.position = marker.transform.position;
   }
 
@@ -250,7 +250,6 @@ public class Player : MonoBehaviour
         if (!collidable) continue;
         if (collidable.collisionGroups.All(x => x != Constants.CollisionGroups.Enemy)) continue;
       
-        // TODO: Fix magic numbers later
         col.SendMessage(
           Constants.NPCMessages.ReceiveDamage,
           new DamageModel(

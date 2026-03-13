@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
   public static GameManager Singleton;
   private GameObject _projectilePrefab;
   
-  public Dictionary<int, TeleportMarker> teleportMarkersDict = new Dictionary<int, TeleportMarker>();
+  public Dictionary<Constants.TeleportMarkers, TeleportMarker> teleportMarkersDict = new();
   public List<TeleportMarker> teleportMarkers = new ();
 
   public static int selectedCharacter = (int)Constants.Character.Knight;
