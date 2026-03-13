@@ -20,7 +20,7 @@ public class DeathOverlay : MonoBehaviour
     public void BackToMainMenu()
     {
         Time.timeScale = 1f;
-        transform.localPosition = Vector3.positiveInfinity;
+        transform.localPosition = new Vector3(9999, 9999, 9999);
         SceneManager.LoadScene((int)Constants.Screens.MainMenu);
     }
 }
