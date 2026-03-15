@@ -215,6 +215,15 @@
       "spritePath": "accessories_26",
       "rarity": 4,
       "stats": [0, 0, 0, 0, 0, 4]
+    },
+    {
+      "id": 5024,
+      "name": "Eye amulet",
+      "description": "An amulet with an eye insignia, it feels oddly familiar.",
+      "tag": 5,
+      "spritePath": "accessories_40",
+      "rarity": 3,
+      "stats": [2, 2, 2, 2, 2, 2]
     }
   ]
 }
