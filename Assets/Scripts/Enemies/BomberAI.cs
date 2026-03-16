@@ -377,7 +377,7 @@ public class BomberAI : MonoBehaviour
             if (collidable.collisionGroups.All(x => x != Constants.CollisionGroups.Player)) continue;
 
             col.SendMessage(
-                "ReceiveDamage",
+                Constants.NPCMessages.ReceiveDamage,
                 new DamageModel(
                     10f,
                     new List<Constants.StatusEffects>() { Constants.StatusEffects.Poisoned }

@@ -182,6 +182,13 @@ namespace HeroesOfCrimson.Utils
       Teleport = 3
     }
 
+    public enum TeleportMarkers
+    {
+      Basement = 1,
+      Attic = 2,
+      Cabin = 3
+    }
+
     public enum Talents
     {
       // Mage
@@ -206,6 +213,19 @@ namespace HeroesOfCrimson.Utils
       public const string ApplyStatusEffect = "applyStatusEffect";
       public const string TeleportToMarker = "teleportToMarker";
     }
+    
+    public static class NPCMessages
+    {
+      public const string ReceiveDamage = "ReceiveDamage";
+    }
+    
+    public static class DialogueConditions
+    {
+      public const string Flag = "flag";
+      public const string Stat = "stat";
+      public const string Level = "level";
+      public const string HasItem = "hasItem";
+    }
 
     public enum LootTableEnum
     {
@@ -223,20 +243,37 @@ namespace HeroesOfCrimson.Utils
         {
           Items =
           {
-            new ItemDropModel(7000, 20, true),
-            new ItemDropModel(5004, 20),
-            new ItemDropModel(5005, 20),
-            new ItemDropModel(5006, 20),
-            new ItemDropModel(5007, 20),
-            new ItemDropModel(5008, 20),
-            new ItemDropModel(5009, 20),
-            new ItemDropModel(5010, 20),
-            new ItemDropModel(5011, 20),
-            new ItemDropModel(5012, 20),
-            new ItemDropModel(5013, 20),
-            new ItemDropModel(5014, 20),
-            new ItemDropModel(5016, 20),
-            new ItemDropModel(5020, 20),
+            new ItemDropModel((int)ConsumableItemEnum.HealthPotion, 20, true),
+            
+            new ItemDropModel((int)AccessoryItemEnum.IronRingOfMight, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfMight, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfMight, 20),
+            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfMight, 20),
+            
+            new ItemDropModel((int)AccessoryItemEnum.IronRingOfAgility, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfAgility, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfAgility, 20),
+            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfAgility, 20),
+            
+            new ItemDropModel((int)AccessoryItemEnum.IronRingOfSwiftness, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfSwiftness, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfSwiftness, 20),
+            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfSwiftness, 20),
+            
+            new ItemDropModel((int)AccessoryItemEnum.IronRingOfProtection, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfProtection, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfProtection, 20),
+            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfProtection, 20),
+            
+            new ItemDropModel((int)AccessoryItemEnum.IronRingOfWisdom, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfWisdom, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfWisdom, 20),
+            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfWisdom, 20),
+            
+            new ItemDropModel((int)AccessoryItemEnum.IronRingOfStrength, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfStrength, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfStrength, 20),
+            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfStrength, 20),
           }
         }
       }

@@ -1,11 +1,13 @@
-﻿using UnityEngine;
+﻿using GameManagement;
+using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public float interactionRange = 3f;
+    public float interactionRange = 2f;
     public LayerMask npcLayer;
 
     private TalkableNPC _current;
+    private SingleInteractionObject _singleInteractionObject;
     private readonly Collider2D[] _hits = new Collider2D[32];
 
     private void Update()
@@ -15,11 +17,15 @@ public class PlayerInteraction : MonoBehaviour
             SetCurrent(null);
             return;
         }
-        var best = FindBestNpc();
-        SetCurrent(best);
+
+        var bestNpc = FindClosestComponent<TalkableNPC>();
+        var bestInteraction = FindClosestComponent<SingleInteractionObject>();
+
+        SetCurrent(bestNpc);
+        SetCurrentInteractionObject(bestInteraction);
     }
 
-    private TalkableNPC FindBestNpc()
+    private T FindClosestComponent<T>() where T : Component
     {
         int count = Physics2D.OverlapCircleNonAlloc(
             transform.position,
@@ -28,7 +34,7 @@ public class PlayerInteraction : MonoBehaviour
             npcLayer
         );
 
-        TalkableNPC best = null;
+        T best = null;
         float bestDistSq = float.PositiveInfinity;
 
         for (int i = 0; i < count; i++)
@@ -36,14 +42,14 @@ public class PlayerInteraction : MonoBehaviour
             var col = _hits[i];
             if (!col) continue;
 
-            var npc = col.GetComponent<TalkableNPC>();
-            if (!npc) continue;
+            var comp = col.GetComponent<T>();
+            if (!comp) continue;
 
-            float distSq = (npc.transform.position - transform.position).sqrMagnitude;
+            float distSq = (comp.transform.position - transform.position).sqrMagnitude;
             if (distSq < bestDistSq)
             {
                 bestDistSq = distSq;
-                best = npc;
+                best = comp;
             }
         }
 
@@ -59,5 +65,14 @@ public class PlayerInteraction : MonoBehaviour
 
         DialogueController.Singleton.CurrentNPC = _current;
         DialogMenu.Singleton.CanBeOpened = _current != null;
+    }
+
+    private void SetCurrentInteractionObject(SingleInteractionObject obj)
+    {
+        if (_singleInteractionObject == obj) return;
+        if (_singleInteractionObject) _singleInteractionObject.ShowPrompt(false);
+        _singleInteractionObject = obj;
+        if (_singleInteractionObject) _singleInteractionObject.ShowPrompt(true);
+        InteractionController.Singleton.CurrentInteractionObject = _singleInteractionObject;
     }
 }

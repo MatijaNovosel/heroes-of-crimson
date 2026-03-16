@@ -12,7 +12,6 @@ public class LootBag : MonoBehaviour
     public float InteractionRange = 1f;
     private bool isUIActive = false;
 
-    private LineRenderer _rangeCircle;
     private RectTransform _inventoryUIRect;
     
     private List<Item> _seededItems = new List<Item>();
@@ -24,13 +23,6 @@ public class LootBag : MonoBehaviour
         _player = GameObject.Find("Player");
         _lootBagUI = GameObject.Find("LootContainerGroup");
         _lootContainerInventory = GameObject.Find("LootContainerInventory");
-
-        _rangeCircle = Utils.CreateCircle(
-            transform,
-            "InteractionRange",
-            InteractionRange,
-            new Color(0.8f, 0f, 0f, 0.4f)
-        );
 
         _inventoryUIRect = _lootBagUI.GetComponent<RectTransform>();
 

@@ -76,7 +76,7 @@ public class Projectile : MonoBehaviour
     if (collidableComponent.collisionGroups.Any(x => _willDamage.Contains(x)))
     {
       collider.SendMessage(
-        "ReceiveDamage", 
+        Constants.NPCMessages.ReceiveDamage, 
         new DamageModel(_damage, this._statusEffects)
       );
     }

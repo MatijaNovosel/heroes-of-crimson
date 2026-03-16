@@ -16,14 +16,6 @@ public class TrapdoorNPC : TalkableNPC
     private void Update()
     {
         var hasFlag = DialogueController.Singleton.HasStateFlag("touchedObelisk");
-        
-        if (hasFlag)
-        {
-            _spriteRenderer.sprite = openSprite;
-        }
-        else
-        {
-            _spriteRenderer.sprite = closedSprite;
-        }
+        _spriteRenderer.sprite = hasFlag ? openSprite : closedSprite;
     }
 }

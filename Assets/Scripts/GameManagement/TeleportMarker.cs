@@ -1,8 +1,9 @@
+using HeroesOfCrimson.Utils;
 using UnityEngine;
 
 public class TeleportMarker : MonoBehaviour
 {
-    public int id;
+    public Constants.TeleportMarkers id;
     
     void Start()
     {

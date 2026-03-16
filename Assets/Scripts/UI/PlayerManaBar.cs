@@ -10,14 +10,11 @@ public class PlayerManaBar : MonoBehaviour
     public TMP_Text text;
     public TMP_Text regenText;
 
-    private BaseNPCBehaviour baseNPC;
+    private BaseNPCBehaviour _baseNPC;
 
     void Awake()
     {
-        if (player)
-        {
-            baseNPC = player.GetComponent<BaseNPCBehaviour>();
-        }
+        if (player) _baseNPC = player.GetComponent<BaseNPCBehaviour>();
     }
 
     void Update()
@@ -32,20 +29,21 @@ public class PlayerManaBar : MonoBehaviour
 
     void UpdateFillAmount()
     {
-        if (!baseNPC)
+        if (!_baseNPC)
         {
-            if (image) image.fillAmount = 0f;
-            if (imageLight) imageLight.fillAmount = 0f;
-            if (text) text.text = "Dead";
+            image.fillAmount = 0f;
+            imageLight.fillAmount = 0f;
+            text.text = "Dead";
+            regenText.text = "";
             return;
         }
 
-        var mp = Mathf.Max(0f, baseNPC.mp);
-        var maxMp = Mathf.Max(1f, baseNPC.maxMp);
+        var mp = Mathf.Max(0f, _baseNPC.mp);
+        var maxMp = Mathf.Max(1f, _baseNPC.maxMp);
         var fill = Mathf.Clamp01(mp / maxMp);
 
-        if (image) image.fillAmount = fill;
-        if (imageLight) imageLight.fillAmount = fill;
-        if (text) text.text = $"{Mathf.CeilToInt(mp)}/{Mathf.CeilToInt(maxMp)}";
+        image.fillAmount = fill;
+        imageLight.fillAmount = fill;
+        text.text = $"{Mathf.CeilToInt(mp)}/{Mathf.CeilToInt(maxMp)}";
     }
 }
