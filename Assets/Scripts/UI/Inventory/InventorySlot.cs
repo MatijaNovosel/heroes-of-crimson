@@ -51,19 +51,19 @@ namespace UI.Inventory
                     {
                         switch (item.id)
                         {
-                            case (int)Constants.ConsumableItem.HpPot:
+                            case (int)ConsumableItemEnum.HealthPotion:
                             {
                                 player.RestoreHp(50);
                                 AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);
                                 break;
                             }
-                            case (int)Constants.ConsumableItem.ManaPot:
+                            case (int)ConsumableItemEnum.ManaPotion:
                             {
                                 player.RestoreMp(30);
                                 AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);
                                 break;
                             }
-                            case (int)Constants.ConsumableItem.LifePot:
+                            case (int)ConsumableItemEnum.PotionOfLife:
                             {
                                 player.IncreaseMaxHp(5);
                                 AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);

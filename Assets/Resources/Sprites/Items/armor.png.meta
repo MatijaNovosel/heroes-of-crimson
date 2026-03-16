@@ -556,6 +556,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: armor_15
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 104
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac5d2395cb03bda42881d9a96aa4cb50
+      internalID: 1151264946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -579,6 +601,7 @@ TextureImporter:
       armor_12: 335086153
       armor_13: 1429299637
       armor_14: -1970589871
+      armor_15: 1151264946
       armor_2: -522934422
       armor_3: -777277512
       armor_4: 1508687868

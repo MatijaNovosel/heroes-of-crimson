@@ -69,13 +69,6 @@ namespace HeroesOfCrimson.Utils
       Frostbite = 18
     }
 
-    public enum ConsumableItem
-    {
-      HpPot = 7000,
-      ManaPot = 7001,
-      LifePot = 7002,
-    }
-
     public enum ItemTag
     {
       None = 1,
