@@ -10,6 +10,7 @@ public class LootBag : MonoBehaviour
     private GameObject _lootContainerInventory;
     private GameObject _player;
     public float InteractionRange = 1f;
+    public bool DestroyIfNoItems = true;
     private bool isUIActive = false;
 
     private RectTransform _inventoryUIRect;
@@ -84,8 +85,7 @@ public class LootBag : MonoBehaviour
     
     public void TryDestroyIfEmpty()
     {
-        if (_seededItems.Count > 0) return;
-
+        if (_seededItems.Count > 0 || !DestroyIfNoItems) return;
         _inventoryUIRect.localScale = Vector3.zero;
         isUIActive = false;
         Destroy(gameObject);

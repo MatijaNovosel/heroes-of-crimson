@@ -109,28 +109,40 @@ SpriteAtlas:
     - ba6e0ecaae29e4745bba15b45bb14f66: 312865410
     - ba6e0ecaae29e4745bba15b45bb14f66: -902892088
     - ba6e0ecaae29e4745bba15b45bb14f66: 842143698
+    - ba6e0ecaae29e4745bba15b45bb14f66: -27430248
     - ba6e0ecaae29e4745bba15b45bb14f66: 1611230053
+    - ba6e0ecaae29e4745bba15b45bb14f66: 194647225
     - ba6e0ecaae29e4745bba15b45bb14f66: 1233402572
+    - ba6e0ecaae29e4745bba15b45bb14f66: -1506826560
     - ba6e0ecaae29e4745bba15b45bb14f66: 260172200
     - ba6e0ecaae29e4745bba15b45bb14f66: -582293049
+    - ba6e0ecaae29e4745bba15b45bb14f66: -532312462
     - ba6e0ecaae29e4745bba15b45bb14f66: 1567808309
+    - ba6e0ecaae29e4745bba15b45bb14f66: -963457144
     - ba6e0ecaae29e4745bba15b45bb14f66: 1990435718
     - ba6e0ecaae29e4745bba15b45bb14f66: -1012384838
     - ba6e0ecaae29e4745bba15b45bb14f66: 715116585
+    - ba6e0ecaae29e4745bba15b45bb14f66: 1953094750
     - ba6e0ecaae29e4745bba15b45bb14f66: 592619516
     - ba6e0ecaae29e4745bba15b45bb14f66: 1907694832
+    - ba6e0ecaae29e4745bba15b45bb14f66: 1418880862
     - ba6e0ecaae29e4745bba15b45bb14f66: 86407632
     - ba6e0ecaae29e4745bba15b45bb14f66: 85109455
+    - ba6e0ecaae29e4745bba15b45bb14f66: -2004930929
     - ba6e0ecaae29e4745bba15b45bb14f66: 905151277
     - ba6e0ecaae29e4745bba15b45bb14f66: -933587461
     - ba6e0ecaae29e4745bba15b45bb14f66: -414511071
+    - ba6e0ecaae29e4745bba15b45bb14f66: -1177422265
     - ba6e0ecaae29e4745bba15b45bb14f66: -2120909436
     - ba6e0ecaae29e4745bba15b45bb14f66: 341333739
     - ba6e0ecaae29e4745bba15b45bb14f66: 1788214404
+    - ba6e0ecaae29e4745bba15b45bb14f66: -465642967
     - ba6e0ecaae29e4745bba15b45bb14f66: -943278368
     - ba6e0ecaae29e4745bba15b45bb14f66: -1924733331
+    - ba6e0ecaae29e4745bba15b45bb14f66: 1503049325
     - ba6e0ecaae29e4745bba15b45bb14f66: 539206971
     - ba6e0ecaae29e4745bba15b45bb14f66: 322503252
+    - ba6e0ecaae29e4745bba15b45bb14f66: 966629704
     - ba6e0ecaae29e4745bba15b45bb14f66: 420474350
     - ba6e0ecaae29e4745bba15b45bb14f66: -1085987459
     - ba6e0ecaae29e4745bba15b45bb14f66: -799262084
@@ -210,28 +222,40 @@ SpriteAtlas:
   - {fileID: 312865410, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: -902892088, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 842143698, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: -27430248, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 1611230053, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: 194647225, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 1233402572, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: -1506826560, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 260172200, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: -582293049, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: -532312462, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 1567808309, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: -963457144, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 1990435718, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: -1012384838, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 715116585, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: 1953094750, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 592619516, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 1907694832, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: 1418880862, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 86407632, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 85109455, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: -2004930929, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 905151277, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: -933587461, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: -414511071, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: -1177422265, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: -2120909436, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 341333739, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 1788214404, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: -465642967, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: -943278368, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: -1924733331, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: 1503049325, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 539206971, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 322503252, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: 966629704, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 420474350, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: -1085987459, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: -799262084, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
@@ -310,28 +334,40 @@ SpriteAtlas:
   - weapons_4
   - weapons_38
   - weapons_39
+  - weapons_58
   - weapons_29
+  - weapons_59
   - weapons_28
+  - weapons_60
   - weapons_30
   - weapons_31
+  - weapons_49
   - weapons_32
+  - weapons_52
   - weapons_48
   - weapons_33
   - weapons_23
+  - weapons_53
   - weapons_34
   - weapons_22
+  - weapons_50
   - weapons_35
   - weapons_21
+  - weapons_51
   - weapons_45
   - weapons_36
   - weapons_20
+  - weapons_56
   - weapons_44
   - weapons_37
   - weapons_27
+  - weapons_57
   - weapons_47
   - weapons_26
+  - weapons_54
   - weapons_46
   - weapons_25
+  - weapons_55
   - weapons_41
   - weapons_24
   - weapons_40

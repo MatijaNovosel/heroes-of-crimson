@@ -6146,6 +6146,10 @@ PrefabInstance:
       value: RingChest1
       objectReference: {fileID: 0}
     - target: {fileID: 6559301374437243440, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
+      propertyPath: DestroyIfNoItems
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559301374437243440, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
       propertyPath: InteractionRange
       value: 1
       objectReference: {fileID: 0}
@@ -34689,6 +34693,10 @@ PrefabInstance:
     - target: {fileID: 1391078489379675557, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
       propertyPath: m_Name
       value: WeaponChest1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6559301374437243440, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
+      propertyPath: DestroyIfNoItems
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6559301374437243440, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
       propertyPath: InteractionRange
