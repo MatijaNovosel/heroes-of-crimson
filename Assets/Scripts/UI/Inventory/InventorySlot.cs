@@ -53,12 +53,14 @@ namespace UI.Inventory
                         {
                             case (int)ConsumableItemEnum.HealthPotion:
                             {
+                                if (Mathf.Approximately(player.MaxHealth, player.CurrentHealth)) return;
                                 player.RestoreHp(50);
                                 AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);
                                 break;
                             }
                             case (int)ConsumableItemEnum.ManaPotion:
                             {
+                                if (Mathf.Approximately(player.MaxMana, player.CurrentMana)) return;
                                 player.RestoreMp(30);
                                 AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);
                                 break;

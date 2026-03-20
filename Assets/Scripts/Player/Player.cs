@@ -63,6 +63,15 @@ public class Player : MonoBehaviour
     set => _baseNpcBehaviour.mp = value;
   }
   
+  public float CurrentHealth
+  {
+    get => _baseNpcBehaviour.hp;
+    set => _baseNpcBehaviour.hp = value;
+  }
+  
+  public float MaxHealth => _baseNpcBehaviour.maxHp;
+  public float MaxMana => _baseNpcBehaviour.maxMp;
+  
   public bool IsDead => _baseNpcBehaviour.hp <= 0;
 
   public bool HasStatusEffect(Constants.StatusEffects statusEffect)

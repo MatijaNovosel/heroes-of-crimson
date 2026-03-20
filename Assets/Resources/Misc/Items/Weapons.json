@@ -190,6 +190,23 @@
       "range": 5.5,
       "projectileScale": 0.6,
       "stats": [0, 0, 0, 0, 4, 4]
+    },
+    {
+      "id": 2011,
+      "name": "Serrated knife",
+      "description": "A light knife with sparse grooves along its edge.\n\n<color=#F1C40F>Applies bleeding on hit.</color>",
+      "tag": 2,
+      "spritePath": "weapons_55",
+      "projectilePath": "projectiles_23",
+      "shootSound": 1008,
+      "projectileDegree": 45,
+      "minDamage": 10,
+      "maxDamage": 30,
+      "projectileCount": 1,
+      "rarity": 2,
+      "range": 3.5,
+      "projectileScale": 0.6,
+      "stats": [0, 0, 0, 0, 0, 0]
     }
   ]
 }

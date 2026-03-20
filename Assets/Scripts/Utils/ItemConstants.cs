@@ -13,7 +13,8 @@ public enum WeaponItemEnum
     IronMace = 2007,
     IronSabre = 2008,
     Radiance = 2009,
-    Yasha = 2010
+    Yasha = 2010,
+    SerratedKnife = 2011
 }
 
 public enum AccessoryItemEnum
