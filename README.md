@@ -1,5 +1,5 @@
 <h1 align=center>Heroes of crimson</h1>
-<p align=center>Bullet hell RPG roguelike.</p>
+<p align=center>Bullet hell RPG roguelike. Heavily based on the popular MMO Realm of the Mad God.</p>
 <p align=center>⚠️ Currently a work in progress. ⚠️</p>
 
 
