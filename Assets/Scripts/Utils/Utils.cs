@@ -176,6 +176,47 @@ namespace HeroesOfCrimson.Utils
         return data;
     }
 
+    public static StatData GetStatData(Constants.Stats stat)
+    {
+        var data = new StatData();
+
+        switch (stat)
+        {
+            case Constants.Stats.MGT:
+                data.Name = "Might";
+                data.Description = "Increases attack damage";
+                data.Color = "B04183";
+                break;
+            case Constants.Stats.AGI:
+                data.Name = "Agility";
+                data.Description = "Increases attack speed";
+                data.Color = "DD8457";
+                break;
+            case Constants.Stats.SWF:
+                data.Name = "Swiftness";
+                data.Description = "Increases movement speed";
+                data.Color = "3BAB3B";
+                break;
+            case Constants.Stats.ARM:
+                data.Name = "Armor";
+                data.Description = "Decreases incoming damage by a flat amount";
+                data.Color = "7D6D6D";
+                break;
+            case Constants.Stats.STR:
+                data.Name = "Strength";
+                data.Description = "Increases health regeneration";
+                data.Color = "C54646";
+                break;
+            case Constants.Stats.WIS:
+                data.Name = "Wisdom";
+                data.Description = "Increases mana regeneration";
+                data.Color = "6488C3";
+                break;
+        }
+
+        return data;
+    }
+
     public static StatusEffectData GetStatusEffectData(Constants.StatusEffects statusEffect)
     {
         var data = new StatusEffectData

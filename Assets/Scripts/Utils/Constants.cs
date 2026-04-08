@@ -197,6 +197,12 @@ namespace HeroesOfCrimson.Utils
       IceSchoolThree = 10,
     }
 
+    public enum CentralWindowTabsEnum
+    {
+      Talents = 1,
+      Quests = 2
+    }
+    
     public static class DialogueTriggers
     {
       public const string GiveItem = "giveItem";
@@ -205,6 +211,7 @@ namespace HeroesOfCrimson.Utils
       public const string GiveXp = "giveXp";
       public const string ApplyStatusEffect = "applyStatusEffect";
       public const string TeleportToMarker = "teleportToMarker";
+      public const string StartQuest = "startQuest";
     }
     
     public static class NPCMessages
