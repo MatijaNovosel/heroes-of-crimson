@@ -183,7 +183,7 @@ public class Player : MonoBehaviour
 
   private void _handleUIKeys()
   {
-    if (Input.GetKeyDown(KeyCode.Tab))
+    if (Input.GetKeyDown(KeyCode.Tab) && !TalentTree.Singleton.TalentTreeOpen)
     {
       InventoryOpen = !InventoryOpen;
       TopLeftGroup.transform.localScale = InventoryOpen ? Vector3.one : Vector3.zero;
