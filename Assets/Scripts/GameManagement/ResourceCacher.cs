@@ -17,6 +17,7 @@ namespace GameManagement
         public Sprite[] ArmorSprites;
         
         public Sprite[] ProjectileSprites;
+        public Sprite[] TalentSprites;
         public Sprite[] StatusEffectSprites;
 
         public Dictionary<Constants.Sounds, AudioClip> Sounds = new ();
@@ -37,6 +38,7 @@ namespace GameManagement
             // Other sprites
             ProjectileSprites = Resources.LoadAll<Sprite>("Sprites/Projectiles/projectiles");
             StatusEffectSprites = Resources.LoadAll<Sprite>("Sprites/Misc/statusEffects");
+            TalentSprites = Resources.LoadAll<Sprite>("Sprites/Misc/talents");
             
             // General sounds
             Sounds.Add(Constants.Sounds.Error, Resources.Load<AudioClip>("Sounds/General/error"));

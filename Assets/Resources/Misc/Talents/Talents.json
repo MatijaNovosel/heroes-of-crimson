@@ -1,0 +1,51 @@
+﻿{
+  "talents": [
+    {
+      "id": 2000,
+      "name": "Hardiness 1",
+      "description": "A basic will of battle.\n\n<color=#F1C40F>Increases HP by 5.</color>",
+      "character": 2,
+      "spritePath": "talents_0",
+      "levelReq": 2,
+      "tier": 1,
+      "row": 0,
+      "exclusiveGroupId": 10,
+      "prerequisites": []
+    },
+    {
+      "id": 2001,
+      "name": "Inherent Wisdom 1",
+      "description": "A faint trace of magic lingers still.\n\n<color=#F1C40F>Increases MP by 5.</color>",
+      "character": 2,
+      "spritePath": "talents_1",
+      "levelReq": 2,
+      "tier": 1,
+      "row": 1,
+      "exclusiveGroupId": 10,
+      "prerequisites": []
+    },
+    {
+      "id": 2002,
+      "name": "Veteran Body",
+      "description": "You have endured countless battles.\n\n<color=#F1C40F>Increases HP by 15.</color>",
+      "character": 2,
+      "spritePath": "talents_2",
+      "levelReq": 5,
+      "tier": 2,
+      "row": 0,
+      "exclusiveGroupId": null,
+      "prerequisites": [
+        {
+          "type": "any",
+          "talents": [2000, 2001]
+        }
+      ]
+    }
+  ],
+  "exclusiveGroups": [
+    {
+      "id": 10,
+      "rule": "chooseOne"
+    }
+  ]
+}
