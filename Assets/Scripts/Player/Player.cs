@@ -137,8 +137,9 @@ public class Player : MonoBehaviour
     );
   }
 
-  public void LearnTalent(Constants.Talents talent)
+  public void LearnTalent(int talentId)
   {
+    /*
     if (learnedTalents.Contains((int)talent)) return;
     learnedTalents.Add((int)talent);
     if (talent == Constants.Talents.ArcaneSupremacyOne)
@@ -150,6 +151,7 @@ public class Player : MonoBehaviour
         _baseNpcBehaviour.maxMp
       );
     }
+    */
   }
 
   public void SetStatusEffect(int statusEffectId, float duration)

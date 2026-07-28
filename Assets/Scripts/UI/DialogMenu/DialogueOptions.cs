@@ -5,7 +5,6 @@ using UnityEngine;
 public class DialogueOptions : MonoBehaviour
 {
     public GameObject dialogueOptionPrefab;
-    public DialogueController dialogueController;
     private Dictionary<string, DialogueOptionItem> _items = new();
 
     private void _clearItems()

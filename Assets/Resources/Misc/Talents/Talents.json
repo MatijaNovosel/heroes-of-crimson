@@ -3,48 +3,376 @@
     {
       "id": 2000,
       "name": "Hardiness 1",
-      "description": "A basic will of battle.\n\n<color=#F1C40F>Increases HP by 5.</color>",
+      "description": "A basic will of battle.\n\n<color=#F1C40F>You gain +5 HP.</color>",
       "character": 2,
       "spritePath": "talents_0",
       "levelReq": 2,
-      "tier": 1,
-      "row": 0,
-      "exclusiveGroupId": 10,
-      "prerequisites": []
+      "exclusiveGroupId": null,
+      "requirementGroups": [],
+      "layoutHint": { "x": -2, "y": 0 }
     },
     {
       "id": 2001,
       "name": "Inherent Wisdom 1",
-      "description": "A faint trace of magic lingers still.\n\n<color=#F1C40F>Increases MP by 5.</color>",
+      "description": "A faint trace of magic lingers still.\n\n<color=#3498DB>You gain +5 MP.</color>",
       "character": 2,
       "spritePath": "talents_1",
       "levelReq": 2,
-      "tier": 1,
-      "row": 1,
-      "exclusiveGroupId": 10,
-      "prerequisites": []
+      "exclusiveGroupId": null,
+      "requirementGroups": [],
+      "layoutHint": { "x": 0, "y": 0 }
+    },
+    {
+      "id": 2003,
+      "name": "Quickstep 1",
+      "description": "A swift first step.\n\n<color=#2ECC71>You gain +2 Move Speed.</color>",
+      "character": 2,
+      "spritePath": "talents_2",
+      "levelReq": 2,
+      "exclusiveGroupId": null,
+      "requirementGroups": [],
+      "layoutHint": { "x": 2, "y": 0 }
     },
     {
       "id": 2002,
       "name": "Veteran Body",
-      "description": "You have endured countless battles.\n\n<color=#F1C40F>Increases HP by 15.</color>",
+      "description": "You have endured countless battles.\n\n<color=#F1C40F>You gain +10 HP.</color>",
+      "character": 2,
+      "spritePath": "talents_3",
+      "levelReq": 5,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2000]
+        }
+      ],
+      "layoutHint": { "x": -2, "y": 1 }
+    },
+    {
+      "id": 2004,
+      "name": "Battle Focus 1",
+      "description": "Your mind sharpens under pressure.\n\n<color=#9B59B6>You gain +5 Crit Chance.</color>",
+      "character": 2,
+      "spritePath": "talents_4",
+      "levelReq": 3,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2001]
+        }
+      ],
+      "layoutHint": { "x": 0, "y": 1 }
+    },
+    {
+      "id": 2010,
+      "name": "Fleet Footwork",
+      "description": "You dance around danger.\n\n<color=#2ECC71>You gain +3 Move Speed.</color>",
+      "character": 2,
+      "spritePath": "talents_5",
+      "levelReq": 6,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2003]
+        }
+      ],
+      "layoutHint": { "x": 2, "y": 1 }
+    },
+    {
+      "id": 2005,
+      "name": "Iron Discipline",
+      "description": "Your stance does not break.\n\n<color=#E74C3C>You gain +5 Armor.</color>",
+      "character": 2,
+      "spritePath": "talents_6",
+      "levelReq": 7,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2002]
+        }
+      ],
+      "layoutHint": { "x": -3, "y": 2 }
+    },
+    {
+      "id": 2006,
+      "name": "Mana Efficiency",
+      "description": "You waste less energy when casting.\n\n<color=#3498DB>Your spells cost 5% less MP.</color>",
+      "character": 2,
+      "spritePath": "talents_7",
+      "levelReq": 7,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2004]
+        }
+      ],
+      "layoutHint": { "x": 1, "y": 2 }
+    },
+    {
+      "id": 2014,
+      "name": "Adrenal Surge",
+      "description": "Your body surges when the fight turns dire.\n\n<color=#E67E22>Gain +10% Attack Speed when below 50% HP.</color>",
+      "character": 2,
+      "spritePath": "talents_8",
+      "levelReq": 7,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2010]
+        }
+      ],
+      "layoutHint": { "x": 3, "y": 2 }
+    },
+    {
+      "id": 2022,
+      "name": "Veteran's Instinct",
+      "description": "Experience guides your next move.\n\n<color=#1ABC9C>You gain +5 Accuracy.</color>",
+      "character": 2,
+      "spritePath": "talents_9",
+      "levelReq": 8,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AnyOf",
+          "talents": [2002, 2004, 2010]
+        }
+      ],
+      "layoutHint": { "x": 0, "y": 2 }
+    },
+    {
+      "id": 2008,
+      "name": "Bulwark",
+      "description": "A wall between you and death.\n\n<color=#F1C40F>You gain +12 HP.</color>",
+      "character": 2,
+      "spritePath": "talents_10",
+      "levelReq": 10,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2005]
+        }
+      ],
+      "layoutHint": { "x": -3, "y": 3 }
+    },
+    {
+      "id": 2009,
+      "name": "Arcane Precision",
+      "description": "Your spells strike with greater certainty.\n\n<color=#3498DB>You gain +8 Magic Power.</color>",
+      "character": 2,
+      "spritePath": "talents_11",
+      "levelReq": 10,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2006]
+        }
+      ],
+      "layoutHint": { "x": 1, "y": 3 }
+    },
+    {
+      "id": 2015,
+      "name": "Second Wind",
+      "description": "You recover after every hard strike.\n\n<color=#2ECC71>Restore 3% HP when taking damage.</color>",
+      "character": 2,
+      "spritePath": "talents_12",
+      "levelReq": 10,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AnyOf",
+          "talents": [2005, 2006]
+        }
+      ],
+      "layoutHint": { "x": -1, "y": 3 }
+    },
+    {
+      "id": 2024,
+      "name": "Stalwart Resolve",
+      "description": "You stand firm under pressure.\n\n<color=#E74C3C>You gain +10 Armor while above 75% HP.</color>",
+      "character": 2,
+      "spritePath": "talents_0",
+      "levelReq": 11,
+      "exclusiveGroupId": 12,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2005, 2014]
+        }
+      ],
+      "layoutHint": { "x": 2, "y": 3 }
+    },
+    {
+      "id": 2012,
+      "name": "Shield Wall",
+      "description": "You and your defenses become one.\n\n<color=#E74C3C>Reduce incoming damage by 5%.</color>",
+      "character": 2,
+      "spritePath": "talents_1",
+      "levelReq": 13,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2008]
+        }
+      ],
+      "layoutHint": { "x": -3, "y": 4 }
+    },
+    {
+      "id": 2013,
+      "name": "Mana Burst",
+      "description": "Your next spell erupts with power.\n\n<color=#9B59B6>Your next spell deals +15% damage.</color>",
       "character": 2,
       "spritePath": "talents_2",
-      "levelReq": 5,
-      "tier": 2,
-      "row": 0,
+      "levelReq": 13,
       "exclusiveGroupId": null,
-      "prerequisites": [
+      "requirementGroups": [
         {
-          "type": "any",
-          "talents": [2000, 2001]
+          "mode": "AllOf",
+          "talents": [2009]
         }
-      ]
+      ],
+      "layoutHint": { "x": 1, "y": 4 }
+    },
+    {
+      "id": 2016,
+      "name": "Perfect Timing",
+      "description": "You act at the exact right moment.\n\n<color=#F1C40F>You gain +5% Critical Damage.</color>",
+      "character": 2,
+      "spritePath": "talents_3",
+      "levelReq": 13,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AnyOf",
+          "talents": [2010, 2009]
+        }
+      ],
+      "layoutHint": { "x": 3, "y": 4 }
+    },
+    {
+      "id": 2023,
+      "name": "Overcharge",
+      "description": "Power surges through every cast.\n\n<color=#1ABC9C>Spells cost 10% less MP while above 80% MP.</color>",
+      "character": 2,
+      "spritePath": "talents_4",
+      "levelReq": 14,
+      "exclusiveGroupId": 12,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2009, 2014]
+        }
+      ],
+      "layoutHint": { "x": 2, "y": 4 }
+    },
+    {
+      "id": 2017,
+      "name": "Unstoppable",
+      "description": "Momentum carries you through every obstacle.\n\n<color=#E67E22>You gain +1 Movement and cannot be slowed as easily.</color>",
+      "character": 2,
+      "spritePath": "talents_5",
+      "levelReq": 16,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2014]
+        }
+      ],
+      "layoutHint": { "x": 3, "y": 5 }
+    },
+    {
+      "id": 2018,
+      "name": "Lionheart",
+      "description": "Your resolve turns fear into strength.\n\n<color=#F1C40F>You gain +10 HP and +5 Willpower.</color>",
+      "character": 2,
+      "spritePath": "talents_6",
+      "levelReq": 16,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2012, 2013]
+        }
+      ],
+      "layoutHint": { "x": -1, "y": 5 }
+    },
+    {
+      "id": 2019,
+      "name": "Combat Meditation",
+      "description": "You stay calm while chaos rages.\n\n<color=#3498DB>Regenerate 1 MP every 3 seconds in combat.</color>",
+      "character": 2,
+      "spritePath": "talents_7",
+      "levelReq": 16,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2015, 2016]
+        }
+      ],
+      "layoutHint": { "x": 1, "y": 5 }
+    },
+    {
+      "id": 2020,
+      "name": "Relentless Advance",
+      "description": "Nothing slows your forward push.\n\n<color=#E67E22>Gain +5% Move Speed after defeating an enemy.</color>",
+      "character": 2,
+      "spritePath": "talents_8",
+      "levelReq": 18,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2012, 2017]
+        }
+      ],
+      "layoutHint": { "x": 2, "y": 5 }
+    },
+    {
+      "id": 2021,
+      "name": "Arcane Bulwark",
+      "description": "Defense and magic reinforce each other.\n\n<color=#9B59B6>You gain +5 Armor and +5 Magic Power.</color>",
+      "character": 2,
+      "spritePath": "talents_9",
+      "levelReq": 18,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2012, 2013]
+        }
+      ],
+      "layoutHint": { "x": 0, "y": 5 }
+    },
+    {
+      "id": 2025,
+      "name": "Apex of War",
+      "description": "Every path converges into mastery.\n\n<color=#F1C40F>You gain +20 HP, +10 MP, and +10 Damage.</color>",
+      "character": 2,
+      "spritePath": "talents_10",
+      "levelReq": 20,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [2018, 2019, 2020, 2021]
+        }
+      ],
+      "layoutHint": { "x": 0, "y": 6 }
     }
   ],
   "exclusiveGroups": [
     {
-      "id": 10,
+      "id": 12,
       "rule": "chooseOne"
     }
   ]

@@ -10,6 +10,7 @@ namespace GameManagement
     public class TalentController : MonoBehaviour
     {
         public static TalentController Singleton;
+        public TalentTree talentTree;
 
         private const string TalentsResourcesFolder = "Misc/Talents";
 
@@ -21,6 +22,11 @@ namespace GameManagement
         {
             Singleton = this;
             _loadTalents();
+
+            if (talentTree != null)
+            {
+                talentTree.Init(_allTalents);
+            }
         }
 
         private void _loadTalents()
@@ -108,20 +114,38 @@ namespace GameManagement
             };
         }
 
+        private static TalentRequirementMode ParseRequirementMode(string mode)
+        {
+            if (string.IsNullOrWhiteSpace(mode))
+                return TalentRequirementMode.AllOf;
+
+            switch (mode.Trim().ToLowerInvariant())
+            {
+                case "any":
+                case "anyof":
+                    return TalentRequirementMode.AnyOf;
+
+                case "all":
+                case "allof":
+                default:
+                    return TalentRequirementMode.AllOf;
+            }
+        }
+
         private static TalentModel ToTalentModel(TalentDto dto)
         {
             if (dto == null) return null;
 
-            var prerequisites = new List<TalentPrerequisiteRuleModel>();
+            var requirementGroups = new List<TalentRequirementGroupModel>();
 
-            if (dto.prerequisites != null)
+            if (dto.requirementGroups != null)
             {
-                foreach (var prereq in dto.prerequisites.Where(x => x != null))
+                foreach (var groupDto in dto.requirementGroups.Where(x => x != null))
                 {
-                    prerequisites.Add(new TalentPrerequisiteRuleModel
+                    requirementGroups.Add(new TalentRequirementGroupModel
                     {
-                        Type = prereq.type,
-                        TalentIds = prereq.talents != null ? new List<int>(prereq.talents) : new List<int>()
+                        Mode = ParseRequirementMode(groupDto.mode),
+                        TalentIds = groupDto.talents != null ? new List<int>(groupDto.talents) : new List<int>()
                     });
                 }
             }
@@ -135,17 +159,23 @@ namespace GameManagement
                 Sprite = ResourceCacher.Singleton.TalentSprites.FirstOrDefault(x => x.name == dto.spritePath),
                 SpritePath = dto.spritePath,
                 LevelReq = dto.levelReq,
-                Tier = dto.tier,
-                Row = dto.row,
                 ExclusiveGroupId = dto.exclusiveGroupId,
-                Prerequisites = prerequisites
+                RequirementGroups = requirementGroups,
+                LayoutHint = dto.layoutHint == null ? null : new TalentLayoutHintModel
+                {
+                    X = dto.layoutHint.x,
+                    Y = dto.layoutHint.y
+                }
             };
         }
 
         public List<TalentModel> GetTalentsForClass(Constants.Character character)
         {
             return _talentsByClass.TryGetValue(character, out var list)
-                ? list.OrderBy(t => t.Tier).ThenBy(t => t.Row).ToList()
+                ? list.OrderBy(t => t.LayoutHint != null ? t.LayoutHint.Y : int.MaxValue)
+                      .ThenBy(t => t.LayoutHint != null ? t.LayoutHint.X : int.MaxValue)
+                      .ThenBy(t => t.Id)
+                      .ToList()
                 : new List<TalentModel>();
         }
 
@@ -153,8 +183,9 @@ namespace GameManagement
         {
             return _allTalents
                 .OrderBy(t => t.Character)
-                .ThenBy(t => t.Tier)
-                .ThenBy(t => t.Row)
+                .ThenBy(t => t.LayoutHint != null ? t.LayoutHint.Y : int.MaxValue)
+                .ThenBy(t => t.LayoutHint != null ? t.LayoutHint.X : int.MaxValue)
+                .ThenBy(t => t.Id)
                 .ToList();
         }
 

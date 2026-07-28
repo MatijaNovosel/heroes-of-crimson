@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 [Serializable]
 public class TalentFileDto
@@ -34,27 +33,34 @@ public class TalentDto
     [JsonProperty("levelReq")]
     public int levelReq;
 
-    [JsonProperty("tier")]
-    public int tier;
-
-    [JsonProperty("row")]
-    public int row;
-
     [JsonProperty("exclusiveGroupId")]
     public int? exclusiveGroupId;
 
-    [JsonProperty("prerequisites")]
-    public List<TalentPrerequisiteDto> prerequisites;
+    [JsonProperty("requirementGroups")]
+    public List<TalentRequirementGroupDto> requirementGroups;
+
+    [JsonProperty("layoutHint")]
+    public TalentLayoutHintDto layoutHint;
 }
 
 [Serializable]
-public class TalentPrerequisiteDto
+public class TalentRequirementGroupDto
 {
-    [JsonProperty("type")]
-    public string type;
+    [JsonProperty("mode")]
+    public string mode;
 
     [JsonProperty("talents")]
     public List<int> talents;
+}
+
+[Serializable]
+public class TalentLayoutHintDto
+{
+    [JsonProperty("x")]
+    public int x;
+
+    [JsonProperty("y")]
+    public int y;
 }
 
 [Serializable]
