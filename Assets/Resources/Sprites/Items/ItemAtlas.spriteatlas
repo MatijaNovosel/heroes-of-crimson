@@ -85,6 +85,7 @@ SpriteAtlas:
     - fc237ac3410d8ae4bab70d6b3dabd86d: -1793033751
     - fc237ac3410d8ae4bab70d6b3dabd86d: -708673484
     - ecb5de08adfaadd4391c71d9cab1322f: 152573642
+    - ecb5de08adfaadd4391c71d9cab1322f: 1550478861
     - ecb5de08adfaadd4391c71d9cab1322f: 5770958956045166959
     - ecb5de08adfaadd4391c71d9cab1322f: 686990111
     - ba6e0ecaae29e4745bba15b45bb14f66: 1411171533
@@ -198,6 +199,7 @@ SpriteAtlas:
   - {fileID: -1793033751, guid: fc237ac3410d8ae4bab70d6b3dabd86d, type: 3}
   - {fileID: -708673484, guid: fc237ac3410d8ae4bab70d6b3dabd86d, type: 3}
   - {fileID: 152573642, guid: ecb5de08adfaadd4391c71d9cab1322f, type: 3}
+  - {fileID: 1550478861, guid: ecb5de08adfaadd4391c71d9cab1322f, type: 3}
   - {fileID: 5770958956045166959, guid: ecb5de08adfaadd4391c71d9cab1322f, type: 3}
   - {fileID: 686990111, guid: ecb5de08adfaadd4391c71d9cab1322f, type: 3}
   - {fileID: 1411171533, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
@@ -310,6 +312,7 @@ SpriteAtlas:
   - consumables_3
   - consumables_8
   - misc_2
+  - misc_3
   - misc_0
   - misc_1
   - weapons_18

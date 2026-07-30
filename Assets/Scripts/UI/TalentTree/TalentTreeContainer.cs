@@ -60,8 +60,9 @@ public class TalentTreeContainer : MonoBehaviour
     {
         SetupLayer(nodeLayer);
         SetupLayer(connectorLayer);
-        connectorLayer.SetAsFirstSibling();
-        nodeLayer.SetAsLastSibling();
+
+        if (connectorLayer != null) connectorLayer.SetAsFirstSibling();
+        if (nodeLayer != null) nodeLayer.SetAsLastSibling();
     }
 
     private void SetupLayer(RectTransform layer)
@@ -73,13 +74,12 @@ public class TalentTreeContainer : MonoBehaviour
         layer.offsetMax = Vector2.zero;
         layer.pivot = new Vector2(0.5f, 0.5f);
     }
-    
-    int GetDepth(
+
+    private int GetDepth(
         int talentId,
         Dictionary<int, int> cache,
         HashSet<int> visiting,
-        Dictionary<int,TalentModel> byId
-    )
+        Dictionary<int, TalentModel> byId)
     {
         if (cache.TryGetValue(talentId, out var cached)) return cached;
         if (!byId.TryGetValue(talentId, out var talent)) return 0;
@@ -88,7 +88,6 @@ public class TalentTreeContainer : MonoBehaviour
         var parents = GetParentIds(talent).Distinct().Where(byId.ContainsKey).ToList();
 
         int depth = 0;
-
         if (parents.Count != 0)
         {
             depth = parents.Max(parentId => GetDepth(parentId, cache, visiting, byId)) + 1;
@@ -108,12 +107,9 @@ public class TalentTreeContainer : MonoBehaviour
 
         foreach (var talent in talents.Where(t => t != null))
         {
-            int depth = talent.LayoutHint.Y;
-
-            if (talent.LayoutHint != null)
-            {
-                depth = GetDepth(talent.Id, depthCache, new HashSet<int>(), byId);
-            }
+            int depth = talent.LayoutHint != null
+                ? GetDepth(talent.Id, depthCache, new HashSet<int>(), byId)
+                : 0;
 
             if (!depthBuckets.TryGetValue(depth, out var list))
             {
@@ -136,6 +132,7 @@ public class TalentTreeContainer : MonoBehaviour
                 var talent = row[i];
                 int x = talent.LayoutHint != null ? talent.LayoutHint.X : i;
                 int y = depthPair.Key;
+
                 _nodePositions[talent.Id] = new Vector2(x * spacingX, -y * spacingY);
             }
         }
@@ -201,6 +198,12 @@ public class TalentTreeContainer : MonoBehaviour
 
         ClearChildren(connectorLayer);
 
+        DrawPrerequisiteConnectors(talents);
+        DrawExclusiveConnectors(talents);
+    }
+
+    private void DrawPrerequisiteConnectors(List<TalentModel> talents)
+    {
         foreach (var talent in talents.Where(t => t != null))
         {
             if (!_itemsByTalentId.TryGetValue(talent.Id, out var childItem)) continue;
@@ -208,7 +211,30 @@ public class TalentTreeContainer : MonoBehaviour
             foreach (var parentId in GetParentIds(talent))
             {
                 if (!_itemsByTalentId.TryGetValue(parentId, out var parentItem)) continue;
-                CreateConnector(parentItem.RectTransform, childItem.RectTransform);
+                CreateConnector(parentItem.RectTransform, childItem.RectTransform, Color.white);
+            }
+        }
+    }
+
+    private void DrawExclusiveConnectors(List<TalentModel> talents)
+    {
+        var grouped = talents
+            .Where(t => t != null && t.ExclusiveGroupId.HasValue)
+            .GroupBy(t => t.ExclusiveGroupId.Value);
+
+        foreach (var group in grouped)
+        {
+            var groupTalents = group.Where(t => _itemsByTalentId.ContainsKey(t.Id)).ToList();
+            if (groupTalents.Count < 2) continue;
+
+            for (int i = 0; i < groupTalents.Count; i++)
+            {
+                for (int j = i + 1; j < groupTalents.Count; j++)
+                {
+                    var a = _itemsByTalentId[groupTalents[i].Id].RectTransform;
+                    var b = _itemsByTalentId[groupTalents[j].Id].RectTransform;
+                    CreateConnector(a, b, Color.red);
+                }
             }
         }
     }
@@ -216,6 +242,7 @@ public class TalentTreeContainer : MonoBehaviour
     private IEnumerable<int> GetParentIds(TalentModel talent)
     {
         if (talent.RequirementGroups == null) yield break;
+
         foreach (var group in talent.RequirementGroups)
         {
             if (group?.TalentIds == null) continue;
@@ -223,7 +250,7 @@ public class TalentTreeContainer : MonoBehaviour
         }
     }
 
-    private void CreateConnector(RectTransform from, RectTransform to)
+    private void CreateConnector(RectTransform from, RectTransform to, Color color)
     {
         if (connectorPrefab == null || connectorLayer == null || from == null || to == null)
         {
@@ -234,7 +261,11 @@ public class TalentTreeContainer : MonoBehaviour
         var rt = go.GetComponent<RectTransform>();
         var img = go.GetComponent<Image>();
 
-        if (img != null) img.raycastTarget = false;
+        if (img != null)
+        {
+            img.raycastTarget = false;
+            img.color = color;
+        }
 
         Vector2 start = WorldToLocalPoint(connectorLayer, from.TransformPoint(from.rect.center));
         Vector2 end = WorldToLocalPoint(connectorLayer, to.TransformPoint(to.rect.center));

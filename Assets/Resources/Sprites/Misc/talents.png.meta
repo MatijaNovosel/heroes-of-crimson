@@ -186,8 +186,8 @@ TextureImporter:
       name: talents_1
       rect:
         serializedVersion: 2
-        x: 8
-        y: 120
+        x: 0
+        y: 112
         width: 8
         height: 8
       alignment: 0
@@ -208,8 +208,8 @@ TextureImporter:
       name: talents_2
       rect:
         serializedVersion: 2
-        x: 16
-        y: 120
+        x: 8
+        y: 112
         width: 8
         height: 8
       alignment: 0
@@ -230,8 +230,8 @@ TextureImporter:
       name: talents_3
       rect:
         serializedVersion: 2
-        x: 24
-        y: 120
+        x: 16
+        y: 112
         width: 8
         height: 8
       alignment: 0
@@ -252,8 +252,8 @@ TextureImporter:
       name: talents_4
       rect:
         serializedVersion: 2
-        x: 32
-        y: 120
+        x: 24
+        y: 112
         width: 8
         height: 8
       alignment: 0
@@ -274,8 +274,8 @@ TextureImporter:
       name: talents_5
       rect:
         serializedVersion: 2
-        x: 40
-        y: 120
+        x: 32
+        y: 112
         width: 8
         height: 8
       alignment: 0
@@ -296,7 +296,7 @@ TextureImporter:
       name: talents_6
       rect:
         serializedVersion: 2
-        x: 0
+        x: 40
         y: 112
         width: 8
         height: 8
@@ -318,7 +318,7 @@ TextureImporter:
       name: talents_7
       rect:
         serializedVersion: 2
-        x: 8
+        x: 48
         y: 112
         width: 8
         height: 8
@@ -340,7 +340,7 @@ TextureImporter:
       name: talents_8
       rect:
         serializedVersion: 2
-        x: 16
+        x: 56
         y: 112
         width: 8
         height: 8
@@ -362,7 +362,7 @@ TextureImporter:
       name: talents_9
       rect:
         serializedVersion: 2
-        x: 24
+        x: 64
         y: 112
         width: 8
         height: 8
@@ -384,7 +384,7 @@ TextureImporter:
       name: talents_10
       rect:
         serializedVersion: 2
-        x: 32
+        x: 72
         y: 112
         width: 8
         height: 8
@@ -406,7 +406,7 @@ TextureImporter:
       name: talents_11
       rect:
         serializedVersion: 2
-        x: 40
+        x: 80
         y: 112
         width: 8
         height: 8
@@ -420,6 +420,72 @@ TextureImporter:
       bones: []
       spriteID: fe92f48a9f6ccf14089352b3ac6dff1a
       internalID: -776675808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: talents_12
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 112
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45efb3a0e761c884bb62e305f350d259
+      internalID: 1777513226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: talents_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 112
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7461dd0883c0cd342910229f31a9be81
+      internalID: -173043902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: talents_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 104
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c8c574fe08571540a5e3be2f4c50a2c
+      internalID: -1753771458
       vertices: []
       indices: 
       edges: []
@@ -444,6 +510,9 @@ TextureImporter:
       talents_1: -1126087749
       talents_10: 682616891
       talents_11: -776675808
+      talents_12: 1777513226
+      talents_13: -173043902
+      talents_14: -1753771458
       talents_2: -1462626729
       talents_3: -1818281739
       talents_4: 494442960
