@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using HeroesOfCrimson.Utils;
 using Models;
@@ -22,11 +23,18 @@ namespace GameManagement
         {
             Singleton = this;
             _loadTalents();
+            RefreshTalentTreeForSelectedCharacter();
+        }
 
-            if (talentTree != null)
-            {
-                talentTree.Init(_allTalents);
-            }
+        public void RefreshTalentTreeForSelectedCharacter()
+        {
+            if (talentTree == null) return;
+            if (GameManager.Singleton == null) return;
+
+            var selectedCharacter = (Constants.Character)GameManager.Singleton.GetSelectedCharacter();
+            var talents = GetTalentsForClass(selectedCharacter);
+
+            talentTree.Init(talents);
         }
 
         private void _loadTalents()
@@ -60,12 +68,6 @@ namespace GameManagement
             catch
             {
                 Debug.LogError($"Failed to parse talent file: {file.name}");
-                return;
-            }
-
-            if (parsed == null)
-            {
-                Debug.LogError($"Talent file '{file.name}' deserialized to null.");
                 return;
             }
 

@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
   {
     Singleton = this;
     _projectilePrefab = Resources.Load<GameObject>("Prefabs/Projectile");
-    DontDestroyOnLoad(gameObject);
     teleportMarkers.ForEach(tm =>
     {
       teleportMarkersDict.Add(tm.id, tm);

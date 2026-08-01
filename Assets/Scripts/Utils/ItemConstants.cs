@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using Models;
-
 public enum WeaponItemEnum
 {
     WhiteStaff = 2000,

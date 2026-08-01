@@ -1,6 +1,241 @@
 ﻿{
   "talents": [
     {
+      "id": 1000,
+      "name": "Battle hardened",
+      "description": "Gain +5 VIT",
+      "character": 1,
+      "spritePath": "talents_15",
+      "levelReq": 1,
+      "exclusiveGroupId": null,
+      "requirementGroups": [],
+      "layoutHint": { "x": 0, "y": 0 }
+    },
+    {
+      "id": 1001,
+      "name": "Inner faith",
+      "description": "Learn \"Prayer\"",
+      "character": 1,
+      "spritePath": "talents_16",
+      "levelReq": 1,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [1000]
+        }
+      ],
+      "layoutHint": { "x": 0, "y": 1 }
+    },
+    {
+      "id": 1002,
+      "name": "Prayer of the Mother",
+      "description": "After using Prayer, get the \"Healing\" status effect for 2 seconds",
+      "character": 1,
+      "spritePath": "talents_17",
+      "levelReq": 2,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [1001]
+        }
+      ],
+      "layoutHint": { "x": -2, "y": 2 }
+    },
+    {
+      "id": 1003,
+      "name": "Prayer of the Father",
+      "description": "After using Prayer, get the \"Berserk\" status effect for 2 seconds",
+      "character": 1,
+      "spritePath": "talents_18",
+      "levelReq": 2,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [1001]
+        }
+      ],
+      "layoutHint": { "x": -1, "y": 3 }
+    },
+    {
+      "id": 1004,
+      "name": "Prayer of the Sage",
+      "description": "After using Prayer, get the \"Inspired\" status effect for 2 seconds",
+      "character": 1,
+      "spritePath": "talents_19",
+      "levelReq": 2,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [1001]
+        }
+      ],
+      "layoutHint": { "x": 2, "y": 4 }
+    },
+    {
+      "id": 1005,
+      "name": "Prayer of the Emperor",
+      "description": "After using Prayer, get the \"Damaging\" status effect for 2 seconds",
+      "character": 1,
+      "spritePath": "talents_20",
+      "levelReq": 2,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [1001]
+        }
+      ],
+      "layoutHint": { "x": 1, "y": 5 }
+    },
+    {
+      "id": 1006,
+      "name": "Glimmer of hope",
+      "description": "Healing abilities heal +10 HP more",
+      "character": 1,
+      "spritePath": "talents_21",
+      "levelReq": 3,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [1001]
+        }
+      ],
+      "layoutHint": { "x": 0, "y": 3 }
+    },
+    {
+      "id": 1007,
+      "name": "Affront to the heathens",
+      "description": "Learn \"Smite\"",
+      "character": 1,
+      "spritePath": "talents_22",
+      "levelReq": 4,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [1006]
+        }
+      ],
+      "layoutHint": { "x": 0, "y": 4 }
+    },
+    {
+      "id": 1008,
+      "name": "Judge the guilty",
+      "description": "Also stun enemies for 1 second",
+      "character": 1,
+      "spritePath": "talents_23",
+      "levelReq": 5,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [1007]
+        }
+      ],
+      "layoutHint": { "x": -1, "y": 5 }
+    },
+    {
+      "id": 1009,
+      "name": "Comfort in solace",
+      "description": "If only one enemy is present heal yourself for a big amount",
+      "character": 1,
+      "spritePath": "talents_24",
+      "levelReq": 5,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [1007]
+        }
+      ],
+      "layoutHint": { "x": 1, "y": 6 }
+    },
+    {
+      "id": 1010,
+      "name": "Emperor's finest",
+      "description": "Gain +5 ARM, gain an invincibility frame when receiving fatal damage for 1 second",
+      "character": 1,
+      "spritePath": "talents_25",
+      "levelReq": 6,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [1007]
+        }
+      ],
+      "layoutHint": { "x": 0, "y": 6 }
+    },
+    {
+      "id": 1011,
+      "name": "Divine shield",
+      "description": "Learn \"Divine shield\"",
+      "character": 1,
+      "spritePath": "talents_26",
+      "levelReq": 7,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [1010]
+        }
+      ],
+      "layoutHint": { "x": 0, "y": 7 }
+    },
+    {
+      "id": 1012,
+      "name": "Divine protection",
+      "description": "You are also armored during this time",
+      "character": 1,
+      "spritePath": "talents_27",
+      "levelReq": 8,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [1011]
+        }
+      ],
+      "layoutHint": { "x": -1, "y": 8 }
+    },
+    {
+      "id": 1013,
+      "name": "Vindication",
+      "description": "Release 20% of the damage received when the shield ends as a beam in your cursor direction",
+      "character": 1,
+      "spritePath": "talents_28",
+      "levelReq": 8,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [1011]
+        }
+      ],
+      "layoutHint": { "x": 1, "y": 9 }
+    },
+    {
+      "id": 1014,
+      "name": "Judgement",
+      "description": "Learn \"Judgement\"",
+      "character": 1,
+      "spritePath": "talents_29",
+      "levelReq": 9,
+      "exclusiveGroupId": null,
+      "requirementGroups": [
+        {
+          "mode": "AllOf",
+          "talents": [1011]
+        }
+      ],
+      "layoutHint": { "x": 0, "y": 10 }
+    },
+    {
       "id": 2000,
       "name": "Inherent wisdom",
       "description": "A dormant power wakens within your veins.\n\n<color=#F1C40F>You gain +5 WIS</color>",
@@ -12,9 +247,9 @@
       "layoutHint": { "x": 0, "y": 0 }
     },
     {
-      "id": 2026,
+      "id": 2001,
       "name": "Solar adept 1",
-      "description": "The first ember is mastered.\n\n<color=#E67E22>Learn \"Fireball\".</color>",
+      "description": "The first ember is mastered.\n\n<color=#E67E22>Learn \",Fireball\",.</color>",
       "character": 2,
       "spritePath": "talents_1",
       "levelReq": 1,
@@ -28,7 +263,7 @@
       "layoutHint": { "x": 0, "y": 1 }
     },
     {
-      "id": 2027,
+      "id": 2002,
       "name": "Ambidextrous flames",
       "description": "Your blaze splits to both sides.\n\n<color=#E67E22>Spawn an additional fireball at a 45 degree angle.</color>",
       "character": 2,
@@ -38,13 +273,13 @@
       "requirementGroups": [
         {
           "mode": "AllOf",
-          "talents": [2026]
+          "talents": [2001]
         }
       ],
       "layoutHint": { "x": -1, "y": 2 }
     },
     {
-      "id": 2028,
+      "id": 2003,
       "name": "Point contact",
       "description": "The fireball detonates on contact with the first target it hits.",
       "character": 2,
@@ -54,13 +289,13 @@
       "requirementGroups": [
         {
           "mode": "AllOf",
-          "talents": [2026]
+          "talents": [2001]
         }
       ],
       "layoutHint": { "x": 1, "y": 2 }
     },
     {
-      "id": 2029,
+      "id": 2004,
       "name": "Solar adept 2",
       "description": "All fire spells gain 2 more projectiles.\n\n<color=#E67E22>Learn \"Fire sphere\".</color>",
       "character": 2,
@@ -70,13 +305,13 @@
       "requirementGroups": [
         {
           "mode": "AnyOf",
-          "talents": [2027, 2028]
+          "talents": [2002, 2003]
         }
       ],
       "layoutHint": { "x": 0, "y": 3 }
     },
     {
-      "id": 2030,
+      "id": 2005,
       "name": "Twin spheres",
       "description": "Spawn an additional sphere but with reduced damage.",
       "character": 2,
@@ -86,13 +321,13 @@
       "requirementGroups": [
         {
           "mode": "AllOf",
-          "talents": [2029]
+          "talents": [2004]
         }
       ],
       "layoutHint": { "x": -1, "y": 4 }
     },
     {
-      "id": 2031,
+      "id": 2006,
       "name": "Searing heat",
       "description": "Increases sphere damage and attack speed.",
       "character": 2,
@@ -102,15 +337,15 @@
       "requirementGroups": [
         {
           "mode": "AllOf",
-          "talents": [2029]
+          "talents": [2004]
         }
       ],
       "layoutHint": { "x": 1, "y": 4 }
     },
     {
-      "id": 2032,
+      "id": 2007,
       "name": "Solar adept 3",
-      "description": "All fire spells gain 3 more projectiles.\n\n<color=#E67E22>Learn \"Meteor\".</color>",
+      "description": "All fire spells gain 3 more projectiles.\n\n<color=#E67E22>Learn \",Meteor\",.</color>",
       "character": 2,
       "spritePath": "talents_7",
       "levelReq": 5,
@@ -118,13 +353,13 @@
       "requirementGroups": [
         {
           "mode": "AnyOf",
-          "talents": [2030, 2031]
+          "talents": [2005, 2006]
         }
       ],
       "layoutHint": { "x": 0, "y": 5 }
     },
     {
-      "id": 2033,
+      "id": 2008,
       "name": "Devastation",
       "description": "Doubles the amount of projectiles spawned by the meteor.",
       "character": 2,
@@ -134,13 +369,13 @@
       "requirementGroups": [
         {
           "mode": "AllOf",
-          "talents": [2032]
+          "talents": [2007]
         }
       ],
       "layoutHint": { "x": -1, "y": 6 }
     },
     {
-      "id": 2034,
+      "id": 2009,
       "name": "Celestial disturbance",
       "description": "Another meteor is spawned a few seconds after the first.",
       "character": 2,
@@ -150,13 +385,13 @@
       "requirementGroups": [
         {
           "mode": "AllOf",
-          "talents": [2032]
+          "talents": [2007]
         }
       ],
       "layoutHint": { "x": 1, "y": 6 }
     },
     {
-      "id": 2035,
+      "id": 2010,
       "name": "Phoenix kings favor 1",
       "description": "For each burning enemy you gain 1 ATT.",
       "character": 2,
@@ -166,15 +401,15 @@
       "requirementGroups": [
         {
           "mode": "AllOf",
-          "talents": [2032]
+          "talents": [2007]
         }
       ],
       "layoutHint": { "x": 2, "y": 5 }
     },
     {
-      "id": 2036,
+      "id": 2011,
       "name": "Solar adept 4",
-      "description": "All fire spells gain 4 more projectiles.\n\n<color=#E67E22>Learn \"Incinerate\".</color>",
+      "description": "All fire spells gain 4 more projectiles.\n\n<color=#E67E22>Learn \",Incinerate\",.</color>",
       "character": 2,
       "spritePath": "talents_13",
       "levelReq": 7,
@@ -182,13 +417,13 @@
       "requirementGroups": [
         {
           "mode": "AnyOf",
-          "talents": [2033, 2034]
+          "talents": [2008, 2009]
         }
       ],
       "layoutHint": { "x": 0, "y": 7 }
     },
     {
-      "id": 2037,
+      "id": 2012,
       "name": "Cataclysm",
       "description": "Explosions leave behind small damaging craters of lava.",
       "character": 2,
@@ -198,13 +433,13 @@
       "requirementGroups": [
         {
           "mode": "AllOf",
-          "talents": [2036]
+          "talents": [2011]
         }
       ],
       "layoutHint": { "x": -1, "y": 8 }
     },
     {
-      "id": 2038,
+      "id": 2013,
       "name": "Melting point",
       "description": "Enemies already burning take double damage from explosion projectiles.",
       "character": 2,
@@ -214,13 +449,13 @@
       "requirementGroups": [
         {
           "mode": "AllOf",
-          "talents": [2036]
+          "talents": [2011]
         }
       ],
       "layoutHint": { "x": 1, "y": 8 }
     },
     {
-      "id": 2039,
+      "id": 2014,
       "name": "Phoenix kings favor 2",
       "description": "For each burning enemy you also gain 1 SPD.",
       "character": 2,
@@ -230,13 +465,13 @@
       "requirementGroups": [
         {
           "mode": "AllOf",
-          "talents": [2035]
+          "talents": [2010]
         }
       ],
       "layoutHint": { "x": 2, "y": 6 }
     },
     {
-      "id": 2040,
+      "id": 2015,
       "name": "Phoenix kings favor 3",
       "description": "For each burning enemy you also gain 1 DEX.",
       "character": 2,
@@ -246,13 +481,13 @@
       "requirementGroups": [
         {
           "mode": "AllOf",
-          "talents": [2039]
+          "talents": [2014]
         }
       ],
       "layoutHint": { "x": 2, "y": 7 }
     },
     {
-      "id": 2041,
+      "id": 2016,
       "name": "Solar master",
       "description": "WIP",
       "character": 2,
@@ -262,7 +497,7 @@
       "requirementGroups": [
         {
           "mode": "AnyOf",
-          "talents": [2037, 2038]
+          "talents": [2012, 2013]
         }
       ],
       "layoutHint": { "x": 0, "y": 9 }
