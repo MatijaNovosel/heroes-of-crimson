@@ -36,18 +36,21 @@ public class PlayerShooting : MonoBehaviour
       _cachedWeapon = new CachedWeaponFireData
       {
         projectileSprite = null,
+        projectileFrames = null,
         projectileDegree = 0,
         projectileScale = 0.6f,
         range = 8f,
         impactColor = Color.white,
         shootSound = ResourceCacher.Singleton.Sounds[Constants.Sounds.MagicShoot],
         minDamage = 0,
-        maxDamage = 0
+        maxDamage = 0,
+        spinSpeed = 0
       };
 
       if (weaponItem)
       {
         _cachedWeapon.projectileSprite = weaponItem.projectileSprite;
+        _cachedWeapon.projectileFrames = weaponItem.projectileFrames;
         _cachedWeapon.projectileDegree = weaponItem.projectileDegree;
         _cachedWeapon.projectileScale = weaponItem.projectileScale;
         _cachedWeapon.range = weaponItem.range;
@@ -55,6 +58,7 @@ public class PlayerShooting : MonoBehaviour
         _cachedWeapon.shootSound = ResourceCacher.Singleton.Sounds[weaponItem.shootSound];
         _cachedWeapon.minDamage = weaponItem.minDamage;
         _cachedWeapon.maxDamage = weaponItem.maxDamage;
+        _cachedWeapon.spinSpeed = weaponItem.spinSpeed;
       }
 
       _cachedProjectileSetup = new ProjectileSetupModel(
@@ -68,7 +72,9 @@ public class PlayerShooting : MonoBehaviour
         new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
         _cachedWeapon.impactColor,
         new(),
-        _cachedWeapon.range
+        _cachedWeapon.range,
+        _cachedWeapon.projectileFrames,
+        _cachedWeapon.spinSpeed
       );
     }
     

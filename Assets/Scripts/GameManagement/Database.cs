@@ -15,7 +15,36 @@ public class Database : MonoBehaviour
   {
     return sprites.ToDictionary(s => s.name, s => s);
   }
-  
+
+  private Sprite GetProjectileSprite(string spriteName)
+  {
+    return ResourceCacher.Singleton.ProjectileSprites.FirstOrDefault(x => x.name == spriteName);
+  }
+
+  private List<Sprite> GetProjectileFrames(DatabaseItem databaseItem)
+  {
+    var frames = new List<Sprite>();
+
+    if (databaseItem.projectilePaths != null && databaseItem.projectilePaths.Count > 0)
+    {
+      foreach (var path in databaseItem.projectilePaths)
+      {
+        var sprite = GetProjectileSprite(path);
+        if (sprite != null) frames.Add(sprite);
+      }
+
+      return frames;
+    }
+
+    if (!string.IsNullOrWhiteSpace(databaseItem.projectilePath))
+    {
+      var sprite = GetProjectileSprite(databaseItem.projectilePath);
+      if (sprite != null) frames.Add(sprite);
+    }
+
+    return frames;
+  }
+
   private void Awake()
   {
     Singleton = this;
@@ -36,29 +65,30 @@ public class Database : MonoBehaviour
   {
     var databaseItem = _databaseItemList.items.FirstOrDefault(x => x.id == id);
 
-    // TODO: Handle this better
     if (databaseItem is null) return null;
-    
+
     var item = ScriptableObject.CreateInstance<Item>();
-    
+
     item.id = databaseItem.id;
     item.name = databaseItem.name;
     item.description = databaseItem.description;
     item.tag = (Constants.ItemTag)databaseItem.tag;
 
-    item.sprite = _spriteLookup[item.tag]
-      .FirstOrDefault(s => s.Value.name == databaseItem.spritePath).Value;
+    if (_spriteLookup[item.tag].TryGetValue(databaseItem.spritePath, out var itemSprite))
+    {
+      item.sprite = itemSprite;
+    }
 
-    var projectileSprite = ResourceCacher.Singleton.ProjectileSprites.FirstOrDefault(x => x.name == databaseItem.projectilePath);
-    
-    item.projectileSprite = projectileSprite;
-    
+    item.projectileFrames = GetProjectileFrames(databaseItem);
+    item.projectileSprite = item.projectileFrames.Count > 0 ? item.projectileFrames[0] : null;
+
     item.minDamage = databaseItem.minDamage;
     item.maxDamage = databaseItem.maxDamage;
     item.rarity = (Constants.ItemRarity)databaseItem.rarity;
     item.stats = databaseItem.stats;
     item.impactColor = Color.white;
-    
+    item.spinSpeed = databaseItem.spinSpeed;
+
     item.projectileCount = databaseItem.projectileCount;
     item.projectileDegree = databaseItem.projectileDegree;
     item.range = databaseItem.range;
@@ -68,12 +98,12 @@ public class Database : MonoBehaviour
     {
       item.impactColor = Utils.FromHex(databaseItem.impactColor);
     }
-    
+
     item.shootSound = (Constants.Sounds)databaseItem.shootSound;
-    
+
     return item;
   }
-  
+
   private void LoadAndAdd(string path)
   {
     var file = Resources.Load<TextAsset>(path);
@@ -88,14 +118,14 @@ public class Database : MonoBehaviour
 
     _databaseItemList.items.AddRange(list.items);
   }
-  
+
   private void _loadItems()
   {
     _databaseItemList = new DatabaseItemList
     {
       items = new List<DatabaseItem>()
     };
-    
+
     LoadAndAdd("Misc/Items/Weapons");
     LoadAndAdd("Misc/Items/Accessories");
     LoadAndAdd("Misc/Items/Misc");

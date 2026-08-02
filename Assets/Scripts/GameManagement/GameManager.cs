@@ -64,8 +64,10 @@ public class GameManager : MonoBehaviour
         new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
         new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
         Color.orange,
-        new (),
-        5.0f
+        new List<Constants.StatusEffects>(),
+        5.0f,
+        null,
+        null
       ));
     }
   }

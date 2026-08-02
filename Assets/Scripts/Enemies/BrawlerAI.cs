@@ -243,7 +243,9 @@ public class BrawlerAI : MonoBehaviour
             new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
             null,
             statusEffects,
-            5.0f
+            5.0f,
+            null,
+            null
         ));
 
         _lastFired = Time.time;

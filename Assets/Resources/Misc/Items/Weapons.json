@@ -76,6 +76,8 @@
       "tag": 2,
       "spritePath": "weapons_22",
       "projectilePath": "projectiles_2",
+      "projectilePaths": ["projectiles_27", "projectiles_28", "projectiles_29"],
+      "spinSpeed": 720,
       "shootSound": 1008,
       "projectileDegree": 45,
       "minDamage": 30,

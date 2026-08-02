@@ -17,13 +17,15 @@ namespace Models
         public Sprite sprite;
         public List<int> stats;
         public float range;
-    
+
         // Projectile info
         public int minDamage;
         public int maxDamage;
         public int projectileCount;
         public int projectileDegree;
         public Sprite projectileSprite;
+        public List<Sprite> projectileFrames;
         public float projectileScale;
+        public float spinSpeed;
     }
 }

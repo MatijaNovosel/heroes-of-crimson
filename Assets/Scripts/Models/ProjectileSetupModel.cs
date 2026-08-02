@@ -18,6 +18,8 @@ namespace Models
         public readonly List<Constants.CollisionGroups> WillPenetrate;
         public readonly List<Constants.StatusEffects> StatusEffects;
         public readonly Color? ParticleColor;
+        public List<Sprite> Frames;
+        public float? SpinSpeed;
         
         public ProjectileSetupModel(
             Vector3 direction,
@@ -30,7 +32,9 @@ namespace Models
             List<Constants.CollisionGroups> willPenetrate,
             Color? particleColor,
             List<Constants.StatusEffects> statusEffects,
-            float? range
+            float? range,
+            List<Sprite> frames,
+            float? spinSpeed
         )
         {
             this.Direction = direction;
@@ -44,6 +48,8 @@ namespace Models
             this.ParticleColor = particleColor;
             this.StatusEffects = statusEffects;
             this.Range = range;
+            this.Frames = frames;
+            this.SpinSpeed = spinSpeed;
         }
     }
 }
