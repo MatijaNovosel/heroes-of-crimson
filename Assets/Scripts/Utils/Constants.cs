@@ -115,6 +115,7 @@ namespace HeroesOfCrimson.Utils
       LootDrop = 1007,
       BladeSwing = 1008,
       UsePotion = 1009,
+      HitWall = 1010,
 
       // Eenemy sounds
       SkeletonHit = 2000,

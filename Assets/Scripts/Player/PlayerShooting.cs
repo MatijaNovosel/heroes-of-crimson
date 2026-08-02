@@ -182,7 +182,6 @@ public class PlayerShooting : MonoBehaviour
         Quaternion.identity
       );
 
-      AudioManager.Singleton.PlaySound(_cachedWeapon.shootSound);
       
       _cachedProjectileSetup.Direction = shootDirection;
       _cachedProjectileSetup.Damage = _calculateWeaponDamage(
@@ -190,9 +189,8 @@ public class PlayerShooting : MonoBehaviour
         _cachedWeapon.maxDamage
       );
 
-      AudioManager.Singleton.PlaySound(_cachedWeapon.shootSound);
-
       proj.GetComponent<Projectile>().Setup(_cachedProjectileSetup);
+      AudioManager.Singleton.PlaySound(_cachedWeapon.shootSound);
       
       _lastFired = Time.time;
     }

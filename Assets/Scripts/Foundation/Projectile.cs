@@ -125,6 +125,10 @@ public class Projectile : MonoBehaviour
     if (collider.name != "BulletCollision")
     {
       ParticleManager.Singleton.SpawnParticles(transform, _particleColor, 6);
+      if (collider.name == "Collision")
+      {
+        AudioManager.Singleton.PlaySoundCached(Constants.Sounds.HitWall);
+      }
     }
 
     Destroy(gameObject);
