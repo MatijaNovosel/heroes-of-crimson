@@ -73,11 +73,10 @@ namespace HeroesOfCrimson.Utils
     {
       None = 1,
       Weapon = 2,
-      Ability = 3,
-      Armor = 4,
-      Accessory = 5,
-      Misc = 6,
-      Consumable = 7
+      Armor = 3,
+      Accessory = 4,
+      Misc = 5,
+      Consumable = 6
     }
 
     public enum ItemRarity
@@ -133,9 +132,9 @@ namespace HeroesOfCrimson.Utils
     public enum InventorySlotEnum
     {
       Weapon = 0,
-      Ability = 1,
-      Armor = 2,
-      Accessory = 3,
+      Armor = 1,
+      Accessory1 = 2,
+      Accessory2 = 3,
       Empty = 4,
     }
 

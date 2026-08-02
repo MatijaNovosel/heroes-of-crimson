@@ -1,34 +1,34 @@
 ﻿{
   "items": [
     {
-      "id": 7000,
+      "id": 6000,
       "name": "Health potion",
       "description": "A foul smelling liquid, it shimmers in a peculiar red color. \n\n<color=#EF5350> Restores 50 HP </color>",
-      "tag": 7,
+      "tag": 6,
       "spritePath": "consumables_0",
       "rarity": 1
     },
     {
-      "id": 7001,
+      "id": 6001,
       "name": "Mana potion",
       "description": "A sweet smelling liquid, it is a muddy blue color. \n\n<color=#3498DB> Restores 30 MP </color>",
-      "tag": 7,
+      "tag": 6,
       "spritePath": "consumables_10",
       "rarity": 1
     },
     {
-      "id": 7002,
+      "id": 6002,
       "name": "Potion of life",
       "description": "An extraordinary nectar that seeped in from the heavens. \n\n<color=#EF5350> Increases max HP by 5 </color>",
-      "tag": 7,
+      "tag": 6,
       "spritePath": "consumables_8",
       "rarity": 5
     },
     {
-      "id": 7003,
+      "id": 6003,
       "name": "White Monster Energy",
       "description": "This probably isn't the only white monster you have. \n\n<color=#EF5350> Increases max HP by 5 </color>",
-      "tag": 7,
+      "tag": 6,
       "spritePath": "consumables_13",
       "rarity": 5
     }

@@ -23,7 +23,7 @@
               "triggers": [
                 {
                   "type": "giveItem",
-                  "value": 7001
+                  "value": 6001
                 },
                 {
                   "type": "setFlag",

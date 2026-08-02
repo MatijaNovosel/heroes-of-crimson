@@ -96,14 +96,11 @@ namespace UI.Inventory
                 case Constants.ItemTag.Weapon:
                     SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotEnum.Weapon]);
                     break;
-                case Constants.ItemTag.Ability:
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotEnum.Ability]);
-                    break;
                 case Constants.ItemTag.Armor:
                     SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotEnum.Armor]);
                     break;
                 case Constants.ItemTag.Accessory:
-                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotEnum.Accessory]);
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotEnum.Accessory1]);
                     break;
                 case Constants.ItemTag.None:
                 default:

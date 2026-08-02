@@ -24,7 +24,6 @@ public class Database : MonoBehaviour
     {
       { Constants.ItemTag.Misc, ToDict(ResourceCacher.Singleton.MiscSprites) },
       { Constants.ItemTag.Weapon, ToDict(ResourceCacher.Singleton.WeaponSprites) },
-      { Constants.ItemTag.Ability, ToDict(ResourceCacher.Singleton.AbilitySprites) },
       { Constants.ItemTag.Armor, ToDict(ResourceCacher.Singleton.ArmorSprites) },
       { Constants.ItemTag.Accessory, ToDict(ResourceCacher.Singleton.AccessorySprites) },
       { Constants.ItemTag.Consumable, ToDict(ResourceCacher.Singleton.ConsumableSprites) }
@@ -100,7 +99,6 @@ public class Database : MonoBehaviour
     LoadAndAdd("Misc/Items/Weapons");
     LoadAndAdd("Misc/Items/Accessories");
     LoadAndAdd("Misc/Items/Misc");
-    LoadAndAdd("Misc/Items/Abilities");
     LoadAndAdd("Misc/Items/Armor");
     LoadAndAdd("Misc/Items/Consumables");
   }

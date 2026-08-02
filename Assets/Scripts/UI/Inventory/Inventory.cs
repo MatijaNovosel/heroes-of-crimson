@@ -56,7 +56,10 @@ namespace UI.Inventory
             _clearInventory();
             _setLootSource(bag);
             var items = bag.GetLootItems();
-            for (int i = 0; i < items.Count && i < inventorySlots.Length; i++) SpawnItem(items[i], i);
+            for (int i = 0; i < items.Count && i < inventorySlots.Length; i++)
+            {
+                SpawnItem(items[i], i);
+            }
         }
         
         private void _clearInventory()

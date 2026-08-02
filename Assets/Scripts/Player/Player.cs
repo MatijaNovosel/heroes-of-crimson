@@ -171,9 +171,9 @@ public class Player : MonoBehaviour
     int[] totalStats = new int[6];
 
     _addItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Weapon)?.CurrentInventoryItem, totalStats);
-    _addItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Ability)?.CurrentInventoryItem, totalStats);
     _addItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Armor)?.CurrentInventoryItem, totalStats);
-    _addItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Accessory)?.CurrentInventoryItem, totalStats);
+    _addItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Accessory1)?.CurrentInventoryItem, totalStats);
+    _addItemStats(Hotbar.GetHotbarSlot((int)Constants.InventorySlotEnum.Accessory2)?.CurrentInventoryItem, totalStats);
 
     actualMgt = _baseNpcBehaviour.mgt + totalStats[(int)Constants.Stats.MGT];
     actualSwf = _baseNpcBehaviour.swf + totalStats[(int)Constants.Stats.SWF];

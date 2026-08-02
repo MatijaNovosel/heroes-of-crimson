@@ -1,19 +1,19 @@
 ﻿{
   "items": [
     {
-      "id": 4000,
+      "id": 3000,
       "name": "Blood plate",
       "description": "A heavy set of plate mail, it is colored in a red tint.",
-      "tag": 4,
+      "tag": 3,
       "spritePath": "armor_11",
       "rarity": 3,
       "stats": [0, 5, 0, 0, 0, 0]
     },
     {
-      "id": 4001,
+      "id": 3001,
       "name": "Divine mail",
       "description": "A beautiful marble-like suit of armor, it shines and sparkles on the glistening sun.",
-      "tag": 4,
+      "tag": 3,
       "spritePath": "armor_14",
       "rarity": 5,
       "stats": [3, 3, 3, 3, 3, 3]

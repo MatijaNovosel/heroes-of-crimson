@@ -16,41 +16,47 @@ public enum WeaponItemEnum
 
 public enum AccessoryItemEnum
 {
-    IronRingOfMight = 5000,
-    SilverRingOfMight = 5001,
-    SapphireRingOfMight = 5002,
-    GoldenRingOfMight = 5003,
+    IronRingOfMight = 4000,
+    SilverRingOfMight = 4001,
+    SapphireRingOfMight = 4002,
+    GoldenRingOfMight = 4003,
 
-    IronRingOfAgility = 5004,
-    SilverRingOfAgility = 5005,
-    SapphireRingOfAgility = 5006,
-    GoldenRingOfAgility = 5007,
+    IronRingOfAgility = 4004,
+    SilverRingOfAgility = 4005,
+    SapphireRingOfAgility = 4006,
+    GoldenRingOfAgility = 4007,
 
-    IronRingOfProtection = 5008,
-    SilverRingOfProtection = 5009,
-    SapphireRingOfProtection = 5010,
-    GoldenRingOfProtection = 5011,
+    IronRingOfProtection = 4008,
+    SilverRingOfProtection = 4009,
+    SapphireRingOfProtection = 4010,
+    GoldenRingOfProtection = 4011,
 
-    IronRingOfWisdom = 5012,
-    SilverRingOfWisdom = 5013,
-    SapphireRingOfWisdom = 5014,
-    GoldenRingOfWisdom = 5015,
+    IronRingOfWisdom = 4012,
+    SilverRingOfWisdom = 4013,
+    SapphireRingOfWisdom = 4014,
+    GoldenRingOfWisdom = 4015,
 
-    IronRingOfStrength = 5016,
-    SilverRingOfStrength = 5017,
-    SapphireRingOfStrength = 5018,
-    GoldenRingOfStrength = 5019,
+    IronRingOfStrength = 4016,
+    SilverRingOfStrength = 4017,
+    SapphireRingOfStrength = 4018,
+    GoldenRingOfStrength = 4019,
 
-    IronRingOfSwiftness = 5020,
-    SilverRingOfSwiftness = 5021,
-    SapphireRingOfSwiftness = 5022,
-    GoldenRingOfSwiftness = 5023
+    IronRingOfSwiftness = 4020,
+    SilverRingOfSwiftness = 4021,
+    SapphireRingOfSwiftness = 4022,
+    GoldenRingOfSwiftness = 4023
 }
 
 public enum ConsumableItemEnum
 {
-    HealthPotion = 7000,
-    ManaPotion = 7001,
-    PotionOfLife = 7002,
-    WhiteMonsterEnergy = 7003,
+    HealthPotion = 6000,
+    ManaPotion = 6001,
+    PotionOfLife = 6002,
+    WhiteMonsterEnergy = 6003,
+}
+
+public enum ArmorItemEnum
+{
+    BloodPlate = 3000,
+    DivineMail = 3001
 }

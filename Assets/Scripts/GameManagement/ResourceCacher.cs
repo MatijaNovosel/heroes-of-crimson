@@ -12,7 +12,6 @@ namespace GameManagement
         public Sprite[] WeaponSprites;
         public Sprite[] MiscSprites;
         public Sprite[] ConsumableSprites;
-        public Sprite[] AbilitySprites;
         public Sprite[] AccessorySprites;
         public Sprite[] ArmorSprites;
         
@@ -32,7 +31,6 @@ namespace GameManagement
             MiscSprites = Resources.LoadAll<Sprite>("Sprites/Items/misc");
             ConsumableSprites = Resources.LoadAll<Sprite>("Sprites/Items/consumables");
             ArmorSprites = Resources.LoadAll<Sprite>("Sprites/Items/armor");
-            AbilitySprites = Resources.LoadAll<Sprite>("Sprites/Items/abilities");
             AccessorySprites = Resources.LoadAll<Sprite>("Sprites/Items/accessories");
             
             // Other sprites
@@ -65,9 +63,9 @@ namespace GameManagement
             Sounds.Add(Constants.Sounds.Teleport, Resources.Load<AudioClip>("Sounds/Abilities/teleport"));
             
             InventorySprites.Add(Constants.InventorySlotEnum.Weapon, Resources.Load<Sprite>("Sprites/UI/HotbarWeaponSlot"));
-            InventorySprites.Add(Constants.InventorySlotEnum.Ability, Resources.Load<Sprite>("Sprites/UI/HotbarAbilitySlot"));
             InventorySprites.Add(Constants.InventorySlotEnum.Armor, Resources.Load<Sprite>("Sprites/UI/HotbarArmorSlot"));
-            InventorySprites.Add(Constants.InventorySlotEnum.Accessory, Resources.Load<Sprite>("Sprites/UI/HotbarAccessorySlot"));
+            InventorySprites.Add(Constants.InventorySlotEnum.Accessory1, Resources.Load<Sprite>("Sprites/UI/HotbarAccessorySlot"));
+            InventorySprites.Add(Constants.InventorySlotEnum.Accessory2, Resources.Load<Sprite>("Sprites/UI/HotbarAccessorySlot"));
             InventorySprites.Add(Constants.InventorySlotEnum.Empty, Resources.Load<Sprite>("Sprites/UI/InventoryPanel"));
         }
     }
