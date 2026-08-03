@@ -96,7 +96,7 @@ public class PlayerAbility : MonoBehaviour
           
                     break;
                 case Constants.AbilityType.Teleport:
-                    transform.position = cursorPosition;
+                    Player.Singleton.PlayTeleportAnimation(cursorPosition);
                     AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Teleport);
                     ParticleManager.Singleton.SpawnParticles(transform, Color.white, 50);
                     break;

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using GameManagement;
@@ -18,6 +19,7 @@ using Random = UnityEngine.Random;
 public class Player : MonoBehaviour
 {
   public static Player Singleton;
+  private Coroutine _teleportCoroutine;
   
   // Experience
   public int level = 1;
@@ -248,6 +250,39 @@ public class Player : MonoBehaviour
   public void Kill()
   {
     _baseNpcBehaviour.Die();
+  }
+  
+  public void PlayTeleportAnimation(Vector3 targetPosition)
+  {
+    if (_teleportCoroutine != null)
+    {
+      StopCoroutine(_teleportCoroutine);
+    }
+    _teleportCoroutine = StartCoroutine(_teleportAnimationRoutine(targetPosition));
+  }
+
+  private IEnumerator _teleportAnimationRoutine(Vector3 targetPosition)
+  {
+    yield return _scaleLocalRoutine(Vector3.one, Vector3.zero, 0.1f);
+    transform.position = targetPosition;
+    ParticleManager.Singleton.SpawnParticles(transform, Color.white, 50);
+    yield return _scaleLocalRoutine(Vector3.zero, Vector3.one, 0.1f);
+    _teleportCoroutine = null;
+  }
+
+  private IEnumerator _scaleLocalRoutine(Vector3 from, Vector3 to, float duration)
+  {
+    float elapsed = 0f;
+
+    while (elapsed < duration)
+    {
+      elapsed += Time.deltaTime;
+      float t = Mathf.Clamp01(elapsed / duration);
+      transform.localScale = Vector3.Lerp(from, to, t);
+      yield return null;
+    }
+
+    transform.localScale = to;
   }
   
   private void _handleItemEffects()

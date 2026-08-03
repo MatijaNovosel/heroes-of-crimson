@@ -174,6 +174,7 @@
       "rarity": 5,
       "range": 4.0,
       "projectileScale": 0.6,
+      "spinSpeed": 720,
       "stats": [5, 0, 0, 0, 3, 3]
     },
     {
