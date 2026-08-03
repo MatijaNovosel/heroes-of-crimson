@@ -77,6 +77,9 @@ public class PlayerAbility : MonoBehaviour
 
             switch (ability.abilityType)
             {
+                case Constants.AbilityType.Prayer:
+                    _player.RestoreHp(50);
+                    break;
                 case Constants.AbilityType.Meteor:
                 case Constants.AbilityType.FireSphere:
                     var abilityObj = Instantiate(
@@ -96,7 +99,7 @@ public class PlayerAbility : MonoBehaviour
           
                     break;
                 case Constants.AbilityType.Teleport:
-                    Player.Singleton.PlayTeleportAnimation(cursorPosition);
+                    _player.PlayTeleportAnimation(cursorPosition);
                     AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Teleport);
                     ParticleManager.Singleton.SpawnParticles(transform, Color.white, 50);
                     break;

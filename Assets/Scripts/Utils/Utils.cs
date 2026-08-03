@@ -121,61 +121,6 @@ namespace HeroesOfCrimson.Utils
       }.Contains(statusEffect);
     }
 
-    public static TalentTreeItemModel GetTalentTreeItemData(Constants.Talents talent)
-    {
-        var data = new TalentTreeItemModel();
-
-        switch (talent)
-        {
-            case Constants.Talents.ArcaneSupremacyOne:
-                data.Name = "Arcane Supremacy 1";
-                data.Description = "Increases mana by 20";
-                break;
-            case Constants.Talents.ArcaneSupremacyTwo:
-                data.Name = "Arcane Supremacy 2";
-                data.Description = "Increases mana by 40";
-                break;
-            case Constants.Talents.ArcaneSupremacyThree:
-                data.Name = "Arcane Supremacy 3";
-                data.Description = "Increases mana by 60";
-                break;
-            case Constants.Talents.FireSchoolOne:
-                data.Name = "Fire Adept 1";
-                data.Description = "All fire spells gain 1 more projectile";
-                break;
-            case Constants.Talents.FireSchoolTwo:
-                data.Name = "Fire Adept 2";
-                data.Description = "All fire spells gain 1 more projectile (2 more)";
-                break;
-            case Constants.Talents.FireSchoolThree:
-                data.Name = "Fire Adept 3";
-                data.Description = "All fire spells gain 1 more projectile (3 more)";
-                break;
-            case Constants.Talents.FireSchoolFour:
-                data.Name = "Fire Adept 4";
-                data.Description = "All fire spells gain 1 more projectile (4 more)";
-                break;
-            case Constants.Talents.IceSchoolOne:
-                data.Name = "Ice Adept 1";
-                data.Description = "Increase WIS by 1";
-                break;
-            case Constants.Talents.IceSchoolTwo:
-                data.Name = "Ice Adept 2";
-                data.Description = "Increase WIS by 2";
-                break;
-            case Constants.Talents.IceSchoolThree:
-                data.Name = "Ice Adept 3";
-                data.Description = "Increase WIS by 3";
-                break;
-            default:
-                data.Name = "Unknown";
-                data.Description = "Unknown talent";
-                break;
-        }
-
-        return data;
-    }
-
     public static StatData GetStatData(Constants.Stats stat)
     {
         var data = new StatData();

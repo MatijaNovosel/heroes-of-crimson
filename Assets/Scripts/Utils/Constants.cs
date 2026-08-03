@@ -172,7 +172,8 @@ namespace HeroesOfCrimson.Utils
     {
       Meteor = 1,
       FireSphere = 2,
-      Teleport = 3
+      Teleport = 3,
+      Prayer = 4
     }
 
     public enum TeleportMarkers
@@ -180,21 +181,6 @@ namespace HeroesOfCrimson.Utils
       Basement = 1,
       Attic = 2,
       Cabin = 3
-    }
-
-    public enum Talents
-    {
-      // Mage
-      ArcaneSupremacyOne = 1,
-      ArcaneSupremacyTwo = 2,
-      ArcaneSupremacyThree = 3,
-      FireSchoolOne = 4,
-      FireSchoolTwo = 5,
-      FireSchoolThree = 6,
-      FireSchoolFour = 7,
-      IceSchoolOne = 8,
-      IceSchoolTwo = 9,
-      IceSchoolThree = 10,
     }
 
     public enum CentralWindowTabsEnum
