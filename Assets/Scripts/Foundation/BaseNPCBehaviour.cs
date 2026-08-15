@@ -245,11 +245,6 @@ public class BaseNPCBehaviour : MonoBehaviour
 
   private void _showDamageText(float damage)
   {
-    var angle = Random.Range(-40f, 40f);
-    var radians = angle * Mathf.Deg2Rad;
-    var randomDirection = new Vector3(Mathf.Sin(radians), Mathf.Cos(radians), 0f);
-    var randomRotation = Random.Range(-15f, 15f);
-
     var minDamage = 1f;
     var maxDamage = 100f;
     var minFontSize = 400f;
@@ -257,22 +252,15 @@ public class BaseNPCBehaviour : MonoBehaviour
 
     var t = Mathf.InverseLerp(minDamage, maxDamage, damage);
     var fontSize = Mathf.Lerp(minFontSize, maxFontSize, t);
-    var randomScale = Random.Range(0.9f, 1.2f);
 
-    var textObj = GameManager.Singleton.ShowText(
+    GameManager.Singleton.ShowText(
       Mathf.RoundToInt(damage).ToString(),
       (int)fontSize,
       Color.red,
       new Vector3(transform.position.x, transform.position.y + 0.8f, 0),
-      randomDirection,
-      2.0f
+      Vector3.up,
+      0.5f
     );
-
-    if (textObj != null)
-    {
-      textObj.obj.transform.rotation = Quaternion.Euler(0, 0, randomRotation);
-      textObj.obj.transform.localScale *= randomScale;
-    }
   }
   
   private void ReceiveDamage(DamageModel payload)
