@@ -90,7 +90,9 @@ SpriteAtlas:
     - 5cbf85727fab9604dad030585a680ce4: 724150359
     - 5cbf85727fab9604dad030585a680ce4: -1463477709
     - 5cbf85727fab9604dad030585a680ce4: 595178806
+    - 5cbf85727fab9604dad030585a680ce4: -1357341968
     - 5cbf85727fab9604dad030585a680ce4: 1133484411
+    - 5cbf85727fab9604dad030585a680ce4: 1264271001
     - 5cbf85727fab9604dad030585a680ce4: -1599589065
     - 5cbf85727fab9604dad030585a680ce4: -565379406
     - 5cbf85727fab9604dad030585a680ce4: -1683167222
@@ -233,7 +235,9 @@ SpriteAtlas:
   - {fileID: 724150359, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -1463477709, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: 595178806, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
+  - {fileID: -1357341968, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: 1133484411, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
+  - {fileID: 1264271001, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -1599589065, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -565379406, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -1683167222, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
@@ -375,7 +379,9 @@ SpriteAtlas:
   - tileset_137
   - tileset_138
   - tileset_139
+  - tileset_141
   - tileset_140
+  - tileset_142
   - tileset_0
   - tileset_1
   - tileset_2
