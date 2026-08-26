@@ -210,6 +210,23 @@
       "range": 3.5,
       "projectileScale": 0.6,
       "stats": [0, 0, 0, 0, 0, 0]
+    },
+    {
+      "id": 2012,
+      "name": "Consecrated spear",
+      "description": "A decorated spear with a silver tip and ornamental shaft, it is surprisingly light.",
+      "tag": 2,
+      "spritePath": "weapons_46",
+      "projectilePath": "projectiles_26",
+      "shootSound": 1008,
+      "projectileDegree": 45,
+      "minDamage": 10,
+      "maxDamage": 30,
+      "projectileCount": 1,
+      "rarity": 3,
+      "range": 6.5,
+      "projectileScale": 0.6,
+      "stats": [0, 0, 0, 0, 0, 0]
     }
   ]
 }

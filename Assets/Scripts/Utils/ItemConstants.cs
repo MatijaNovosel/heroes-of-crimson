@@ -11,7 +11,8 @@ public enum WeaponItemEnum
     IronSabre = 2008,
     Radiance = 2009,
     Yasha = 2010,
-    SerratedKnife = 2011
+    SerratedKnife = 2011,
+    ConsecratedSpear = 2012
 }
 
 public enum AccessoryItemEnum
