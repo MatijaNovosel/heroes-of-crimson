@@ -15,6 +15,14 @@
       "tag": 5,
       "spritePath": "misc_2",
       "rarity": 3
+    },
+    {
+      "id": 5002,
+      "name": "Rune of Strength",
+      "description": "A pulsating piece of red ore, your blood runs hot just by touching it.",
+      "tag": 5,
+      "spritePath": "misc_2",
+      "rarity": 4
     }
   ]
 }

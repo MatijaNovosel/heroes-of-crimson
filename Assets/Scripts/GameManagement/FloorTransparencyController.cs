@@ -1,48 +1,74 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class FloorTransparencyController : MonoBehaviour
 {
-  public Tilemap floorTilemap;
-  public Player player;
-  public Color transparentColor = new Color(1f, 1f, 1f, 0.5f);
-  public Color normalColor = Color.white;
-  public int radius = 1;
+    public Tilemap[] floorTilemaps;
+    public Player player;
 
-  private Vector3Int _lastTilePosition;
+    public Color transparentColor = new Color(1f, 1f, 1f, 0.5f);
+    public Color normalColor = Color.white;
 
-  private void Update()
-  {
-    if (!player) return;
-    
-    var tilePosition = floorTilemap.WorldToCell(player.transform.position);
+    public int radius = 1;
 
-    if (tilePosition == _lastTilePosition) return;
-    
-    // Reset
-    for (var x = -radius; x <= radius; x++)
+    private readonly Dictionary<Tilemap, Vector3Int> _lastTilePositions = new();
+
+    private void Update()
     {
-      for (var y = -radius; y <= radius; y++)
-      {
-        var pos = _lastTilePosition + new Vector3Int(x, y, 0);
-        if (!floorTilemap.HasTile(pos)) continue;
-        floorTilemap.SetTileFlags(pos, TileFlags.None);
-        floorTilemap.SetColor(pos, normalColor);
-      }
+        if (!player || floorTilemaps == null)
+            return;
+
+        foreach (var floorTilemap in floorTilemaps)
+        {
+            if (!floorTilemap)
+                continue;
+
+            var tilePosition = floorTilemap.WorldToCell(player.transform.position);
+
+            // Player hasn't changed tile on this tilemap.
+            if (_lastTilePositions.TryGetValue(floorTilemap, out var lastPosition))
+            {
+                if (tilePosition == lastPosition)
+                    continue;
+
+                // Reset old transparent area.
+                SetAreaColor(
+                    floorTilemap,
+                    lastPosition,
+                    normalColor
+                );
+            }
+
+            // Make new area transparent.
+            SetAreaColor(
+                floorTilemap,
+                tilePosition,
+                transparentColor
+            );
+
+            _lastTilePositions[floorTilemap] = tilePosition;
+        }
     }
 
-    // Transparent tiles
-    for (var x = -radius; x <= radius; x++)
+    private void SetAreaColor(
+        Tilemap tilemap,
+        Vector3Int center,
+        Color color
+    )
     {
-      for (var y = -radius; y <= radius; y++)
-      {
-        var pos = tilePosition + new Vector3Int(x, y, 0);
-        if (!floorTilemap.HasTile(pos)) continue;
-        floorTilemap.SetTileFlags(pos, TileFlags.None);
-        floorTilemap.SetColor(pos, transparentColor);
-      }
-    }
+        for (var x = -radius; x <= radius; x++)
+        {
+            for (var y = -radius; y <= radius; y++)
+            {
+                var pos = center + new Vector3Int(x, y, 0);
 
-    _lastTilePosition = tilePosition;
-  }
+                if (!tilemap.HasTile(pos))
+                    continue;
+
+                tilemap.SetTileFlags(pos, TileFlags.None);
+                tilemap.SetColor(pos, color);
+            }
+        }
+    }
 }

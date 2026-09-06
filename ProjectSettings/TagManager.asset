@@ -60,9 +60,6 @@ TagManager:
   - name: Other
     uniqueID: 54739499
     locked: 0
-  - name: Shadows
-    uniqueID: 2770201685
-    locked: 0
   - name: NPC
     uniqueID: 3380676505
     locked: 0
@@ -75,8 +72,8 @@ TagManager:
   - name: WallTop
     uniqueID: 2983388237
     locked: 0
-  - name: Roof
-    uniqueID: 2243474537
+  - name: Shadows
+    uniqueID: 1885508211
     locked: 0
   - name: Collision
     uniqueID: 131492747
