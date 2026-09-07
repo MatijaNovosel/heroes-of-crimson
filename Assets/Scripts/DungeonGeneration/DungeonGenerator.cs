@@ -21,6 +21,17 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField]
     private float roomHeight = 15f;
     
+    [Header("Enemies")]
+
+    [SerializeField]
+    private GameObject enemyPrefab;
+
+    [Range(0f, 100f)]
+    [SerializeField]
+    private float enemySpawnChance = 35f;
+
+    [SerializeField]
+    private Vector3 enemySpawnOffset = Vector3.zero;
 
     [Header("Main Path")]
     
@@ -327,13 +338,13 @@ public class DungeonGenerator : MonoBehaviour
         foreach (RoomNode room in _grid.Values)
         {
             GameObject prefab = GetPrefabForRoom(room);
-            
+        
             if (prefab == null)
             {
                 Debug.LogError($"Missing prefab for room at {room.GridPos}");
                 continue;
             }
-            
+        
             Vector3 position = GridToWorld(room.GridPos);
             GameObject instance = Instantiate(prefab, position, Quaternion.identity, transform);
             instance.name = GetRoomName(room) + " [" + room.GridPos.x + ", " + room.GridPos.y + "]";
@@ -341,9 +352,33 @@ public class DungeonGenerator : MonoBehaviour
 
             if (dungeonRoom == null) Debug.LogError(instance.name + " is missing DungeonRoom component.");
             else dungeonRoom.SetConnections(room.Connections);
-            
+
+            TrySpawnEnemy(room, instance);
+        
             _spawnedRooms.Add(instance);
         }
+    }
+    
+    private void TrySpawnEnemy(RoomNode room, GameObject roomInstance)
+    {
+        if (enemyPrefab == null) return;
+
+        if (room.IsStart || room.IsBoss || room.IsTreasure) return;
+
+        float roll = Random.Range(0f, 100f);
+
+        if (roll > enemySpawnChance) return;
+
+        Vector3 spawnPosition = roomInstance.transform.position +enemySpawnOffset;
+
+        GameObject enemy = Instantiate(
+            enemyPrefab,
+            spawnPosition,
+            Quaternion.identity,
+            roomInstance.transform
+        );
+
+        enemy.name = "Enemy";
     }
 
     private GameObject GetPrefabForRoom(RoomNode room)
