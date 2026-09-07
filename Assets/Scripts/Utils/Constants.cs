@@ -149,6 +149,8 @@ namespace HeroesOfCrimson.Utils
       Normal5,
       Normal6,
       Normal7,
+      Normal8,
+      Normal9,
       Treasure,
       Boss
     }
@@ -180,7 +182,8 @@ namespace HeroesOfCrimson.Utils
     {
       Basement = 1,
       Attic = 2,
-      Cabin = 3
+      Cabin = 3,
+      Dungeon = 4,
     }
 
     public enum CentralWindowTabsEnum

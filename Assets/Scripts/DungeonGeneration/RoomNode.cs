@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class RoomNode
 {
-    public Constants.RoomType Type;
     public Vector2Int GridPos;
-    public Constants.Direction[] EntryDirections;
 
-    public RoomNode(Constants.RoomType type, Vector2Int pos, Constants.Direction[] entries)
+    public readonly HashSet<Constants.Direction> Connections = new();
+
+    public bool IsStart;
+    public bool IsBoss;
+    public bool IsTreasure;
+
+    public RoomNode(Vector2Int gridPos)
     {
-        Type = type;
-        GridPos = pos;
-        EntryDirections = entries;
+        GridPos = gridPos;
     }
+
+    public int ConnectionCount => Connections.Count;
 }
