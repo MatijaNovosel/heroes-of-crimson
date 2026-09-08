@@ -14,6 +14,7 @@ public class LootBag : MonoBehaviour
     private bool isUIActive = false;
 
     private RectTransform _inventoryUIRect;
+    private SpriteRenderer _spriteRenderer;
     
     private List<Item> _seededItems = new List<Item>();
     private bool _lootGenerated = false;
@@ -24,7 +25,7 @@ public class LootBag : MonoBehaviour
         _player = GameObject.Find("Player");
         _lootBagUI = GameObject.Find("LootContainerGroup");
         _lootContainerInventory = GameObject.Find("LootContainerInventory");
-
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _inventoryUIRect = _lootBagUI.GetComponent<RectTransform>();
 
         if (initialItemIds.Length > 0)
@@ -46,11 +47,13 @@ public class LootBag : MonoBehaviour
             _inventoryUIRect.localScale = Vector3.one;
             isUIActive = true;
             lootInventory.ShowLoot(this);
+            _spriteRenderer.color = Color.red;
         }
         else if (!isNear && isUIActive)
         {
             _inventoryUIRect.localScale = Vector3.zero;
             isUIActive = false;
+            _spriteRenderer.color = Color.white;
         }
     }
 

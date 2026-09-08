@@ -181,7 +181,6 @@ public class PlayerShooting : MonoBehaviour
         new Vector3(projectilePosX, projectilePosY, 0),
         Quaternion.identity
       );
-
       
       _cachedProjectileSetup.Direction = shootDirection;
       _cachedProjectileSetup.Damage = _calculateWeaponDamage(

@@ -1,47 +1,73 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMotor : MonoBehaviour
 {
-  public Transform lookAt;
-  public float boundX = 0.15f;
-  public float boundY = 0.05f;
+    public Transform lookAt;
 
-  private void LateUpdate()
-  {
-    if (!lookAt) return;
-    
-    var delta = Vector3.zero;
-    var deltaX = lookAt.position.x - transform.position.x;
-    var deltaY = lookAt.position.y - transform.position.y;
+    public float boundX = 0.15f;
+    public float boundY = 0.05f;
 
-    // Check if inside bound of X axis
-    if (deltaX > boundX || deltaX < -boundX)
+    [Header("Zoom")]
+    public float minZoom = 6f;
+    public float maxZoom = 20f;
+    public float zoomSpeed = 2f;
+
+    private Camera cam;
+
+    private void Awake()
     {
-      if (transform.position.x < lookAt.position.x)
-      {
-        delta.x = deltaX - boundX;
-      }
-      else
-      {
-        delta.x = deltaX + boundX;
-      }
+        cam = GetComponent<Camera>();
     }
 
-    // Check if inside bound of Y axis
-    if (deltaY > boundY || deltaY < -boundY)
+    private void LateUpdate()
     {
-      if (transform.position.y < lookAt.position.y)
-      {
-        delta.y = deltaY - boundX;
-      }
-      else
-      {
-        delta.y = deltaY + boundX;
-      }
+        HandleZoom();
+
+        if (!lookAt) return;
+
+        var delta = Vector3.zero;
+        var deltaX = lookAt.position.x - transform.position.x;
+        var deltaY = lookAt.position.y - transform.position.y;
+
+        // Check if inside bound of X axis
+        if (deltaX > boundX || deltaX < -boundX)
+        {
+            if (transform.position.x < lookAt.position.x)
+            {
+                delta.x = deltaX - boundX;
+            }
+            else
+            {
+                delta.x = deltaX + boundX;
+            }
+        }
+
+        // Check if inside bound of Y axis
+        if (deltaY > boundY || deltaY < -boundY)
+        {
+            if (transform.position.y < lookAt.position.y)
+            {
+                delta.y = deltaY - boundY;
+            }
+            else
+            {
+                delta.y = deltaY + boundY;
+            }
+        }
+
+        transform.position += new Vector3(delta.x, delta.y, 0);
     }
 
-    transform.position += new Vector3(delta.x, delta.y, 0);
-  }
+    private void HandleZoom()
+    {
+        if (!cam) return;
+        float scroll = Input.mouseScrollDelta.y;
+        if (scroll == 0) return;
+        cam.orthographicSize -= scroll * zoomSpeed;
+        cam.orthographicSize = Mathf.Clamp(
+            cam.orthographicSize,
+            minZoom,
+            maxZoom
+        );
+    }
 }
