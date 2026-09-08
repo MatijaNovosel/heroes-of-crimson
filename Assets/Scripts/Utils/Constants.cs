@@ -44,7 +44,8 @@ namespace HeroesOfCrimson.Utils
       MainMenu = 0,
       NewGame = 1,
       Continue = 2,
-      Game = 3
+      Game = 3,
+      Settings = 4,
     }
 
     public enum StatusEffects

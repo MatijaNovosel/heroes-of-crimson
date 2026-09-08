@@ -18,4 +18,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene((int)Constants.Screens.Continue);
     }
+    
+    public void Settings()
+    {
+        SceneManager.LoadScene((int)Constants.Screens.Settings);
+    }
 }
