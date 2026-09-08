@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   projectileScale: 1
   projectileSprite: {fileID: -1919876751, guid: 59f9b76b0706c364897c71ad2b43371b, type: 3}
-  showRanges: 1
+  showRanges: 0
   SearchRadius: 10
   AttackEnterRange: 5
 --- !u!114 &4347528415875714338

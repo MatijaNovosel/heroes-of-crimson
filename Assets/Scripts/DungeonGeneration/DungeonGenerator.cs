@@ -9,103 +9,63 @@ public class DungeonGenerator : MonoBehaviour
     [SerializeField] private GameObject startPrefab;
     [SerializeField] private GameObject bossPrefab;
     [SerializeField] private GameObject treasurePrefab;
-    
+
     [Header("Normal Room Designs")]
-    [SerializeField]
-    private GameObject[] normalPrefabs;
-    
-    [Header("Room Size")]
-    [SerializeField]
-    private float roomWidth = 16f;
+    [SerializeField] private GameObject[] normalPrefabs;
 
-    [SerializeField]
-    private float roomHeight = 15f;
-    
     [Header("Enemies")]
-
-    [SerializeField]
-    private GameObject enemyPrefab;
-
+    [SerializeField] private GameObject enemyPrefab;
     [Range(0f, 100f)]
-    [SerializeField]
-    private float enemySpawnChance = 35f;
+    [SerializeField] private float enemySpawnChance = 35f;
 
-    [SerializeField]
-    private Vector3 enemySpawnOffset = Vector3.zero;
+    [Header("Boss")]
+    [SerializeField] private GameObject bossEntityPrefab;
+    [Min(0)]
+    [SerializeField] private int bossClearance = 1;
+
+    [Header("Room Placement")]
+    [Min(0f)]
+    [SerializeField] private float roomClearance = 2f;
 
     [Header("Main Path")]
-    
     [Min(3)]
-    [SerializeField]
-    private int minMainPathLength = 12;
-    
+    [SerializeField] private int minMainPathLength = 12;
     [Min(4)]
-    [SerializeField]
-    private int maxMainPathLength = 20;
-    
+    [SerializeField] private int maxMainPathLength = 20;
     [Range(0f, 1f)]
-    [SerializeField]
-    private float mainPathTurnChance = 0.65f;
-
+    [SerializeField] private float mainPathTurnChance = .65f;
     [Min(1)]
-    [SerializeField]
-    private int maxStraightRooms = 3;
-    
+    [SerializeField] private int maxStraightRooms = 3;
 
     [Header("Branches")]
-
     [Min(0)]
-    [SerializeField]
-    private int branchAttempts = 35;
-
-
+    [SerializeField] private int branchAttempts = 35;
     [Range(0f, 1f)]
-    [SerializeField]
-    private float branchChance = 0.75f;
-
-
+    [SerializeField] private float branchChance = .75f;
     [Min(1)]
-    [SerializeField]
-    private int minBranchLength = 1;
-
-
+    [SerializeField] private int minBranchLength = 1;
     [Min(1)]
-    [SerializeField]
-    private int maxBranchLength = 5;
-
-
+    [SerializeField] private int maxBranchLength = 5;
     [Range(0f, 1f)]
-    [SerializeField]
-    private float branchTurnChance = 0.60f;
-
-    
+    [SerializeField] private float branchTurnChance = .6f;
     [Min(0)]
-    [SerializeField]
-    private int maxBranchRooms = 45;
+    [SerializeField] private int maxBranchRooms = 45;
 
     [Header("Generation")]
-
     [Min(1)]
-    [SerializeField]
-    private int generationAttempts = 250;
+    [SerializeField] private int generationAttempts = 50;
+    [SerializeField] private bool generateOnAwake = true;
+    [SerializeField] private bool useFixedSeed;
+    [SerializeField] private int seed = 12345;
 
-    [SerializeField]
-    private bool generateOnAwake = true;
-    
-    [SerializeField]
-    private bool useFixedSeed = false;
+    private readonly Dictionary<Vector2Int, RoomNode> _grid = new();
+    private readonly List<RoomNode> _mainPath = new();
+    private readonly List<GameObject> _spawnedRooms = new();
+    private readonly Dictionary<RoomNode, RoomPlan> _plans = new();
 
-
-    [SerializeField]
-    private int seed = 12345;
-    private readonly Dictionary<Vector2Int, RoomNode> _grid = new Dictionary<Vector2Int, RoomNode>();
-    private readonly List<RoomNode> _mainPath = new List<RoomNode>();
-    private readonly List<GameObject> _spawnedRooms = new List<GameObject>();
-    
     private RoomNode _startRoom;
     private RoomNode _bossRoom;
     private RoomNode _treasureRoom;
-
     private int _branchRoomCount;
 
     private static readonly Constants.Direction[] AllDirections =
@@ -115,42 +75,58 @@ public class DungeonGenerator : MonoBehaviour
         Constants.Direction.Left,
         Constants.Direction.Right
     };
-    
+
+    private class RoomPlan
+    {
+        public GameObject Prefab;
+        public DungeonRoom Data;
+        public Vector3 Position;
+        public Rect Footprint;
+        public Rect Clearance;
+
+        public RoomPlan(GameObject prefab, DungeonRoom data, Vector3 position, Rect footprint, Rect clearance)
+        {
+            Prefab = prefab;
+            Data = data;
+            Position = position;
+            Footprint = footprint;
+            Clearance = clearance;
+        }
+    }
+
     private void Awake()
     {
         if (generateOnAwake) GenerateDungeon();
     }
-
 
     [ContextMenu("Generate Dungeon")]
     public void GenerateDungeon()
     {
         ClearDungeon();
         if (useFixedSeed) Random.InitState(seed);
-        
+
         bool success = false;
-        
+
         for (int attempt = 0; attempt < generationAttempts; attempt++)
         {
             ResetGeneration();
             if (!GenerateMainPath()) continue;
             GenerateBranches();
             if (!PlaceTreasure()) continue;
+            if (!PlanDungeon()) continue;
             success = true;
             break;
         }
-        
+
         if (!success)
         {
             Debug.LogError($"Dungeon generation failed after {generationAttempts} attempts.");
             return;
         }
-        
+
         SpawnDungeon();
-        
-        Debug.Log(
-            $"Dungeon generated. Rooms: {_grid.Count} | Main Path: {_mainPath.Count} | Branch Rooms: {_branchRoomCount}"
-        );
+        SpawnEntities();
+        Debug.Log($"Dungeon generated. Rooms: {_grid.Count} | Main Path: {_mainPath.Count} | Branch Rooms: {_branchRoomCount}");
     }
 
     private bool GenerateMainPath()
@@ -158,55 +134,59 @@ public class DungeonGenerator : MonoBehaviour
         _startRoom = AddRoom(Vector2Int.zero);
         _startRoom.IsStart = true;
         _mainPath.Add(_startRoom);
-        
+
         RoomNode current = _startRoom;
-        Constants.Direction previousDirection = Constants.Direction.Up;
-        Vector2Int firstPosition = Vector2Int.up;
-        RoomNode firstRoom = AddRoom(firstPosition);
-        Connect(_startRoom, firstRoom, Constants.Direction.Up);
-        _mainPath.Add(firstRoom);
-        current = firstRoom;
-        
-        int targetLength = Random.Range(minMainPathLength, maxMainPathLength + 1);
-        int straightCount = 0;
-        
+        Constants.Direction previous = Constants.Direction.Up;
 
-        for (int i = 1; i < targetLength; i++)
+        RoomNode first = AddRoom(Vector2Int.up);
+        Connect(_startRoom, first, Constants.Direction.Up);
+        _mainPath.Add(first);
+        current = first;
+
+        int length = Random.Range(minMainPathLength, maxMainPathLength + 1);
+        int straight = 0;
+
+        for (int i = 1; i < length; i++)
         {
-            List<Constants.Direction> possibleDirections = GetFreeDirections(current, previousDirection);
-            if (possibleDirections.Count == 0) return false;
-            
-            Constants.Direction direction = ChooseDirection(
-                possibleDirections,
-                previousDirection,
-                straightCount,
-                mainPathTurnChance
-            );
+            List<Constants.Direction> directions = GetFreeDirections(current, previous);
+            if (directions.Count == 0) return false;
 
-            Vector2Int position = current.GridPos + DirectionOffset(direction);
-            RoomNode next = AddRoom(position);
+            Constants.Direction direction = ChooseDirection(directions, previous, straight, mainPathTurnChance);
+            RoomNode next = AddRoom(current.GridPos + DirectionOffset(direction));
+
             Connect(current, next, direction);
             _mainPath.Add(next);
 
-            if (direction == previousDirection) straightCount++;
-            else straightCount = 0;
-            
-            previousDirection = direction;
+            straight = direction == previous ? straight + 1 : 0;
+            previous = direction;
             current = next;
         }
 
-        List<Constants.Direction> bossDirections = GetFreeDirections(current);
-        
-        if (bossDirections.Count == 0) return false;
-        
-        Constants.Direction bossDirection = RandomItem(bossDirections);
-        
-        Vector2Int bossPosition = current.GridPos + DirectionOffset(bossDirection);
-        
-        _bossRoom = AddRoom(bossPosition);
-        _bossRoom.IsBoss = true;
+        foreach (Constants.Direction direction in GetFreeDirections(current).OrderBy(_ => Random.value))
+        {
+            Vector2Int position = current.GridPos + DirectionOffset(direction);
+            if (!HasBossClearance(position, current.GridPos)) continue;
 
-        Connect(current, _bossRoom, bossDirection);
+            _bossRoom = AddRoom(position);
+            _bossRoom.IsBoss = true;
+            Connect(current, _bossRoom, direction);
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool HasBossClearance(Vector2Int bossPosition, Vector2Int entrancePosition)
+    {
+        for (int x = -bossClearance; x <= bossClearance; x++)
+        {
+            for (int y = -bossClearance; y <= bossClearance; y++)
+            {
+                Vector2Int position = bossPosition + new Vector2Int(x, y);
+                if (position == entrancePosition) continue;
+                if (_grid.ContainsKey(position)) return false;
+            }
+        }
 
         return true;
     }
@@ -218,178 +198,217 @@ public class DungeonGenerator : MonoBehaviour
             if (_branchRoomCount >= maxBranchRooms) return;
             if (Random.value > branchChance) continue;
 
-            List<RoomNode> candidates =
-                _grid.Values
-                    .Where(room =>
-                        room != _startRoom &&
-                        room != _bossRoom &&
-                        room != _treasureRoom &&
-                        room.ConnectionCount < 4 &&
-                        GetFreeDirections(room).Count > 0
-                    )
-                    .ToList();
-            
+            List<RoomNode> candidates = _grid.Values.Where(room => room != _startRoom && room != _bossRoom && room.ConnectionCount < 4 && GetFreeDirections(room).Count > 0).ToList();
             if (candidates.Count == 0) return;
+
             RoomNode parent = RandomItem(candidates);
             List<Constants.Direction> directions = GetFreeDirections(parent);
-
-            if (directions.Count == 0) continue;
-            
-            GrowBranch(parent,RandomItem(directions));
+            if (directions.Count > 0) GrowBranch(parent, RandomItem(directions));
         }
     }
 
     private void GrowBranch(RoomNode parent, Constants.Direction initialDirection)
     {
         RoomNode current = parent;
-        Constants.Direction previousDirection = initialDirection;
-        
+        Constants.Direction previous = initialDirection;
         int length = Random.Range(minBranchLength, maxBranchLength + 1);
-        int straightCount = 0;
+        int straight = 0;
 
         for (int i = 0; i < length; i++)
         {
             if (_branchRoomCount >= maxBranchRooms) return;
 
-            Vector2Int position = current.GridPos + DirectionOffset(previousDirection);
+            Vector2Int position = current.GridPos + DirectionOffset(previous);
+            if (_grid.ContainsKey(position) || current.ConnectionCount >= 4 || IsInsideBossClearance(position)) return;
 
-            if (_grid.ContainsKey(position) || current.ConnectionCount >= 4) return;
-            
             RoomNode next = AddRoom(position);
-            Connect(current, next, previousDirection);
-            
+            Connect(current, next, previous);
             _branchRoomCount++;
 
             if (i == length - 1) return;
 
-            List<Constants.Direction> directions = GetFreeDirections(next, previousDirection);
-            
+            List<Constants.Direction> directions = GetFreeDirections(next, previous);
             if (directions.Count == 0) return;
 
-            Constants.Direction direction = ChooseDirection(
-                directions,
-                previousDirection,
-                straightCount,
-                branchTurnChance
-            );
-            
-            if (direction == previousDirection) straightCount++;
-            else straightCount = 0;
-            
+            Constants.Direction direction = ChooseDirection(directions, previous, straight, branchTurnChance);
+            straight = direction == previous ? straight + 1 : 0;
+            previous = direction;
             current = next;
-            previousDirection = direction;
         }
     }
-    
+
+    private bool IsInsideBossClearance(Vector2Int position)
+    {
+        if (_bossRoom == null) return false;
+        return Mathf.Abs(position.x - _bossRoom.GridPos.x) <= bossClearance && Mathf.Abs(position.y - _bossRoom.GridPos.y) <= bossClearance;
+    }
+
     private bool PlaceTreasure()
     {
-        List<RoomNode> deadEnds =
-            _grid.Values
-                .Where(room =>
-                    room != _startRoom &&
-                    room != _bossRoom &&
-                    !_mainPath.Contains(room) &&
-                    room.ConnectionCount == 1
-                )
-                .OrderByDescending(room =>
-                    GridDistance(
-                        _startRoom.GridPos,
-                        room.GridPos
-                    )
-                )
-                .ToList();
+        List<RoomNode> deadEnds = _grid.Values.Where(room => room != _startRoom && room != _bossRoom && !_mainPath.Contains(room) && room.ConnectionCount == 1).OrderByDescending(room => GridDistance(_startRoom.GridPos, room.GridPos)).ToList();
 
         if (deadEnds.Count > 0)
         {
-            int pool = Mathf.Min(5, deadEnds.Count);
-            _treasureRoom = deadEnds[Random.Range(0, pool)];
+            _treasureRoom = deadEnds[Random.Range(0, Mathf.Min(5, deadEnds.Count))];
             _treasureRoom.IsTreasure = true;
             return true;
         }
-        
-        List<RoomNode> candidates =
-            _grid.Values
-                .Where(room =>
-                    room != _startRoom &&
-                    room != _bossRoom &&
-                    room.ConnectionCount < 4 &&
-                    GetFreeDirections(room).Count > 0
-                )
-                .OrderBy(_ => Random.value)
-                .ToList();
 
-        foreach (RoomNode parent in candidates)
+        foreach (RoomNode parent in _grid.Values.Where(room => room != _startRoom && room != _bossRoom && room.ConnectionCount < 4 && GetFreeDirections(room).Count > 0).OrderBy(_ => Random.value))
         {
             List<Constants.Direction> directions = GetFreeDirections(parent);
             if (directions.Count == 0) continue;
+
             Constants.Direction direction = RandomItem(directions);
             Vector2Int position = parent.GridPos + DirectionOffset(direction);
+
+            if (IsInsideBossClearance(position)) continue;
+
             _treasureRoom = AddRoom(position);
             _treasureRoom.IsTreasure = true;
             Connect(parent, _treasureRoom, direction);
             return true;
         }
-        
+
         return false;
     }
 
+    private bool PlanDungeon()
+    {
+        _plans.Clear();
+
+        DungeonRoom data = GetRoomData(startPrefab);
+        if (!data) return false;
+
+        Vector3 position = transform.position - ScalePosition(data.GetCenterLocalPosition(), startPrefab.transform.localScale);
+        Rect footprint = data.GetFootprintRect(position);
+        Rect clearance = data.GetFootprintRect(position, roomClearance * .5f);
+
+        _plans[_startRoom] = new RoomPlan(startPrefab, data, position, footprint, clearance);
+
+        Queue<RoomNode> queue = new();
+        HashSet<RoomNode> visited = new();
+
+        queue.Enqueue(_startRoom);
+        visited.Add(_startRoom);
+
+        while (queue.Count > 0)
+        {
+            RoomNode parent = queue.Dequeue();
+
+            foreach (Constants.Direction direction in parent.Connections)
+            {
+                Vector2Int gridPosition = parent.GridPos + DirectionOffset(direction);
+                if (!_grid.TryGetValue(gridPosition, out RoomNode child) || visited.Contains(child)) continue;
+                if (!TryPlanRoom(parent, child, direction)) return false;
+
+                visited.Add(child);
+                queue.Enqueue(child);
+            }
+        }
+
+        return visited.Count == _grid.Count;
+    }
+
+    private bool TryPlanRoom(RoomNode parent, RoomNode child, Constants.Direction direction)
+    {
+        RoomPlan parentPlan = _plans[parent];
+        if (!parentPlan.Data.HasSocket(direction)) return false;
+
+        Vector3 parentSocket = parentPlan.Position + ScalePosition(parentPlan.Data.GetSocketLocalPosition(direction), parentPlan.Prefab.transform.localScale);
+
+        foreach (GameObject prefab in GetCandidatePrefabs(child))
+        {
+            if (!prefab) continue;
+
+            DungeonRoom data = GetRoomData(prefab);
+            if (!data || !data.HasSocket(Opposite(direction))) continue;
+
+            Vector3 position = parentSocket - ScalePosition(data.GetSocketLocalPosition(Opposite(direction)), prefab.transform.localScale);
+            Rect footprint = data.GetFootprintRect(position);
+            Rect clearance = data.GetFootprintRect(position, roomClearance * .5f);
+
+            if (OverlapsPlan(parent, footprint, clearance)) continue;
+
+            _plans[child] = new RoomPlan(prefab, data, position, footprint, clearance);
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool OverlapsPlan(RoomNode parent, Rect footprint, Rect clearance)
+    {
+        foreach (KeyValuePair<RoomNode, RoomPlan> pair in _plans)
+        {
+            if (footprint.Overlaps(pair.Value.Footprint, true)) return true;
+            if (pair.Key != parent && clearance.Overlaps(pair.Value.Clearance, true)) return true;
+        }
+
+        return false;
+    }
+
+    private List<GameObject> GetCandidatePrefabs(RoomNode room)
+    {
+        if (room.IsStart) return new() { startPrefab };
+        if (room.IsBoss) return new() { bossPrefab };
+        if (room.IsTreasure) return new() { treasurePrefab };
+        return normalPrefabs == null ? new() : normalPrefabs.Where(prefab => prefab).OrderBy(_ => Random.value).ToList();
+    }
+
+    private DungeonRoom GetRoomData(GameObject prefab) => prefab ? prefab.GetComponent<DungeonRoom>() : null;
+
+    private Vector3 ScalePosition(Vector3 position, Vector3 scale) => new(position.x * scale.x, position.y * scale.y, position.z * scale.z);
+
     private void SpawnDungeon()
     {
-        foreach (RoomNode room in _grid.Values)
+        foreach (KeyValuePair<RoomNode, RoomPlan> pair in _plans)
         {
-            GameObject prefab = GetPrefabForRoom(room);
-        
-            if (prefab == null)
-            {
-                Debug.LogError($"Missing prefab for room at {room.GridPos}");
-                continue;
-            }
-        
-            Vector3 position = GridToWorld(room.GridPos);
-            GameObject instance = Instantiate(prefab, position, Quaternion.identity, transform);
-            instance.name = GetRoomName(room) + " [" + room.GridPos.x + ", " + room.GridPos.y + "]";
-            DungeonRoom dungeonRoom =  instance.GetComponent<DungeonRoom>();
+            RoomNode room = pair.Key;
+            RoomPlan plan = pair.Value;
 
-            if (dungeonRoom == null) Debug.LogError(instance.name + " is missing DungeonRoom component.");
-            else dungeonRoom.SetConnections(room.Connections);
+            GameObject instance = Instantiate(plan.Prefab, plan.Position, Quaternion.identity, transform);
+            instance.name = $"{GetRoomName(room)} [{room.GridPos.x}, {room.GridPos.y}]";
 
-            TrySpawnEnemy(room, instance);
-        
+            DungeonRoom dungeonRoom = instance.GetComponent<DungeonRoom>();
+            if (!dungeonRoom) continue;
+
+            dungeonRoom.SetConnections(room.Connections);
+            room.Instance = instance;
+            room.RuntimeRoom = dungeonRoom;
             _spawnedRooms.Add(instance);
         }
     }
-    
-    private void TrySpawnEnemy(RoomNode room, GameObject roomInstance)
+
+    private void SpawnEntities()
     {
-        if (enemyPrefab == null) return;
+        foreach (RoomNode room in _grid.Values)
+        {
+            if (!room.Instance || !room.RuntimeRoom) continue;
 
-        if (room.IsStart || room.IsBoss || room.IsTreasure) return;
+            if (room.IsBoss)
+            {
+                SpawnBoss(room);
+                continue;
+            }
 
-        float roll = Random.Range(0f, 100f);
+            TrySpawnEnemy(room);
+        }
+    }
 
-        if (roll > enemySpawnChance) return;
-
-        Vector3 spawnPosition = roomInstance.transform.position +enemySpawnOffset;
-
-        GameObject enemy = Instantiate(
-            enemyPrefab,
-            spawnPosition,
-            Quaternion.identity,
-            roomInstance.transform
-        );
-
+    private void TrySpawnEnemy(RoomNode room)
+    {
+        if (!enemyPrefab || room.IsStart || room.IsBoss || room.IsTreasure || Random.Range(0f, 100f) > enemySpawnChance) return;
+        GameObject enemy = Instantiate(enemyPrefab, room.RuntimeRoom.EnemySpawnPosition, Quaternion.identity, room.Instance.transform);
         enemy.name = "Enemy";
     }
 
-    private GameObject GetPrefabForRoom(RoomNode room)
+    private void SpawnBoss(RoomNode room)
     {
-        if (room.IsStart) return startPrefab;
-        if (room.IsBoss) return bossPrefab;
-        if (room.IsTreasure) return treasurePrefab;
-        if (normalPrefabs == null || normalPrefabs.Length == 0) return null;
-        return normalPrefabs[Random.Range(0, normalPrefabs.Length)];
+        if (!bossEntityPrefab) return;
+        GameObject boss = Instantiate(bossEntityPrefab, room.RuntimeRoom.BossSpawnPosition, Quaternion.identity, room.Instance.transform);
+        boss.name = "Boss";
     }
-
 
     private string GetRoomName(RoomNode room)
     {
@@ -399,67 +418,47 @@ public class DungeonGenerator : MonoBehaviour
         return "Normal";
     }
 
-    private Vector3 GridToWorld(Vector2Int gridPosition)
+    private List<Constants.Direction> GetFreeDirections(RoomNode room, Constants.Direction? previous = null)
     {
-        return transform.position +
-            new Vector3(
-                gridPosition.x *
-                roomWidth,
-                gridPosition.y *
-                roomHeight,
-                0f
-            );
-    }
-    
+        List<Constants.Direction> result = new();
 
-    private List<Constants.Direction> GetFreeDirections(
-        RoomNode room,
-        Constants.Direction? previousDirection = null)
-    {
-        List<Constants.Direction> result = new List<Constants.Direction>();
         if (room.ConnectionCount >= 4) return result;
 
         foreach (Constants.Direction direction in AllDirections)
         {
             if (room.Connections.Contains(direction)) continue;
-            if (previousDirection.HasValue && direction == Opposite(previousDirection.Value)) continue;
-            Vector2Int neighbour = room.GridPos + DirectionOffset(direction);
-            if (_grid.ContainsKey(neighbour))continue;
+            if (previous.HasValue && direction == Opposite(previous.Value)) continue;
+
+            Vector2Int position = room.GridPos + DirectionOffset(direction);
+            if (_grid.ContainsKey(position)) continue;
+            if (_bossRoom != null && IsInsideBossClearance(position)) continue;
+
             result.Add(direction);
         }
 
         return result;
     }
 
-    private Constants.Direction ChooseDirection(
-        List<Constants.Direction> options,
-        Constants.Direction previousDirection,
-        int straightCount,
-        float turnProbability
-    ) {
+    private Constants.Direction ChooseDirection(List<Constants.Direction> options, Constants.Direction previous, int straightCount, float turnChance)
+    {
         if (options.Count == 1) return options[0];
-        
-        List<Constants.Direction> turns =
-            options
-                .Where(direction =>
-                    direction != previousDirection
-                )
-                .ToList();
-        
+
+        List<Constants.Direction> turns = options.Where(direction => direction != previous).ToList();
+
         if (straightCount >= maxStraightRooms && turns.Count > 0) return RandomItem(turns);
-        if (turns.Count > 0 && Random.value < turnProbability) return RandomItem(turns);
-        if (options.Contains(previousDirection)) return previousDirection;
-        
+        if (turns.Count > 0 && Random.value < turnChance) return RandomItem(turns);
+        if (options.Contains(previous)) return previous;
+
         return RandomItem(options);
     }
 
     private RoomNode AddRoom(Vector2Int position)
     {
-        RoomNode room = new RoomNode(position);
+        RoomNode room = new(position);
         _grid.Add(position, room);
         return room;
     }
-    
+
     private void Connect(RoomNode from, RoomNode to, Constants.Direction direction)
     {
         from.Connections.Add(direction);
@@ -468,41 +467,37 @@ public class DungeonGenerator : MonoBehaviour
 
     private Vector2Int DirectionOffset(Constants.Direction direction)
     {
-        switch (direction)
+        return direction switch
         {
-            case Constants.Direction.Up: return Vector2Int.up;
-            case Constants.Direction.Down: return Vector2Int.down;
-            case Constants.Direction.Left: return Vector2Int.left;
-            case Constants.Direction.Right: return Vector2Int.right;
-            default: return Vector2Int.zero;
-        }
+            Constants.Direction.Up => Vector2Int.up,
+            Constants.Direction.Down => Vector2Int.down,
+            Constants.Direction.Left => Vector2Int.left,
+            Constants.Direction.Right => Vector2Int.right,
+            _ => Vector2Int.zero
+        };
     }
 
-    private Constants.Direction Opposite(Constants.Direction direction) {
-        switch (direction)
-        {
-            case Constants.Direction.Up: return Constants.Direction.Down;
-            case Constants.Direction.Down: return Constants.Direction.Up;
-            case Constants.Direction.Left: return Constants.Direction.Right;
-            case Constants.Direction.Right: return Constants.Direction.Left;
-            default: return direction;
-        }
-    }
-    
-    private int GridDistance(Vector2Int a, Vector2Int b)
+    private Constants.Direction Opposite(Constants.Direction direction)
     {
-        return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y);
+        return direction switch
+        {
+            Constants.Direction.Up => Constants.Direction.Down,
+            Constants.Direction.Down => Constants.Direction.Up,
+            Constants.Direction.Left => Constants.Direction.Right,
+            Constants.Direction.Right => Constants.Direction.Left,
+            _ => direction
+        };
     }
 
-    private T RandomItem<T>(IList<T> list)
-    {
-        return list[Random.Range(0, list.Count)];
-    }
-    
+    private int GridDistance(Vector2Int a, Vector2Int b) => Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y);
+
+    private T RandomItem<T>(IList<T> list) => list[Random.Range(0, list.Count)];
+
     private void ResetGeneration()
     {
         _grid.Clear();
         _mainPath.Clear();
+        _plans.Clear();
         _startRoom = null;
         _bossRoom = null;
         _treasureRoom = null;
@@ -513,11 +508,11 @@ public class DungeonGenerator : MonoBehaviour
     {
         for (int i = _spawnedRooms.Count - 1; i >= 0; i--)
         {
-            if (_spawnedRooms[i] == null) continue;
-            
+            if (!_spawnedRooms[i]) continue;
             if (Application.isPlaying) Destroy(_spawnedRooms[i]);
             else DestroyImmediate(_spawnedRooms[i]);
         }
+
         _spawnedRooms.Clear();
     }
 }

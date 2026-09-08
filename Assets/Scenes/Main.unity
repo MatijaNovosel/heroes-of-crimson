@@ -1934,57 +1934,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 119472057}
   m_CullTransparentMesh: 1
---- !u!1 &129230441
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 129230443}
-  - component: {fileID: 129230442}
-  m_Layer: 0
-  m_Name: FloorTransparencyController
-  m_TagString: Untagged
-  m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &129230442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129230441}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9502c3c31eda0b6488466215596e3066, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FloorTransparencyController
-  floorTilemaps:
-  - {fileID: 909961758}
-  - {fileID: 1671019640}
-  player: {fileID: 225077527}
-  transparentColor: {r: 1, g: 1, b: 1, a: 0.5}
-  normalColor: {r: 1, g: 1, b: 1, a: 1}
-  radius: 1
---- !u!4 &129230443
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129230441}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.9, y: -1.58, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1971937707}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &129845561
 GameObject:
   m_ObjectHideFlags: 0
@@ -2083,15 +2032,15 @@ MonoBehaviour:
   bossPrefab: {fileID: 5135632901278727135, guid: c840aa0edd5a012439fd4222ba800124, type: 3}
   treasurePrefab: {fileID: 5135632901278727135, guid: 6b2007d2e933ff74a8302352b7b8f7df, type: 3}
   normalPrefabs:
-  - {fileID: 5135632901278727135, guid: 1f80b7cd593960549aac75d7cb3b2954, type: 3}
-  - {fileID: 5135632901278727135, guid: 98dc04b52e9e3f548a46b85bc80be3e7, type: 3}
-  - {fileID: 5135632901278727135, guid: 088590cd1c8b2cb4bb63a135c7c6267d, type: 3}
-  - {fileID: 5135632901278727135, guid: 6d62114fc159c154484c4b32d9c67a56, type: 3}
-  roomWidth: 16
-  roomHeight: 15
+  - {fileID: 5135632901278727135, guid: 839e22226e6c12f40bcc465d6039e98e, type: 3}
+  - {fileID: 5135632901278727135, guid: 7c381a6fc04ccad4daec6c66854c5ca2, type: 3}
+  - {fileID: 5135632901278727135, guid: 964150b8dd20dc1449e887ebdd96d3d9, type: 3}
+  - {fileID: 5135632901278727135, guid: d4e9c33ff7bc6c34a9241c6d15879b14, type: 3}
   enemyPrefab: {fileID: 1470885898095795638, guid: 04a7a7f7c2f0da347938529b084d512a, type: 3}
   enemySpawnChance: 35
-  enemySpawnOffset: {x: 0, y: 0, z: 0}
+  bossEntityPrefab: {fileID: 1470885898095795638, guid: 04a7a7f7c2f0da347938529b084d512a, type: 3}
+  bossClearance: 1
+  footprintPadding: 0.1
   minMainPathLength: 14
   maxMainPathLength: 24
   mainPathTurnChance: 0.7
@@ -42664,6 +42613,7 @@ GameObject:
   - component: {fileID: 909961756}
   - component: {fileID: 909961758}
   - component: {fileID: 909961757}
+  - component: {fileID: 909961759}
   m_Layer: 0
   m_Name: WallTop
   m_TagString: Design
@@ -45074,6 +45024,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &909961759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909961755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9502c3c31eda0b6488466215596e3066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloorTransparency
+  player: {fileID: 0}
+  transparentColor: {r: 1, g: 1, b: 1, a: 0.5}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  radius: 1
 --- !u!1 &914398649
 GameObject:
   m_ObjectHideFlags: 0
@@ -194291,6 +194257,7 @@ GameObject:
   - component: {fileID: 1671019638}
   - component: {fileID: 1671019640}
   - component: {fileID: 1671019639}
+  - component: {fileID: 1671019641}
   m_Layer: 0
   m_Name: WallTopAbovePlayer
   m_TagString: Design
@@ -197501,6 +197468,22 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1671019641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671019637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9502c3c31eda0b6488466215596e3066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FloorTransparency
+  player: {fileID: 0}
+  transparentColor: {r: 1, g: 1, b: 1, a: 0.5}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  radius: 1
 --- !u!1 &1673891020
 GameObject:
   m_ObjectHideFlags: 0
@@ -204165,7 +204148,6 @@ Transform:
   m_Children:
   - {fileID: 328061671}
   - {fileID: 519420032}
-  - {fileID: 129230443}
   - {fileID: 426680657}
   - {fileID: 99701191}
   - {fileID: 1931269121}
@@ -207074,6 +207056,10 @@ PrefabInstance:
     - target: {fileID: 1470885898095795638, guid: 04a7a7f7c2f0da347938529b084d512a, type: 3}
       propertyPath: m_Name
       value: Skeleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6343730794711276151, guid: 04a7a7f7c2f0da347938529b084d512a, type: 3}
+      propertyPath: showRanges
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8785956519252849918, guid: 04a7a7f7c2f0da347938529b084d512a, type: 3}
       propertyPath: m_LocalPosition.x
