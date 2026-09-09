@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
   public FloatingTextManager floatingTextManager;
   public static GameManager Singleton;
   private GameObject _projectilePrefab;
+  public FogOfWar fogOfWar;
   
   public Dictionary<Constants.TeleportMarkers, TeleportMarker> teleportMarkersDict = new();
   public List<TeleportMarker> teleportMarkers = new ();
@@ -31,6 +32,11 @@ public class GameManager : MonoBehaviour
     {
       teleportMarkersDict.Add(tm.id, tm);
     });
+  }
+
+  private void Start()
+  {
+    fogOfWar.gameObject.SetActive(true);
   }
   
   private IEnumerator SpawnProjectilesCoroutine(Vector3 position, float time, Constants.ProjectilePattern pattern)
