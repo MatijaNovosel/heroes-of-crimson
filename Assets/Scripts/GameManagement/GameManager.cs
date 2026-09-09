@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Foundation;
 using GameManagement;
 using HeroesOfCrimson.Utils;
 using Models;
@@ -33,9 +34,19 @@ public class GameManager : MonoBehaviour
       teleportMarkersDict.Add(tm.id, tm);
     });
   }
+  
+  private void HideAllLandmarks()
+  {
+    Landmark[] landmarks = FindObjectsOfType<Landmark>(true);
+    foreach (Landmark landmark in landmarks)
+    {
+      landmark.gameObject.SetActive(false);
+    }
+  }
 
   private void Start()
   {
+    HideAllLandmarks();
     fogOfWar.gameObject.SetActive(true);
   }
   

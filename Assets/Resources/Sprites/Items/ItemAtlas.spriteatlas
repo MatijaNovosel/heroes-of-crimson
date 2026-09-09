@@ -110,8 +110,13 @@ SpriteAtlas:
     - ba6e0ecaae29e4745bba15b45bb14f66: 312865410
     - ba6e0ecaae29e4745bba15b45bb14f66: -902892088
     - ba6e0ecaae29e4745bba15b45bb14f66: 842143698
+    - ba6e0ecaae29e4745bba15b45bb14f66: 1037322816
+    - ba6e0ecaae29e4745bba15b45bb14f66: -1350390940
+    - ba6e0ecaae29e4745bba15b45bb14f66: 509517714
+    - ba6e0ecaae29e4745bba15b45bb14f66: -131212257
     - ba6e0ecaae29e4745bba15b45bb14f66: -27430248
     - ba6e0ecaae29e4745bba15b45bb14f66: 1611230053
+    - ba6e0ecaae29e4745bba15b45bb14f66: 7568074
     - ba6e0ecaae29e4745bba15b45bb14f66: 194647225
     - ba6e0ecaae29e4745bba15b45bb14f66: 1233402572
     - ba6e0ecaae29e4745bba15b45bb14f66: -1506826560
@@ -224,8 +229,13 @@ SpriteAtlas:
   - {fileID: 312865410, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: -902892088, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 842143698, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: 1037322816, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: -1350390940, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: 509517714, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: -131212257, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: -27430248, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 1611230053, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
+  - {fileID: 7568074, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 194647225, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: 1233402572, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
   - {fileID: -1506826560, guid: ba6e0ecaae29e4745bba15b45bb14f66, type: 3}
@@ -337,8 +347,13 @@ SpriteAtlas:
   - weapons_4
   - weapons_38
   - weapons_39
+  - weapons_65
+  - weapons_64
+  - weapons_63
+  - weapons_62
   - weapons_58
   - weapons_29
+  - weapons_61
   - weapons_59
   - weapons_28
   - weapons_60

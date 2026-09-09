@@ -40,7 +40,7 @@ SpriteAtlas:
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 1
-      enableTightPacking: 0
+      enableTightPacking: 1
       enableAlphaDilation: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
@@ -111,7 +111,9 @@ SpriteAtlas:
     - 5cbf85727fab9604dad030585a680ce4: 595178806
     - 5cbf85727fab9604dad030585a680ce4: -99703672
     - 5cbf85727fab9604dad030585a680ce4: -1357341968
+    - 5cbf85727fab9604dad030585a680ce4: -1207563358
     - 5cbf85727fab9604dad030585a680ce4: 1133484411
+    - 5cbf85727fab9604dad030585a680ce4: 195822842
     - 5cbf85727fab9604dad030585a680ce4: 434465054
     - 5cbf85727fab9604dad030585a680ce4: -1080014866
     - 5cbf85727fab9604dad030585a680ce4: 1264271001
@@ -238,6 +240,8 @@ SpriteAtlas:
     - 5cbf85727fab9604dad030585a680ce4: 1329651633
     - 5cbf85727fab9604dad030585a680ce4: 1198526375
     - 5cbf85727fab9604dad030585a680ce4: -1041902934
+    - 5cbf85727fab9604dad030585a680ce4: 966265549
+    - 5cbf85727fab9604dad030585a680ce4: -2097158635
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: -347503139, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
@@ -301,7 +305,9 @@ SpriteAtlas:
   - {fileID: 595178806, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -99703672, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -1357341968, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
+  - {fileID: -1207563358, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: 1133484411, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
+  - {fileID: 195822842, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: 434465054, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -1080014866, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: 1264271001, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
@@ -428,6 +434,8 @@ SpriteAtlas:
   - {fileID: 1329651633, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: 1198526375, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   - {fileID: -1041902934, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
+  - {fileID: 966265549, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
+  - {fileID: -2097158635, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
   m_PackedSpriteNamesToIndex:
   - tileset_39
   - tileset_38
@@ -490,7 +498,9 @@ SpriteAtlas:
   - tileset_139
   - tileset_155
   - tileset_141
+  - tileset_189
   - tileset_140
+  - tileset_188
   - tileset_143
   - tileset_158
   - tileset_142
@@ -617,6 +627,8 @@ SpriteAtlas:
   - tileset_171
   - tileset_172
   - tileset_173
+  - tileset_190
+  - tileset_191
   m_RenderDataMap: {}
   m_Tag: Sprite atlas
   m_IsVariant: 0
