@@ -277,7 +277,7 @@ namespace HeroesOfCrimson.Utils
         {
           Items =
           {
-            new ItemDropModel((int)MiscItemEnum.PearlNecklace, 100, true),
+            new ItemDropModel((int)MiscItemEnum.GoldNugget, 100, true),
             new ItemDropModel((int)MiscItemEnum.RuneOfStrength, 100, true),
             new ItemDropModel((int)MiscItemEnum.ScrawledNote, 100, true),
             new ItemDropModel((int)MiscItemEnum.HandfulOfCoins, 100, true),

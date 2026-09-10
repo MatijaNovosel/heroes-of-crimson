@@ -5,11 +5,20 @@ using Models;
 
 public static class LootRoller
 {
-    private static int PickWeighted(List<ItemDropModel> drops)
+    private static int PickWeightedIndex(List<ItemDropModel> drops)
     {
         float total = 0f;
-        for (int i = 0; i < drops.Count; i++) total += Mathf.Max(0f, drops[i].DropChance);
-        if (total <= 0f) return drops[UnityEngine.Random.Range(0, drops.Count)].ItemId;
+
+        for (int i = 0; i < drops.Count; i++)
+        {
+            total += Mathf.Max(0f, drops[i].DropChance);
+        }
+
+        // If all weights are zero, just choose one randomly.
+        if (total <= 0f)
+        {
+            return UnityEngine.Random.Range(0, drops.Count);
+        }
 
         float roll = UnityEngine.Random.Range(0f, total);
         float running = 0f;
@@ -17,57 +26,61 @@ public static class LootRoller
         for (int i = 0; i < drops.Count; i++)
         {
             running += Mathf.Max(0f, drops[i].DropChance);
-            if (roll < running) return drops[i].ItemId;
+
+            if (roll < running)
+            {
+                return i;
+            }
         }
 
-        return drops[drops.Count - 1].ItemId;
+        return drops.Count - 1;
     }
 
-    public static int[] RollGuaranteed(LootTableModel table, int itemCount, int? seed = null)
+    public static int[] Roll(
+        LootTableModel table,
+        int randomItemCount = 0,
+        int? seed = null)
     {
         if (table.Items == null || table.Items.Count == 0)
         {
             return Array.Empty<int>();
         }
 
-        itemCount = Mathf.Max(1, itemCount);
+        randomItemCount = Mathf.Max(0, randomItemCount);
 
         if (seed.HasValue)
         {
             UnityEngine.Random.InitState(seed.Value);
         }
 
-        var result = new List<int>(itemCount);
-        var guaranteed = new List<ItemDropModel>();
-        var nonGuaranteed = new List<ItemDropModel>();
+        var result = new List<int>();
+        var randomPool = new List<ItemDropModel>();
 
+        // Guaranteed items always drop exactly once.
         for (int i = 0; i < table.Items.Count; i++)
         {
-            var d = table.Items[i];
-            if (d.Guaranteed == true) guaranteed.Add(d);
-            else nonGuaranteed.Add(d);
+            ItemDropModel drop = table.Items[i];
+
+            if (drop.Guaranteed)
+            {
+                result.Add(drop.ItemId);
+            }
+            else
+            {
+                randomPool.Add(drop);
+            }
         }
 
-        if (guaranteed.Count > 0)
+        // Roll extra random items without replacement.
+        int rolls = Mathf.Min(randomItemCount, randomPool.Count);
+
+        for (int i = 0; i < rolls; i++)
         {
-            if (guaranteed.Count >= itemCount)
-            {
-                for (int i = 0; i < itemCount; i++)
-                {
-                    int idx = UnityEngine.Random.Range(0, guaranteed.Count);
-                    result.Add(guaranteed[idx].ItemId);
-                }
-                return result.ToArray();
-            }
-
-            for (int i = 0; i < guaranteed.Count; i++)
-            {
-                result.Add(guaranteed[i].ItemId);
-            }
+            int index = PickWeightedIndex(randomPool);
+            result.Add(randomPool[index].ItemId);
+            // Remove it so it cannot be selected again.
+            randomPool.RemoveAt(index);
         }
-
-        var rollPool = (nonGuaranteed.Count > 0) ? nonGuaranteed : table.Items;
-        while (result.Count < itemCount) result.Add(PickWeighted(rollPool));
 
         return result.ToArray();
     }

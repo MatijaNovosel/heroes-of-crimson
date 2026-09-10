@@ -10,8 +10,8 @@
     },
     {
       "id": 5001,
-      "name": "Pearl necklace",
-      "description": "A pretty necklace. Might fetch a fair price. \n\nMarket value: <color=#F1C40F> 5 Martens </color>",
+      "name": "Gold nugget",
+      "description": "A gold nugget. Might fetch a fair price. \n\nMarket value: <color=#F1C40F> 25 Martens </color>",
       "tag": 5,
       "spritePath": "misc_2",
       "rarity": 3
@@ -21,7 +21,7 @@
       "name": "Rune of Strength",
       "description": "A pulsating piece of red ore, your blood runs hot just by touching it.",
       "tag": 5,
-      "spritePath": "misc_2",
+      "spritePath": "misc_5",
       "rarity": 4
     },
     {

@@ -61,6 +61,8 @@ public class CameraMotor : MonoBehaviour
     private void HandleZoom()
     {
         if (!cam) return;
+        bool ctrlHeld = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+        if (!ctrlHeld) return;
         float scroll = Input.mouseScrollDelta.y;
         if (scroll == 0) return;
         cam.orthographicSize -= scroll * zoomSpeed;

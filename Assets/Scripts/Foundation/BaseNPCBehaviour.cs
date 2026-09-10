@@ -64,7 +64,7 @@ public class BaseNPCBehaviour : MonoBehaviour
           Quaternion.identity
         );
         
-        lootBag.GetComponent<LootBag>().GenerateLoot(_lootTable, 3);
+        lootBag.GetComponent<LootBag>().GenerateLoot(_lootTable, 2);
         AudioManager.Singleton.PlaySoundCached(Constants.Sounds.LootDrop);
         Player.Singleton.GiveXp(xpValue);
     }

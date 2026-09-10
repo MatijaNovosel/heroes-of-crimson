@@ -66,7 +66,7 @@ public enum ArmorItemEnum
 public enum MiscItemEnum
 {
     ScrawledNote = 5000,
-    PearlNecklace = 5001,
+    GoldNugget = 5001,
     RuneOfStrength = 5002,
     HandfulOfCoins = 5003
 }
