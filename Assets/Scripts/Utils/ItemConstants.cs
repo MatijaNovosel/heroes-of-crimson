@@ -62,3 +62,11 @@ public enum ArmorItemEnum
     BloodPlate = 3000,
     DivineMail = 3001
 }
+
+public enum MiscItemEnum
+{
+    ScrawledNote = 5000,
+    PearlNecklace = 5001,
+    RuneOfStrength = 5002,
+    HandfulOfCoins = 5003
+}

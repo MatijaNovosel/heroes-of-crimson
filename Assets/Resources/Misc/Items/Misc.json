@@ -11,7 +11,7 @@
     {
       "id": 5001,
       "name": "Pearl necklace",
-      "description": "A pretty necklace. Might fetch a fair price. \n\nMarket value: <color=#F1C40F> 5 Doubloons </color>",
+      "description": "A pretty necklace. Might fetch a fair price. \n\nMarket value: <color=#F1C40F> 5 Martens </color>",
       "tag": 5,
       "spritePath": "misc_2",
       "rarity": 3
@@ -23,6 +23,14 @@
       "tag": 5,
       "spritePath": "misc_2",
       "rarity": 4
+    },
+    {
+      "id": 5003,
+      "name": "Handful of coins",
+      "description": "A bunch of shiny coins. \n\nMarket value: <color=#F1C40F> 10 Martens </color>",
+      "tag": 5,
+      "spritePath": "misc_4",
+      "rarity": 3
     }
   ]
 }

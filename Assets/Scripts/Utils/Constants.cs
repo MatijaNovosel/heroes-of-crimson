@@ -219,7 +219,8 @@ namespace HeroesOfCrimson.Utils
 
     public enum LootTableEnum
     {
-      Basic = 1
+      Basic = 1,
+      Treasure = 2
     }
 
     public static readonly Dictionary<LootTableEnum, LootTableModel> LootTables = new()
@@ -264,6 +265,22 @@ namespace HeroesOfCrimson.Utils
             new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfStrength, 20),
             new ItemDropModel((int)AccessoryItemEnum.SilverRingOfStrength, 20),
             new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfStrength, 20),
+          }
+        }
+      },
+      {
+        LootTableEnum.Treasure,
+        new LootTableModel(
+          id: LootTableEnum.Treasure,
+          new()
+        )
+        {
+          Items =
+          {
+            new ItemDropModel((int)MiscItemEnum.PearlNecklace, 100, true),
+            new ItemDropModel((int)MiscItemEnum.RuneOfStrength, 100, true),
+            new ItemDropModel((int)MiscItemEnum.ScrawledNote, 100, true),
+            new ItemDropModel((int)MiscItemEnum.HandfulOfCoins, 100, true),
           }
         }
       }
