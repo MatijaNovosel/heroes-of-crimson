@@ -4,6 +4,7 @@ using UnityEngine;
 public class YSort : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    [SerializeField] private float ySortOffset = 0f;
 
     void Awake()
     {
@@ -12,7 +13,7 @@ public class YSort : MonoBehaviour
 
     void LateUpdate()
     {
-        // Multiply Y by -100 to convert world position to sorting order
-        spriteRenderer.sortingOrder = Mathf.RoundToInt(transform.position.y * -100);
+        float sortY = transform.position.y + ySortOffset;
+        spriteRenderer.sortingOrder = Mathf.RoundToInt(sortY * -100);
     }
 }

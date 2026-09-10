@@ -281,6 +281,7 @@ namespace HeroesOfCrimson.Utils
             new ItemDropModel((int)MiscItemEnum.RuneOfStrength, 100, true),
             new ItemDropModel((int)MiscItemEnum.ScrawledNote, 100, true),
             new ItemDropModel((int)MiscItemEnum.HandfulOfCoins, 100, true),
+            new ItemDropModel((int)WeaponItemEnum.BattleFury, 100, true),
           }
         }
       }
