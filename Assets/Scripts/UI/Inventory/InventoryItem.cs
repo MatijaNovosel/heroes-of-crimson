@@ -6,8 +6,8 @@ using UnityEngine.UI;
 namespace UI.Inventory
 {
     public class InventoryItem : MonoBehaviour,
-    IBeginDragHandler, IDragHandler, IEndDragHandler,
-    IPointerEnterHandler, IPointerExitHandler
+        IBeginDragHandler, IDragHandler, IEndDragHandler,
+        IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         private Image _itemIcon;
         private RectTransform _rectTransform;
@@ -15,6 +15,7 @@ namespace UI.Inventory
 
         public Item ItemInSlot { get; private set; }
         public InventorySlot ActiveSlot { get; set; }
+
         private Inventory _owner;
 
         private void Awake()
@@ -37,6 +38,7 @@ namespace UI.Inventory
         public void OnPointerEnter(PointerEventData eventData)
         {
             if (!ItemInSlot) return;
+
             TooltipManager.Singleton.SetInfo(ItemInSlot);
             TooltipManager.Singleton.Show();
         }
@@ -44,6 +46,13 @@ namespace UI.Inventory
         public void OnPointerExit(PointerEventData eventData)
         {
             TooltipManager.Singleton.Hide();
+        }
+
+        public void OnPointerClick(PointerEventData eventData)
+        {
+            if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift)) return;
+            if (ItemInSlot == null) return;
+            _owner.TryQuickEquip(this);
         }
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -57,10 +66,8 @@ namespace UI.Inventory
         public void OnDrag(PointerEventData eventData)
         {
             _rectTransform.position = Input.mousePosition;
-            if (transform.parent != _owner.draggablesTransform)
-            {
-                transform.SetParent(_owner.draggablesTransform);
-            }
+
+            if (transform.parent != _owner.draggablesTransform) transform.SetParent(_owner.draggablesTransform);
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -68,8 +75,9 @@ namespace UI.Inventory
             _canvasGroup.blocksRaycasts = true;
             _itemIcon.raycastTarget = true;
             Player.Singleton.HoldingItem = false;
+
             transform.SetParent(ActiveSlot.transform, false);
-            ((RectTransform)transform).anchoredPosition = Vector2.zero;
+            _rectTransform.anchoredPosition = Vector2.zero;
         }
     }
 }
