@@ -199,6 +199,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LootBag
   InteractionRange: 1
   DestroyIfNoItems: 1
+  BounceDuration: 0.3
+  BounceScale: 1.2
+  BounceHeight: 0.25
+  shouldBounce: 1
   initialItemIds: 
 --- !u!114 &3874692225793464894
 MonoBehaviour:

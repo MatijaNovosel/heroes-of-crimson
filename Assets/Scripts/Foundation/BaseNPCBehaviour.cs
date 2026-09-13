@@ -224,7 +224,7 @@ public class BaseNPCBehaviour : MonoBehaviour
       
       GameManager.Singleton.ShowText(
         data.Name,
-        500,
+        100,
         data.IsNegative ? Color.red: Color.green,
         new Vector3(transform.position.x, transform.position.y + 0.8f, 0),
         Vector3.up,
@@ -247,15 +247,13 @@ public class BaseNPCBehaviour : MonoBehaviour
   {
     var minDamage = 1f;
     var maxDamage = 100f;
-    var minFontSize = 400f;
-    var maxFontSize = 580f;
 
     var t = Mathf.InverseLerp(minDamage, maxDamage, damage);
-    var fontSize = Mathf.Lerp(minFontSize, maxFontSize, t);
+    var visualSize = Mathf.Lerp(100f, 145f, t);
 
     GameManager.Singleton.ShowText(
       Mathf.RoundToInt(damage).ToString(),
-      (int)fontSize,
+      (int)visualSize,
       Color.red,
       new Vector3(transform.position.x, transform.position.y + 0.8f, 0),
       Vector3.up,
