@@ -117,6 +117,7 @@ namespace HeroesOfCrimson.Utils
       BladeSwing = 1008,
       UsePotion = 1009,
       HitWall = 1010,
+      PotBreak = 1011,
 
       // Eenemy sounds
       SkeletonHit = 2000,
@@ -220,7 +221,8 @@ namespace HeroesOfCrimson.Utils
     public enum LootTableEnum
     {
       Basic = 1,
-      Treasure = 2
+      Treasure = 2,
+      Pot = 3,
     }
 
     public static readonly Dictionary<LootTableEnum, LootTableModel> LootTables = new()
@@ -284,7 +286,21 @@ namespace HeroesOfCrimson.Utils
             new ItemDropModel((int)WeaponItemEnum.BattleFury, 100, true),
           }
         }
+      },
+      {
+      LootTableEnum.Pot,
+      new LootTableModel(
+        id: LootTableEnum.Pot,
+        new()
+      )
+      {
+        Items =
+        {
+          new ItemDropModel((int)ConsumableItemEnum.HealthPotion, 100, true),
+          new ItemDropModel((int)ConsumableItemEnum.ManaPotion, 100, true),
+        }
       }
+    }
     };
   }
 }

@@ -64,6 +64,7 @@ public class BaseNPCBehaviour : MonoBehaviour
           Quaternion.identity
         );
         
+        // TODO: Fixaj ovo i stavi da loot table diktira kolko je random itema
         lootBag.GetComponent<LootBag>().GenerateLoot(_lootTable, 2);
         AudioManager.Singleton.PlaySoundCached(Constants.Sounds.LootDrop);
         Player.Singleton.GiveXp(xpValue);
