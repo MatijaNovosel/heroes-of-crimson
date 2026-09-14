@@ -10,6 +10,7 @@ public class LootBag : MonoBehaviour
     private GameObject _lootBagUI;
     private GameObject _lootContainerInventory;
     private GameObject _player;
+    private static readonly HashSet<LootBag> ActiveLootBags = new();
 
     public float InteractionRange = 1f;
     public bool DestroyIfNoItems = true;
@@ -45,6 +46,33 @@ public class LootBag : MonoBehaviour
         {
             StartCoroutine(BounceIn());
         }
+    }
+    
+    private void OnEnable()
+    {
+        ActiveLootBags.Add(this);
+    }
+
+    private void OnDisable()
+    {
+        ActiveLootBags.Remove(this);
+    }
+    
+    public static LootBag GetNearest(Vector3 position, float maxDistance)
+    {
+        LootBag nearest = null;
+        float nearestDistanceSqr = maxDistance * maxDistance;
+
+        foreach (LootBag bag in ActiveLootBags)
+        {
+            if (!bag) continue;
+            float distanceSqr = (bag.transform.position - position).sqrMagnitude;
+            if (distanceSqr >= nearestDistanceSqr) continue;
+            nearest = bag;
+            nearestDistanceSqr = distanceSqr;
+        }
+
+        return nearest;
     }
 
     private void Update()
@@ -143,10 +171,21 @@ public class LootBag : MonoBehaviour
             _seededItems.Add(item);
         }
     }
-
-    public void AddItem(Item item)
+    
+    private void RefreshLootUI()
     {
-        if (item != null) _seededItems.Add(item);
+        if (_lootContainerInventory == null) return;
+        Inventory inventory = _lootContainerInventory.GetComponent<Inventory>();
+        if (inventory == null) return;
+        if (inventory.GetCurrentLootBag() != this) return;
+        inventory.ShowLoot(this);
+    }
+
+    public void AddItem(Item item, bool refreshUI = false)
+    {
+        if (item == null) return;
+        _seededItems.Add(item);
+        if (refreshUI) RefreshLootUI();
     }
 
     public List<Item> GetLootItems() => _seededItems;

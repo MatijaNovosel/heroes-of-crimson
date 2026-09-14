@@ -1,3 +1,4 @@
+using HeroesOfCrimson.Utils;
 using Models;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -9,14 +10,17 @@ namespace UI.Inventory
         IBeginDragHandler, IDragHandler, IEndDragHandler,
         IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
+        [SerializeField] private float nearbyLootBagDistance = 1.5f;
+
         private Image _itemIcon;
         private RectTransform _rectTransform;
         private CanvasGroup _canvasGroup;
 
+        private Inventory _dragSourceInventory;
+        private bool _dropHandled;
+
         public Item ItemInSlot { get; private set; }
         public InventorySlot ActiveSlot { get; set; }
-
-        private Inventory _owner;
 
         private void Awake()
         {
@@ -24,7 +28,6 @@ namespace UI.Inventory
             _itemIcon = GetComponent<Image>();
             _rectTransform = GetComponent<RectTransform>();
             _itemIcon.raycastTarget = true;
-            _owner = GetComponentInParent<Inventory>();
         }
 
         public void Initialize(Item item, InventorySlot parent)
@@ -52,14 +55,22 @@ namespace UI.Inventory
         {
             if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift)) return;
             if (ItemInSlot == null) return;
-            _owner.TryQuickEquip(this);
+
+            Inventory inventory = ActiveSlot.GetComponentInParent<Inventory>();
+            inventory?.TryQuickEquip(this);
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            transform.SetParent(_owner.draggablesTransform);
+            _dropHandled = false;
+            _dragSourceInventory = ActiveSlot.GetComponentInParent<Inventory>();
+
+            if (_dragSourceInventory == null) return;
+
+            transform.SetParent(_dragSourceInventory.draggablesTransform);
             _canvasGroup.blocksRaycasts = false;
             _itemIcon.raycastTarget = false;
+
             Player.Singleton.HoldingItem = true;
         }
 
@@ -67,7 +78,8 @@ namespace UI.Inventory
         {
             _rectTransform.position = Input.mousePosition;
 
-            if (transform.parent != _owner.draggablesTransform) transform.SetParent(_owner.draggablesTransform);
+            if (_dragSourceInventory != null && transform.parent != _dragSourceInventory.draggablesTransform)
+                transform.SetParent(_dragSourceInventory.draggablesTransform);
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -76,8 +88,64 @@ namespace UI.Inventory
             _itemIcon.raycastTarget = true;
             Player.Singleton.HoldingItem = false;
 
+            if (!_dropHandled && TryDropIntoWorld()) return;
+
             transform.SetParent(ActiveSlot.transform, false);
             _rectTransform.anchoredPosition = Vector2.zero;
+        }
+
+        public void MarkDropHandled()
+        {
+            _dropHandled = true;
+        }
+
+        private bool TryDropIntoWorld()
+        {
+            if (_dragSourceInventory == null || _dragSourceInventory.IsLootInventory) return false;
+            if (ItemInSlot == null || ActiveSlot == null) return false;
+
+            Player player = Player.Singleton;
+            if (!player) return false;
+
+            Vector3 dropPosition = player.transform.position;
+
+            LootBag lootBag = LootBag.GetNearest(dropPosition, nearbyLootBagDistance);
+            bool createdNewBag = false;
+
+            if (!lootBag)
+            {
+                GameObject lootBagPrefab = Resources.Load<GameObject>("Prefabs/LootBag");
+
+                if (!lootBagPrefab)
+                {
+                    Debug.LogError("Could not find Resources/Prefabs/LootBag.");
+                    return false;
+                }
+
+                GameObject bagObject = Instantiate(lootBagPrefab, dropPosition, Quaternion.identity);
+                lootBag = bagObject.GetComponent<LootBag>();
+
+                if (!lootBag)
+                {
+                    Debug.LogError("LootBag prefab does not contain a LootBag component.");
+                    Destroy(bagObject);
+                    return false;
+                }
+
+                lootBag.initialItemIds = System.Array.Empty<int>();
+                createdNewBag = true;
+            }
+
+            lootBag.AddItem(ItemInSlot, true);
+
+            ActiveSlot.SetItem(null);
+
+            TooltipManager.Singleton.Hide();
+            Destroy(gameObject);
+
+            if (createdNewBag) AudioManager.Singleton.PlaySoundCached(Constants.Sounds.LootDrop);
+
+            return true;
         }
     }
 }

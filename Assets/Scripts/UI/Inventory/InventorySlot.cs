@@ -114,6 +114,8 @@ namespace UI.Inventory
             var droppedItem = eventData.pointerDrag?.GetComponent<InventoryItem>();
             if (droppedItem is null) return;
 
+            droppedItem.MarkDropHandled();
+
             if (Tag != Constants.ItemTag.None && droppedItem.ItemInSlot.tag != Tag)
             {
                 AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Error);
