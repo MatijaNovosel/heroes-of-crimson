@@ -51,6 +51,7 @@ namespace GameManagement
             Sounds.Add(Constants.Sounds.UsePotion, Resources.Load<AudioClip>("Sounds/General/usePotion"));
             Sounds.Add(Constants.Sounds.HitWall, Resources.Load<AudioClip>("Sounds/General/hitWall"));
             Sounds.Add(Constants.Sounds.PotBreak, Resources.Load<AudioClip>("Sounds/General/potBreak"));
+            Sounds.Add(Constants.Sounds.PotHit, Resources.Load<AudioClip>("Sounds/General/potHit"));
             
             // Enemy sounds
             Sounds.Add(Constants.Sounds.SkeletonDeath, Resources.Load<AudioClip>("Sounds/Enemies/skeletonDeath"));
