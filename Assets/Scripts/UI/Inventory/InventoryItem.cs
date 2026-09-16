@@ -53,11 +53,25 @@ namespace UI.Inventory
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (!Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.RightShift)) return;
             if (ItemInSlot == null) return;
 
-            Inventory inventory = ActiveSlot.GetComponentInParent<Inventory>();
-            inventory?.TryQuickEquip(this);
+            bool shiftHeld =
+                Input.GetKey(KeyCode.LeftShift) ||
+                Input.GetKey(KeyCode.RightShift);
+
+            // Shift + click = quick equip
+            if (shiftHeld)
+            {
+                Inventory inventory = ActiveSlot.GetComponentInParent<Inventory>();
+                inventory?.TryQuickEquip(this);
+                return;
+            }
+
+            // Double click = use consumable
+            if (eventData.clickCount == 2)
+            {
+                ActiveSlot.TryUseConsumable();
+            }
         }
 
         public void OnBeginDrag(PointerEventData eventData)

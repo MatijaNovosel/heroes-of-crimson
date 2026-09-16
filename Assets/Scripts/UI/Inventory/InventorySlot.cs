@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace UI.Inventory
 {
-    public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
+    public class InventorySlot : MonoBehaviour, IDropHandler
     {
         public InventoryItem CurrentInventoryItem { get; set; }
         public bool IsHotbar;
@@ -36,51 +36,48 @@ namespace UI.Inventory
             RefreshVisual();
         }
         
-        public void OnPointerClick(PointerEventData data)
+        public void TryUseConsumable()
         {
-            var playerObj = GameObject.FindGameObjectWithTag("Player");
-            var player = playerObj.GetComponent<Player>();
-            
-            if (data.clickCount == 2)
-            {
-                if (CurrentInventoryItem != null && CurrentInventoryItem.ItemInSlot != null)
-                {
-                    var item = CurrentInventoryItem.ItemInSlot;
+            if (CurrentInventoryItem == null || CurrentInventoryItem.ItemInSlot == null) return;
+            var item = CurrentInventoryItem.ItemInSlot;
+            if (item.tag != Constants.ItemTag.Consumable) return;
 
-                    if (item.tag == Constants.ItemTag.Consumable)
-                    {
-                        switch (item.id)
-                        {
-                            case (int)ConsumableItemEnum.HealthPotion:
-                            {
-                                if (Mathf.Approximately(player.MaxHealth, player.CurrentHealth)) return;
-                                player.RestoreHp(50);
-                                AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);
-                                break;
-                            }
-                            case (int)ConsumableItemEnum.ManaPotion:
-                            {
-                                if (Mathf.Approximately(player.MaxMana, player.CurrentMana)) return;
-                                player.RestoreMp(30);
-                                AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);
-                                break;
-                            }
-                            case (int)ConsumableItemEnum.PotionOfLife:
-                            {
-                                player.IncreaseMaxHp(5);
-                                AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);
-                                break;
-                            }
-                        }
-                        
-                        var itemUI = CurrentInventoryItem;
-                        CurrentInventoryItem = null;
-                        Destroy(itemUI.gameObject);
-                        RefreshVisual();
-                        TooltipManager.Singleton.Hide();
-                    }
+            var player = Player.Singleton;
+            if (player == null) return;
+
+            switch (item.id)
+            {
+                case (int)ConsumableItemEnum.HealthPotion:
+                {
+                    if (Mathf.Approximately(player.MaxHealth, player.CurrentHealth)) return;
+                    player.RestoreHp(50);
+                    AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);
+                    break;
                 }
+                case (int)ConsumableItemEnum.ManaPotion:
+                {
+                    if (Mathf.Approximately(player.MaxMana, player.CurrentMana)) return;
+                    player.RestoreMp(30);
+                    AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);
+                    break;
+                }
+                case (int)ConsumableItemEnum.PotionOfLife:
+                {
+                    player.IncreaseMaxHp(5);
+                    AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);
+                    break;
+                }
+                default:
+                    return;
             }
+
+            var itemUI = CurrentInventoryItem;
+
+            CurrentInventoryItem = null;
+            Destroy(itemUI.gameObject);
+
+            RefreshVisual();
+            TooltipManager.Singleton.Hide();
         }
         
         public void RefreshVisual()
