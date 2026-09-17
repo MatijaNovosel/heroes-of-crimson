@@ -34,21 +34,21 @@ public class NewGame : MonoBehaviour
         {
             case (int)Constants.Character.Knight:
             {
-                knightCharacterImage.color = Color.seaGreen;
+                knightCharacterImage.color = Color.white;
                 mageCharacterImage.color = Color.black;
                 rangerCharacterImage.color = Color.black;
                 break;
             }
             case (int)Constants.Character.Mage:
             {
-                mageCharacterImage.color = Color.seaGreen;
+                mageCharacterImage.color = Color.white;
                 knightCharacterImage.color = Color.black;
                 rangerCharacterImage.color = Color.black;
                 break;
             }
             case (int)Constants.Character.Ranger:
             {
-                rangerCharacterImage.color = Color.seaGreen;
+                rangerCharacterImage.color = Color.white;
                 mageCharacterImage.color = Color.black;
                 knightCharacterImage.color = Color.black;
                 break;

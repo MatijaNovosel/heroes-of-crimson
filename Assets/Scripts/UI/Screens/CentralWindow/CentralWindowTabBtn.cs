@@ -1,3 +1,4 @@
+using HeroesOfCrimson.Utils;
 using UnityEngine;
 using Constants = HeroesOfCrimson.Utils.Constants;
 using Image = UnityEngine.UI.Image;
@@ -14,6 +15,6 @@ public class CentralWindowTabBtn : MonoBehaviour
 
     void Update()
     {
-        _btnImage.color = CentralWindowTabs.Singleton.ActiveTab == Tab ? Color.darkGreen : Color.gray2;
+        _btnImage.color = CentralWindowTabs.Singleton.ActiveTab == Tab ? Utils.FromHex("4d0f1d") : Utils.FromHex("1a0f18");
     }
 }

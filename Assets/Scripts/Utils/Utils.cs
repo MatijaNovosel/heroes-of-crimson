@@ -129,7 +129,7 @@ namespace HeroesOfCrimson.Utils
         {
             case Constants.Stats.MGT:
                 data.Name = "Might";
-                data.Description = "Increases attack damage";
+                data.Description = "Increases attack damage by a flat amount. \n\n e.g. 125 base damage + 30 <color=#B04183>MGT</color> = 155 damage";
                 data.Color = "B04183";
                 break;
             case Constants.Stats.AGI:
@@ -144,17 +144,17 @@ namespace HeroesOfCrimson.Utils
                 break;
             case Constants.Stats.ARM:
                 data.Name = "Armor";
-                data.Description = "Decreases incoming damage by a flat amount";
+                data.Description = "Decreases incoming damage by a flat amount. \n\n e.g. 100 damage - 30 <color=#7D6D6D>ARM</color> = 70 damage";
                 data.Color = "7D6D6D";
                 break;
             case Constants.Stats.STR:
                 data.Name = "Strength";
-                data.Description = "Increases health regeneration";
+                data.Description = "Increases health regeneration. \n\n e.g. HP per second = 2 + 0.2407 * <color=#C54646>STR</color> \n\n 30 <color=#C54646>STR</color> = 9.2 HP/s";
                 data.Color = "C54646";
                 break;
             case Constants.Stats.WIS:
                 data.Name = "Wisdom";
-                data.Description = "Increases mana regeneration";
+                data.Description = "Increases mana regeneration. \n\n e.g. HP per second = 0.5f + (0.12f * <color=#6488C3>WIS</color>) \n\n 30 <color=#6488C3>WIS</color> = 4.1 MP/s";
                 data.Color = "6488C3";
                 break;
         }
