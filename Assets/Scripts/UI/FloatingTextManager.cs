@@ -1,59 +1,77 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class FloatingTextManager : MonoBehaviour
 {
-  public GameObject textPrefab;
+    public GameObject textPrefab;
 
-  private List<FloatingText> floatingTexts = new List<FloatingText>();
+    [SerializeField] private int prewarmCount = 12;
 
-  private FloatingText GetFloatingText()
-  {
-    var ft = floatingTexts.Find(txt => !txt.active);
+    private readonly List<FloatingText> floatingTexts = new List<FloatingText>();
 
-    if (ft == null)
+    private void Awake()
     {
-      ft = new FloatingText { obj = Instantiate(textPrefab) };
-      ft.obj.GetComponent<MeshRenderer>().sortingLayerName = "Collision";
-      ft.obj.GetComponent<MeshRenderer>().sortingOrder = 50;
-      ft.text = ft.obj.GetComponent<TextMesh>();
-      floatingTexts.Add(ft);
+        for (int i = 0; i < prewarmCount; i++)
+        {
+            CreateFloatingText();
+        }
     }
 
-    return ft;
-  }
+    private FloatingText CreateFloatingText()
+    {
+        var obj = Instantiate(textPrefab);
+        obj.SetActive(false);
 
-  public FloatingText Show(
-    string msg,
-    int fontSize,
-    Color color,
-    Vector3 position,
-    Vector3 motion,
-    float duration
-  )
-  {
-    position.y += 0.05f;
+        var renderer = obj.GetComponent<MeshRenderer>();
+        renderer.sortingLayerName = "UI";
+        renderer.sortingOrder = 50;
 
-    var ft = GetFloatingText();
+        var ft = new FloatingText
+        {
+            obj = obj,
+            text = obj.GetComponent<TextMesh>(),
+            active = false
+        };
 
-    ft.text.text = msg;
-    ft.text.fontSize = 100;
-    ft.text.characterSize = 0.12f * (fontSize / 100f);
-    ft.text.color = color;
-    ft.text.fontStyle = FontStyle.Bold;
+        floatingTexts.Add(ft);
+        return ft;
+    }
 
-    ft.obj.transform.position = position;
-    ft.motion = motion;
-    ft.duration = duration;
-    ft.Show();
+    private FloatingText GetFloatingText()
+    {
+        var ft = floatingTexts.Find(txt => !txt.active);
+        return ft ?? CreateFloatingText();
+    }
 
-    return ft;
-  }
+    public FloatingText Show(
+        string msg,
+        int fontSize,
+        Color color,
+        Vector3 position,
+        Vector3 motion,
+        float duration
+    )
+    {
+        position.y += 0.05f;
 
-  private void Update()
-  {
-    floatingTexts.ForEach(ft => ft.UpdateFloatingText());
-  }
+        var ft = GetFloatingText();
+
+        ft.text.text = msg;
+        ft.text.fontSize = 100;
+        ft.text.characterSize = 0.12f * (fontSize / 100f);
+        ft.text.color = color;
+        ft.text.fontStyle = FontStyle.Bold;
+
+        ft.obj.transform.position = position;
+        ft.motion = motion;
+        ft.duration = duration;
+        ft.Show();
+
+        return ft;
+    }
+
+    private void Update()
+    {
+        floatingTexts.ForEach(ft => ft.UpdateFloatingText());
+    }
 }

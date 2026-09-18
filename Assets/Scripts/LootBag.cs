@@ -75,30 +75,67 @@ public class LootBag : MonoBehaviour
         return nearest;
     }
 
+    private static LootBag GetNearestInInteractionRange(Vector3 position, LootBag excluded = null)
+    {
+        LootBag nearest = null;
+        float nearestDistanceSqr = float.MaxValue;
+
+        foreach (LootBag bag in ActiveLootBags)
+        {
+            if (!bag || bag == excluded) continue;
+
+            float distanceSqr = (bag.transform.position - position).sqrMagnitude;
+            float rangeSqr = bag.InteractionRange * bag.InteractionRange;
+            if (distanceSqr > rangeSqr || distanceSqr >= nearestDistanceSqr) continue;
+
+            nearest = bag;
+            nearestDistanceSqr = distanceSqr;
+        }
+
+        return nearest;
+    }
+
+    private Inventory GetLootInventory()
+    {
+        return _lootContainerInventory != null ? _lootContainerInventory.GetComponent<Inventory>() : null;
+    }
+
+    private void ShowUI(Inventory lootInventory)
+    {
+        if (lootInventory == null) return;
+        if (_inventoryUIRect != null) _inventoryUIRect.localScale = Vector3.one;
+        isUIActive = true;
+        if (lootInventory.GetCurrentLootBag() != this) lootInventory.ShowLoot(this);
+        if (_spriteRenderer != null) _spriteRenderer.color = Color.red;
+    }
+
+    private void ClearLocalActiveState()
+    {
+        isUIActive = false;
+        if (_spriteRenderer != null) _spriteRenderer.color = Color.white;
+    }
+
     private void Update()
     {
         if (_player == null || _lootContainerInventory == null) return;
 
-        float distance = Vector3.Distance(_player.transform.position, transform.position);
-        bool isNear = distance <= InteractionRange;
-        Inventory lootInventory = _lootContainerInventory.GetComponent<Inventory>();
+        Inventory lootInventory = GetLootInventory();
+        if (lootInventory == null) return;
+        
+        LootBag nearest = GetNearestInInteractionRange(_player.transform.position);
+        bool ownsUI = nearest == this;
 
-        if (isNear && !isUIActive)
+        if (ownsUI)
         {
-            if (_inventoryUIRect != null) _inventoryUIRect.localScale = Vector3.one;
-
-            isUIActive = true;
-            lootInventory.ShowLoot(this);
-
-            if (_spriteRenderer != null) _spriteRenderer.color = Color.red;
+            ShowUI(lootInventory);
         }
-        else if (!isNear && isUIActive)
+        else
         {
-            if (_inventoryUIRect != null) _inventoryUIRect.localScale = Vector3.zero;
-
-            isUIActive = false;
-
-            if (_spriteRenderer != null) _spriteRenderer.color = Color.white;
+            ClearLocalActiveState();
+            if (lootInventory.GetCurrentLootBag() == this && nearest == null && _inventoryUIRect != null)
+            {
+                _inventoryUIRect.localScale = Vector3.zero;
+            }
         }
     }
 
@@ -174,8 +211,7 @@ public class LootBag : MonoBehaviour
     
     private void RefreshLootUI()
     {
-        if (_lootContainerInventory == null) return;
-        Inventory inventory = _lootContainerInventory.GetComponent<Inventory>();
+        Inventory inventory = GetLootInventory();
         if (inventory == null) return;
         if (inventory.GetCurrentLootBag() != this) return;
         inventory.ShowLoot(this);
@@ -194,9 +230,33 @@ public class LootBag : MonoBehaviour
     {
         if (_seededItems.Count > 0 || !DestroyIfNoItems) return;
 
-        if (_inventoryUIRect != null) _inventoryUIRect.localScale = Vector3.zero;
+        Inventory lootInventory = GetLootInventory();
+        bool wasCurrentBag = lootInventory != null && lootInventory.GetCurrentLootBag() == this;
 
-        isUIActive = false;
+        ClearLocalActiveState();
+
+        var nearestInteractionRange = GetNearestInInteractionRange(
+            _player != null ? _player.transform.position : transform.position, 
+            this
+        );
+
+        if (wasCurrentBag && _player != null)
+        {
+            LootBag nextBag = GetNearestInInteractionRange(_player.transform.position, this);
+            if (nextBag != null)
+            {
+                nextBag.ShowUI(lootInventory);
+            }
+            else if (_inventoryUIRect != null)
+            {
+                _inventoryUIRect.localScale = Vector3.zero;
+            }
+        }
+        else if (_inventoryUIRect != null && nearestInteractionRange == null)
+        {
+            _inventoryUIRect.localScale = Vector3.zero;
+        }
+
         Destroy(gameObject);
     }
 
