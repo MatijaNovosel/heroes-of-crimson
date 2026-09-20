@@ -132,7 +132,10 @@ namespace HeroesOfCrimson.Utils
 
       // Ability sounds
       FireSphere = 4000,
-      Teleport = 4001
+      Teleport = 4001,
+      
+      // UI sounds
+      ButtonClick = 5000
     }
 
     public enum InventorySlotEnum

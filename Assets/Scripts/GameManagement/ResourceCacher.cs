@@ -66,6 +66,9 @@ namespace GameManagement
             Sounds.Add(Constants.Sounds.FireSphere, Resources.Load<AudioClip>("Sounds/Abilities/fireSphere"));
             Sounds.Add(Constants.Sounds.Teleport, Resources.Load<AudioClip>("Sounds/Abilities/teleport"));
             
+            // UI sounds
+            Sounds.Add(Constants.Sounds.ButtonClick, Resources.Load<AudioClip>("Sounds/UI/buttonPress"));
+            
             InventorySprites.Add(Constants.InventorySlotEnum.Weapon, Resources.Load<Sprite>("Sprites/UI/HotbarWeaponSlot"));
             InventorySprites.Add(Constants.InventorySlotEnum.Armor, Resources.Load<Sprite>("Sprites/UI/HotbarArmorSlot"));
             InventorySprites.Add(Constants.InventorySlotEnum.Accessory1, Resources.Load<Sprite>("Sprites/UI/HotbarAccessorySlot"));

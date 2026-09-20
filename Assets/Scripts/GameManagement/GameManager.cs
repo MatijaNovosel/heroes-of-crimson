@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
   private void Start()
   {
     HideAllLandmarks();
-    fogOfWar.gameObject.SetActive(true);
+    fogOfWar?.gameObject.SetActive(true);
   }
   
   private IEnumerator SpawnProjectilesCoroutine(Vector3 position, float time, Constants.ProjectilePattern pattern)
