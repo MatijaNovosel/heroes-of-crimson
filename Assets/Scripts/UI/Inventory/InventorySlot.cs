@@ -69,7 +69,9 @@ namespace UI.Inventory
                 }
                 case (int)ConsumableItemEnum.OldBottleOfGrog:
                 {
-                    if (CameraMotor.Singleton != null) CameraMotor.Singleton.PlayDrunkEffect();
+                    AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Burp);
+                    player.SetStatusEffect((int)Constants.StatusEffects.Drunk, 15);
+                    CameraMotor.Singleton?.PlayDrunkEffect();
                     break;
                 }
                 default:

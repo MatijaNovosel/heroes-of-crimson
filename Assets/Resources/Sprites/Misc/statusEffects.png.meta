@@ -534,6 +534,50 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: statusEffects_17
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 112
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03651087328fa30469e44a2fcab3cece
+      internalID: 1327745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: statusEffects_18
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 112
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85da52d91a88f50419b6f7bc6d34488c
+      internalID: 1917191890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -559,6 +603,8 @@ TextureImporter:
       statusEffects_14: -1015571161
       statusEffects_15: 1601207429
       statusEffects_16: -763181363
+      statusEffects_17: 1327745
+      statusEffects_18: 1917191890
       statusEffects_2: 5961046714670147108
       statusEffects_3: -2606277680237257118
       statusEffects_4: 487058810857674891

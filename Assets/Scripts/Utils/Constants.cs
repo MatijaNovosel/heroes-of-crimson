@@ -120,6 +120,7 @@ namespace HeroesOfCrimson.Utils
       HitWall = 1010,
       PotBreak = 1011,
       PotHit = 1012,
+      Burp = 1013,
 
       // Eenemy sounds
       SkeletonHit = 2000,

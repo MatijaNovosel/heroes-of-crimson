@@ -118,6 +118,8 @@ namespace HeroesOfCrimson.Utils
         Constants.StatusEffects.Weak,
         Constants.StatusEffects.Burning,
         Constants.StatusEffects.Sick,
+        Constants.StatusEffects.Drunk,
+        Constants.StatusEffects.Frostbite,
       }.Contains(statusEffect);
     }
 
@@ -254,6 +256,11 @@ namespace HeroesOfCrimson.Utils
             case Constants.StatusEffects.Sick:
                 data.Name = "Sick";
                 data.Description = "Unable to heal.";
+                break;
+            
+            case Constants.StatusEffects.Drunk:
+                data.Name = "Drunk";
+                data.Description = "You are quite drunk, try not to hurl.";
                 break;
 
             default:
