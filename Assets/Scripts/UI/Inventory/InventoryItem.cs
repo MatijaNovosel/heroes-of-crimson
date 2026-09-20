@@ -41,7 +41,6 @@ namespace UI.Inventory
         public void OnPointerEnter(PointerEventData eventData)
         {
             if (!ItemInSlot) return;
-
             TooltipManager.Singleton.SetInfo(ItemInSlot);
             TooltipManager.Singleton.Show();
         }
@@ -55,9 +54,16 @@ namespace UI.Inventory
         {
             if (ItemInSlot == null) return;
 
-            bool shiftHeld =
-                Input.GetKey(KeyCode.LeftShift) ||
-                Input.GetKey(KeyCode.RightShift);
+            bool ctrlHeld = Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl);
+
+            if (ctrlHeld)
+            {
+                Inventory inventory = ActiveSlot.GetComponentInParent<Inventory>();
+                inventory?.TryQuickTransferToPlayerInventory(this);
+                return;
+            }
+
+            bool shiftHeld = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
 
             // Shift + click = quick equip
             if (shiftHeld)
@@ -91,9 +97,10 @@ namespace UI.Inventory
         public void OnDrag(PointerEventData eventData)
         {
             _rectTransform.position = Input.mousePosition;
-
             if (_dragSourceInventory != null && transform.parent != _dragSourceInventory.draggablesTransform)
+            {
                 transform.SetParent(_dragSourceInventory.draggablesTransform);
+            }
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -101,9 +108,7 @@ namespace UI.Inventory
             _canvasGroup.blocksRaycasts = true;
             _itemIcon.raycastTarget = true;
             Player.Singleton.HoldingItem = false;
-
             if (!_dropHandled && TryDropIntoWorld()) return;
-
             transform.SetParent(ActiveSlot.transform, false);
             _rectTransform.anchoredPosition = Vector2.zero;
         }

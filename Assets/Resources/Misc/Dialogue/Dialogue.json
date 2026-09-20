@@ -25,7 +25,7 @@
           "choices": [
             {
               "id": "1:dungeon",
-              "text": "Any work around here? I could check out that dungeon.",
+              "text": "Any work around here?",
               "showIf": [
                 {
                   "type": "flag",

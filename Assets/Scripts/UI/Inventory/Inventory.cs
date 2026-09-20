@@ -14,7 +14,10 @@ namespace UI.Inventory
 
         private LootBag _currentLootBag;
 
+        public static Inventory PlayerInventory { get; private set; }
+
         public bool IsLootInventory => _currentLootBag != null;
+        public bool IsPlayerInventory => PlayerInventory == this;
 
         public List<int> ItemIds => inventorySlots
             .Where(x => x.CurrentInventoryItem != null && x.CurrentInventoryItem.ItemInSlot != null)
@@ -24,6 +27,18 @@ namespace UI.Inventory
         private void _setLootSource(LootBag bag) => _currentLootBag = bag;
 
         public LootBag GetCurrentLootBag() => _currentLootBag;
+
+        private void Awake()
+        {
+            var childSlots = GetComponentsInChildren<InventorySlot>(true);
+
+            if (childSlots.Length > 0 && (inventorySlots == null || inventorySlots.Length != childSlots.Length))
+            {
+                inventorySlots = childSlots;
+            }
+
+            if (name == "Inventory") PlayerInventory = this;
+        }
 
         private void Start()
         {
@@ -53,9 +68,7 @@ namespace UI.Inventory
         {
             _clearInventory();
             _setLootSource(bag);
-
             var items = bag.GetLootItems();
-
             for (int i = 0; i < items.Count && i < inventorySlots.Length; i++) SpawnItem(items[i], i);
         }
 
@@ -64,7 +77,6 @@ namespace UI.Inventory
             foreach (var slot in inventorySlots)
             {
                 if (!slot.CurrentInventoryItem) continue;
-
                 Destroy(slot.CurrentInventoryItem.gameObject);
                 slot.CurrentInventoryItem = null;
             }
@@ -72,24 +84,65 @@ namespace UI.Inventory
 
         public InventorySlot GetHotbarSlot(int idx) => name == "Hotbar" ? inventorySlots[idx] : null;
 
-        public InventorySlot GetEmptyEquipmentSlot(Constants.ItemTag tag)
+        public InventorySlot GetFirstAvailableSlot(Item item)
         {
-            if (name != "Hotbar") return null;
+            if (item == null) return null;
 
             foreach (var slot in inventorySlots)
             {
-                if (slot.Tag != tag) continue;
                 if (slot.CurrentInventoryItem != null) continue;
-
+                if (slot.Tag != Constants.ItemTag.None && slot.Tag != item.tag) continue;
                 return slot;
             }
 
             return null;
         }
 
+        public bool TryQuickTransferToPlayerInventory(InventoryItem item)
+        {
+            if (item == null || item.ItemInSlot == null || item.ActiveSlot == null) return false;
+            if (PlayerInventory == null || PlayerInventory == this || name == "Hotbar") return false;
+
+            InventorySlot targetSlot = PlayerInventory.GetFirstAvailableSlot(item.ItemInSlot);
+
+            if (targetSlot == null)
+            {
+                AudioManager.Singleton.PlaySoundCached(Constants.Sounds.Error);
+                return false;
+            }
+
+            if (IsLootInventory)
+            {
+                GetCurrentLootBag()?.RemoveItem(item.ItemInSlot);
+            }
+
+            MoveItem(item, targetSlot);
+            GetCurrentLootBag()?.TryDestroyIfEmpty();
+
+            TooltipManager.Singleton.Hide();
+            AudioManager.Singleton.PlaySoundCached(Constants.Sounds.InventoryMove);
+            return true;
+        }
+
+        public InventorySlot GetEquipmentSlot(Constants.ItemTag tag)
+        {
+            if (name != "Hotbar") return null;
+
+            InventorySlot firstMatchingSlot = null;
+
+            foreach (var slot in inventorySlots)
+            {
+                if (slot.Tag != tag) continue;
+                if (slot.CurrentInventoryItem == null) return slot;
+                firstMatchingSlot ??= slot;
+            }
+
+            return firstMatchingSlot;
+        }
+
         public bool TryQuickEquip(InventoryItem item)
         {
-            if (item == null || item.ItemInSlot == null) return false;
+            if (item == null || item.ItemInSlot == null || item.ActiveSlot == null) return false;
 
             Constants.ItemTag tag = item.ItemInSlot.tag;
 
@@ -99,10 +152,14 @@ namespace UI.Inventory
             }
 
             Inventory hotbar = Player.Singleton.Hotbar;
-
             if (hotbar == null) return false;
 
-            InventorySlot targetSlot = hotbar.GetEmptyEquipmentSlot(tag);
+            InventorySlot fromSlot = item.ActiveSlot;
+            Inventory fromInventory = fromSlot.GetComponentInParent<Inventory>();
+
+            if (fromInventory == hotbar) return false;
+
+            InventorySlot targetSlot = hotbar.GetEquipmentSlot(tag);
 
             if (targetSlot == null)
             {
@@ -110,20 +167,29 @@ namespace UI.Inventory
                 return false;
             }
 
-            InventorySlot fromSlot = item.ActiveSlot;
-            Inventory fromInventory = fromSlot.GetComponentInParent<Inventory>();
+            InventoryItem previouslyEquipped = targetSlot.CurrentInventoryItem;
+            bool fromLoot = fromInventory != null && fromInventory.IsLootInventory;
 
-            if (fromInventory != null && fromInventory.IsLootInventory)
+            if (previouslyEquipped == null)
             {
-                fromInventory.GetCurrentLootBag()?.RemoveItem(item.ItemInSlot);
+                if (fromLoot) fromInventory.GetCurrentLootBag()?.RemoveItem(item.ItemInSlot);
+                MoveItem(item, targetSlot);
             }
-
-            MoveItem(item, targetSlot);
+            else
+            {
+                if (fromLoot)
+                {
+                    var bag = fromInventory.GetCurrentLootBag();
+                    bag?.RemoveItem(item.ItemInSlot);
+                    bag?.AddItem(previouslyEquipped.ItemInSlot);
+                }
+                SwapItems(fromSlot, targetSlot);
+            }
 
             fromInventory?.GetCurrentLootBag()?.TryDestroyIfEmpty();
 
+            TooltipManager.Singleton.Hide();
             AudioManager.Singleton.PlaySoundCached(Constants.Sounds.InventoryEquip);
-
             return true;
         }
 
@@ -155,6 +221,29 @@ namespace UI.Inventory
             targetSlot.SetItem(item);
             item.transform.SetParent(targetSlot.transform, false);
             ((RectTransform)item.transform).anchoredPosition = Vector2.zero;
+        }
+
+        private static void SwapItems(InventorySlot slotA, InventorySlot slotB)
+        {
+            InventoryItem itemA = slotA.CurrentInventoryItem;
+            InventoryItem itemB = slotB.CurrentInventoryItem;
+
+            slotA.SetItem(itemB);
+            slotB.SetItem(itemA);
+
+            if (itemA != null)
+            {
+                itemA.ActiveSlot = slotB;
+                itemA.transform.SetParent(slotB.transform, false);
+                ((RectTransform)itemA.transform).anchoredPosition = Vector2.zero;
+            }
+
+            if (itemB != null)
+            {
+                itemB.ActiveSlot = slotA;
+                itemB.transform.SetParent(slotA.transform, false);
+                ((RectTransform)itemB.transform).anchoredPosition = Vector2.zero;
+            }
         }
     }
 }
