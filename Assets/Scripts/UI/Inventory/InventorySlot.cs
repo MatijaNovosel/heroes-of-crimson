@@ -67,6 +67,11 @@ namespace UI.Inventory
                     AudioManager.Singleton.PlaySoundCached(Constants.Sounds.UsePotion);
                     break;
                 }
+                case (int)ConsumableItemEnum.OldBottleOfGrog:
+                {
+                    if (CameraMotor.Singleton != null) CameraMotor.Singleton.PlayDrunkEffect();
+                    break;
+                }
                 default:
                     return;
             }

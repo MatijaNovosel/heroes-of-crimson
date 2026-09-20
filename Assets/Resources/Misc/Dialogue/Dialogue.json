@@ -56,7 +56,7 @@
               "triggers": [
                 {
                   "type": "giveItem",
-                  "value": 6001
+                  "value": 6004
                 },
                 {
                   "type": "setFlag",
@@ -139,7 +139,7 @@
         {
           "id": "1:5",
           "nextStepId": null,
-          "text": "If you're looking for trouble, there's an old dungeon nearby. Use the portal to head in. Clear out whatever's lurking at the end and make it back through the exit portal. I'll make sure it's worth your while.",
+          "text": "Well if you're feeling adventurous there's an old dungeon to the south. Though you're better off not going down there, who knows what lurks around in those dusty halls..",
           "choices": [
             {
               "id": "1:5:1",

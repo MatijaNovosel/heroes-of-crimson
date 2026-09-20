@@ -67,7 +67,8 @@ namespace HeroesOfCrimson.Utils
       Burning = 15,
       Radiance = 16,
       Sick = 17,
-      Frostbite = 18
+      Frostbite = 18,
+      Drunk = 19
     }
 
     public enum ItemTag

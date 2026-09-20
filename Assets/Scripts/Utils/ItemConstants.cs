@@ -55,6 +55,7 @@ public enum ConsumableItemEnum
     ManaPotion = 6001,
     PotionOfLife = 6002,
     WhiteMonsterEnergy = 6003,
+    OldBottleOfGrog = 6004
 }
 
 public enum ArmorItemEnum

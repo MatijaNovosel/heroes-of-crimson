@@ -31,6 +31,14 @@
       "tag": 6,
       "spritePath": "consumables_13",
       "rarity": 5
+    },
+    {
+      "id": 6004,
+      "name": "Old bottle of grog",
+      "description": "This doesn't look safe to drink, but it beats being stranded alone right?",
+      "tag": 6,
+      "spritePath": "consumables_14",
+      "rarity": 1
     }
   ]
 }
