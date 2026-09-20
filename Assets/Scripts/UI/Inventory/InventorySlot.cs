@@ -137,36 +137,26 @@ namespace UI.Inventory
 
             AudioManager.Singleton.PlaySoundCached(Constants.Sounds.InventoryMove);
 
-            // MOVE (empty target)
             if (toSlot.CurrentInventoryItem is null)
             {
-                if (fromLoot && !toLoot) fromInventory.GetCurrentLootBag()?.RemoveItem(droppedItem.ItemInSlot);
-                if (!fromLoot && toLoot) toInventory.GetCurrentLootBag()?.AddItem(droppedItem.ItemInSlot);
                 MoveItem(droppedItem, toSlot);
-                fromInventory.GetCurrentLootBag()?.TryDestroyIfEmpty();
+                
+                if (fromLoot) fromInventory.SyncCurrentLootBagLayout();
+                if (toLoot && toInventory != fromInventory) toInventory.SyncCurrentLootBagLayout();
+                
+                fromInventory?.GetCurrentLootBag()?.TryDestroyIfEmpty();
+                toInventory?.GetCurrentLootBag()?.TryDestroyIfEmpty();
+                
                 return;
             }
 
-            // SWAP
-            var targetItem = toSlot.CurrentInventoryItem;
-
-            if (fromLoot && !toLoot)
-            {
-                var bag = fromInventory.GetCurrentLootBag();
-                bag?.RemoveItem(droppedItem.ItemInSlot);
-                bag?.AddItem(targetItem.ItemInSlot);
-            }
-            else if (!fromLoot && toLoot)
-            {
-                var bag = toInventory.GetCurrentLootBag();
-                bag?.RemoveItem(targetItem.ItemInSlot);
-                bag?.AddItem(droppedItem.ItemInSlot);
-            }
-
             SwapItems(fromSlot, toSlot);
-
-            fromInventory.GetCurrentLootBag()?.TryDestroyIfEmpty();
-            toInventory.GetCurrentLootBag()?.TryDestroyIfEmpty();
+            
+            if (fromLoot) fromInventory.SyncCurrentLootBagLayout();
+            if (toLoot && toInventory != fromInventory) toInventory.SyncCurrentLootBagLayout();
+            
+            fromInventory?.GetCurrentLootBag()?.TryDestroyIfEmpty();
+            toInventory?.GetCurrentLootBag()?.TryDestroyIfEmpty();
         }
         
         private static void MoveItem(InventoryItem item, InventorySlot targetSlot)

@@ -68,8 +68,14 @@ namespace UI.Inventory
         {
             _clearInventory();
             _setLootSource(bag);
+
             var items = bag.GetLootItems();
-            for (int i = 0; i < items.Count && i < inventorySlots.Length; i++) SpawnItem(items[i], i);
+
+            for (int i = 0; i < items.Count && i < inventorySlots.Length; i++)
+            {
+                if (items[i] == null) continue;
+                SpawnItem(items[i], i);
+            }
         }
 
         private void _clearInventory()
@@ -83,6 +89,19 @@ namespace UI.Inventory
         }
 
         public InventorySlot GetHotbarSlot(int idx) => name == "Hotbar" ? inventorySlots[idx] : null;
+
+        public void SyncCurrentLootBagLayout()
+        {
+            if (_currentLootBag == null) return;
+            var slotItems = new List<Item>(inventorySlots.Length);
+
+            foreach (InventorySlot slot in inventorySlots)
+            {
+                slotItems.Add(slot.CurrentInventoryItem != null ? slot.CurrentInventoryItem.ItemInSlot : null);
+            }
+
+            _currentLootBag.SetSlotItems(slotItems);
+        }
 
         public InventorySlot GetFirstAvailableSlot(Item item)
         {
@@ -111,12 +130,10 @@ namespace UI.Inventory
                 return false;
             }
 
-            if (IsLootInventory)
-            {
-                GetCurrentLootBag()?.RemoveItem(item.ItemInSlot);
-            }
-
             MoveItem(item, targetSlot);
+
+            if (IsLootInventory) SyncCurrentLootBagLayout();
+
             GetCurrentLootBag()?.TryDestroyIfEmpty();
 
             TooltipManager.Singleton.Hide();
@@ -170,22 +187,10 @@ namespace UI.Inventory
             InventoryItem previouslyEquipped = targetSlot.CurrentInventoryItem;
             bool fromLoot = fromInventory != null && fromInventory.IsLootInventory;
 
-            if (previouslyEquipped == null)
-            {
-                if (fromLoot) fromInventory.GetCurrentLootBag()?.RemoveItem(item.ItemInSlot);
-                MoveItem(item, targetSlot);
-            }
-            else
-            {
-                if (fromLoot)
-                {
-                    var bag = fromInventory.GetCurrentLootBag();
-                    bag?.RemoveItem(item.ItemInSlot);
-                    bag?.AddItem(previouslyEquipped.ItemInSlot);
-                }
-                SwapItems(fromSlot, targetSlot);
-            }
+            if (previouslyEquipped == null) MoveItem(item, targetSlot);
+            else SwapItems(fromSlot, targetSlot);
 
+            if (fromLoot) fromInventory.SyncCurrentLootBagLayout();
             fromInventory?.GetCurrentLootBag()?.TryDestroyIfEmpty();
 
             TooltipManager.Singleton.Hide();
@@ -195,6 +200,8 @@ namespace UI.Inventory
 
         public void SpawnItem(Item item = null, int? index = null)
         {
+            if (item == null) return;
+
             if (index != null)
             {
                 var slot = inventorySlots[(int)index];

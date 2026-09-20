@@ -14,11 +14,10 @@ public class LootBag : MonoBehaviour
 
     public float InteractionRange = 1f;
     public bool DestroyIfNoItems = true;
-
-    [Header("Spawn Bounce")]
-    public float BounceDuration = 0.3f;
-    public float BounceScale = 1.2f;
-    public float BounceHeight = 0.25f;
+    
+    private float BounceDuration = 0.3f;
+    private float BounceScale = 1.2f;
+    private float BounceHeight = 0.25f;
     public bool shouldBounce = false;
 
     private bool isUIActive;
@@ -174,13 +173,11 @@ public class LootBag : MonoBehaviour
         foreach (int id in itemIds)
         {
             Item item = Database.Singleton.GetItem(id);
-
             if (item == null)
             {
                 Debug.LogError($"LootBag could not find item with ID {id}.");
                 continue;
             }
-
             _seededItems.Add(item);
         }
     }
@@ -196,13 +193,11 @@ public class LootBag : MonoBehaviour
         foreach (int itemId in rolledIds)
         {
             Item item = Database.Singleton.GetItem(itemId);
-
             if (item == null)
             {
                 Debug.LogError($"LootBag could not find item with ID {itemId}.");
                 continue;
             }
-            
             _seededItems.Add(item);
         }
     }
@@ -218,15 +213,33 @@ public class LootBag : MonoBehaviour
     public void AddItem(Item item, bool refreshUI = false)
     {
         if (item == null) return;
-        _seededItems.Add(item);
+        int emptyIndex = _seededItems.FindIndex(existing => existing == null);
+        if (emptyIndex >= 0) _seededItems[emptyIndex] = item;
+        else _seededItems.Add(item);
         if (refreshUI) RefreshLootUI();
     }
 
     public List<Item> GetLootItems() => _seededItems;
 
+    public void SetSlotItems(IReadOnlyList<Item> slotItems)
+    {
+        _seededItems.Clear();
+        if (slotItems == null) return;
+        foreach (var t in slotItems) _seededItems.Add(t);
+        for (int i = _seededItems.Count - 1; i >= 0 && _seededItems[i] == null; i--) _seededItems.RemoveAt(i);
+    }
+
     public void TryDestroyIfEmpty()
     {
-        if (_seededItems.Count > 0 || !DestroyIfNoItems) return;
+        bool hasItems = false;
+        foreach (Item item in _seededItems)
+        {
+            if (item == null) continue;
+            hasItems = true;
+            break;
+        }
+
+        if (hasItems || !DestroyIfNoItems) return;
 
         Inventory lootInventory = GetLootInventory();
         bool wasCurrentBag = lootInventory != null && lootInventory.GetCurrentLootBag() == this;
@@ -260,6 +273,10 @@ public class LootBag : MonoBehaviour
 
     public void RemoveItem(Item item)
     {
-        if (item != null) _seededItems.Remove(item);
+        if (item == null) return;
+        int index = _seededItems.IndexOf(item);
+        if (index < 0) return;
+        _seededItems[index] = null;
+        for (int i = _seededItems.Count - 1; i >= 0 && _seededItems[i] == null; i--) _seededItems.RemoveAt(i);
     }
 }
