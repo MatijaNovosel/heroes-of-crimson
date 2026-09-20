@@ -142,22 +142,6 @@ namespace HeroesOfCrimson.Utils
       Empty = 4,
     }
 
-    public enum RoomType
-    {
-      Start,
-      Normal1,
-      Normal2,
-      Normal3,
-      Normal4,
-      Normal5,
-      Normal6,
-      Normal7,
-      Normal8,
-      Normal9,
-      Treasure,
-      Boss
-    }
-
     public enum Direction
     {
       Up,
@@ -187,6 +171,7 @@ namespace HeroesOfCrimson.Utils
       Attic = 2,
       Cabin = 3,
       Dungeon = 4,
+      DungeonEntrance = 5
     }
 
     public enum CentralWindowTabsEnum
@@ -204,6 +189,7 @@ namespace HeroesOfCrimson.Utils
       public const string ApplyStatusEffect = "applyStatusEffect";
       public const string TeleportToMarker = "teleportToMarker";
       public const string StartQuest = "startQuest";
+      public const string CompleteDungeon = "completeDungeon";
     }
     
     public static class NPCMessages

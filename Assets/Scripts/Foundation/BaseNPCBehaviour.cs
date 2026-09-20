@@ -4,10 +4,11 @@ using System.Linq;
 using HeroesOfCrimson.Utils;
 using Models;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class BaseNPCBehaviour : MonoBehaviour
 {
+  public event Action Died;
+
   // Public stats
   public float hp = 100;
   public float mp = 100;
@@ -52,22 +53,26 @@ public class BaseNPCBehaviour : MonoBehaviour
     _lootTable = Constants.LootTables[lootTableId];
   }
 
-  public void Die()
+  public virtual void Die()
   {
+    Died?.Invoke();
+
     if (deathSound) AudioSource.PlayClipAtPoint(deathSound, transform.position, 1.5f);
     
     if (this.name != "Player")
     {
+      if (lootBagPrefab)
+      {
         var lootBag = Instantiate(
           lootBagPrefab,
           transform.position,
           Quaternion.identity
         );
-        
         // TODO: Fixaj ovo i stavi da loot table diktira kolko je random itema
-        lootBag.GetComponent<LootBag>().GenerateLoot(_lootTable, 2);
+        lootBag.GetComponent<LootBag>().GenerateLoot(_lootTable, 2); 
         AudioManager.Singleton.PlaySoundCached(Constants.Sounds.LootDrop);
-        Player.Singleton.GiveXp(xpValue);
+      }
+      Player.Singleton.GiveXp(xpValue);
     }
     else
     {

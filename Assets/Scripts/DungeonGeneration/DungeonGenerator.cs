@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class DungeonGenerator : MonoBehaviour
 {
+    public static DungeonGenerator Singleton { get; private set; }
+
     [Header("Special Rooms")]
     [SerializeField] private GameObject startPrefab;
     [SerializeField] private GameObject bossPrefab;
@@ -54,9 +56,16 @@ public class DungeonGenerator : MonoBehaviour
     [Header("Generation")]
     [Min(1)]
     [SerializeField] private int generationAttempts = 50;
-    [SerializeField] private bool generateOnAwake = true;
     [SerializeField] private bool useFixedSeed;
     [SerializeField] private int seed = 12345;
+
+    [Header("Dungeon Completion")]
+    [SerializeField] private GameObject endPortalPrefab;
+    [SerializeField] private Constants.TeleportMarkers completionReturnMarker = Constants.TeleportMarkers.DungeonEntrance;
+    [SerializeField] private int completionRewardXp = 250;
+    [SerializeField] private int completionRewardItemId = 6002;
+    [SerializeField] private string acceptedFlag = "dungeonQuestAccepted";
+    [SerializeField] private string completedFlag = "dungeonCompleted";
 
     private readonly Dictionary<Vector2Int, RoomNode> _grid = new();
     private readonly List<RoomNode> _mainPath = new();
@@ -67,6 +76,10 @@ public class DungeonGenerator : MonoBehaviour
     private RoomNode _bossRoom;
     private RoomNode _treasureRoom;
     private int _branchRoomCount;
+    private bool _isGenerated;
+    private bool _bossDefeated;
+    private bool _completed;
+    private GameObject _endPortalInstance;
 
     private static readonly Constants.Direction[] AllDirections =
     {
@@ -96,7 +109,35 @@ public class DungeonGenerator : MonoBehaviour
 
     private void Awake()
     {
-        if (generateOnAwake) GenerateDungeon();
+        Singleton = this;
+    }
+
+    private void OnDestroy()
+    {
+        if (Singleton == this) Singleton = null;
+    }
+
+    public bool BeginDungeonRun()
+    {
+        if (DialogueController.Singleton != null)
+        {
+            print(DialogueController.Singleton.HasStateFlag(completedFlag));
+            
+            if (DialogueController.Singleton.HasStateFlag(completedFlag))
+            {
+                if (PlayerLog.Singleton != null) PlayerLog.Singleton.AddItem("You have already completed this dungeon.");
+                return false;
+            }
+
+            if (!DialogueController.Singleton.HasStateFlag(acceptedFlag))
+            {
+                if (PlayerLog.Singleton != null) PlayerLog.Singleton.AddItem("<color=#F1C40F>\"What strange architecture\"</color>, you think to yourself. Maybe the man on the beach could tell you more about it?");
+                return false;
+            }
+        }
+
+        GenerateDungeon();
+        return _isGenerated;
     }
 
     [ContextMenu("Generate Dungeon")]
@@ -126,6 +167,9 @@ public class DungeonGenerator : MonoBehaviour
 
         SpawnDungeon();
         SpawnEntities();
+        _isGenerated = true;
+        _bossDefeated = false;
+        _completed = false;
         Debug.Log($"Dungeon generated. Rooms: {_grid.Count} | Main Path: {_mainPath.Count} | Branch Rooms: {_branchRoomCount}");
     }
 
@@ -406,8 +450,90 @@ public class DungeonGenerator : MonoBehaviour
     private void SpawnBoss(RoomNode room)
     {
         if (!bossEntityPrefab) return;
+
         GameObject boss = Instantiate(bossEntityPrefab, room.RuntimeRoom.BossSpawnPosition, Quaternion.identity, room.Instance.transform);
         boss.name = "Boss";
+
+        BaseNPCBehaviour bossNpc = boss.GetComponent<BaseNPCBehaviour>();
+        if (bossNpc == null)
+        {
+            Debug.LogError("Dungeon boss prefab needs a BaseNPCBehaviour so the dungeon can detect its death.");
+            return;
+        }
+
+        bossNpc.Died += HandleBossDefeated;
+    }
+
+    private void HandleBossDefeated()
+    {
+        if (_bossDefeated) return;
+        _bossDefeated = true;
+        SpawnEndPortal();
+    }
+
+    private void SpawnEndPortal()
+    {
+        if (_endPortalInstance) return;
+
+        _endPortalInstance = Instantiate(
+            endPortalPrefab,
+            _bossRoom.RuntimeRoom.BossSpawnPosition,
+            Quaternion.identity,
+            _bossRoom.Instance ? _bossRoom.Instance.transform : transform
+        );
+        
+        _endPortalInstance.name = "Dungeon End Portal";
+
+        SingleInteractionObject interaction = _endPortalInstance.GetComponent<SingleInteractionObject>();
+        interaction.player = Player.Singleton;
+        interaction.trigger = Constants.DialogueTriggers.CompleteDungeon;
+    }
+
+    public void CompleteDungeon(Player player)
+    {
+        if (!_isGenerated || !_bossDefeated || _completed) return;
+
+        _completed = true;
+
+        if (completionRewardXp > 0)
+        {
+            player.GiveXp(completionRewardXp);
+        }
+
+        if (completionRewardItemId > 0 && DialogueController.Singleton != null && DialogueController.Singleton.playerInventory != null)
+        {
+            var item = Database.Singleton.GetItem(completionRewardItemId);
+            if (item != null)
+            {
+                DialogueController.Singleton.playerInventory.SpawnItem(item);
+                if (PlayerLog.Singleton != null)
+                {
+                    PlayerLog.Singleton.AddItem($"Dungeon complete! You received <color=#F1C40F>{item.name}</color> and {completionRewardXp} XP.");
+                }
+            }
+        }
+        else if (PlayerLog.Singleton != null)
+        {
+            PlayerLog.Singleton.AddItem($"Dungeon complete! You received {completionRewardXp} XP.");
+        }
+
+        if (DialogueController.Singleton != null)
+        {
+            DialogueController.Singleton.SetStateFlag(acceptedFlag, true);
+            DialogueController.Singleton.SetStateFlag(completedFlag, true);
+        }
+        
+        ClearDungeon();
+        _isGenerated = false;
+
+        if (GameManager.Singleton.teleportMarkersDict.ContainsKey(completionReturnMarker))
+        {
+            player.TeleportToMarker(completionReturnMarker);
+        }
+        else
+        {
+            Debug.LogWarning($"Dungeon completed, but return teleport marker '{completionReturnMarker}' is not registered.");
+        }
     }
 
     private string GetRoomName(RoomNode room)
@@ -506,6 +632,17 @@ public class DungeonGenerator : MonoBehaviour
 
     private void ClearDungeon()
     {
+        if (_endPortalInstance)
+        {
+            if (Application.isPlaying) Destroy(_endPortalInstance);
+            else DestroyImmediate(_endPortalInstance);
+            _endPortalInstance = null;
+        }
+
+        _isGenerated = false;
+        _bossDefeated = false;
+        _completed = false;
+
         for (int i = _spawnedRooms.Count - 1; i >= 0; i--)
         {
             if (!_spawnedRooms[i]) continue;

@@ -35,7 +35,12 @@ public class DialogueController : MonoBehaviour
 
     public bool HasStateFlag(string value)
     {
-        return _gameState.GetFlag(value);
+        return _gameState != null && _gameState.GetFlag(value);
+    }
+
+    public void SetStateFlag(string key, bool value)
+    {
+        _gameState?.SetFlag(key, value);
     }
 
     private void Awake()

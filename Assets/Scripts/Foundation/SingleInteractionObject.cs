@@ -4,7 +4,7 @@ using UnityEngine;
 public class SingleInteractionObject : MonoBehaviour
 {
     public Transform interactionImg;
-    public Transform interactionPrompt;
+    private Transform _interactionPrompt;
     public Player player;
     public string trigger = "teleportToMarker";
     public int value;
@@ -12,6 +12,7 @@ public class SingleInteractionObject : MonoBehaviour
     void Start()
     {
         ShowPrompt(false);
+        _interactionPrompt = GameObject.Find("InteractionPrompts").GetComponent<Transform>();
     }
 
     public void Interact()
@@ -19,7 +20,24 @@ public class SingleInteractionObject : MonoBehaviour
         switch (trigger)
         {
             case Constants.DialogueTriggers.TeleportToMarker:
-                player.TeleportToMarker((Constants.TeleportMarkers)value);
+            {
+                var markerId = (Constants.TeleportMarkers)value;
+
+                if (markerId == Constants.TeleportMarkers.Dungeon)
+                {
+                    var dungeonBegun = DungeonGenerator.Singleton.BeginDungeonRun();
+                    if (!dungeonBegun) return;
+                }
+
+                player.TeleportToMarker(markerId);
+                break;
+            }
+
+            case Constants.DialogueTriggers.CompleteDungeon:
+                if (DungeonGenerator.Singleton != null)
+                {
+                    DungeonGenerator.Singleton.CompleteDungeon(player);
+                }
                 break;
         }
     }
@@ -27,6 +45,6 @@ public class SingleInteractionObject : MonoBehaviour
     public void ShowPrompt(bool show)
     {
         if (interactionImg) interactionImg.localScale = show ? Vector3.one : Vector3.zero;
-        if (interactionPrompt) interactionPrompt.localScale = show ? Vector3.one : Vector3.zero;
+        if (_interactionPrompt) _interactionPrompt.localScale = show ? Vector3.one : Vector3.zero;
     }
 }

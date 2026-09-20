@@ -66,7 +66,7 @@ public class LootBag : MonoBehaviour
         foreach (LootBag bag in ActiveLootBags)
         {
             if (!bag) continue;
-            float distanceSqr = (bag.transform.position - position).sqrMagnitude;
+            float distanceSqr = ((Vector2)bag.transform.position - (Vector2)position).sqrMagnitude;
             if (distanceSqr >= nearestDistanceSqr) continue;
             nearest = bag;
             nearestDistanceSqr = distanceSqr;
@@ -84,7 +84,7 @@ public class LootBag : MonoBehaviour
         {
             if (!bag || bag == excluded) continue;
 
-            float distanceSqr = (bag.transform.position - position).sqrMagnitude;
+            float distanceSqr = ((Vector2)bag.transform.position - (Vector2)position).sqrMagnitude;
             float rangeSqr = bag.InteractionRange * bag.InteractionRange;
             if (distanceSqr > rangeSqr || distanceSqr >= nearestDistanceSqr) continue;
 
@@ -192,7 +192,6 @@ public class LootBag : MonoBehaviour
         _lootGenerated = true;
 
         int[] rolledIds = LootRoller.Roll(lootTable, randomItemCount);
-        Debug.Log($"Loot table {lootTable.Id} rolled {rolledIds.Length} items.");
 
         foreach (int itemId in rolledIds)
         {
@@ -203,8 +202,7 @@ public class LootBag : MonoBehaviour
                 Debug.LogError($"LootBag could not find item with ID {itemId}.");
                 continue;
             }
-
-            Debug.Log($"Loot: {itemId} -> {item.name}");
+            
             _seededItems.Add(item);
         }
     }

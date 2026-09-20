@@ -6,7 +6,14 @@
       "startStepId": "1:1",
       "startPoint": [
         {
-          "conditions": [{ "type": "flag", "key": "hasWhiteMonster", "op": "==", "value": true }],
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "hasWhiteMonster",
+              "op": "==",
+              "value": true
+            }
+          ],
           "startStepId": "1:4"
         }
       ],
@@ -16,6 +23,32 @@
           "nextStepId": null,
           "text": "Hey there bub. Looks like we're not going anywhere any time soon huh?\nLeast we can do is make a toast, whaddaya say?",
           "choices": [
+            {
+              "id": "1:dungeon",
+              "text": "Any work around here? I could check out that dungeon.",
+              "showIf": [
+                {
+                  "type": "flag",
+                  "key": "dungeonQuestAccepted",
+                  "op": "==",
+                  "value": false
+                },
+                {
+                  "type": "flag",
+                  "key": "dungeonCompleted",
+                  "op": "==",
+                  "value": false
+                }
+              ],
+              "nextStepId": "1:5",
+              "triggers": [
+                {
+                  "type": "setFlag",
+                  "key": "dungeonQuestAccepted",
+                  "value": true
+                }
+              ]
+            },
             {
               "id": "1:1:1",
               "text": "Sure, up and at 'em!",
@@ -66,6 +99,32 @@
           "text": "Hey, welcome back! Enjoying your grog?",
           "choices": [
             {
+              "id": "1:dungeon",
+              "text": "Any work around here? I could check out that dungeon.",
+              "showIf": [
+                {
+                  "type": "flag",
+                  "key": "dungeonQuestAccepted",
+                  "op": "==",
+                  "value": false
+                },
+                {
+                  "type": "flag",
+                  "key": "dungeonCompleted",
+                  "op": "==",
+                  "value": false
+                }
+              ],
+              "nextStepId": "1:5",
+              "triggers": [
+                {
+                  "type": "setFlag",
+                  "key": "dungeonQuestAccepted",
+                  "value": true
+                }
+              ]
+            },
+            {
               "id": "1:4:1",
               "text": "Yeah!",
               "nextStepId": null
@@ -73,6 +132,18 @@
             {
               "id": "1:4:2",
               "text": "Not really.",
+              "nextStepId": null
+            }
+          ]
+        },
+        {
+          "id": "1:5",
+          "nextStepId": null,
+          "text": "If you're looking for trouble, there's an old dungeon nearby. Use the portal to head in. Clear out whatever's lurking at the end and make it back through the exit portal. I'll make sure it's worth your while.",
+          "choices": [
+            {
+              "id": "1:5:1",
+              "text": "I'll check it out.",
               "nextStepId": null
             }
           ]
@@ -85,7 +156,14 @@
       "startStepId": "2:1",
       "startPoint": [
         {
-          "conditions": [{ "type": "flag", "key": "touchedObelisk", "op": "==", "value": true }],
+          "conditions": [
+            {
+              "type": "flag",
+              "key": "touchedObelisk",
+              "op": "==",
+              "value": true
+            }
+          ],
           "startStepId": "2:3"
         }
       ],
@@ -157,9 +235,21 @@
             {
               "id": "3:1:1",
               "text": "Jump in",
-              "showIf": [{ "type": "flag", "key": "touchedObelisk", "op": "==", "value": true }],
+              "showIf": [
+                {
+                  "type": "flag",
+                  "key": "touchedObelisk",
+                  "op": "==",
+                  "value": true
+                }
+              ],
               "nextStepId": null,
-              "triggers": [{ "type": "teleportToMarker", "value": 1 }]
+              "triggers": [
+                {
+                  "type": "teleportToMarker",
+                  "value": 1
+                }
+              ]
             },
             {
               "id": "3:1:2",
