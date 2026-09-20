@@ -215,6 +215,7 @@ namespace HeroesOfCrimson.Utils
       Basic = 1,
       Treasure = 2,
       Pot = 3,
+      AlcoholBarrel = 4,
     }
 
     public static readonly Dictionary<LootTableEnum, LootTableModel> LootTables = new()
@@ -280,19 +281,34 @@ namespace HeroesOfCrimson.Utils
         }
       },
       {
-      LootTableEnum.Pot,
-      new LootTableModel(
-        id: LootTableEnum.Pot,
-        new()
-      )
-      {
-        Items =
+        LootTableEnum.Pot,
+        new LootTableModel(
+          id: LootTableEnum.Pot,
+          new()
+        )
         {
-          new ItemDropModel((int)ConsumableItemEnum.HealthPotion, 100, true),
-          new ItemDropModel((int)ConsumableItemEnum.ManaPotion, 100, true),
+          Items =
+          {
+            new ItemDropModel((int)ConsumableItemEnum.HealthPotion, 100, true),
+            new ItemDropModel((int)ConsumableItemEnum.ManaPotion, 100, true),
+          }
+        }
+      },
+      {
+        LootTableEnum.AlcoholBarrel,
+        new LootTableModel(
+          id: LootTableEnum.AlcoholBarrel,
+          new()
+        )
+        {
+          Items =
+          {
+            new ItemDropModel((int)ConsumableItemEnum.OldBottleOfGrog, 100, true),
+            new ItemDropModel((int)ConsumableItemEnum.OldBottleOfGrog, 100, true),
+            new ItemDropModel((int)ConsumableItemEnum.OldBottleOfGrog, 100, true),
+          }
         }
       }
-    }
     };
   }
 }
