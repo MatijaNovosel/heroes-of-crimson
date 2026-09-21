@@ -12,7 +12,11 @@ public class DialogMenu : MonoBehaviour
     
     private void HandleUIKeys()
     {
-        if (CanBeOpened && Input.GetKeyDown(KeyCode.V) && !ConsoleMenu.Singleton.ConsoleMenuOpen)
+        if (CanBeOpened
+            && Input.GetKeyDown(KeyCode.V)
+            && !ConsoleMenu.Singleton.ConsoleMenuOpen
+            && !TalentTree.Singleton.TalentTreeOpen
+            && (PauseMenu.Singleton == null || !PauseMenu.Singleton.PauseMenuOpen))
         {
             if (DialogueController.Singleton.CurrentNPC == null) return;
             DialogMenuOpen = true;

@@ -11,7 +11,11 @@ public class TalentTree : MonoBehaviour
 
     private void HandleUIKeys()
     {
-        if (Input.GetKeyDown(KeyCode.T) && !ConsoleMenu.Singleton.ConsoleMenuOpen)
+        if ((Input.GetKeyDown(KeyCode.T)
+             && !ConsoleMenu.Singleton.ConsoleMenuOpen
+             && !DialogMenu.Singleton.DialogMenuOpen
+             && (PauseMenu.Singleton == null || !PauseMenu.Singleton.PauseMenuOpen))
+            || (TalentTreeOpen && Input.GetKeyDown(KeyCode.Escape)))
         {
             TalentTreeOpen = !TalentTreeOpen;
             Time.timeScale = TalentTreeOpen ? 0f : 1f;
