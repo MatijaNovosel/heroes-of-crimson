@@ -31,8 +31,8 @@ public class BaseNPCBehaviour : MonoBehaviour
   public Constants.LootTableEnum lootTableId = Constants.LootTableEnum.Basic;
   private LootTableModel _lootTable;
 
-  public AudioClip deathSound;
-  public AudioClip hitSound;
+  public Constants.Sounds deathSound = Constants.Sounds.SkeletonDeath;
+  public Constants.Sounds hitSound = Constants.Sounds.GenericHit;
   public GameObject lootBagPrefab;
   
   private GameObject _statusEffectPanel;
@@ -57,7 +57,7 @@ public class BaseNPCBehaviour : MonoBehaviour
   {
     Died?.Invoke();
 
-    if (deathSound) AudioSource.PlayClipAtPoint(deathSound, transform.position, 1.5f);
+    AudioManager.Singleton.PlaySoundCached(deathSound);
     
     if (this.name != "Player")
     {
@@ -269,7 +269,7 @@ public class BaseNPCBehaviour : MonoBehaviour
   
   private void ReceiveDamage(DamageModel payload)
   {
-    if (hitSound) AudioManager.Singleton.PlaySound(hitSound);
+    AudioManager.Singleton.PlaySoundCached(hitSound);
     foreach (var effect in payload.StatusEffects) ApplyStatusEffect(effect);
     if (invincible) return;
 
