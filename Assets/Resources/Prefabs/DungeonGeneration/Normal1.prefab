@@ -3568,9 +3568,9 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 4
+      m_TileColorIndex: 5
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741827
@@ -3638,9 +3638,9 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 1
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
-      m_TileColorIndex: 4
+      m_TileColorIndex: 5
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741827
@@ -3779,11 +3779,11 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 2
+  - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 6
     m_Data: {fileID: 304641599, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
-  - m_RefCount: 0
+  - m_RefCount: 2
     m_Data: {fileID: 0}
   - m_RefCount: 6
     m_Data: {fileID: -1357341968, guid: 5cbf85727fab9604dad030585a680ce4, type: 3}
@@ -3817,10 +3817,10 @@ Tilemap:
     m_Data: {r: 1.67e-43, g: 1.67e-43, b: 1.67e-43, a: 1.67e-43}
   - m_RefCount: 18
     m_Data: {r: 1, g: 1, b: 1, a: 1}
-  - m_RefCount: 2
-    m_Data: {r: 0.82582104, g: 0.33178622, b: 0.34799066, a: 1}
   - m_RefCount: 0
     m_Data: {r: 1.67e-43, g: 1.67e-43, b: 1.67e-43, a: 1.67e-43}
+  - m_RefCount: 2
+    m_Data: {r: 0.82708067, g: 0.33344904, b: 0.35241634, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 0}
@@ -4135,6 +4135,7 @@ GameObject:
   - component: {fileID: 5389555322730188874}
   - component: {fileID: 6029716800918287678}
   - component: {fileID: 7779496993655787147}
+  - component: {fileID: 1196739187590520740}
   m_Layer: 0
   m_Name: Pot
   m_TagString: Untagged
@@ -4331,6 +4332,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::YSort
   ySortOffset: 0
+--- !u!114 &1196739187590520740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3183581780376823314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de56e4cb4624b244896943be1ffe988e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectShadow
+  maxShadowHeight: 0.6
 --- !u!1 &3266227235267407334
 GameObject:
   m_ObjectHideFlags: 0
@@ -6605,6 +6619,7 @@ GameObject:
   - component: {fileID: 5712403632705531550}
   - component: {fileID: 8434337775429798338}
   - component: {fileID: 6288962638114739134}
+  - component: {fileID: 3217740768287036984}
   m_Layer: 0
   m_Name: Pot (2)
   m_TagString: Untagged
@@ -6801,6 +6816,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::YSort
   ySortOffset: 0
+--- !u!114 &3217740768287036984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4427101723765004510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de56e4cb4624b244896943be1ffe988e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectShadow
+  maxShadowHeight: 0.6
 --- !u!1 &4800504764447711897
 GameObject:
   m_ObjectHideFlags: 0
@@ -12315,6 +12343,7 @@ GameObject:
   - component: {fileID: 806799108239097733}
   - component: {fileID: 5205904569117004121}
   - component: {fileID: 5625634092395321854}
+  - component: {fileID: 7916423255839301837}
   m_Layer: 0
   m_Name: Pot (1)
   m_TagString: Untagged
@@ -12511,6 +12540,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::YSort
   ySortOffset: 0
+--- !u!114 &7916423255839301837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8694566683867786926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de56e4cb4624b244896943be1ffe988e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectShadow
+  maxShadowHeight: 0.6
 --- !u!1 &8736655007999296685
 GameObject:
   m_ObjectHideFlags: 0

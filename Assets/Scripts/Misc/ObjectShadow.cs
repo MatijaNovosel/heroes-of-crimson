@@ -2,37 +2,59 @@ using UnityEngine;
 
 public class ObjectShadow : MonoBehaviour
 {
-    private Vector3 localPosition = new(0f, -0.8f, 0f);
-    private Vector3 localScale = new(1f, -0.6f, 1f);
-    private Color shadowColor = new Color(0f, 0f, 0f, 0.35f);
-    private string sortingLayer = "Actor";
-    private int sortingOrder = 5;
+    private const string ShadowName = "Shadow";
+
+    [Header("Shape")] 
+    [SerializeField] private float maxShadowHeight = 0.6f;
+    private Color _shadowColor = new(0f, 0f, 0f, 0.35f);
+    private readonly float _squash = 0.5f;
+
+    private SpriteRenderer parentRenderer, shadowRenderer;
+    private Transform shadowTransform;
+    private Sprite lastSprite;
 
     private void Awake()
     {
+        parentRenderer = GetComponent<SpriteRenderer>();
         CreateShadow();
     }
 
     private void CreateShadow()
     {
-        Transform existingShadow = transform.Find("Shadow");
+        if (parentRenderer == null || parentRenderer.sprite == null || transform.Find(ShadowName) != null) return;
+        shadowTransform = new GameObject(ShadowName).transform;
+        shadowTransform.SetParent(transform, false);
+        shadowRenderer = shadowTransform.gameObject.AddComponent<SpriteRenderer>();
+        shadowRenderer.color = _shadowColor;
+        ApplyShape();
+        ApplySorting();
+    }
 
-        if (existingShadow != null) return;
+    public void SetVisible(bool visible)
+    {
+        if (shadowRenderer != null) shadowRenderer.enabled = visible;
+    }
 
-        GameObject shadow = new GameObject("Shadow");
+    private void LateUpdate()
+    {
+        if (shadowRenderer == null || parentRenderer == null) return;
+        if (parentRenderer.sprite != lastSprite) ApplyShape();
+        shadowRenderer.flipX = parentRenderer.flipX;
+        ApplySorting();
+    }
 
-        shadow.transform.SetParent(transform);
+    private void ApplyShape()
+    {
+        lastSprite = shadowRenderer.sprite = parentRenderer.sprite;
+        if (lastSprite == null) return;
+        Bounds bounds = lastSprite.bounds;
+        float s = maxShadowHeight > 0f && bounds.size.y > 0f ? Mathf.Min(_squash, maxShadowHeight / bounds.size.y) : _squash;
+        shadowTransform.localPosition = new Vector3(0, bounds.min.y * (1f + s), 0f);
+        shadowTransform.localScale = new Vector3(1f, -s, 1f);
+    }
 
-        shadow.transform.localPosition = localPosition;
-        shadow.transform.localRotation = Quaternion.identity;
-        shadow.transform.localScale = localScale;
-
-        SpriteRenderer shadowRenderer = shadow.AddComponent<SpriteRenderer>();
-        SpriteRenderer parentRenderer = GetComponent<SpriteRenderer>();
-        if (parentRenderer != null) shadowRenderer.sprite = parentRenderer.sprite;
-
-        shadowRenderer.color = shadowColor;
-        shadowRenderer.sortingLayerName = sortingLayer;
-        shadowRenderer.sortingOrder = sortingOrder;
+    private void ApplySorting()
+    {
+        shadowRenderer.sortingLayerName = "Actor";
     }
 }
