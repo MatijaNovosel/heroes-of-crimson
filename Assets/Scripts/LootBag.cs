@@ -20,7 +20,7 @@ public class LootBag : MonoBehaviour
     private float BounceHeight = 0.25f;
     public bool shouldBounce = false;
 
-    private bool isUIActive;
+    private bool _isUIActive;
     private RectTransform _inventoryUIRect;
     private SpriteRenderer _spriteRenderer;
     private readonly List<Item> _seededItems = new();
@@ -103,14 +103,14 @@ public class LootBag : MonoBehaviour
     {
         if (lootInventory == null) return;
         if (_inventoryUIRect != null) _inventoryUIRect.localScale = Vector3.one;
-        isUIActive = true;
+        _isUIActive = true;
         if (lootInventory.GetCurrentLootBag() != this) lootInventory.ShowLoot(this);
         if (_spriteRenderer != null) _spriteRenderer.color = Color.red;
     }
 
     private void ClearLocalActiveState()
     {
-        isUIActive = false;
+        _isUIActive = false;
         if (_spriteRenderer != null) _spriteRenderer.color = Color.white;
     }
 
