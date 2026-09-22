@@ -244,6 +244,23 @@
       "range": 3.5,
       "projectileScale": 1,
       "stats": [5, 0, 5, 5, 0, 0]
+    },
+    {
+      "id": 2014,
+      "name": "Laced knife",
+      "description": "A knife coated in an exquisite venom.\n\n<color=#F1C40F>Applies poison on hit.</color>",
+      "tag": 2,
+      "spritePath": "weapons_57",
+      "projectilePath": "projectiles_18",
+      "shootSound": 1008,
+      "projectileDegree": 45,
+      "minDamage": 10,
+      "maxDamage": 30,
+      "projectileCount": 1,
+      "rarity": 2,
+      "range": 3.5,
+      "projectileScale": 0.6,
+      "stats": [0, 0, 0, 0, 0, 0]
     }
   ]
 }

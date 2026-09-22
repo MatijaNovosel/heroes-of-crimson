@@ -61,6 +61,18 @@ public class PlayerShooting : MonoBehaviour
         _cachedWeapon.spinSpeed = weaponItem.spinSpeed;
       }
 
+      List<Constants.StatusEffects> statusEffects = new();
+
+      switch (_lastWeaponItem?.id)
+      {
+        case (int)WeaponItemEnum.SerratedKnife:
+          statusEffects.Add(Constants.StatusEffects.Bleeding);
+          break;
+        case (int)WeaponItemEnum.LacedKnife:
+          statusEffects.Add(Constants.StatusEffects.Poisoned);
+          break;
+      }
+
       _cachedProjectileSetup = new ProjectileSetupModel(
         Vector2.zero,
         _cachedWeapon.projectileDegree,
@@ -71,7 +83,7 @@ public class PlayerShooting : MonoBehaviour
         new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
         new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
         _cachedWeapon.impactColor,
-        new(),
+        statusEffects,
         _cachedWeapon.range,
         _cachedWeapon.projectileFrames,
         _cachedWeapon.spinSpeed

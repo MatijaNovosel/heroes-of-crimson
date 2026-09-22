@@ -13,7 +13,8 @@ public enum WeaponItemEnum
     Yasha = 2010,
     SerratedKnife = 2011,
     ConsecratedSpear = 2012,
-    BattleFury = 2013
+    BattleFury = 2013,
+    LacedKnife = 2014
 }
 
 public enum AccessoryItemEnum
