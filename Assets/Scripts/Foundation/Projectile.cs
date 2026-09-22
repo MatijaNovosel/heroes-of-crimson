@@ -102,6 +102,18 @@ public class Projectile : MonoBehaviour
     }
   }
 
+  private static bool SharesGroup(
+    List<Constants.CollisionGroups> groups,
+    List<Constants.CollisionGroups> other
+  )
+  {
+    for (int i = 0; i < groups.Count; i++)
+    {
+      if (other.Contains(groups[i])) return true;
+    }
+    return false;
+  }
+
   private void OnTriggerEnter2D(Collider2D collider)
   {
     if (!collider) return;
@@ -109,7 +121,7 @@ public class Projectile : MonoBehaviour
     var collidableComponent = collider.gameObject.GetComponent<Collidable>();
     if (!collidableComponent) return;
 
-    if (collidableComponent.collisionGroups.Any(x => _willDamage.Contains(x)))
+    if (SharesGroup(collidableComponent.collisionGroups, _willDamage))
     {
       collider.SendMessage(
         Constants.NPCMessages.ReceiveDamage,
@@ -117,7 +129,7 @@ public class Projectile : MonoBehaviour
       );
     }
 
-    if (collidableComponent.collisionGroups.Any(x => _willPenetrate.Contains(x)))
+    if (SharesGroup(collidableComponent.collisionGroups, _willPenetrate))
     {
       return;
     }

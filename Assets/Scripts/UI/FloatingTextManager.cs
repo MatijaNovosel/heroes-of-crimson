@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class FloatingTextManager : MonoBehaviour
@@ -29,7 +30,7 @@ public class FloatingTextManager : MonoBehaviour
         var ft = new FloatingText
         {
             obj = obj,
-            text = obj.GetComponent<TextMesh>(),
+            text = obj.GetComponent<TMP_Text>(),
             active = false
         };
 
@@ -57,10 +58,9 @@ public class FloatingTextManager : MonoBehaviour
         var ft = GetFloatingText();
 
         ft.text.text = msg;
-        ft.text.fontSize = 100;
-        ft.text.characterSize = 0.12f * (fontSize / 100f);
+        ft.text.fontSize = 10 * (fontSize / 100f);
         ft.text.color = color;
-        ft.text.fontStyle = FontStyle.Bold;
+        ft.text.fontStyle = TMPro.FontStyles.Bold;
 
         ft.obj.transform.position = position;
         ft.motion = motion;

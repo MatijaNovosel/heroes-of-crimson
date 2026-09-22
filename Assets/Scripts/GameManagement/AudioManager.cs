@@ -6,10 +6,18 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager Singleton;
     public Player player;
-    
+    private AudioSource _sfxSource;
+
     private void Awake()
     {
         Singleton = this;
+
+        var sfxObject = new GameObject("SFX Source");
+        sfxObject.transform.SetParent(transform, false);
+
+        _sfxSource = sfxObject.AddComponent<AudioSource>();
+        _sfxSource.playOnAwake = false;
+        _sfxSource.spatialBlend = 1f;
     }
 
     private void Start()
@@ -25,15 +33,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySound(AudioClip sound)
     {
-        AudioSource.PlayClipAtPoint(sound, transform.position, 1.5f);
+        if (!sound) return;
+        _sfxSource.PlayOneShot(sound);
     }
     
     public void PlaySoundCached(Constants.Sounds value)
     {
-        AudioSource.PlayClipAtPoint(
-            ResourceCacher.Singleton.Sounds[value],
-            transform.position, 
-            1.5f
-        );
+        PlaySound(ResourceCacher.Singleton.Sounds[value]);
     }
 }

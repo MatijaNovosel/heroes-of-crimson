@@ -36,6 +36,11 @@ public class BaseNPCBehaviour : MonoBehaviour
   public GameObject lootBagPrefab;
   
   private GameObject _statusEffectPanel;
+  private StatusEffectPanel _statusEffectPanelComponent;
+
+  // Only rebuild the status effect panel when the effect list actually changes
+  private bool _statusEffectsDirty;
+  private readonly List<Constants.StatusEffects> _effectTypesBuffer = new();
 
   private void Awake()
   {
@@ -45,7 +50,8 @@ public class BaseNPCBehaviour : MonoBehaviour
       new Vector3(transform.position.x, transform.position.y + 0.8f, 0),
       Quaternion.identity
     );
-    _statusEffectPanel.GetComponent<StatusEffectPanel>().Setup(
+    _statusEffectPanelComponent = _statusEffectPanel.GetComponent<StatusEffectPanel>();
+    _statusEffectPanelComponent.Setup(
       ActiveStatusEffects.Select(x => x.Type).ToList(),
       gameObject
     );
@@ -138,14 +144,16 @@ public class BaseNPCBehaviour : MonoBehaviour
   
   private void DisplayStatusEffects()
   {
-    if (ActiveStatusEffects.Count == 0)
+    if (!_statusEffectsDirty) return;
+    _statusEffectsDirty = false;
+
+    _effectTypesBuffer.Clear();
+    for (int i = 0; i < ActiveStatusEffects.Count; i++)
     {
-      _statusEffectPanel.GetComponent<StatusEffectPanel>().SetStatusEffects(new ());
-      return;
+      _effectTypesBuffer.Add(ActiveStatusEffects[i].Type);
     }
 
-    var effects = ActiveStatusEffects.Select(e => e.Type).ToList();
-    _statusEffectPanel.GetComponent<StatusEffectPanel>().SetStatusEffects(effects);
+    _statusEffectPanelComponent.SetStatusEffects(_effectTypesBuffer);
   }
   
   private void UpdateStatusEffects()
@@ -187,20 +195,33 @@ public class BaseNPCBehaviour : MonoBehaviour
       if (!effect.Permanent && effect.ExpireTime <= now)
       {
         ActiveStatusEffects.RemoveAt(i);
+        _statusEffectsDirty = true;
       }
     }
   }
 
   public void RemoveStatusEffect(Constants.StatusEffects effect)
   {
-    var existing = ActiveStatusEffects.FirstOrDefault(e => e.Type == effect);
-    if (existing != null) ActiveStatusEffects.Remove(existing);
+    var existing = FindStatusEffect(effect);
+    if (existing == null) return;
+    ActiveStatusEffects.Remove(existing);
+    _statusEffectsDirty = true;
+  }
+
+  // Plain loops instead of LINQ: these run every FixedUpdate via Move(),
+  // and the capturing lambdas allocated garbage on every call.
+  private ActiveStatusEffect FindStatusEffect(Constants.StatusEffects effect)
+  {
+    for (int i = 0; i < ActiveStatusEffects.Count; i++)
+    {
+      if (ActiveStatusEffects[i].Type == effect) return ActiveStatusEffects[i];
+    }
+    return null;
   }
   
   public bool HasStatusEffect(Constants.StatusEffects effect)
   {
-    var existing = ActiveStatusEffects.Any(e => e.Type == effect);
-    return existing;
+    return FindStatusEffect(effect) != null;
   }
 
   private void Update()
@@ -211,7 +232,7 @@ public class BaseNPCBehaviour : MonoBehaviour
 
   public void ApplyStatusEffect(Constants.StatusEffects effect, float duration = 5f)
   {
-    var existing = ActiveStatusEffects.FirstOrDefault(e => e.Type == effect);
+    var existing = FindStatusEffect(effect);
 
     if (existing != null)
     {
@@ -226,6 +247,7 @@ public class BaseNPCBehaviour : MonoBehaviour
         duration,
         shouldBePermanent
       ));
+      _statusEffectsDirty = true;
       var data = Utils.GetStatusEffectData(effect);
       
       GameManager.Singleton.ShowText(

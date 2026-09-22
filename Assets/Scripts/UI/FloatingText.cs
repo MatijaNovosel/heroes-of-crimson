@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public class FloatingText
 {
   public bool active;
   public GameObject obj;
-  public TextMesh text;
+  public TMP_Text text;
   public Vector3 motion;
   public float duration;
   private float lastShown;

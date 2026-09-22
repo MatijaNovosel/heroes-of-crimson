@@ -5,10 +5,17 @@ public class ImpactParticle : MonoBehaviour
     private Vector2 _velocity;
     private float _life;
     private SpriteRenderer _sr;
+    private Sprite _defaultSprite;
 
-    public void Init(Color color)
+    private void Awake()
     {
         _sr = GetComponent<SpriteRenderer>();
+        _defaultSprite = _sr.sprite;
+    }
+
+    public void Init(Color color, Sprite spriteOverride = null)
+    {
+        _sr.sprite = spriteOverride != null ? spriteOverride : _defaultSprite;
         _sr.color = color;
 
         _velocity = new Vector2(
@@ -29,6 +36,6 @@ public class ImpactParticle : MonoBehaviour
         _sr.color = c;
 
         _life -= Time.deltaTime;
-        if (_life <= 0f) Destroy(gameObject);
+        if (_life <= 0f) ParticleManager.Singleton.Release(this);
     }
 }
