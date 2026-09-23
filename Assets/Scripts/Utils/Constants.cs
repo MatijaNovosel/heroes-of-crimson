@@ -123,11 +123,14 @@ namespace HeroesOfCrimson.Utils
       Burp = 1013,
       BarrelHit = 1014,
       BarrelBreak = 1015,
+      KnifeSwing = 1016,
+      SpearSwing = 1017,
 
       // Eenemy sounds
       SkeletonHit = 2000,
       SkeletonDeath = 2001,
       SpiderShoot = 2002,
+      LichIntro = 2003,
 
       // Player sounds
       MageHit = 3000,
@@ -218,6 +221,7 @@ namespace HeroesOfCrimson.Utils
       Treasure = 2,
       Pot = 3,
       AlcoholBarrel = 4,
+      Boss = 5
     }
 
     public static readonly Dictionary<LootTableEnum, LootTableModel> LootTables = new()
@@ -231,37 +235,37 @@ namespace HeroesOfCrimson.Utils
         {
           Items =
           {
-            new ItemDropModel((int)ConsumableItemEnum.HealthPotion, 20, true),
+            new ItemDropModel((int)ConsumableItemEnum.HealthPotion, 100, true),
             
             new ItemDropModel((int)AccessoryItemEnum.IronRingOfMight, 20),
-            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfMight, 20),
-            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfMight, 20),
-            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfMight, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfMight, 15),
+            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfMight, 10),
+            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfMight, 5),
             
             new ItemDropModel((int)AccessoryItemEnum.IronRingOfAgility, 20),
-            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfAgility, 20),
-            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfAgility, 20),
-            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfAgility, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfAgility, 15),
+            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfAgility, 10),
+            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfAgility, 5),
             
             new ItemDropModel((int)AccessoryItemEnum.IronRingOfSwiftness, 20),
-            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfSwiftness, 20),
-            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfSwiftness, 20),
-            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfSwiftness, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfSwiftness, 15),
+            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfSwiftness, 10),
+            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfSwiftness, 5),
             
             new ItemDropModel((int)AccessoryItemEnum.IronRingOfProtection, 20),
-            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfProtection, 20),
-            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfProtection, 20),
-            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfProtection, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfProtection, 15),
+            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfProtection, 10),
+            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfProtection, 5),
             
             new ItemDropModel((int)AccessoryItemEnum.IronRingOfWisdom, 20),
-            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfWisdom, 20),
-            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfWisdom, 20),
-            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfWisdom, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfWisdom, 15),
+            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfWisdom, 10),
+            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfWisdom, 5),
             
             new ItemDropModel((int)AccessoryItemEnum.IronRingOfStrength, 20),
-            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfStrength, 20),
-            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfStrength, 20),
-            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfStrength, 20),
+            new ItemDropModel((int)AccessoryItemEnum.SapphireRingOfStrength, 15),
+            new ItemDropModel((int)AccessoryItemEnum.SilverRingOfStrength, 10),
+            new ItemDropModel((int)AccessoryItemEnum.GoldenRingOfStrength, 5),
           }
         }
       },
@@ -278,7 +282,6 @@ namespace HeroesOfCrimson.Utils
             new ItemDropModel((int)MiscItemEnum.RuneOfStrength, 100, true),
             new ItemDropModel((int)MiscItemEnum.ScrawledNote, 100, true),
             new ItemDropModel((int)MiscItemEnum.HandfulOfCoins, 100, true),
-            new ItemDropModel((int)WeaponItemEnum.BattleFury, 100, true),
           }
         }
       },
@@ -308,6 +311,23 @@ namespace HeroesOfCrimson.Utils
             new ItemDropModel((int)ConsumableItemEnum.OldBottleOfGrog, 100, true),
             new ItemDropModel((int)ConsumableItemEnum.OldBottleOfGrog, 100, true),
             new ItemDropModel((int)ConsumableItemEnum.OldBottleOfGrog, 100, true),
+          }
+        }
+      },
+      {
+        LootTableEnum.Boss,
+        new LootTableModel(
+          id: LootTableEnum.Boss,
+          new()
+        )
+        {
+          Items =
+          {
+            new ItemDropModel((int)WeaponItemEnum.BattleFury, 100, true),
+            new ItemDropModel((int)WeaponItemEnum.Yasha, 100, true),
+            new ItemDropModel((int)WeaponItemEnum.Radiance, 100, true),
+            new ItemDropModel((int)ConsumableItemEnum.PotionOfLife, 100, true),
+            new ItemDropModel((int)ConsumableItemEnum.PotionOfLife, 100, true),
           }
         }
       }

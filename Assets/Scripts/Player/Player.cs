@@ -190,6 +190,8 @@ public class Player : MonoBehaviour
 
     public void GiveXp(int amount)
     {
+        if (amount == 0) return;
+        
         experience += amount;
         PlayerLog.Singleton.AddItem($"You got {amount} xp!");
 

@@ -27,6 +27,8 @@ public class Projectile : MonoBehaviour
   private List<Constants.CollisionGroups> _willPenetrate = new();
   private List<Constants.StatusEffects> _statusEffects = new();
 
+  [System.NonSerialized] public bool SilentWallHits;
+
   private List<Sprite> _frames = new();
   private int _frameIndex;
   private float _frameTimer;
@@ -137,7 +139,7 @@ public class Projectile : MonoBehaviour
     if (collider.name != "BulletCollision")
     {
       ParticleManager.Singleton.SpawnParticles(transform, _particleColor, 6);
-      if (collider.name == "Collision")
+      if (collider.name == "Collision" && !SilentWallHits)
       {
         AudioManager.Singleton.PlaySoundCached(Constants.Sounds.HitWall);
       }

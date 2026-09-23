@@ -22,8 +22,9 @@ public class PlayerAbility : MonoBehaviour
     {
         foreach (var ability in abilities)
         {
-            if (ability.cooldownImage is null) continue;
-            if (ability.IsReady) ability.cooldownImage.fillAmount = 1f;
+            if (!ability.cooldownImage) continue;
+            if (ability.disabled) ability.cooldownImage.fillAmount = 0f;
+            else if (ability.IsReady) ability.cooldownImage.fillAmount = 1f;
             else ability.cooldownImage.fillAmount = ability.CooldownRemaining / ability.cooldown;
         }
     }
@@ -60,7 +61,7 @@ public class PlayerAbility : MonoBehaviour
 
         foreach (var ability in abilities)
         {
-            if (!Input.GetKeyDown(ability.key) || !ability.IsReady) continue;
+            if (ability.disabled || !Input.GetKeyDown(ability.key) || !ability.IsReady) continue;
 
             if (_isCursorOverForbiddenAbilityTile() || _player.CurrentMana < ability.manaCost)
             {

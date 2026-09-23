@@ -10,6 +10,10 @@ public class BrawlerAI : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private GameObject _projectile;
 
+    // Shared, never mutated by Projectile
+    private static readonly List<Constants.CollisionGroups> DamagesPlayer = new() { Constants.CollisionGroups.Player };
+    private static readonly List<Constants.CollisionGroups> PenetratesEnemies = new() { Constants.CollisionGroups.Enemy };
+
     [Header("Projectile data")]
     public float projectileScale = 1f;
     public Sprite projectileSprite;
@@ -25,7 +29,9 @@ public class BrawlerAI : MonoBehaviour
     [SerializeField] private float SearchRadius = 5f;
     [SerializeField] private float AttackEnterRange = 4f;
 
-    private readonly float _shootingDelay = 0.8f;
+    [Header("Shooting")]
+    [SerializeField] protected float shootingDelay = 0.8f;
+    [SerializeField] protected float projectileDamage = 10f;
     private float _lastFired;
 
     private float wanderDuration = 0.2f;
@@ -207,7 +213,7 @@ public class BrawlerAI : MonoBehaviour
     
     private bool CanShoot()
     {
-        return Time.time - _lastFired > _shootingDelay;
+        return Time.time - _lastFired > shootingDelay;
     }
 
     void ShootPlayer()
@@ -218,13 +224,17 @@ public class BrawlerAI : MonoBehaviour
         _animator.SetTrigger(Attack);
 
         var shootDirection = (Utils.GetPlayerPosition() - transform.position).normalized;
+        FireAtPlayer(shootDirection);
 
-        var proj = Instantiate(
-            _projectile,
-            transform.position,
-            Quaternion.identity
-        );
+        _lastFired = Time.time;
+        Invoke(nameof(EndShootPause), 0.15f);
+    }
 
+    /// <summary>
+    /// Spawns the attack's projectiles. Override to change the attack pattern.
+    /// </summary>
+    protected virtual void FireAtPlayer(Vector3 shootDirection)
+    {
         var statusEffects = new List<Constants.StatusEffects>();
 
         if (StatusEffectToApply != null)
@@ -232,24 +242,32 @@ public class BrawlerAI : MonoBehaviour
             statusEffects.Add((Constants.StatusEffects)StatusEffectToApply);
         }
 
+        SpawnProjectile(shootDirection, projectileDamage, statusEffects);
+    }
+
+    protected void SpawnProjectile(Vector3 direction, float damage, List<Constants.StatusEffects> statusEffects)
+    {
+        var proj = Instantiate(
+            _projectile,
+            transform.position,
+            Quaternion.identity
+        );
+
         proj.GetComponent<Projectile>().Setup(new ProjectileSetupModel(
-            shootDirection,
+            direction,
             0,
             null,
             projectileScale,
-            10,
+            damage,
             projectileSprite,
-            new List<Constants.CollisionGroups> { Constants.CollisionGroups.Player },
-            new List<Constants.CollisionGroups> { Constants.CollisionGroups.Enemy },
+            DamagesPlayer,
+            PenetratesEnemies,
             null,
             statusEffects,
             5.0f,
             null,
             null
         ));
-
-        _lastFired = Time.time;
-        Invoke(nameof(EndShootPause), 0.15f);
     }
 
     void EndShootPause()

@@ -121,8 +121,6 @@ public class DungeonGenerator : MonoBehaviour
     {
         if (DialogueController.Singleton != null)
         {
-            print(DialogueController.Singleton.HasStateFlag(completedFlag));
-            
             if (DialogueController.Singleton.HasStateFlag(completedFlag))
             {
                 if (PlayerLog.Singleton != null) PlayerLog.Singleton.AddItem("You have already completed this dungeon.");
@@ -167,9 +165,11 @@ public class DungeonGenerator : MonoBehaviour
 
         SpawnDungeon();
         SpawnEntities();
+        
         _isGenerated = true;
         _bossDefeated = false;
         _completed = false;
+        
         Debug.Log($"Dungeon generated. Rooms: {_grid.Count} | Main Path: {_mainPath.Count} | Branch Rooms: {_branchRoomCount}");
     }
 

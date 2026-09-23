@@ -6,6 +6,8 @@ using UnityEngine.UI;
 [Serializable]
 public class AbilitySlot
 {
+    [Tooltip("Disabled abilities can't be cast and show an empty slot.")]
+    public bool disabled;
     public KeyCode key;
     public Image cooldownImage;
     public float cooldown = 1f;

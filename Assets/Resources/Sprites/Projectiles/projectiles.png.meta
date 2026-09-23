@@ -781,7 +781,7 @@ TextureImporter:
         width: 8
         height: 8
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -790,6 +790,72 @@ TextureImporter:
       bones: []
       spriteID: bb1595b60fe498e40a36723b062336a5
       internalID: 1446315623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f14d0d50f0cc304c864b690d6d161ee
+      internalID: 538727244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_32
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a25157db710d2ae489c21dd559e85e9b
+      internalID: 483838080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projectiles_33
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27dafb2a5886a7b4c99b4ec74121aa76
+      internalID: 706040839
       vertices: []
       indices: 
       edges: []
@@ -835,6 +901,9 @@ TextureImporter:
       projectiles_29: 1286547244
       projectiles_3: -123116942
       projectiles_30: 1446315623
+      projectiles_31: 538727244
+      projectiles_32: 483838080
+      projectiles_33: 706040839
       projectiles_4: -1830236131
       projectiles_5: -1818829827
       projectiles_6: 766426545

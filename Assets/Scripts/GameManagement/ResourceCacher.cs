@@ -55,11 +55,14 @@ namespace GameManagement
             Sounds.Add(Constants.Sounds.Burp, Resources.Load<AudioClip>("Sounds/General/burp"));
             Sounds.Add(Constants.Sounds.BarrelHit, Resources.Load<AudioClip>("Sounds/General/barrelHit"));
             Sounds.Add(Constants.Sounds.BarrelBreak, Resources.Load<AudioClip>("Sounds/General/barrelBreak"));
+            Sounds.Add(Constants.Sounds.KnifeSwing, Resources.Load<AudioClip>("Sounds/General/knifeSwing"));
+            Sounds.Add(Constants.Sounds.SpearSwing, Resources.Load<AudioClip>("Sounds/General/spearSwing"));
             
             // Enemy sounds
             Sounds.Add(Constants.Sounds.SkeletonDeath, Resources.Load<AudioClip>("Sounds/Enemies/skeletonDeath"));
             Sounds.Add(Constants.Sounds.SkeletonHit, Resources.Load<AudioClip>("Sounds/Enemies/skeletonHit"));
             Sounds.Add(Constants.Sounds.SpiderShoot, Resources.Load<AudioClip>("Sounds/Enemies/spiderShoot"));
+            Sounds.Add(Constants.Sounds.LichIntro, Resources.Load<AudioClip>("Sounds/Enemies/Lich/lichIntro"));
             
             // Player sounds
             Sounds.Add(Constants.Sounds.MageHit, Resources.Load<AudioClip>("Sounds/Player/mageHit"));

@@ -123,8 +123,8 @@ MonoBehaviour:
   agi: 30
   invincible: 0
   lootTableId: 1
-  deathSound: {fileID: 8300000, guid: cd9f2fd01f6ce8f459abc045ca50316e, type: 3}
-  hitSound: {fileID: 8300000, guid: adca1c47177be8044800f5a92027b175, type: 3}
+  deathSound: 2001
+  hitSound: 1005
   lootBagPrefab: {fileID: 1391078489379675557, guid: 475bf21587f6de5429f9f391b5518d35, type: 3}
 --- !u!61 &6056444246230933314
 BoxCollider2D:
@@ -271,7 +271,7 @@ MonoBehaviour:
   explosionRadius: 1.5
   predictPlayer: 1
   predictionLeadSeconds: 0.35
-  showRanges: 1
+  showRanges: 0
   playerVelSmoothing: 0.25
 --- !u!114 &2246207618086859323
 MonoBehaviour:
