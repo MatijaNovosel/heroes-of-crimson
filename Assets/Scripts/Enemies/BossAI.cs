@@ -61,7 +61,9 @@ public class BossAI : MonoBehaviour
     [SerializeField] private bool novaOnFightStart = false;
     [SerializeField] private float phaseSwitchPause = 1f;
 
+    [Header("Health Bar")]
     [SerializeField] private string bossName = "The Lich";
+    [Tooltip("Jersey SDF, to match the rest of the HUD.")]
     [SerializeField] private TMP_FontAsset healthBarFont;
 
     private static readonly float[] PhaseLowerBound = { 1f, 0.75f, 0.5f, 0.25f, 0f };
@@ -198,17 +200,17 @@ public class BossAI : MonoBehaviour
         {
             case Phase.Waves:
                 BossHealthBar.Create(_npc, bossName, healthBarFont);
-                PlayerLog.Singleton.AddItem("\"The bell tolls for <color=#E74C3C>YOU</color>, mortal!\" the Lich shouts");
+                Shout("The bell tolls for <color=#E74C3C>YOU</color>, mortal!");
                 AudioManager.Singleton.PlaySoundCached(Constants.Sounds.LichIntro);
                 break;
             case Phase.ReverseWaves:
-                PlayerLog.Singleton.AddItem("\"Your efforts are futile, give up!\" the Lich shouts");
+                Shout("Your efforts are futile, give up!");
                 break; 
             case Phase.Summoner:
-                PlayerLog.Singleton.AddItem("\"NO! I shan't be cast down by a beggar like you!\" the Lich shouts");
+                Shout("NO! I shan't be cast down by a beggar like you!");
                 break;
             case Phase.Chaser:
-                PlayerLog.Singleton.AddItem("\"DIE!!!\" the Lich shouts");
+                Shout("DIE!!!");
                 break;
         }
 
@@ -380,6 +382,12 @@ public class BossAI : MonoBehaviour
 
         ParticleManager.Singleton.SpawnParticles(transform, novaParticleColor, 40);
         AudioManager.Singleton.PlaySoundCached(Constants.Sounds.FireSphere);
+    }
+
+    private void Shout(string line)
+    {
+        SpeechBubbles.Say(transform, line);
+        PlayerLog.Singleton.AddItem($"\"{line}\" the Lich shouts");
     }
 
     private void FireProjectile(
