@@ -22,6 +22,11 @@ public class Projectile : MonoBehaviour
   private Vector3 _startPosition;
   private float _spinSpeed;
   private float _spinAngle;
+  private float _distance;
+  private Vector3 _perpendicular;
+  private float _waveAmplitude;
+  private float _waveNumber;
+  private float _wavePhase;
 
   private List<Constants.CollisionGroups> _willDamage = new();
   private List<Constants.CollisionGroups> _willPenetrate = new();
@@ -58,6 +63,13 @@ public class Projectile : MonoBehaviour
     _spinAngle = 0f;
     _spinSpeed = payload.SpinSpeed ?? 0f;
 
+    _distance = 0f;
+    _perpendicular = new Vector3(-_direction.y, _direction.x, 0f);
+    bool weaves = payload.WaveAmplitude > 0f && payload.WaveLength > 0f;
+    _waveAmplitude = weaves ? payload.WaveAmplitude : 0f;
+    _waveNumber = weaves ? 2f * Mathf.PI / payload.WaveLength : 0f;
+    _wavePhase = payload.WavePhase;
+
     if (payload.Frames != null && payload.Frames.Count > 0)
     {
       _frames = payload.Frames;
@@ -71,26 +83,20 @@ public class Projectile : MonoBehaviour
     }
 
     transform.localScale = new Vector3(_scale, _scale, 0);
+    UpdateMovement(0f);
   }
 
   void Update()
   {
-    transform.position += _direction * (_moveSpeed * Time.deltaTime);
+    _distance += _moveSpeed * Time.deltaTime;
 
-    float traveled = Vector3.Distance(_startPosition, transform.position);
-    if (traveled >= _range)
+    if (_distance >= _range)
     {
       Destroy(gameObject);
       return;
     }
 
-    _spinAngle += _spinSpeed * Time.deltaTime;
-
-    transform.rotation = Quaternion.Euler(
-      0,
-      0,
-      _angle - _rotation + _spinAngle
-    );
+    UpdateMovement(Time.deltaTime);
 
     if (_frames.Count > 0)
     {
@@ -102,6 +108,30 @@ public class Projectile : MonoBehaviour
         _spriteRenderer.sprite = _frames[_frameIndex];
       }
     }
+  }
+
+  private void UpdateMovement(float deltaTime)
+  {
+    float sideOffset = 0f;
+    float headingOffset = 0f;
+
+    if (_waveAmplitude > 0f)
+    {
+      float theta = _waveNumber * _distance + _wavePhase;
+      sideOffset = _waveAmplitude * Mathf.Sin(theta);
+      float slope = _waveAmplitude * _waveNumber * Mathf.Cos(theta);
+      headingOffset = Mathf.Atan(slope) * Mathf.Rad2Deg;
+    }
+
+    transform.position = _startPosition + _direction * _distance + _perpendicular * sideOffset;
+
+    _spinAngle += _spinSpeed * deltaTime;
+
+    transform.rotation = Quaternion.Euler(
+      0,
+      0,
+      _angle + headingOffset - _rotation + _spinAngle
+    );
   }
 
   private static bool SharesGroup(

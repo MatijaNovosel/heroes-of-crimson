@@ -44,7 +44,11 @@ public class PlayerShooting : MonoBehaviour
         shootSound = ResourceCacher.Singleton.Sounds[Constants.Sounds.MagicShoot],
         minDamage = 0,
         maxDamage = 0,
-        spinSpeed = 0
+        spinSpeed = 0,
+        projectileCount = 1,
+        spreadAngle = 0,
+        waveAmplitude = 0,
+        waveLength = 0
       };
 
       if (weaponItem)
@@ -59,6 +63,10 @@ public class PlayerShooting : MonoBehaviour
         _cachedWeapon.minDamage = weaponItem.minDamage;
         _cachedWeapon.maxDamage = weaponItem.maxDamage;
         _cachedWeapon.spinSpeed = weaponItem.spinSpeed;
+        _cachedWeapon.projectileCount = Mathf.Max(1, weaponItem.projectileCount);
+        _cachedWeapon.spreadAngle = weaponItem.spreadAngle;
+        _cachedWeapon.waveAmplitude = weaponItem.waveAmplitude;
+        _cachedWeapon.waveLength = weaponItem.waveLength;
       }
 
       List<Constants.StatusEffects> statusEffects = new();
@@ -188,24 +196,38 @@ public class PlayerShooting : MonoBehaviour
           break;
       }
       
-      var proj = Instantiate(
-        projectilePrefab,
-        new Vector3(projectilePosX, projectilePosY, 0),
-        Quaternion.identity
-      );
-      
-      _cachedProjectileSetup.Direction = shootDirection;
-      _cachedProjectileSetup.Damage = _calculateWeaponDamage(
-        _cachedWeapon.minDamage,
-        _cachedWeapon.maxDamage
-      );
-
-      proj.GetComponent<Projectile>().Setup(_cachedProjectileSetup);
+      _spawnProjectiles(new Vector3(projectilePosX, projectilePosY, 0), shootDirection);
       AudioManager.Singleton.PlaySound(_cachedWeapon.shootSound);
       
       _lastFired = Time.time;
     }
     
+    private void _spawnProjectiles(Vector3 position, Vector3 aimDirection)
+    {
+      int count = _cachedWeapon.projectileCount;
+      float spread = _cachedWeapon.spreadAngle;
+      float startAngle = -spread * (count - 1) * 0.5f;
+      bool weaves = _cachedWeapon.waveAmplitude > 0f && _cachedWeapon.waveLength > 0f;
+
+      for (int i = 0; i < count; i++)
+      {
+        var setup = _cachedProjectileSetup;
+
+        setup.Direction = Quaternion.Euler(0f, 0f, startAngle + i * spread) * aimDirection;
+        setup.Damage = _calculateWeaponDamage(_cachedWeapon.minDamage, _cachedWeapon.maxDamage);
+
+        if (weaves)
+        {
+          setup.WaveAmplitude = _cachedWeapon.waveAmplitude;
+          setup.WaveLength = _cachedWeapon.waveLength;
+          setup.WavePhase = Mathf.PI * 0.5f + i * (2f * Mathf.PI / count);
+        }
+
+        var proj = Instantiate(projectilePrefab, position, Quaternion.identity);
+        proj.GetComponent<Projectile>().Setup(setup);
+      }
+    }
+
     private void _handleShooting()
     {
       var pointerOverUI = EventSystem.current && EventSystem.current.IsPointerOverGameObject();

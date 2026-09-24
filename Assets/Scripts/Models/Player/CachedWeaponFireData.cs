@@ -15,5 +15,9 @@ namespace Models.Player
         public int minDamage;
         public int maxDamage;
         public List<Sprite> projectileFrames;
+        public int projectileCount;
+        public float spreadAngle;
+        public float waveAmplitude;
+        public float waveLength;
     }
 }

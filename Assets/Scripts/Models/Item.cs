@@ -27,5 +27,13 @@ namespace Models
         public List<Sprite> projectileFrames;
         public float projectileScale;
         public float spinSpeed;
+
+        // Projectile pattern
+        // Degrees between neighbouring projectiles, fanned out around the aim direction
+        public float spreadAngle;
+        // Side-to-side distance (world units) for weaving projectiles; 0 = straight
+        public float waveAmplitude;
+        // Distance (world units) a weaving projectile travels per full wave
+        public float waveLength;
     }
 }

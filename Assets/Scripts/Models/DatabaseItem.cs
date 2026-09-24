@@ -26,6 +26,11 @@ namespace Models
         public float projectileScale;
         public string impactColor;
         public float spinSpeed;
+
+        // Projectile pattern (all optional, default to a single straight shot)
+        public float spreadAngle;
+        public float waveAmplitude;
+        public float waveLength;
     }
 
     [System.Serializable]

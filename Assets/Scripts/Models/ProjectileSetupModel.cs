@@ -20,6 +20,12 @@ namespace Models
         public readonly Color? ParticleColor;
         public List<Sprite> Frames;
         public float? SpinSpeed;
+
+        // Optional weaving motion. Set after construction; 0 amplitude = straight line.
+        // Phase is in radians; projectiles with opposite phases weave around each other.
+        public float WaveAmplitude;
+        public float WaveLength;
+        public float WavePhase;
         
         public ProjectileSetupModel(
             Vector3 direction,
@@ -50,6 +56,9 @@ namespace Models
             this.Range = range;
             this.Frames = frames;
             this.SpinSpeed = spinSpeed;
+            this.WaveAmplitude = 0f;
+            this.WaveLength = 0f;
+            this.WavePhase = 0f;
         }
     }
 }

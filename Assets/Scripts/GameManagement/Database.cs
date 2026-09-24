@@ -90,6 +90,9 @@ public class Database : MonoBehaviour
     item.spinSpeed = databaseItem.spinSpeed;
 
     item.projectileCount = databaseItem.projectileCount;
+    item.spreadAngle = databaseItem.spreadAngle;
+    item.waveAmplitude = databaseItem.waveAmplitude;
+    item.waveLength = databaseItem.waveLength;
     item.projectileDegree = databaseItem.projectileDegree;
     item.range = databaseItem.range;
     item.projectileScale = databaseItem.projectileScale;
