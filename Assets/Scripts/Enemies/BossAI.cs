@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using HeroesOfCrimson.Utils;
 using Models;
+using TMPro;
 using UnityEngine;
 
 public class BossAI : MonoBehaviour
@@ -59,6 +60,9 @@ public class BossAI : MonoBehaviour
     [SerializeField] private Color novaParticleColor = new(1f, 0.5f, 0f);
     [SerializeField] private bool novaOnFightStart = false;
     [SerializeField] private float phaseSwitchPause = 1f;
+
+    [SerializeField] private string bossName = "The Lich";
+    [SerializeField] private TMP_FontAsset healthBarFont;
 
     private static readonly float[] PhaseLowerBound = { 1f, 0.75f, 0.5f, 0.25f, 0f };
 
@@ -193,6 +197,7 @@ public class BossAI : MonoBehaviour
         switch (phase)
         {
             case Phase.Waves:
+                BossHealthBar.Create(_npc, bossName, healthBarFont);
                 PlayerLog.Singleton.AddItem("\"The bell tolls for <color=#E74C3C>YOU</color>, mortal!\" the Lich shouts");
                 AudioManager.Singleton.PlaySoundCached(Constants.Sounds.LichIntro);
                 break;

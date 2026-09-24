@@ -145,6 +145,8 @@ MonoBehaviour:
   novaParticleColor: {r: 0.3030839, g: 1, b: 0, a: 1}
   novaOnFightStart: 0
   phaseSwitchPause: 1
+  bossName: The Lich
+  healthBarFont: {fileID: 11400000, guid: aa432505f8528d944937cb4c649dea3f, type: 2}
 --- !u!114 &4347528415875714338
 MonoBehaviour:
   m_ObjectHideFlags: 0
