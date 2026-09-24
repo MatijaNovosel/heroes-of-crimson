@@ -79,6 +79,7 @@ namespace GameManagement
             InventorySprites.Add(Constants.InventorySlotEnum.Accessory1, Resources.Load<Sprite>("Sprites/UI/HotbarAccessorySlot"));
             InventorySprites.Add(Constants.InventorySlotEnum.Accessory2, Resources.Load<Sprite>("Sprites/UI/HotbarAccessorySlot"));
             InventorySprites.Add(Constants.InventorySlotEnum.Empty, Resources.Load<Sprite>("Sprites/UI/InventoryPanel"));
+            InventorySprites.Add(Constants.InventorySlotEnum.Consumable, Resources.Load<Sprite>("Sprites/UI/HotbarConsumableSlot"));
         }
     }
 }

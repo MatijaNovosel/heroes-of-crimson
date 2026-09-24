@@ -150,6 +150,7 @@ namespace HeroesOfCrimson.Utils
       Accessory1 = 2,
       Accessory2 = 3,
       Empty = 4,
+      Consumable = 5,
     }
 
     public enum Direction

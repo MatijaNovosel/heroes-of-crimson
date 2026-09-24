@@ -452,7 +452,10 @@ public class DialogueController : MonoBehaviour
             case Constants.DialogueConditions.HasItem:
             {
                 var expected = c.Value is int i ? i : 0;
-                return playerInventory.ItemIds.Contains(expected) || playerHotbar.ItemIds.Contains(expected);
+                return playerInventory.ItemIds.Contains(expected)
+                       || playerHotbar.ItemIds.Contains(expected)
+                       || (ConsumableQuickSlots.Singleton
+                           && ConsumableQuickSlots.Singleton.SlotInventory.ItemIds.Contains(expected));
             }
             default:
                 Debug.LogWarning($"Unknown condition type '{c.Type}'");

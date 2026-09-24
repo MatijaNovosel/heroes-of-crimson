@@ -106,6 +106,9 @@ namespace UI.Inventory
                 case Constants.ItemTag.Accessory:
                     SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotEnum.Accessory1]);
                     break;
+                case Constants.ItemTag.Consumable:
+                    SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotEnum.Consumable]);
+                    break;
                 case Constants.ItemTag.None:
                 default:
                     SetImage(ResourceCacher.Singleton.InventorySprites[Constants.InventorySlotEnum.Empty]);
