@@ -7,6 +7,9 @@ public class PauseMenu : MonoBehaviour
     public bool PauseMenuOpen;
     public static PauseMenu Singleton;
 
+    [SerializeField] private SettingsPanel settingsPanel;
+    [SerializeField] private GameObject pauseContent;
+
     private bool IsBlockingMenuOpen()
     {
         return (TalentTree.Singleton != null && TalentTree.Singleton.TalentTreeOpen)
@@ -19,6 +22,12 @@ public class PauseMenu : MonoBehaviour
         if (!Input.GetKeyDown(KeyCode.Escape)) return;
         if (IsBlockingMenuOpen()) return;
 
+        if (settingsPanel && settingsPanel.IsOpen)
+        {
+            settingsPanel.Back();
+            return;
+        }
+
         PauseMenuOpen = !PauseMenuOpen;
         Time.timeScale = PauseMenuOpen ? 0f : 1f;
         transform.localPosition = new Vector3(PauseMenuOpen ? 0 : 9999, PauseMenuOpen ? 0 : 9999, 0);
@@ -26,6 +35,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
+        CloseSettingsSilently();
         PauseMenuOpen = false;
         Time.timeScale = 1f;
         transform.localPosition = new Vector3(9999, 9999, 0);
@@ -34,6 +44,24 @@ public class PauseMenu : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    public void OpenSettings()
+    {
+        if (!settingsPanel) return;
+        if (pauseContent) pauseContent.SetActive(false);
+        settingsPanel.Open();
+    }
+
+    private void OnSettingsClosed()
+    {
+        if (pauseContent) pauseContent.SetActive(true);
+    }
+
+    private void CloseSettingsSilently()
+    {
+        if (settingsPanel && settingsPanel.IsOpen) settingsPanel.gameObject.SetActive(false);
+        if (pauseContent) pauseContent.SetActive(true);
     }
 
     public void GoToMainMenu()
@@ -46,6 +74,23 @@ public class PauseMenu : MonoBehaviour
     private void Awake()
     {
         Singleton = this;
+
+        if (!pauseContent)
+        {
+            var content = transform.Find("PauseMenuContent");
+            if (content) pauseContent = content.gameObject;
+        }
+
+        if (settingsPanel)
+        {
+            settingsPanel.Closed += OnSettingsClosed;
+            settingsPanel.gameObject.SetActive(false);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        if (settingsPanel) settingsPanel.Closed -= OnSettingsClosed;
     }
 
     void Update()

@@ -1,22 +1,21 @@
-using System.IO;
 using HeroesOfCrimson.Utils;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Legacy settings screen script. Settings now live in GameSettings, and the UI in the
+/// shared SettingsPanel prefab. This stays so the Settings scene keeps working
+/// until the panel is set up (Tools > Heroes of Crimson > Settings).
+/// </summary>
 public class SettingsScreen : MonoBehaviour
 {
     [SerializeField]
     private Toggle fullscreenToggle;
 
-    private SettingsData settings;
-
-    private string SettingsPath => Path.Combine(Application.persistentDataPath, "settings.json");
-
     private void Start()
     {
-        LoadSettings();
-        fullscreenToggle.isOn = settings.fullscreen;
+        if (fullscreenToggle) fullscreenToggle.SetIsOnWithoutNotify(GameSettings.Current.fullscreen);
     }
 
     public void Back()
@@ -26,51 +25,9 @@ public class SettingsScreen : MonoBehaviour
 
     public void Save()
     {
-        settings.fullscreen = fullscreenToggle.isOn;
-        ApplySettings();
-        SaveSettings();
+        var settings = GameSettings.Current.Clone();
+        if (fullscreenToggle) settings.fullscreen = fullscreenToggle.isOn;
+        GameSettings.Save(settings);
         SceneManager.LoadScene((int)Constants.Screens.MainMenu);
     }
-
-    private void ApplySettings()
-    {
-        if (settings.fullscreen) {
-            Screen.SetResolution(
-                Display.main.systemWidth,
-                Display.main.systemHeight,
-                FullScreenMode.FullScreenWindow
-            );
-        } else {
-            Screen.fullScreenMode = FullScreenMode.Windowed;
-        }
-    }
-
-    private void SaveSettings()
-    {
-        string json = JsonUtility.ToJson(settings, true);
-        File.WriteAllText(SettingsPath, json);
-        Debug.Log($"Settings saved to: {SettingsPath}");
-    }
-
-    private void LoadSettings()
-    {
-        if (File.Exists(SettingsPath))
-        {
-            string json = File.ReadAllText(SettingsPath);
-            settings = JsonUtility.FromJson<SettingsData>(json);
-        } else {
-            settings = new SettingsData
-            {
-                fullscreen = Screen.fullScreen
-            };
-            SaveSettings();
-        }
-        ApplySettings();
-    }
-}
-
-[System.Serializable]
-public class SettingsData
-{
-    public bool fullscreen = true;
 }
