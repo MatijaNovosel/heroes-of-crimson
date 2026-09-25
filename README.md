@@ -1,5 +1,5 @@
 <h1 align=center>Heroes of crimson</h1>
-<p align=left>Bullet hell RPG roguelike. Heavily based on the popular MMO Realm of the Mad God.</p>
+<p align=left>Bullet hell RPG roguelike. Heavily based on the popular MMO Realm of the Mad God and Hammerwatch.</p>
 <p align=left>The goal is making a fully fleshed out singleplayer RPG with rougelike and permadeath mechanics with story progression on top of it. Currently a work in progress.</p>
 
 
